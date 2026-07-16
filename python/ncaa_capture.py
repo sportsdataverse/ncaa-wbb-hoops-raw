@@ -47,7 +47,6 @@ __all__ = [
     "capture_contests",
     "shard",
     "DEFAULT_MAX_CONSECUTIVE_FAILURES",
-    "_select_pending",
 ]
 
 
