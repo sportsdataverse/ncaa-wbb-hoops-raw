@@ -179,3 +179,7 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# NCAA WBB raw data tree + scrape logs (scraped output, not source)
+wbb/
+logs/
