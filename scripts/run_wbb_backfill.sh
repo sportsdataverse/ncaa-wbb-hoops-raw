@@ -35,7 +35,18 @@ SDV_PY="C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py"
 PY="${SDV_PY}/.venv/Scripts/python.exe"
 
 SEASON="${1:?usage: run_wbb_backfill.sh <season>  (ending year, e.g. 2025)}"
+MIN_SEASON=2010
 MAX_SEASON=2025
+case "$SEASON" in
+  ''|*[!0-9]*)
+    echo "REFUSING SEASON='${SEASON}' -- must be a plain integer ending year (e.g. 2025)." >&2
+    exit 2 ;;
+esac
+if [ "$SEASON" -lt "$MIN_SEASON" ]; then
+  echo "REFUSING season=${SEASON} -- the bundled WBB crosswalk (sportsdataverse/wbb/data/ncaa_teamids_wbb.csv)" >&2
+  echo "  starts at season ${MIN_SEASON} (2009-10); there is no earlier row." >&2
+  exit 2
+fi
 if [ "$SEASON" -gt "$MAX_SEASON" ]; then
   echo "REFUSING season=${SEASON} -- the bundled WBB crosswalk (sportsdataverse/wbb/data/ncaa_teamids_wbb.csv)" >&2
   echo "  only covers seasons through ${MAX_SEASON} (i.e. 2024-25); there is no 2025-26 row yet." >&2
