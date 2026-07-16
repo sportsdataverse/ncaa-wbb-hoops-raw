@@ -180,6 +180,13 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
-# NCAA WBB raw data tree + scrape logs (scraped output, not source)
-/wbb/
+# Scrape logs (transient; the data tree is NOT ignored -- see below).
 /logs/
+
+# DO NOT ignore /wbb/. The raw data tree is this repo's PAYLOAD and is meant to
+# be committed, in chunks, exactly as the mbb sibling does (`feat(data): ...`
+# commits; ncaa-mbb-hoops-raw tracks ~4805 files under mbb/). Ignoring it would
+# (a) silently drop the backfill output and (b) permanently break the -data
+# builder's HTTP ingest, which fetches
+# https://raw.githubusercontent.com/sportsdataverse/ncaa-wbb-hoops-raw/main/wbb
+# -- a path that only resolves if the tree is committed to main.
