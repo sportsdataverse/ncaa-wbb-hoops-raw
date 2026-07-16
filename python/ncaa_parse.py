@@ -35,9 +35,14 @@ for the ``get_box_lineup`` -> ``create_lineup_data`` sequence this mirrors):
 This is the WBB retarget of the shared ncaa_parse module: the parser stack
 is shared with MBB and is already league-parametric, so ``league="wbb"``
 (the default here) selects the 4-quarter period model (``_WBB_PERIOD_MODEL``)
-instead of MBB's 2 halves, and the ``"womens"`` league label on the parsed
-``shots`` frame instead of ``"mens"``. ``league="mbb"`` remains a legitimate
-runtime value (the mbb path must keep working) for parity/regression checks.
+instead of MBB's 2 halves. There is no ``league`` column on the parsed
+``shots`` frame -- ``league`` reaches ``shots`` only via
+``three_point_radius(league, season)`` inside ``shot_events_to_frame``,
+which shifts ``shot_zone``/``point_value`` classification. The mens/womens
+arcs actually differ only in seasons 2020 and 2021 (identical in 2019 and
+2022+), so most seasons parse identically either way. ``league="mbb"``
+remains a legitimate runtime value (the mbb path must keep working) for
+parity/regression checks.
 """
 
 from __future__ import annotations
@@ -180,7 +185,9 @@ def parse_bundle(bundle: "dict[str, Any]", *, league: str = "wbb") -> "dict[str,
             (``contest_id``, ``season``, ``pages`` with ``play_by_play`` /
             ``box_score`` / ``individual_stats`` HTML).
         league: ``"wbb"`` (default) or ``"mbb"`` -- selects the pbp period
-            model (quarters vs. halves) and the shots frame's league label.
+            model (quarters vs. halves) and, via ``three_point_radius``, the
+            three-point arc used to classify the shots frame's ``shot_zone``/
+            ``point_value`` (the arcs differ only in seasons 2020-2021).
 
     Returns:
         ``{"contest_id": str, "pbp": [...], "lineups": [...], "player_box":
