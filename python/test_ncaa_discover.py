@@ -7,6 +7,8 @@ from pathlib import Path
 
 import polars as pl
 import pytest
+from sportsdataverse.mbb.mbb_ncaa_team_ids import ncaa_mbb_team_ids
+from sportsdataverse.wbb.wbb_ncaa_team_ids import ncaa_wbb_team_ids
 
 from ncaa_discover import _season_str, discover_season
 
@@ -29,7 +31,13 @@ _SEASON = 2025
 
 
 def test_discover_season_offline() -> None:
-    df = discover_season(_SEASON, league="wbb", limit_teams=1, team_ids=[_TEAM_ID], fetch_fn=lambda tid: _HTML)
+    df = discover_season(
+        _SEASON,
+        league="wbb",
+        limit_teams=1,
+        team_ids=[_TEAM_ID],
+        fetch_fn=lambda tid: _HTML,
+    )
 
     assert df.schema["contest_id"] == pl.Utf8
     assert df.height > 0
@@ -42,16 +50,22 @@ def test_discover_season_dedups_across_teams() -> None:
     # Two distinct team_ids fed the SAME fixture page -> same contest_id set
     # on both "schedules" -> dedup must collapse the union back to one copy.
     solo = discover_season(_SEASON, team_ids=[_TEAM_ID], fetch_fn=lambda tid: _HTML)
-    two_teams = discover_season(_SEASON, team_ids=[_TEAM_ID, 700000], fetch_fn=lambda tid: _HTML)
+    two_teams = discover_season(
+        _SEASON, team_ids=[_TEAM_ID, 700000], fetch_fn=lambda tid: _HTML
+    )
 
     assert two_teams.height == solo.height
-    assert set(two_teams.get_column("contest_id").to_list()) == set(solo.get_column("contest_id").to_list())
+    assert set(two_teams.get_column("contest_id").to_list()) == set(
+        solo.get_column("contest_id").to_list()
+    )
 
 
 def test_write_master_merges_and_preserves_captured() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
-        discover_season(_SEASON, team_ids=[_TEAM_ID], fetch_fn=lambda tid: _HTML, root=root)
+        discover_season(
+            _SEASON, team_ids=[_TEAM_ID], fetch_fn=lambda tid: _HTML, root=root
+        )
 
         master_path = root / "wbb" / "schedule_master.parquet"
         assert master_path.exists()
@@ -64,11 +78,16 @@ def test_write_master_merges_and_preserves_captured() -> None:
         # re-run discovery -- the captured=True row must survive the merge.
         first_id = master.get_column("contest_id")[0]
         updated = master.with_columns(
-            pl.when(pl.col("contest_id") == first_id).then(True).otherwise(pl.col("captured")).alias("captured")
+            pl.when(pl.col("contest_id") == first_id)
+            .then(True)
+            .otherwise(pl.col("captured"))
+            .alias("captured")
         )
         updated.write_parquet(master_path)
 
-        discover_season(_SEASON, team_ids=[_TEAM_ID], fetch_fn=lambda tid: _HTML, root=root)
+        discover_season(
+            _SEASON, team_ids=[_TEAM_ID], fetch_fn=lambda tid: _HTML, root=root
+        )
         after = pl.read_parquet(master_path)
         row = after.filter(pl.col("contest_id") == first_id)
         assert row.get_column("captured")[0] == True  # noqa: E712
@@ -85,7 +104,9 @@ def test_discover_season_present_season_selects_teams_from_real_crosswalk() -> N
     # 2025 -> "2024-25", the latest season the bundled WBB crosswalk actually
     # contains -- exercises the real (unmocked) crosswalk filter end to end,
     # not the team_ids bypass.
-    df = discover_season(_SEASON, league="wbb", limit_teams=3, fetch_fn=lambda tid: _HTML)
+    df = discover_season(
+        _SEASON, league="wbb", limit_teams=3, fetch_fn=lambda tid: _HTML
+    )
     assert df.height > 0
 
 
@@ -106,12 +127,19 @@ def test_discover_season_league_wbb_selects_wbb_crosswalk_not_mbb() -> None:
     # ids from the WBB crosswalk, not the MBB one. Drives the real (unmocked)
     # crosswalk path -- no team_ids= bypass -- with a stub fetch_fn that just
     # records which team ids it was called with.
-    from sportsdataverse.mbb.mbb_ncaa_team_ids import ncaa_mbb_team_ids
-    from sportsdataverse.wbb.wbb_ncaa_team_ids import ncaa_wbb_team_ids
-
     season_str = _season_str(_SEASON)
-    wbb_ids = set(ncaa_wbb_team_ids().filter(pl.col("season") == season_str).get_column("id").to_list())
-    mbb_ids = set(ncaa_mbb_team_ids().filter(pl.col("season") == season_str).get_column("id").to_list())
+    wbb_ids = set(
+        ncaa_wbb_team_ids()
+        .filter(pl.col("season") == season_str)
+        .get_column("id")
+        .to_list()
+    )
+    mbb_ids = set(
+        ncaa_mbb_team_ids()
+        .filter(pl.col("season") == season_str)
+        .get_column("id")
+        .to_list()
+    )
     # Sanity check on the real bundled crosswalks: if this ever fails, the two
     # id spaces started overlapping and the test below would no longer be
     # able to distinguish "swept the wbb crosswalk" from "swept the mbb one".
