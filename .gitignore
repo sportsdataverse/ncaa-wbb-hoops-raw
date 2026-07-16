@@ -181,5 +181,5 @@ cython_debug/
 .cursorindexingignore
 
 # NCAA WBB raw data tree + scrape logs (scraped output, not source)
-wbb/
-logs/
+/wbb/
+/logs/
