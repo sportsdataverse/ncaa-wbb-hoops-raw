@@ -62,7 +62,10 @@ from sportsdataverse.mbb.mbb_ncaa_models import LineupEvent, TeamId
 from sportsdataverse.mbb.mbb_ncaa_pbp_parser import create_lineup_data
 from sportsdataverse.mbb.mbb_ncaa_possession_seg import ncaa_mbb_possessions
 from sportsdataverse.mbb.mbb_ncaa_shot_parser import create_shot_event_data
-from sportsdataverse.mbb.mbb_ncaa_stats_agg import ncaa_mbb_player_stats, ncaa_mbb_team_stats
+from sportsdataverse.mbb.mbb_ncaa_stats_agg import (
+    ncaa_mbb_player_stats,
+    ncaa_mbb_team_stats,
+)
 from sportsdataverse.mbb.mbb_shots_adapter import shot_events_to_frame
 
 logger = logging.getLogger(__name__)
@@ -110,7 +113,9 @@ def _jsonable(obj: Any) -> Any:
     return obj
 
 
-def _parse_lineups(contest_id: str, pbp_df: pl.DataFrame, pbp_html: str, stats_html: str) -> "list[dict[str, Any]]":
+def _parse_lineups(
+    contest_id: str, pbp_df: pl.DataFrame, pbp_html: str, stats_html: str
+) -> "list[dict[str, Any]]":
     """Both teams' box lineups -> stint events (good stints only)."""
     home_team = pbp_df["home"][0]
     away_team = pbp_df["away"][0]
@@ -119,11 +124,16 @@ def _parse_lineups(contest_id: str, pbp_df: pl.DataFrame, pbp_html: str, stats_h
         if not team_name:
             continue
         box_lineup = get_box_lineup(
-            f"individual_stats_{contest_id}.html", stats_html, TeamId(team_name), format_version=1
+            f"individual_stats_{contest_id}.html",
+            stats_html,
+            TeamId(team_name),
+            format_version=1,
         )
         if isinstance(box_lineup, list):  # list[ParseError]
             continue
-        lineup_result = create_lineup_data(f"pbp_{contest_id}.html", pbp_html, box_lineup, format_version=1)
+        lineup_result = create_lineup_data(
+            f"pbp_{contest_id}.html", pbp_html, box_lineup, format_version=1
+        )
         if isinstance(lineup_result, list):  # list[ParseError]
             continue
         good, _bad = lineup_result
@@ -132,21 +142,33 @@ def _parse_lineups(contest_id: str, pbp_df: pl.DataFrame, pbp_html: str, stats_h
 
 
 def _parse_shots(
-    contest_id: str, pbp_df: pl.DataFrame, stats_html: str, box_html: str, season: Optional[str], league: str
+    contest_id: str,
+    pbp_df: pl.DataFrame,
+    stats_html: str,
+    box_html: str,
+    season: Optional[str],
+    league: str,
 ) -> "list[dict[str, Any]]":
     """The SVG shot map on the ``box_score`` page, keyed off the home team's box lineup."""
     home_team = pbp_df["home"][0]
     if not home_team:
         return []
     box_lineup: Union[LineupEvent, "list[ParseError]"] = get_box_lineup(
-        f"individual_stats_{contest_id}.html", stats_html, TeamId(home_team), format_version=1
+        f"individual_stats_{contest_id}.html",
+        stats_html,
+        TeamId(home_team),
+        format_version=1,
     )
     if isinstance(box_lineup, list):
         return []
     shots = create_shot_event_data(f"box_score_{contest_id}.html", box_html, box_lineup)
     if not shots or isinstance(shots[0], ParseError):
         return []
-    frame = shot_events_to_frame(shots, season=_ending_year(season), league="womens" if league == "wbb" else "mens")
+    frame = shot_events_to_frame(
+        shots,
+        season=_ending_year(season),
+        league="womens" if league == "wbb" else "mens",
+    )
     return frame.to_dicts()
 
 
@@ -189,42 +211,64 @@ def parse_bundle(bundle: "dict[str, Any]", *, league: str = "wbb") -> "dict[str,
         pbp_df = parse_ncaa_bb_game_pbp(pbp_html, contest_id, **kwargs)
         result["pbp"] = pbp_df.to_dicts()
     except Exception:  # noqa: BLE001 -- one family's failure must not abort the others
-        logger.warning("ncaa_parse: family=pbp contest_id=%s failed", contest_id, exc_info=True)
+        logger.warning(
+            "ncaa_parse: family=pbp contest_id=%s failed", contest_id, exc_info=True
+        )
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
             result["lineups"] = _parse_lineups(contest_id, pbp_df, pbp_html, stats_html)
     except Exception:  # noqa: BLE001
-        logger.warning("ncaa_parse: family=lineups contest_id=%s failed", contest_id, exc_info=True)
+        logger.warning(
+            "ncaa_parse: family=lineups contest_id=%s failed", contest_id, exc_info=True
+        )
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
             result["player_box"] = ncaa_mbb_player_stats(pbp_df).to_dicts()
     except Exception:  # noqa: BLE001
-        logger.warning("ncaa_parse: family=player_box contest_id=%s failed", contest_id, exc_info=True)
+        logger.warning(
+            "ncaa_parse: family=player_box contest_id=%s failed",
+            contest_id,
+            exc_info=True,
+        )
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
             result["team_box"] = ncaa_mbb_team_stats(pbp_df).to_dicts()
     except Exception:  # noqa: BLE001
-        logger.warning("ncaa_parse: family=team_box contest_id=%s failed", contest_id, exc_info=True)
+        logger.warning(
+            "ncaa_parse: family=team_box contest_id=%s failed",
+            contest_id,
+            exc_info=True,
+        )
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
-            result["shots"] = _parse_shots(contest_id, pbp_df, stats_html, box_html, season, league)
+            result["shots"] = _parse_shots(
+                contest_id, pbp_df, stats_html, box_html, season, league
+            )
     except Exception:  # noqa: BLE001
-        logger.warning("ncaa_parse: family=shots contest_id=%s failed", contest_id, exc_info=True)
+        logger.warning(
+            "ncaa_parse: family=shots contest_id=%s failed", contest_id, exc_info=True
+        )
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
             result["possessions"] = ncaa_mbb_possessions(pbp_df).to_dicts()
     except Exception:  # noqa: BLE001
-        logger.warning("ncaa_parse: family=possessions contest_id=%s failed", contest_id, exc_info=True)
+        logger.warning(
+            "ncaa_parse: family=possessions contest_id=%s failed",
+            contest_id,
+            exc_info=True,
+        )
 
     return result
 
 
-def write_parsed(root: "Union[str, Path]", league: str, contest_id: str, parsed: "dict[str, Any]") -> Path:
+def write_parsed(
+    root: "Union[str, Path]", league: str, contest_id: str, parsed: "dict[str, Any]"
+) -> Path:
     """Write *parsed* to ``root/{league}/json/{contest_id}.json`` (plain utf-8 JSON, atomic)."""
     path = Path(root) / league / "json" / f"{contest_id}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -234,7 +278,9 @@ def write_parsed(root: "Union[str, Path]", league: str, contest_id: str, parsed:
     return path
 
 
-def parse_and_write(bundle: "dict[str, Any]", root: "Union[str, Path]", *, league: str = "wbb") -> Path:
+def parse_and_write(
+    bundle: "dict[str, Any]", root: "Union[str, Path]", *, league: str = "wbb"
+) -> Path:
     """Convenience: :func:`parse_bundle` then :func:`write_parsed`."""
     parsed = parse_bundle(bundle, league=league)
     return write_parsed(root, league, parsed["contest_id"], parsed)
@@ -255,18 +301,26 @@ def _main() -> None:
     from ncaa_bundle import read_bundle
     from ncaa_capture import shard
 
-    parser = argparse.ArgumentParser(description="Parse raw captured bundles into combined per-contest JSON.")
+    parser = argparse.ArgumentParser(
+        description="Parse raw captured bundles into combined per-contest JSON."
+    )
     parser.add_argument(
         "--root",
         default=str(Path(__file__).resolve().parents[1]),
         help="Root of the raw data tree (default: repo root).",
     )
-    parser.add_argument("--shard", default="0/1", help="This process's shard as 'i/N' (default: 0/1, no sharding).")
+    parser.add_argument(
+        "--shard",
+        default="0/1",
+        help="This process's shard as 'i/N' (default: 0/1, no sharding).",
+    )
     parser.add_argument("--league", default="wbb", help="League slug (default: wbb).")
     args = parser.parse_args()
     i, n = _parse_shard(args.shard)
 
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s"
+    )
 
     root = Path(args.root)
     raw_dir = root / args.league / "raw"
@@ -279,7 +333,9 @@ def _main() -> None:
             pending.append(p)
 
     my_paths = shard([str(p) for p in pending], i, n)
-    print(f"bundles={len(bundle_paths)} pending={len(pending)} shard={i}/{n} assigned={len(my_paths)}")
+    print(
+        f"bundles={len(bundle_paths)} pending={len(pending)} shard={i}/{n} assigned={len(my_paths)}"
+    )
 
     counts = {"parsed": 0, "failed": 0}
     for path_str in my_paths:
@@ -288,7 +344,9 @@ def _main() -> None:
             parse_and_write(bundle, root, league=args.league)
             counts["parsed"] += 1
         except Exception:  # noqa: BLE001 -- one bad bundle must not abort the run
-            logger.warning("ncaa_parse CLI: failed to parse %s", path_str, exc_info=True)
+            logger.warning(
+                "ncaa_parse CLI: failed to parse %s", path_str, exc_info=True
+            )
             counts["failed"] += 1
 
     print(f"parsed={counts['parsed']} failed={counts['failed']}")

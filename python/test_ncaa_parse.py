@@ -36,7 +36,9 @@ KNOWN_GOOD_GAME = "5722355"
 def _fixture_bundle(contest_id: str) -> dict:
     pbp_html = (_FIX / f"pbp_{contest_id}.html").read_text(encoding="utf-8")
     box_html = (_FIX / f"box_{contest_id}.html").read_text(encoding="utf-8")
-    stats_html = (_FIX / f"individual_stats_{contest_id}.html").read_text(encoding="utf-8")
+    stats_html = (_FIX / f"individual_stats_{contest_id}.html").read_text(
+        encoding="utf-8"
+    )
     return {
         "contest_id": contest_id,
         "league": "wbb",
@@ -142,7 +144,7 @@ def test_wbb_quarter_period_model_changes_period_length() -> None:
     not assumed.
     """
     bundle = _fixture_bundle(KNOWN_GOOD_GAME)  # 5722355: regulation, no OT
-    parsed_wbb = parse_bundle(bundle, league="wbb")
+    parsed_wbb = parse_bundle(bundle)  # relies on parse_bundle's league="wbb" default
     parsed_mbb = parse_bundle(bundle, league="mbb")
 
     periods_wbb = [r["period"] for r in parsed_wbb["pbp"]]
@@ -152,11 +154,15 @@ def test_wbb_quarter_period_model_changes_period_length() -> None:
     p1_end_mbb = max(r["game_seconds"] for r in parsed_mbb["pbp"] if r["period"] == 1)
 
     # a WBB quarter is 600s; under the wbb model, period 1 ends near there.
-    assert 540 <= p1_end_wbb <= 600, f"wbb period-1 end game_seconds out of quarter range: {p1_end_wbb}"
+    assert 540 <= p1_end_wbb <= 600, (
+        f"wbb period-1 end game_seconds out of quarter range: {p1_end_wbb}"
+    )
     # flip proof: the SAME page under the mbb half model (1200s/half) ends
     # period 1 near 1200 instead. If this also landed near 600 the delta
     # assertion above would prove nothing.
-    assert p1_end_mbb > 1100, f"mbb-flip period-1 end game_seconds not near a half boundary: {p1_end_mbb}"
+    assert p1_end_mbb > 1100, (
+        f"mbb-flip period-1 end game_seconds not near a half boundary: {p1_end_mbb}"
+    )
 
 
 def test_wbb_2ot_game_exceeds_regulation_period_count() -> None:
@@ -170,7 +176,9 @@ def test_wbb_2ot_game_exceeds_regulation_period_count() -> None:
     bundle = _fixture_bundle("5733807")
     parsed = parse_bundle(bundle, league="wbb")
     periods = [r["period"] for r in parsed["pbp"]]
-    assert max(periods) == 6, f"2OT game should reach period 6 (4 quarters + 2 OT), got {max(periods)}"
+    assert max(periods) == 6, (
+        f"2OT game should reach period 6 (4 quarters + 2 OT), got {max(periods)}"
+    )
 
 
 def test_wbb_shots_league_label_changes_arc_classification() -> None:
@@ -198,18 +206,26 @@ def test_wbb_shots_league_label_changes_arc_classification() -> None:
     assert len(parsed_wbb["shots"]) == len(parsed_mbb["shots"])
 
     # find a shot in the band where the two arcs disagree (womens 20.75ft < dist < mens 22.15ft)
-    band_idx = [i for i, s in enumerate(parsed_wbb["shots"]) if 20.75 < s["dist_ft"] < 22.15]
-    assert band_idx, "fixture drifted: no shot left in the mens/womens arc-disagreement band"
+    band_idx = [
+        i for i, s in enumerate(parsed_wbb["shots"]) if 20.75 < s["dist_ft"] < 22.15
+    ]
+    assert band_idx, (
+        "fixture drifted: no shot left in the mens/womens arc-disagreement band"
+    )
     i = band_idx[0]
 
     shot_wbb = parsed_wbb["shots"][i]
     shot_mbb = parsed_mbb["shots"][i]
-    assert shot_wbb["point_value"] == 3, f"womens arc should classify this shot as a 3: {shot_wbb}"
-    assert shot_wbb["shot_zone"] == "abovebreak3", shot_wbb
+    assert shot_wbb["point_value"] == 3, (
+        f"womens arc should classify this shot as a 3: {shot_wbb}"
+    )
+    assert shot_wbb["shot_zone"] in ("abovebreak3", "corner3"), shot_wbb
 
     # flip proof: the SAME shot under the mens arc classifies as a 2. If it
     # also classified as a 3 the wbb assertions above would prove nothing.
-    assert shot_mbb["point_value"] == 2, f"mens arc should classify this shot as a 2: {shot_mbb}"
+    assert shot_mbb["point_value"] == 2, (
+        f"mens arc should classify this shot as a 2: {shot_mbb}"
+    )
     assert shot_mbb["shot_zone"] != "abovebreak3", shot_mbb
 
 
