@@ -248,10 +248,10 @@ def _select_pending(master_path: Union[str, Path], season: int) -> "List[str]":
 
     master = pl.read_parquet(master_path)
     return (
-        master.filter((pl.col("captured") == False) & (pl.col("season") == str(season)))
+        master.filter((pl.col("captured") == False) & (pl.col("season") == str(season)))  # noqa: E712
         .get_column("contest_id")
         .to_list()
-    )  # noqa: E712
+    )
 
 
 def _main() -> None:
