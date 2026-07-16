@@ -5,8 +5,10 @@ from __future__ import annotations
 import tempfile
 from pathlib import Path
 
+import polars as pl
+
 from ncaa_bundle import is_captured, read_bundle
-from ncaa_capture import capture_contests, shard
+from ncaa_capture import _select_pending, capture_contests, shard
 
 # Sibling checkout: .../sdv-dev/{wehoop-dev/ncaa-wbb-hoops-raw, sdv-py}.
 FIXTURE_DIR = (
@@ -184,6 +186,32 @@ def test_max_contests_stops_chunk_cleanly_and_resumes() -> None:
         assert all(is_captured(root, "wbb", "2026", c) for c in CONTEST_IDS)
 
 
+def test_select_pending_scopes_to_requested_season() -> None:
+    """A master holding TWO seasons must only yield the requested season's ids.
+
+    Regression for the merge-blocker finding: filtering on ``captured==False``
+    alone (no season predicate) returns every season's pending ids once a
+    second backfill run has added a second season to the master -- capture
+    would then re-fetch an already-captured season and mis-file it under the
+    wrong season's raw/ partition.
+    """
+    with tempfile.TemporaryDirectory() as tmp:
+        master_path = Path(tmp) / "schedule_master.parquet"
+        pl.DataFrame(
+            {
+                "contest_id": ["1", "2", "3", "4"],
+                "season": ["2024", "2024", "2025", "2025"],
+                "captured": [False, False, False, False],
+            }
+        ).write_parquet(master_path)
+
+        pending_2025 = _select_pending(master_path, 2025)
+        pending_2024 = _select_pending(master_path, 2024)
+
+        assert sorted(pending_2025) == ["3", "4"]
+        assert sorted(pending_2024) == ["1", "2"]
+
+
 def test_shard_disjoint_and_covers_all() -> None:
     a = shard(CONTEST_IDS, 0, 2)
     b = shard(CONTEST_IDS, 1, 2)
@@ -199,6 +227,7 @@ def main() -> None:
     test_capture_hard_stops_on_consecutive_challenge_failures()
     test_consecutive_failure_counter_resets_on_success()
     test_max_contests_stops_chunk_cleanly_and_resumes()
+    test_select_pending_scopes_to_requested_season()
     test_shard_disjoint_and_covers_all()
     print("OK")
 

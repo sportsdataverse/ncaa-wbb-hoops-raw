@@ -43,7 +43,12 @@ DEFAULT_MAX_CONSECUTIVE_FAILURES = 25
 
 FetchPagesFn = Callable[[Any, str], Dict[str, str]]
 
-__all__ = ["capture_contests", "shard", "DEFAULT_MAX_CONSECUTIVE_FAILURES"]
+__all__ = [
+    "capture_contests",
+    "shard",
+    "DEFAULT_MAX_CONSECUTIVE_FAILURES",
+    "_select_pending",
+]
 
 
 def _is_clean(html: str) -> bool:
@@ -230,10 +235,28 @@ def _parse_shard(spec: str) -> "tuple[int, int]":
     return i, n
 
 
+def _select_pending(master_path: Union[str, Path], season: int) -> "List[str]":
+    """Contest ids not yet captured for *season* (dtype-matched Utf8 season key).
+
+    Split out of :func:`_main` so the season filter is unit-testable. The
+    master can hold multiple seasons' rows (repeated backfill runs); filtering
+    on ``captured`` alone would return every season's pending ids, not just
+    this run's -- the vestigial ``captured`` column is never set True, so
+    real resumability comes from :func:`ncaa_bundle.is_captured` checking
+    ``raw/{season}/{id}.json.gz``, scoped to THIS run's ``--season``.
+    """
+    import polars as pl
+
+    master = pl.read_parquet(master_path)
+    return (
+        master.filter((pl.col("captured") == False) & (pl.col("season") == str(season)))
+        .get_column("contest_id")
+        .to_list()
+    )  # noqa: E712
+
+
 def _main() -> None:
     import argparse
-
-    import polars as pl
 
     parser = argparse.ArgumentParser(
         description="Capture the 3-page bundle for a season's not-yet-captured contests."
@@ -285,10 +308,7 @@ def _main() -> None:
     )
 
     master_path = Path(args.root) / args.league / "schedule_master.parquet"
-    master = pl.read_parquet(master_path)
-    pending = (
-        master.filter(pl.col("captured") == False).get_column("contest_id").to_list()
-    )  # noqa: E712
+    pending = _select_pending(master_path, args.season)
     my_ids = shard(pending, i, n)
     print(f"pending={len(pending)} shard={i}/{n} assigned={len(my_ids)}")
 
