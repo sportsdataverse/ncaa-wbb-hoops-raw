@@ -34,6 +34,13 @@ Two join keys, both reused rather than reinvented:
   first place, run over the roster's ``clean_name`` to invert it. Not a second
   name normalizer; a different key space (codes, not names).
 
+**ESPN ids are reference data, not per-play data.** They ride on the season
+``teams`` dataset and on the two-row per-game ``teams`` block ONLY. The per-game
+families (``pbp``, ``possessions``, ``player_box``, ``team_box``, ``shots``,
+``lineups``) carry the NCAA team id, the player ids and the readable names --
+join ``teams`` on ``ncaa_team_id`` for the ESPN identity rather than repeating
+it on millions of play rows.
+
 **Never guesses, never drops.** The player index is scoped to the two teams in
 the game, and any key that resolves to more than one ``player_id`` is dropped
 from the index -- an ambiguous or unmatched name keeps its row and gets a NULL
@@ -93,9 +100,7 @@ def _key_name(name: str) -> str:
     non-alphanumerics, drop suffix tokens, sort the letters. Both forms above
     map to the same key.
     """
-    ascii_name = (
-        unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode("ascii")
-    )
+    ascii_name = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode("ascii")
     words = [w for w in _NAME_SPLIT.split(ascii_name.casefold()) if w]
     words = [w for w in words if w not in _NAME_SUFFIXES]
     # Sorted-letter signature: immune to word order, hyphen/space-collapsed
@@ -122,8 +127,8 @@ def _utf8_id(value: Any) -> Optional[str]:
 
 
 # --- the enriched column plan ----------------------------------------------
-#: family -> the existing team-NAME columns that get ``_ncaa_team_id`` +
-#: ``_espn_team_id`` stamped beside them.
+#: family -> the existing team-NAME columns that get ``_ncaa_team_id`` stamped
+#: beside them. Deliberately NOT ``_espn_team_id``: see the module docstring.
 TEAM_COLUMNS: Dict[str, Tuple[str, ...]] = {
     "pbp": ("home", "away", "event_team", "poss_team"),
     "possessions": ("home", "away", "poss_team"),
@@ -131,9 +136,17 @@ TEAM_COLUMNS: Dict[str, Tuple[str, ...]] = {
     "team_box": ("home", "away", "team"),
     # `shots.team_id` holds a team NAME despite its column name (the shots
     # adapter fills it from `shooting.team.name`); it is left untouched and the
-    # real ids land in `ncaa_team_id` / `espn_team_id`.
+    # real id lands in `ncaa_team_id`.
     "shots": ("team_id",),
 }
+
+#: The ten on-court lineup slots. Same ALL-CAPS ``FIRST.LAST`` codes as
+#: ``player_1``/``player_2``, so they resolve through the same game-scoped
+#: player index -- no second lookup.
+_ONCOURT: Tuple[str, ...] = tuple(f"{side}_{slot}" for side in ("home", "away") for slot in range(1, 6))
+_ONCOURT_SPECS: Tuple[Tuple[str, str, str], ...] = tuple(
+    (column, f"{column}_player_id", f"{column}_clean_name") for column in _ONCOURT
+)
 
 #: ``lineups`` carries its teams as nested ``{"team": {"name": ...}}`` structs,
 #: so it gets flat sidecar columns instead of a ``{col}_`` suffix pair.
@@ -144,13 +157,15 @@ PLAYER_COLUMNS: Dict[str, Tuple[Tuple[str, str, str], ...]] = {
     "pbp": (
         ("player_1", "player_1_id", "player_1_clean_name"),
         ("player_2", "player_2_id", "player_2_clean_name"),
-    ),
+    )
+    + _ONCOURT_SPECS,
     "player_box": (("player", "player_id", "clean_name"),),
+    "possessions": _ONCOURT_SPECS,
 }
 
-#: The two id columns stamped for every team-name column, in both the
+#: The one id column stamped for every team-name column, in both the
 #: ``{column}_`` suffixed form and (on ``shots``) the bare form.
-_TEAM_ID_KEYS = ("ncaa_team_id", "espn_team_id")
+_TEAM_ID_KEY = "ncaa_team_id"
 _SHOTS_PLAYER_KEYS = ("shooter_player_id", "shooter_clean_name")
 
 
@@ -163,9 +178,7 @@ def _rosters_dir(root: Union[str, Path], league: str, season: int) -> Path:
 
 
 @lru_cache(maxsize=8)
-def load_team_index(
-    root: str, league: str, season: int
-) -> Dict[str, Dict[str, Optional[str]]]:
+def load_team_index(root: str, league: str, season: int) -> Dict[str, Dict[str, Optional[str]]]:
     """``team name -> {ncaa_team_id, espn_team_id, espn_display_name, ...}``.
 
     Empty dict when the season's teams file was never built -- the caller then
@@ -193,9 +206,7 @@ def load_team_index(
 
 
 @lru_cache(maxsize=8)
-def load_roster_index(
-    root: str, league: str, season: int
-) -> Dict[str, Dict[str, Dict[str, Tuple[str, str]]]]:
+def load_roster_index(root: str, league: str, season: int) -> Dict[str, Dict[str, Dict[str, Tuple[str, str]]]]:
     """``team_id -> {"names": {key_name: (player_id, clean_name)}, "codes": {...}}``.
 
     Both key spaces are built per team so the per-game index can be assembled
@@ -219,9 +230,7 @@ def load_roster_index(
         try:
             rows = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, ValueError):
-            logger.warning(
-                "ncaa_identity: unreadable roster %s; skipped", path, exc_info=True
-            )
+            logger.warning("ncaa_identity: unreadable roster %s; skipped", path, exc_info=True)
             continue
         names: Dict[str, set] = {}
         codes: Dict[str, set] = {}
@@ -239,23 +248,13 @@ def load_roster_index(
                     names.setdefault(_key_name(raw), set()).add(entry)
             team = row.get("team")
             try:
-                code = build_player_code(
-                    clean_name, TeamId(team) if team else None
-                ).code
+                code = build_player_code(clean_name, TeamId(team) if team else None).code
             except Exception:  # noqa: BLE001 -- an un-codeable name just has no code key
                 continue
             codes.setdefault(code, set()).add(entry)
         index[path.stem] = {
-            "names": {
-                k: next(iter(v))
-                for k, v in names.items()
-                if len({e[0] for e in v}) == 1
-            },
-            "codes": {
-                k: next(iter(v))
-                for k, v in codes.items()
-                if len({e[0] for e in v}) == 1
-            },
+            "names": {k: next(iter(v)) for k, v in names.items() if len({e[0] for e in v}) == 1},
+            "codes": {k: next(iter(v)) for k, v in codes.items() if len({e[0] for e in v}) == 1},
         }
     return index
 
@@ -277,16 +276,8 @@ def _game_player_index(
         for space in ("names", "codes"):
             for key, entry in team_index[space].items():
                 merged[space].setdefault(key, set()).add(entry)
-    names = {
-        k: next(iter(v))
-        for k, v in merged["names"].items()
-        if len({e[0] for e in v}) == 1
-    }
-    codes = {
-        k: next(iter(v))
-        for k, v in merged["codes"].items()
-        if len({e[0] for e in v}) == 1
-    }
+    names = {k: next(iter(v)) for k, v in merged["names"].items() if len({e[0] for e in v}) == 1}
+    codes = {k: next(iter(v)) for k, v in merged["codes"].items() if len({e[0] for e in v}) == 1}
     return names, codes
 
 
@@ -296,11 +287,10 @@ def _stamp_team(
     teams: Dict[str, Dict[str, Optional[str]]],
     stats: Dict[str, int],
 ) -> None:
-    """Write ``{column}_ncaa_team_id`` / ``{column}_espn_team_id`` beside *column*."""
+    """Write ``{column}_ncaa_team_id`` beside *column*. NCAA id only."""
     name = row.get(column)
     hit = teams.get(name) if name else None
-    for key in _TEAM_ID_KEYS:
-        row[f"{column}_{key}"] = hit[key] if hit else None
+    row[f"{column}_{_TEAM_ID_KEY}"] = hit[_TEAM_ID_KEY] if hit else None
     if name:
         stats["team_total"] += 1
         stats["team_hit" if hit else "team_miss"] += 1
@@ -316,9 +306,7 @@ def _stamp_player(
 ) -> None:
     """Write the id + properly-cased name beside an ALL-CAPS name column."""
     raw = row.get(name_column)
-    hit = (
-        names.get(_key_name(raw)) if raw and raw.upper() not in _NOT_A_PLAYER else None
-    )
+    hit = names.get(_key_name(raw)) if raw and raw.upper() not in _NOT_A_PLAYER else None
     row[id_column] = hit[0] if hit else None
     row[readable_column] = hit[1] if hit else None
     if raw and raw.upper() not in _NOT_A_PLAYER:
@@ -344,6 +332,11 @@ def enrich_parsed(
     season: Optional[int] = None,
 ) -> Dict[str, Any]:
     """Stamp ids + readable names onto every family of one parsed game.
+
+    Covers the ten on-court slots (``home_1``..``home_5`` / ``away_1``..
+    ``away_5`` on ``pbp`` and ``possessions``) as well as the event players --
+    each gets ``{slot}_player_id`` + ``{slot}_clean_name`` off the same
+    game-scoped index.
 
     Strictly additive: existing keys are never renamed, removed or rewritten.
     The one exception is ``lineups[].players[].ncaa_id``, the parser model's own
@@ -377,11 +370,7 @@ def enrich_parsed(
     home = pbp[0].get("home") if pbp else None
     away = pbp[0].get("away") if pbp else None
     sides = [("home", home), ("away", away)]
-    team_ids = [
-        teams[n]["ncaa_team_id"]
-        for _, n in sides
-        if n and n in teams and teams[n]["ncaa_team_id"]
-    ]
+    team_ids = [teams[n]["ncaa_team_id"] for _, n in sides if n and n in teams and teams[n]["ncaa_team_id"]]
     names, codes = _game_player_index(rosters, [t for t in team_ids if t])
 
     stats = {
@@ -398,8 +387,7 @@ def enrich_parsed(
             for column in columns:
                 if family == "shots":
                     hit = teams.get(row.get(column))
-                    for key in _TEAM_ID_KEYS:
-                        row[key] = hit[key] if hit else None
+                    row[_TEAM_ID_KEY] = hit[_TEAM_ID_KEY] if hit else None
                     if row.get(column):
                         stats["team_total"] += 1
                         stats["team_hit" if hit else "team_miss"] += 1
@@ -409,9 +397,7 @@ def enrich_parsed(
     for family, specs in PLAYER_COLUMNS.items():
         for row in parsed.get(family) or []:
             for name_column, id_column, readable_column in specs:
-                _stamp_player(
-                    row, name_column, id_column, readable_column, names, stats
-                )
+                _stamp_player(row, name_column, id_column, readable_column, names, stats)
 
     for row in parsed.get("shots") or []:
         code = row.get("shooter_id")
@@ -425,8 +411,7 @@ def enrich_parsed(
     for lineup in parsed.get("lineups") or []:
         for side in LINEUP_TEAM_COLUMNS:
             hit = teams.get(_team_name(lineup.get(side)))
-            lineup[f"{side}_ncaa_team_id"] = hit["ncaa_team_id"] if hit else None
-            lineup[f"{side}_espn_team_id"] = hit["espn_team_id"] if hit else None
+            lineup[f"{side}_{_TEAM_ID_KEY}"] = hit[_TEAM_ID_KEY] if hit else None
             if _team_name(lineup.get(side)):
                 stats["team_total"] += 1
                 stats["team_hit" if hit else "team_miss"] += 1
@@ -438,20 +423,14 @@ def enrich_parsed(
                 # fallback for a player the roster spells differently.
                 hit = codes.get(player.get("code"))
                 if hit is None:
-                    display = (
-                        (player.get("id") or {}).get("name")
-                        if isinstance(player.get("id"), dict)
-                        else None
-                    )
+                    display = (player.get("id") or {}).get("name") if isinstance(player.get("id"), dict) else None
                     hit = names.get(_key_name(display)) if display else None
                 player["ncaa_id"] = hit[0] if hit else None
                 stats["player_total"] += 1
                 stats["player_hit" if hit else "player_miss"] += 1
 
     parsed["teams"] = [
-        dict(teams[name], side=side) if name in teams else {"side": side, "team": name}
-        for side, name in sides
-        if name
+        dict(teams[name], side=side) if name in teams else {"side": side, "team": name} for side, name in sides if name
     ]
 
     # The join rate is REPORTED, never enforced: an unmatched name keeps its row

@@ -37,13 +37,9 @@ def _fixture_bundle(contest_id: str = KNOWN_GOOD_GAME) -> dict:
         "captured_at": "2024-11-14T00:00:00+00:00",
         "urls": {},
         "pages": {
-            "play_by_play": (_FIX / f"pbp_{contest_id}.html").read_text(
-                encoding="utf-8"
-            ),
+            "play_by_play": (_FIX / f"pbp_{contest_id}.html").read_text(encoding="utf-8"),
             "box_score": (_FIX / f"box_{contest_id}.html").read_text(encoding="utf-8"),
-            "individual_stats": (
-                _FIX / f"individual_stats_{contest_id}.html"
-            ).read_text(encoding="utf-8"),
+            "individual_stats": (_FIX / f"individual_stats_{contest_id}.html").read_text(encoding="utf-8"),
         },
     }
 
@@ -90,9 +86,7 @@ def _display_name(pbp_name: str) -> str:
     return f"{last.title()}, {first.title()}" if last else first.title()
 
 
-def _roster_row(
-    team_id: str, team: str, player_id: str, clean_name: str, player: str
-) -> dict:
+def _roster_row(team_id: str, team: str, player_id: str, clean_name: str, player: str) -> dict:
     return {
         "season": str(SEASON),
         "league": LEAGUE,
@@ -148,11 +142,7 @@ def test_loaded_ids_are_utf8() -> None:
             root,
             [_team_row("609642", "Buffalo")],
             # int player_id on the source row must still surface as Utf8
-            {
-                "609642": [
-                    _roster_row("609642", "Buffalo", 999, "Oboh, Tim", "TIM.OBOH")
-                ]
-            },
+            {"609642": [_roster_row("609642", "Buffalo", 999, "Oboh, Tim", "TIM.OBOH")]},
         )
         load_team_index.cache_clear()
         load_roster_index.cache_clear()
@@ -179,11 +169,7 @@ def test_enrichment_is_additive_and_stamps_ids_on_every_family() -> None:
             ],
             {
                 "1": [_roster_row("1", "Buffalo", "11", "Oboh, Tim", "TIM.OBOH")],
-                "2": [
-                    _roster_row(
-                        "2", "Southern Miss.", "22", "Carruth, Brewer", "BREWER.CARRUTH"
-                    )
-                ],
+                "2": [_roster_row("2", "Southern Miss.", "22", "Carruth, Brewer", "BREWER.CARRUTH")],
             },
         )
         load_team_index.cache_clear()
@@ -199,6 +185,16 @@ def test_enrichment_is_additive_and_stamps_ids_on_every_family() -> None:
                     "player_1": "TIM.OBOH",
                     "player_2": "BREWER.CARRUTH",
                     "event_type": "made2",
+                    "home_1": "TIM.OBOH",
+                    "home_2": "TEAM",
+                    "home_3": None,
+                    "home_4": None,
+                    "home_5": None,
+                    "away_1": "BREWER.CARRUTH",
+                    "away_2": None,
+                    "away_3": None,
+                    "away_4": None,
+                    "away_5": None,
                 }
             ],
             "player_box": [
@@ -225,6 +221,8 @@ def test_enrichment_is_additive_and_stamps_ids_on_every_family() -> None:
                     "away": "Southern Miss.",
                     "poss_team": "Buffalo",
                     "pts": 2,
+                    "home_1": "TIM.OBOH",
+                    "away_1": "BREWER.CARRUTH",
                 }
             ],
             "lineups": [
@@ -234,19 +232,13 @@ def test_enrichment_is_additive_and_stamps_ids_on_every_family() -> None:
                         "team": {"name": "Southern Miss."},
                         "year": {"value": 2024},
                     },
-                    "players": [
-                        {"code": "TiOboh", "id": {"name": "Oboh, Tim"}, "ncaa_id": None}
-                    ],
+                    "players": [{"code": "TiOboh", "id": {"name": "Oboh, Tim"}, "ncaa_id": None}],
                     "players_in": [],
                     "players_out": [],
                 }
             ],
         }
-        before = {
-            fam: [dict(r) for r in rows]
-            for fam, rows in parsed.items()
-            if fam != "contest_id"
-        }
+        before = {fam: [dict(r) for r in rows] for fam, rows in parsed.items() if fam != "contest_id"}
 
         enrich_parsed(parsed, root=root, league=LEAGUE, season=SEASON)
 
@@ -263,11 +255,26 @@ def test_enrichment_is_additive_and_stamps_ids_on_every_family() -> None:
         assert pbp["player_1_clean_name"] == "Oboh, Tim"
         assert pbp["player_2_id"] == "22"
         assert pbp["home_ncaa_team_id"] == "1"
-        assert pbp["home_espn_team_id"] == "42"
         assert pbp["away_ncaa_team_id"] == "2"
-        assert pbp["away_espn_team_id"] == "7"
         assert pbp["event_team_ncaa_team_id"] == "1"
         assert pbp["poss_team_ncaa_team_id"] == "1"
+
+        # The ten on-court slots resolve off the SAME game-scoped index.
+        assert (pbp["home_1_player_id"], pbp["home_1_clean_name"]) == ("11", "Oboh, Tim")
+        assert (pbp["away_1_player_id"], pbp["away_1_clean_name"]) == (
+            "22",
+            "Carruth, Brewer",
+        )
+        # TEAM is a rebound/turnover marker, not a person -> stays null.
+        assert pbp["home_2_player_id"] is None
+        # An empty slot still gets its columns (stable schema), as nulls.
+        for slot in ("home_3", "home_4", "home_5", "away_2", "away_3", "away_4", "away_5"):
+            assert pbp[f"{slot}_player_id"] is None
+            assert pbp[f"{slot}_clean_name"] is None
+
+        poss = parsed["possessions"][0]
+        assert (poss["home_1_player_id"], poss["home_1_clean_name"]) == ("11", "Oboh, Tim")
+        assert poss["away_1_player_id"] == "22"
 
         box = parsed["player_box"][0]
         assert (box["player_id"], box["clean_name"]) == ("11", "Oboh, Tim")
@@ -276,9 +283,9 @@ def test_enrichment_is_additive_and_stamps_ids_on_every_family() -> None:
         assert parsed["possessions"][0]["poss_team_ncaa_team_id"] == "1"
 
         shot = parsed["shots"][0]
-        # `team_id` holds a NAME; the real ids land beside it, it is not rewritten.
+        # `team_id` holds a NAME; the real id lands beside it, it is not rewritten.
         assert shot["team_id"] == "Buffalo"
-        assert (shot["ncaa_team_id"], shot["espn_team_id"]) == ("1", "42")
+        assert shot["ncaa_team_id"] == "1"
         assert (shot["shooter_player_id"], shot["shooter_clean_name"]) == (
             "11",
             "Oboh, Tim",
@@ -289,8 +296,52 @@ def test_enrichment_is_additive_and_stamps_ids_on_every_family() -> None:
         assert lineup["opponent_ncaa_team_id"] == "2"
         assert lineup["players"][0]["ncaa_id"] == "11"
 
+        # The two-row `teams` block IS the per-game ESPN reference -- it keeps
+        # the full ESPN identity so consumers never need a second file.
         assert [t["side"] for t in parsed["teams"]] == ["home", "away"]
+        assert parsed["teams"][0]["espn_team_id"] == "42"
         assert parsed["teams"][0]["espn_display_name"] == "Buffalo Testers"
+        assert parsed["teams"][1]["espn_team_id"] == "7"
+
+
+def test_espn_team_ids_are_absent_from_every_per_game_family() -> None:
+    """ESPN ids are reference data: they belong on `teams`, not on play rows."""
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        _write_tree(
+            root,
+            [_team_row("1", "Buffalo"), _team_row("2", "Southern Miss.", espn_team_id="7")],
+            {"1": [_roster_row("1", "Buffalo", "11", "Oboh, Tim", "TIM.OBOH")]},
+        )
+        load_team_index.cache_clear()
+        load_roster_index.cache_clear()
+        sides = {"home": "Buffalo", "away": "Southern Miss."}
+        parsed = {
+            "contest_id": "1",
+            "pbp": [dict(sides, event_team="Buffalo", poss_team="Buffalo", player_1="TIM.OBOH")],
+            "player_box": [dict(sides, team="Buffalo", player="TIM.OBOH")],
+            "team_box": [dict(sides, team="Buffalo")],
+            "shots": [{"team_id": "Buffalo", "shooter_id": "TiOboh"}],
+            "possessions": [dict(sides, poss_team="Buffalo")],
+            "lineups": [
+                {
+                    "team": {"team": {"name": "Buffalo"}},
+                    "opponent": {"team": {"name": "Southern Miss."}},
+                    "players": [],
+                }
+            ],
+        }
+        enrich_parsed(parsed, root=root, league=LEAGUE, season=SEASON)
+
+        for family in ("pbp", "player_box", "team_box", "shots", "possessions", "lineups"):
+            for row in parsed[family]:
+                offenders = [k for k in row if "espn" in k]
+                assert not offenders, f"{family} still carries {offenders}"
+            # ...but the NCAA ids that replaced them are all still there.
+            assert any("ncaa_team_id" in k for k in parsed[family][0])
+
+        # The two-row reference block keeps its ESPN identity.
+        assert parsed["teams"][0]["espn_team_id"] == "42"
 
 
 # --- never drop, never guess ------------------------------------------------
@@ -326,7 +377,6 @@ def test_unmatched_rows_survive_with_null_ids() -> None:
         assert len(parsed["pbp"]) == 1  # not dropped
         assert row["away"] == "Ozark Christian"  # not rewritten
         assert row["away_ncaa_team_id"] is None
-        assert row["away_espn_team_id"] is None
         assert row["player_1"] == "NOBODY.ATALL"
         assert row["player_1_id"] is None
         assert row["player_1_clean_name"] is None
@@ -399,9 +449,7 @@ def test_missing_rosters_and_teams_tree_degrades_to_nulls_without_raising() -> N
         load_roster_index.cache_clear()
         parsed = {
             "contest_id": "1",
-            "pbp": [
-                {"home": "Buffalo", "away": "Southern Miss.", "player_1": "TIM.OBOH"}
-            ],
+            "pbp": [{"home": "Buffalo", "away": "Southern Miss.", "player_1": "TIM.OBOH"}],
             "player_box": [
                 {
                     "home": "Buffalo",
@@ -422,8 +470,9 @@ def test_missing_rosters_and_teams_tree_degrades_to_nulls_without_raising() -> N
         for column in (
             "player_1_id",
             "player_1_clean_name",
+            "home_1_player_id",
+            "home_1_clean_name",
             "home_ncaa_team_id",
-            "home_espn_team_id",
         ):
             assert column in row, f"{column} missing on the degraded path"
             assert row[column] is None
@@ -455,9 +504,7 @@ def test_unknown_season_degrades_to_nulls() -> None:
 
 def test_real_captured_game_resolves_ids_end_to_end() -> None:
     """Real stats.ncaa.org HTML -> parser stack -> a roster tree of its own names."""
-    baseline = parse_bundle(
-        _fixture_bundle(), league=LEAGUE, root=Path(tempfile.gettempdir()) / "nope"
-    )
+    baseline = parse_bundle(_fixture_bundle(), league=LEAGUE, root=Path(tempfile.gettempdir()) / "nope")
     home = baseline["pbp"][0]["home"]
     away = baseline["pbp"][0]["away"]
     # Real player names, as the box aggregation emits them (ALL-CAPS FIRST.LAST).
@@ -494,19 +541,26 @@ def test_real_captured_game_resolves_ids_end_to_end() -> None:
         assert all(r["home_ncaa_team_id"] == "100" for r in parsed["pbp"])
 
         resolved = sum(1 for r in parsed["player_box"] if r["player_id"] is not None)
-        assert resolved == len(parsed["player_box"]), (
-            f"player_box ids: {resolved}/{len(parsed['player_box'])} resolved"
-        )
-        assert all(
-            r["clean_name"] and not r["clean_name"].isupper()
-            for r in parsed["player_box"]
-        )
+        assert resolved == len(parsed["player_box"]), f"player_box ids: {resolved}/{len(parsed['player_box'])} resolved"
+        assert all(r["clean_name"] and not r["clean_name"].isupper() for r in parsed["player_box"])
 
-        named = [
-            r for r in parsed["pbp"] if r.get("player_1") and r["player_1"] != "TEAM"
-        ]
+        named = [r for r in parsed["pbp"] if r.get("player_1") and r["player_1"] != "TEAM"]
         hit = sum(1 for r in named if r["player_1_id"] is not None)
         assert hit / len(named) > 0.95, f"pbp player_1 join rate {hit}/{len(named)}"
+
+        # The ten on-court slots resolve at the same rate, on both families.
+        slots = [f"{side}_{i}" for side in ("home", "away") for i in range(1, 6)]
+        for family in ("pbp", "possessions"):
+            total = shot = 0
+            for row in parsed[family]:
+                for slot in slots:
+                    value = row.get(slot)
+                    if not value or value == "TEAM":
+                        continue
+                    total += 1
+                    shot += row[f"{slot}_player_id"] is not None
+            assert total > 0, f"{family} has no on-court slots to join"
+            assert shot / total > 0.95, f"{family} on-court join rate {shot}/{total}"
 
 
 def main() -> None:
