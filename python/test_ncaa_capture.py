@@ -234,3 +234,28 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def test_capture_contests_uses_injected_fetcher(tmp_path) -> None:
+    """--vendor path: an injected fetcher drives the default fetch fn, is closed after."""
+    clean = "<tr></tr>" * 40 + "x" * 25000
+
+    class FakeFetcher:
+        closed = False
+
+        def fetch_game_pbp(self, cid, force=True):
+            return clean
+
+        def fetch_game_box(self, cid, force=True):
+            return clean
+
+        def fetch_game_individual_stats(self, cid, force=True):
+            return clean
+
+        def __exit__(self, *exc):
+            self.closed = True
+
+    fk = FakeFetcher()
+    counts = capture_contests(["1"], 2026, league="wbb", root=tmp_path, fetcher=fk)
+    assert counts == {"captured": 1, "skipped": 0, "failed": 0}
+    assert fk.closed

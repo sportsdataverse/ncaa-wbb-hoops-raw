@@ -60,9 +60,7 @@ def _default_fetch_pages_fn() -> FetchPagesFn:
         return {
             "play_by_play": fetcher.fetch_game_pbp(contest_id, force=True),
             "box_score": fetcher.fetch_game_box(contest_id, force=True),
-            "individual_stats": fetcher.fetch_game_individual_stats(
-                contest_id, force=True
-            ),
+            "individual_stats": fetcher.fetch_game_individual_stats(contest_id, force=True),
         }
 
     return fetch
@@ -94,6 +92,7 @@ def capture_contests(
     league: str = "wbb",
     root: Union[str, Path],
     fetch_pages_fn: Optional[FetchPagesFn] = None,
+    fetcher: Any = None,
     max_contests: Optional[int] = None,
     max_consecutive_failures: int = DEFAULT_MAX_CONSECUTIVE_FAILURES,
 ) -> "Dict[str, int]":
@@ -111,6 +110,11 @@ def capture_contests(
             ``fetch_game_pbp/box/individual_stats(id, force=True)``. Inject
             a fake for offline tests -- the *fetcher* arg is unused by the
             default path's caller in that case and may be ``None``.
+        fetcher: Pre-built fetcher session (e.g. from :func:`_vendor_fetcher`,
+            the canary-vendor transports -- Decodo sticky residential +
+            patchright). ``None`` (default) builds the sdv-py
+            ``NcaaFetcher.with_browser()`` env-configured session. Ownership
+            transfers: this function closes the fetcher it used on exit.
         max_contests: Stop CLEANLY after this many NEW bundles are written
             (chunked backfill -- the browser session degrades past roughly
             2000 bundles / ~2h, so capture a chunk, cool down, resume).
@@ -136,13 +140,12 @@ def capture_contests(
     counts = {"captured": 0, "skipped": 0, "failed": 0}
     consecutive_failures = 0
 
-    fetch_fn = (
-        fetch_pages_fn if fetch_pages_fn is not None else _default_fetch_pages_fn()
-    )
-    use_live_fetcher = fetch_pages_fn is None
+    fetch_fn = fetch_pages_fn if fetch_pages_fn is not None else _default_fetch_pages_fn()
 
-    fetcher: Any = None
-    if use_live_fetcher:
+    # An injected *fetcher* (e.g. a canary-vendor transport from
+    # :func:`_vendor_fetcher`) takes precedence; ownership transfers here either
+    # way -- the ``finally`` below closes whichever fetcher this loop used.
+    if fetcher is None and fetch_pages_fn is None:
         from sportsdataverse.wbb.wbb_ncaa_fetch import NcaaFetcher
 
         fetcher = NcaaFetcher.with_browser()
@@ -161,9 +164,7 @@ def capture_contests(
                     contest_id,
                     exc,
                 )
-                raise SystemExit(
-                    f"BAN-SUSPECT: capture halted at contest_id={contest_id}: {exc}"
-                ) from exc
+                raise SystemExit(f"BAN-SUSPECT: capture halted at contest_id={contest_id}: {exc}") from exc
 
             if not all(_is_clean(pages.get(key, "")) for key in PAGE_KEYS):
                 logger.warning(
@@ -172,10 +173,7 @@ def capture_contests(
                 )
                 counts["failed"] += 1
                 consecutive_failures += 1
-                if (
-                    max_consecutive_failures
-                    and consecutive_failures >= max_consecutive_failures
-                ):
+                if max_consecutive_failures and consecutive_failures >= max_consecutive_failures:
                     msg = (
                         f"SOFT-BAN: capture halted after {consecutive_failures} consecutive "
                         f"challenge failures (last contest_id={contest_id}); the browser session "
@@ -199,8 +197,7 @@ def capture_contests(
 
             if max_contests is not None and counts["captured"] >= max_contests:
                 logger.info(
-                    "chunk complete: %d new bundles captured (--max-contests) -- "
-                    "stopping cleanly; re-run to continue",
+                    "chunk complete: %d new bundles captured (--max-contests) -- stopping cleanly; re-run to continue",
                     counts["captured"],
                 )
                 break
@@ -211,6 +208,63 @@ def capture_contests(
                 closer(None, None, None)
 
     return counts
+
+
+def _vendor_fetcher(
+    vendor_name: str,
+    root: "Union[str, Path]",
+    *,
+    shard_i: int = 0,
+    shard_n: int = 1,
+) -> Any:
+    """Build an ``NcaaFetcher`` from a ``canary_vendors.toml`` entry.
+
+    Reuses :func:`ncaa_canary.build_fetcher`, so any canary-proven transport
+    (``proxy_patchright`` = Decodo US sticky residential + patchright is the
+    2026-07-16 PASS) drives production capture with zero new transport code.
+
+    The sticky-session id in each proxy URL is re-minted per run
+    (``-session-cap<epoch>``): a restart never re-enters a possibly
+    soft-banned session's IP, at the cost of one cold bm-verify solve.
+    """
+    import re as _re
+    import time
+    import tomllib
+
+    from ncaa_canary import _vendor_ready, build_fetcher
+
+    cfg_path = Path(root) / "canary_vendors.toml"
+    if not cfg_path.exists():
+        raise SystemExit(f"--vendor requires {cfg_path} (copy from canary_vendors.toml.example)")
+    with open(cfg_path, "rb") as f:
+        doc = tomllib.load(f)
+    vendors = {v.get("name"): dict(v) for v in doc.get("vendor", [])}
+    if vendor_name not in vendors:
+        raise SystemExit(f"vendor {vendor_name!r} not in {cfg_path} (have: {sorted(vendors)})")
+    vendor = vendors[vendor_name]
+    reason = _vendor_ready(vendor)
+    if reason is not None:
+        raise SystemExit(f"vendor {vendor_name!r} not ready: {reason}")
+
+    if vendor.get("proxies"):
+        stamp = f"cap{int(time.time())}w{shard_i}"
+        vendor["proxies"] = [_re.sub(r"-session-\w+", f"-session-{stamp}", p) for p in vendor["proxies"]]
+        if shard_n > 1:
+            # Parallel workers each start the rotation at a different offset so
+            # they ride DISJOINT sticky ports (all starting at index 0 would
+            # pile every worker onto one IP -- the burst pattern that bans).
+            k = (shard_i * len(vendor["proxies"])) // shard_n
+            vendor["proxies"] = vendor["proxies"][k:] + vendor["proxies"][:k]
+        logger.info(
+            "vendor %s: %d prox(y/ies), sticky session re-minted -> session-%s",
+            vendor_name,
+            len(vendor["proxies"]),
+            stamp,
+        )
+
+    cache_dir = Path(root) / ".ncaa_fetch_cache"
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    return build_fetcher(vendor, cache_dir)
 
 
 def _env_int(name: str, default: Optional[int]) -> Optional[int]:
@@ -257,9 +311,7 @@ def _select_pending(master_path: Union[str, Path], season: int) -> "List[str]":
 def _main() -> None:
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Capture the 3-page bundle for a season's not-yet-captured contests."
-    )
+    parser = argparse.ArgumentParser(description="Capture the 3-page bundle for a season's not-yet-captured contests.")
     parser.add_argument(
         "--season",
         type=int,
@@ -278,6 +330,15 @@ def _main() -> None:
         help="This process's shard as 'i/N' (default: 0/1, no sharding).",
     )
     parser.add_argument(
+        "--vendor",
+        default=os.environ.get("NCAA_VENDOR") or None,
+        help=(
+            "canary_vendors.toml vendor name to use as the capture transport "
+            "(e.g. 'decodo_patchright'). Default: env NCAA_VENDOR, else the "
+            "sdv-py env-configured NcaaFetcher (ProxyBonanza)."
+        ),
+    )
+    parser.add_argument(
         "--max-contests",
         type=int,
         default=_env_int("NCAA_MAX_CONTESTS", None),
@@ -290,9 +351,7 @@ def _main() -> None:
     parser.add_argument(
         "--max-consecutive-failures",
         type=int,
-        default=_env_int(
-            "NCAA_MAX_CONSECUTIVE_FAILURES", DEFAULT_MAX_CONSECUTIVE_FAILURES
-        ),
+        default=_env_int("NCAA_MAX_CONSECUTIVE_FAILURES", DEFAULT_MAX_CONSECUTIVE_FAILURES),
         help=(
             "Hard-stop after N consecutive challenge-not-cleared contests -- the soft-ban "
             "guard (env NCAA_MAX_CONSECUTIVE_FAILURES; 0 disables). "
@@ -302,26 +361,25 @@ def _main() -> None:
     args = parser.parse_args()
     i, n = _parse_shard(args.shard)
 
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s"
-    )
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
     master_path = Path(args.root) / args.league / "schedule_master.parquet"
     pending = _select_pending(master_path, args.season)
     my_ids = shard(pending, i, n)
     print(f"pending={len(pending)} shard={i}/{n} assigned={len(my_ids)}")
+    if args.vendor:
+        print(f"transport: canary vendor {args.vendor!r}")
 
     counts = capture_contests(
         my_ids,
         args.season,
         league=args.league,
         root=args.root,
+        fetcher=_vendor_fetcher(args.vendor, args.root, shard_i=i, shard_n=n) if args.vendor else None,
         max_contests=args.max_contests,
         max_consecutive_failures=args.max_consecutive_failures,
     )
-    print(
-        f"captured={counts['captured']} skipped={counts['skipped']} failed={counts['failed']}"
-    )
+    print(f"captured={counts['captured']} skipped={counts['skipped']} failed={counts['failed']}")
 
 
 if __name__ == "__main__":
