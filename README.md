@@ -8,6 +8,27 @@ JSON). Data tree lives under `<root>/wbb/` (default root = repo root):
 `schedule_master.parquet`, `raw/{season}/{contest_id}.json.gz`,
 `json/{contest_id}.json`.
 
+Three further committed datasets — **schedules**, **teams**, **rosters** — ride
+along for free. `discover` already fetches every team's schedule page and
+`rosters` already fetches every roster page, so both trees are persisted from
+those existing fetches at **zero extra HTTP**; `teams` needs no fetch at all
+(it is the bundled sdv-py crosswalk). Per team the source `html` and the parsed
+`json` are kept; `parquet` is the one compiled dataset per season:
+
+```
+wbb/schedules/html/{season}/{team_id}.html     wbb/rosters/html/{season}/{team_id}.html
+wbb/schedules/json/{season}/{team_id}.json     wbb/rosters/json/{season}/{team_id}.json
+wbb/schedules/parquet/{season}.parquet         wbb/rosters/parquet/{season}.parquet
+wbb/teams/{html,json,parquet}/{season}.*
+```
+
+Every one of them carries human-readable names next to the machine ids —
+schedules pair `team_id`/`opponent_id` with `team`/`opponent`, rosters pair
+`player_id` with `clean_name` (display form) *and* `player` (the ALL-CAPS
+`FIRST.LAST` play-by-play join key), teams pair `ncaa_team_id` with the NCAA
+name, conference and `division` (constant `"I"` — the crosswalk is scoped to
+the Division-I `season_divisions` id).
+
 This is a retarget of the sibling `hoopR-dev/ncaa-mbb-hoops-raw` scraper --
 same transport, same fetcher, same safe-rate rules. The `python/` package
 (`ncaa_bundle.py` / `ncaa_capture.py` / `ncaa_discover.py` / `ncaa_parse.py`)
@@ -33,9 +54,18 @@ values. `parse` is fully offline and needs no creds.
 
 ```sh
 bash scripts/run_discover.sh --season 2025     # -> wbb/schedule_master.parquet
+                                               #    + wbb/schedules/{html,json}/2025/
 bash scripts/run_capture.sh  --season 2025     # -> wbb/raw/2025/{contest_id}.json.gz
 bash scripts/run_parse.sh                      # -> wbb/json/{contest_id}.json
+bash scripts/run_rosters.sh  --season 2025     # -> wbb/rosters/{html,json}/2025/
+bash scripts/run_datasets.sh --season 2025     # -> the season parquets + wbb/teams/
 ```
+
+`run_datasets.sh` is fully offline (no creds, no network) and **not sharded**:
+each season parquet is a single output file, so concurrent `--shard` workers
+would race it. Run it once, after the sharded sweeps finish. It also re-derives
+any missing per-team json from committed html, so a parser fix can be replayed
+across every captured season with `--overwrite` and no re-scrape.
 
 Or the one-command chained backfill (discover -> capture -> parse, resumable):
 
