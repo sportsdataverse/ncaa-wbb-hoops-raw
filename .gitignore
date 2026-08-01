@@ -183,6 +183,15 @@ cython_debug/
 # Scrape logs (transient; the data tree is NOT ignored -- see below).
 /logs/
 
+# Proxy canary: creds + scorecards are local-only (canary_vendors.toml.example
+# IS committed; the filled-in canary_vendors.toml is NOT).
+/canary_vendors.toml
+/canary_out/
+.ncaa_fetch_cache/
+
+# per-team discovery checkpoints (scratch; schedule_master is the durable output)
+*/.discover/
+
 # DO NOT ignore /wbb/. The raw data tree is this repo's PAYLOAD and is meant to
 # be committed, in chunks, exactly as the mbb sibling does (`feat(data): ...`
 # commits; ncaa-mbb-hoops-raw tracks ~4805 files under mbb/). Ignoring it would
