@@ -17,4 +17,9 @@ mkdir -p logs
 LOG="logs/rosters_$(date +%Y%m%d_%H%M%S).log"
 echo "log -> ${LOG}   (watch: tail -f ${LOG})"
 "$PY" python/ncaa_rosters.py "$@" 2>&1 | tee -a "$LOG"
-echo "EXIT=$?" | tee -a "$LOG"
+rc=${PIPESTATUS[0]}
+echo "EXIT=${rc}" | tee -a "$LOG"
+# Propagate the python exit code -- `$?` after a pipe is TEE's status, and a
+# bare trailing `echo` would mask a ban hard-stop as success (it did: the
+# 2026-07-13 backfill reported rc=0).
+exit "${rc}"
