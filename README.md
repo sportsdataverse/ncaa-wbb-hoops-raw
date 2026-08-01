@@ -29,6 +29,22 @@ schedules pair `team_id`/`opponent_id` with `team`/`opponent`, rosters pair
 name, conference and `division` (constant `"I"` — the crosswalk is scoped to
 the Division-I `season_divisions` id).
 
+**These three trees are also where the ESPN identity lives.** All three are
+reference data, so each carries the ESPN team id from sdv-py's
+`ncaa_espn_team_crosswalk`: schedules for both sides (`espn_team_id` /
+`opponent_espn_team_id`), rosters for the roster's team, teams for the team
+plus ESPN's display name and mascot. The **per-game** parsed families
+(`pbp`, `possessions`, `player_box`, `team_box`, `shots`, `lineups`) carry
+`*_ncaa_team_id`, the player ids and the readable names — but deliberately
+**no** ESPN ids: repeating a reference id on millions of play rows is bloat,
+so join `teams` on `ncaa_team_id` instead. Each parsed game does ship a
+two-row `teams` block with the full ESPN identity for its own two sides.
+
+On the play-by-play side the identity pass also resolves the ten on-court
+slots — `home_1`..`home_5` / `away_1`..`away_5` on `pbp` and `possessions`
+each gain `{slot}_player_id` + `{slot}_clean_name` — off the same
+game-scoped roster index as `player_1`/`player_2`.
+
 This is a retarget of the sibling `hoopR-dev/ncaa-mbb-hoops-raw` scraper --
 same transport, same fetcher, same safe-rate rules. The `python/` package
 (`ncaa_bundle.py` / `ncaa_capture.py` / `ncaa_discover.py` / `ncaa_parse.py`)
