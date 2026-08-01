@@ -24,22 +24,18 @@ from typing import Callable, List, Optional, Union
 import polars as pl
 
 from sportsdataverse.mbb.mbb_ncaa_schedule import parse_ncaa_bb_team_schedule
-from sportsdataverse.mbb.mbb_ncaa_team_ids import ncaa_mbb_team_ids
-from sportsdataverse.wbb.wbb_ncaa_team_ids import ncaa_wbb_team_ids
+
+# The schedules dataset tree is a pure side effect of the sweep below: this
+# module already fetches every team's page, so persisting it costs zero extra
+# HTTP. ncaa_datasets is a leaf (it never imports this module) -- no cycle.
+from ncaa_datasets import TEAM_ID_CROSSWALKS as _TEAM_ID_CROSSWALKS
+from ncaa_datasets import persist_schedule, read_html
 
 logger = logging.getLogger(__name__)
 
 FetchFn = Callable[[int], str]
 
 _MASTER_COLUMNS: List[str] = ["contest_id", "season", "captured"]
-
-# league -> crosswalk getter. A dict, not a registry -- two entries, one call
-# site (discover_season below). Keep it minimal; do not grow this into a
-# plugin layer for what is a two-way branch.
-_TEAM_ID_CROSSWALKS = {
-    "wbb": ncaa_wbb_team_ids,
-    "mbb": ncaa_mbb_team_ids,
-}
 
 #: Fetch attempts per team page before skipping it (bm-verify flake tolerance).
 _TEAM_TRIES = 3
@@ -77,7 +73,26 @@ def _default_fetch_fn(shard_i: int = 0, shard_n: int = 1) -> FetchFn:
     return lambda team_id: fetcher.fetch_html(f"teams/{team_id}")
 
 
-def _team_contest_ids(team_id: int, fetch_fn: FetchFn, league: str) -> List[str]:
+def _contest_ids_from_html(
+    html: str, team_id: int, league: str, season: int, root: Optional[Union[str, Path]]
+) -> List[str]:
+    """Contest ids for one team page, persisting the schedules tree en route.
+
+    With a *root* the page is written to ``{lg}/schedules/{html,json,parquet}/``
+    and the ids come off the enriched frame -- ONE parse either way, so the
+    dataset tree costs no extra parse and no extra fetch.
+    """
+    if root is None:
+        return (
+            parse_ncaa_bb_team_schedule(html, int(team_id), league=league).get_column("game_id").drop_nulls().to_list()
+        )
+    df = persist_schedule(html, team_id, season, league=league, root=root)
+    return df.get_column("contest_id").drop_nulls().to_list()
+
+
+def _team_contest_ids(
+    team_id: int, fetch_fn: FetchFn, league: str, season: int, root: Optional[Union[str, Path]]
+) -> List[str]:
     try:
         html = fetch_fn(team_id)
     except RuntimeError:
@@ -87,8 +102,7 @@ def _team_contest_ids(team_id: int, fetch_fn: FetchFn, league: str) -> List[str]
         # bm-verify solve must not read as a ban.
         logger.warning("fetch failed for team_id=%s (bm-verify / ban-suspect)", team_id)
         raise
-    schedule = parse_ncaa_bb_team_schedule(html, team_id, league=league)
-    return schedule.get_column("game_id").drop_nulls().to_list()
+    return _contest_ids_from_html(html, team_id, league, season, root)
 
 
 def discover_season(
@@ -128,6 +142,17 @@ def discover_season(
             {season}/{team_id}.json`` so an aborted sweep RESUMES instead of
             restarting (disk-is-checkpoint, same pattern as capture). Delete
             that directory to force a from-scratch re-sweep of the season.
+
+            It ALSO persists the schedules dataset tree from the very same
+            fetch -- ``{root}/{league}/schedules/html/{season}/{team_id}.html``
+            plus the parsed ``.../json/{season}/{team_id}.json`` (see
+            :mod:`ncaa_datasets`). That costs zero extra HTTP: the page was
+            already being fetched and its HTML discarded. A team whose HTML is
+            already committed is re-parsed offline, so a re-run neither
+            re-fetches it nor loses its dataset row. The compiled
+            ``schedules/parquet/{season}.parquet`` is NOT written here (a shard
+            sees only its slice, and one shared output file would race) -- run
+            ``scripts/run_datasets.sh`` for that.
         shard: ``(i, N)`` -- with ``N > 1`` this process sweeps only the
             ``ids[i::N]`` slice, so ``N`` launcher PROCESSES cover disjoint
             teams (see :func:`_default_fetch_fn` for the per-worker proxy
@@ -210,13 +235,27 @@ def discover_season(
     consecutive = 0
     skipped: "List[int]" = []
     for team_id in ids:
+        # The committed schedules HTML outranks the .discover checkpoint: it is
+        # the same page, durably tracked in git, and re-parsing it offline both
+        # yields the contest ids and refreshes json/parquet after a parser fix.
+        # Either way the network is not touched for this team.
+        cached = read_html(root, league, "schedules", season, team_id) if root is not None else None
+        if cached is not None:
+            got_cached = _contest_ids_from_html(cached, team_id, league, season, root)
+            contest_ids.update(got_cached)
+            if scratch is not None:
+                scratch.mkdir(parents=True, exist_ok=True)
+                (scratch / f"{team_id}.json").write_text(json.dumps(got_cached))
+            continue
         if team_id in checkpointed:
+            # Legacy resume path: swept before the schedules tree existed, so
+            # the HTML is gone. The ids still stand; the dataset row does not.
             contest_ids.update(checkpointed[team_id])
             continue
         got: Optional[List[str]] = None
         for _ in range(_TEAM_TRIES):
             try:
-                got = _team_contest_ids(team_id, fn, league)
+                got = _team_contest_ids(team_id, fn, league, season, root)
                 break
             except RuntimeError:
                 continue
@@ -304,6 +343,12 @@ def _main() -> None:
     )
     parser.add_argument("--league", default="wbb", help="League slug: 'wbb' or 'mbb' (default: wbb).")
     parser.add_argument(
+        "--limit-teams",
+        type=int,
+        default=None,
+        help="Cap the number of teams swept -- a small live smoke. Pair with --root <scratch> to keep a smoke out of the committed tree.",
+    )
+    parser.add_argument(
         "--shard",
         default="0/1",
         help="This process's shard as 'i/N'. A sharded run sweeps only its "
@@ -320,6 +365,7 @@ def _main() -> None:
         league=args.league,
         root=args.root,
         shard=(i, n),
+        limit_teams=args.limit_teams,
         write_master=(n == 1),
     )
     print(
