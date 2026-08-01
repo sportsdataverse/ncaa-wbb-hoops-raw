@@ -45,6 +45,14 @@ _SCHEDULE_HTML = (_FIXTURES / f"team_{_TEAM_ID}.html").read_text(encoding="utf-8
 _ROSTER_HTML = (_FIXTURES / f"roster_{_TEAM_ID}.html").read_text(encoding="utf-8")
 
 
+@pytest.fixture(autouse=True)
+def _fresh_team_identity():
+    """``_teams_with_espn`` is lru_cached; monkeypatched crosswalks must not leak."""
+    nd._teams_with_espn.cache_clear()
+    yield
+    nd._teams_with_espn.cache_clear()
+
+
 @pytest.fixture()
 def root():
     with tempfile.TemporaryDirectory() as tmp:
@@ -137,6 +145,34 @@ def test_season_parquet_carries_ids_and_readable_names(root: Path) -> None:
     assert df.get_column("opponent").str.len_chars().min() > 0
 
 
+def test_schedule_carries_espn_ids_for_both_sides(root: Path) -> None:
+    """ESPN identity is reference data -- it belongs HERE, not on the pbp rows."""
+    persist_schedule(_SCHEDULE_HTML, _TEAM_ID, _SEASON, league=_LEAGUE, root=root)
+    df = _season_parquet(root, "schedules")
+
+    assert {"espn_team_id", "opponent_espn_team_id"} <= set(df.columns)
+    assert df.schema["espn_team_id"] == pl.Utf8
+    assert df.schema["opponent_espn_team_id"] == pl.Utf8
+    # The swept team resolves for every row (South Carolina -> ESPN 2579).
+    assert df.get_column("espn_team_id").unique().to_list() == ["2579"]
+    # ...and at least one opponent does too. An unmatched opponent stays null,
+    # never dropped and never guessed.
+    matched = df.get_column("opponent_espn_team_id").drop_nulls()
+    assert matched.len() > 0
+    assert not any("." in v for v in matched.to_list())
+
+
+def test_schedule_espn_ids_null_when_the_crosswalk_is_absent(root: Path, monkeypatch) -> None:
+    monkeypatch.setattr(nd, "_espn_crosswalk", lambda league: None)
+    nd._teams_with_espn.cache_clear()
+    df = persist_schedule(_SCHEDULE_HTML, _TEAM_ID, _SEASON, league=_LEAGUE, root=root)
+
+    assert df.height > 0  # rows survive
+    assert df.get_column("espn_team_id").null_count() == df.height
+    assert df.get_column("opponent_espn_team_id").null_count() == df.height
+    assert df.get_column("opponent_id").null_count() < df.height  # NCAA ids unaffected
+
+
 def test_schedule_ids_are_utf8_never_float_stringified(root: Path) -> None:
     persist_schedule(_SCHEDULE_HTML, _TEAM_ID, _SEASON, league=_LEAGUE, root=root)
     df = _season_parquet(root, "schedules")
@@ -184,6 +220,14 @@ def test_roster_season_parquet_carries_player_id_display_name_and_pbp_key(root: 
     assert row["player"] == row["player"].upper()
     assert "." in row["player"]
     assert row["player"] == row["clean_name"].upper().replace(" ", ".")
+
+
+def test_roster_carries_the_teams_espn_id(root: Path) -> None:
+    persist_roster(_ROSTER_HTML, _TEAM_ID, _SEASON, league=_LEAGUE, root=root)
+    df = _season_parquet(root, "rosters")
+
+    assert df.schema["espn_team_id"] == pl.Utf8
+    assert df.get_column("espn_team_id").unique().to_list() == ["2579"]  # South Carolina
 
 
 def test_roster_ids_are_utf8_never_float_stringified(root: Path) -> None:

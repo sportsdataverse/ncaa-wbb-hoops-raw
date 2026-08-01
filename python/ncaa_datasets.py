@@ -41,6 +41,13 @@ Every frame carries BOTH machine ids and human-readable names: schedules carry
 ``team``/``opponent`` next to ``team_id``/``opponent_id``, rosters carry
 ``clean_name`` (properly-cased display name) and ``player`` (the ALL-CAPS
 ``FIRST.LAST`` key the play-by-play stream uses) next to ``player_id``.
+
+**These three trees are where the ESPN identity lives.** All of them are
+reference data, so each carries the ESPN team id off the same
+``ncaa_espn_team_crosswalk`` row -- schedules for BOTH sides
+(``espn_team_id`` / ``opponent_espn_team_id``), rosters for the roster's team,
+``teams`` for the team plus ESPN's display name and mascot. The per-game
+families deliberately do NOT: they carry ``ncaa_team_id`` and join here.
 """
 
 from __future__ import annotations
@@ -50,6 +57,7 @@ import html as _html
 import importlib
 import json
 import logging
+from functools import lru_cache
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Union
 
@@ -99,6 +107,7 @@ SCHEDULE_COLUMNS: List[str] = [
     "league",
     "team_id",
     "team",
+    "espn_team_id",
     "contest_id",
     "game_date",
     "home",
@@ -107,6 +116,7 @@ SCHEDULE_COLUMNS: List[str] = [
     "away_score",
     "opponent",
     "opponent_id",
+    "opponent_espn_team_id",
     "is_neutral",
     "detail",
     "attendance",
@@ -117,6 +127,7 @@ ROSTER_COLUMNS: List[str] = [
     "league",
     "team_id",
     "team",
+    "espn_team_id",
     "player_id",
     "clean_name",
     "player",
@@ -255,6 +266,27 @@ def season_teams(league: str, season: int) -> pl.DataFrame:
     ).sort("ncaa_team_id")
 
 
+@lru_cache(maxsize=8)
+def _teams_with_espn(league: str, season: int) -> pl.DataFrame:
+    """:func:`season_teams` plus the ESPN identifier columns.
+
+    The one source of team identity for all three trees, so schedules, rosters
+    and ``teams`` can never disagree about a team's ESPN id. Cached because the
+    schedules/rosters sweeps ask for the same season once per team -- tests that
+    monkeypatch :func:`_espn_crosswalk` must call ``cache_clear()``.
+    """
+    return _with_espn(season_teams(league, season), league, season)
+
+
+def _team_identity(league: str, season: int, team_id: Union[int, str]) -> Dict[str, Optional[str]]:
+    """``{"team": name, "espn_team_id": id}`` for one team; nulls when unknown."""
+    teams = _teams_with_espn(league, season)
+    hit = teams.filter(pl.col("ncaa_team_id") == str(team_id))
+    if hit.height == 0:
+        return {"team": None, "espn_team_id": None}
+    return {"team": hit.get_column("team")[0], "espn_team_id": hit.get_column("espn_team_id")[0]}
+
+
 def _empty(columns: List[str], schema: Dict[str, pl.DataType]) -> pl.DataFrame:
     return pl.DataFrame(schema={c: schema.get(c, pl.Utf8) for c in columns})
 
@@ -291,11 +323,16 @@ def _enrich_schedule(df: pl.DataFrame, team_id: Union[int, str], season: int, le
     against the same season's crosswalk -- the ids the parser matched names
     against in the first place. No fuzzy matching, deliberately: an unmatched
     opponent (a non-D-I exhibition foe) stays null rather than guessing.
+
+    BOTH sides also carry the ESPN team id (``espn_team_id`` for the swept team,
+    ``opponent_espn_team_id`` for the other), off the same crosswalk row -- so a
+    schedule joins to ESPN without a second lookup. An opponent with no
+    crosswalk row keeps its name and gets nulls for both ids.
     """
-    teams = season_teams(league, season)
+    teams = _teams_with_espn(league, season)
     tid = str(team_id)
-    hit = teams.filter(pl.col("ncaa_team_id") == tid)
-    team_name = hit.get_column("team")[0] if hit.height else None
+    identity = _team_identity(league, season, tid)
+    team_name = identity["team"]
     if team_name is None:
         logger.warning(
             "team_id=%s is not in the %s %s crosswalk; team/opponent names will be null", tid, season, league
@@ -309,6 +346,7 @@ def _enrich_schedule(df: pl.DataFrame, team_id: Union[int, str], season: int, le
         pl.lit(league).alias("league"),
         pl.lit(tid).alias("team_id"),
         pl.lit(team_name, dtype=pl.Utf8).alias("team"),
+        pl.lit(identity["espn_team_id"], dtype=pl.Utf8).alias("espn_team_id"),
     )
     # box_id is the identical value the parser assigns to game_id (one shared
     # positional fill), so it is dropped rather than shipped as a duplicate.
@@ -320,7 +358,11 @@ def _enrich_schedule(df: pl.DataFrame, team_id: Union[int, str], season: int, le
         .otherwise(None)
     )
     out = out.with_columns(opponent.alias("opponent")).join(
-        teams.select(pl.col("team").alias("opponent"), pl.col("ncaa_team_id").alias("opponent_id")),
+        teams.select(
+            pl.col("team").alias("opponent"),
+            pl.col("ncaa_team_id").alias("opponent_id"),
+            pl.col("espn_team_id").alias("opponent_espn_team_id"),
+        ),
         on="opponent",
         how="left",
     )
@@ -334,11 +376,13 @@ def _enrich_roster(df: pl.DataFrame, team_id: Union[int, str], season: int, leag
     ``clean_name`` is kept. ``player`` (ALL-CAPS ``FIRST.LAST``) is the key the
     play-by-play stream uses, ``clean_name`` the properly-cased display form --
     both ship, which is the whole point of the roster tree.
+
+    The team's ESPN id rides along too -- a roster is reference data, so the
+    ESPN identity belongs on it (unlike the per-game families, which carry the
+    NCAA id only and join ``teams`` for ESPN).
     """
-    teams = season_teams(league, season)
     tid = str(team_id)
-    hit = teams.filter(pl.col("ncaa_team_id") == tid)
-    team_name = hit.get_column("team")[0] if hit.height else None
+    identity = _team_identity(league, season, tid)
 
     if df.height == 0:
         return _empty(ROSTER_COLUMNS, _ROSTER_TYPES)
@@ -347,7 +391,8 @@ def _enrich_roster(df: pl.DataFrame, team_id: Union[int, str], season: int, leag
         pl.lit(str(season)).alias("season"),
         pl.lit(league).alias("league"),
         pl.lit(tid).alias("team_id"),
-        pl.lit(team_name, dtype=pl.Utf8).alias("team"),
+        pl.lit(identity["team"], dtype=pl.Utf8).alias("team"),
+        pl.lit(identity["espn_team_id"], dtype=pl.Utf8).alias("espn_team_id"),
     )
     return _conform(stamped, ROSTER_COLUMNS, _ROSTER_TYPES)
 
@@ -606,7 +651,7 @@ def build_teams(season: int, *, league: str = LEAGUE, root: Union[str, Path], ov
     Division-I ``season_divisions`` id), plus ESPN identifiers when the sdv-py
     ``ncaa_espn_team_crosswalk`` loader is importable (nulls otherwise).
     """
-    df = _with_espn(season_teams(league, season), league, season).select(TEAMS_COLUMNS)
+    df = _teams_with_espn(league, season).select(TEAMS_COLUMNS)
     html_path = dataset_path(root, league, "teams", "html", season)
     if overwrite or not html_path.exists():
         html_path.parent.mkdir(parents=True, exist_ok=True)
