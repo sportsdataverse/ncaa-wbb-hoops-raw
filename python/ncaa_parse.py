@@ -60,6 +60,8 @@ from typing import Any, Optional, Union
 
 import polars as pl
 
+from ncaa_identity import enrich_parsed
+
 from sportsdataverse.mbb.mbb_ncaa_boxscore_parser import get_box_lineup
 from sportsdataverse.mbb.mbb_ncaa_data_quality import ParseError
 from sportsdataverse.mbb.mbb_ncaa_game_pbp import parse_ncaa_bb_game_pbp
@@ -177,7 +179,12 @@ def _parse_shots(
     return frame.to_dicts()
 
 
-def parse_bundle(bundle: "dict[str, Any]", *, league: str = "wbb") -> "dict[str, Any]":
+def parse_bundle(
+    bundle: "dict[str, Any]",
+    *,
+    league: str = "wbb",
+    root: "Optional[Union[str, Path]]" = None,
+) -> "dict[str, Any]":
     """Parse one raw captured bundle into the six combined datasets.
 
     Args:
@@ -188,12 +195,18 @@ def parse_bundle(bundle: "dict[str, Any]", *, league: str = "wbb") -> "dict[str,
             model (quarters vs. halves) and, via ``three_point_radius``, the
             three-point arc used to classify the shots frame's ``shot_zone``/
             ``point_value`` (the arcs differ only in seasons 2020-2021).
+        root: Repo root, for the offline identity join against the committed
+            ``{league}/rosters/`` + ``{league}/teams/`` trees. Defaults to this
+            repo. A season whose trees were never built still parses -- the id
+            columns come back as nulls.
 
     Returns:
         ``{"contest_id": str, "pbp": [...], "lineups": [...], "player_box":
-        [...], "team_box": [...], "shots": [...], "possessions": [...]}`` --
-        every dataset a ``list[dict]``. Any family whose parse failed is an
-        empty list (never raises).
+        [...], "team_box": [...], "shots": [...], "possessions": [...],
+        "teams": [...]}`` -- every dataset a ``list[dict]``. Any family whose
+        parse failed is an empty list (never raises). ``teams`` is the
+        two-row readable team identity added by :mod:`ncaa_identity`, which
+        also stamps ids + properly-cased names onto the other families.
     """
     contest_id = str(bundle["contest_id"])
     pages = bundle.get("pages") or {}
@@ -270,6 +283,23 @@ def parse_bundle(bundle: "dict[str, Any]", *, league: str = "wbb") -> "dict[str,
             exc_info=True,
         )
 
+    # Identity join LAST, over whatever the six families produced -- a pure
+    # additive pass, so a family that failed above simply has no rows to stamp.
+    # Its own failure must not lose the parse either.
+    try:
+        enrich_parsed(
+            result,
+            root=root if root is not None else Path(__file__).resolve().parents[1],
+            league=league,
+            season=_ending_year(season),
+        )
+    except Exception:  # noqa: BLE001
+        logger.warning(
+            "ncaa_parse: identity enrichment contest_id=%s failed",
+            contest_id,
+            exc_info=True,
+        )
+
     return result
 
 
@@ -289,7 +319,7 @@ def parse_and_write(
     bundle: "dict[str, Any]", root: "Union[str, Path]", *, league: str = "wbb"
 ) -> Path:
     """Convenience: :func:`parse_bundle` then :func:`write_parsed`."""
-    parsed = parse_bundle(bundle, league=league)
+    parsed = parse_bundle(bundle, league=league, root=root)
     return write_parsed(root, league, parsed["contest_id"], parsed)
 
 
