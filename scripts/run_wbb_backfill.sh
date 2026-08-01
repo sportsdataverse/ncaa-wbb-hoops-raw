@@ -6,7 +6,10 @@
 # wait a while and just re-run this script -- it picks up where it left off.
 # Parse is fully offline and safe to run on a partial capture.
 #
-# SAFE RATE (measured): 1-2 capture workers OK, 4 => ban. WORKERS is capped at 2.
+# SAFE RATE: with canary-vendor sticky residential sessions (NCAA_VENDOR=...)
+# each worker rides a DISJOINT proxy offset, so per-IP pacing binds, not process
+# count -- WORKERS is capped at 16. The old cap of 2 was measured on the shared
+# datacenter pool, where 4 workers piled onto one IP and earned a ban.
 # SESSION CEILING (measured 2026-07-13 on the MBB scraper, same transport):
 # a browser session captures cleanly for ~70min/~1400 bundles, then bm-verify
 # stops clearing; the run degraded to ZERO yield for a full hour and earned a
@@ -24,7 +27,7 @@
 # Usage (run in YOUR terminal, on a residential IP -- stats.ncaa.org bans datacenter IPs):
 #   ./scripts/run_wbb_backfill.sh 2025                      # 1 worker, unlimited
 #   CHUNK=1500 ./scripts/run_wbb_backfill.sh 2025           # stop after 1500 new bundles (recommended)
-#   WORKERS=2 CHUNK=1500 ./scripts/run_wbb_backfill.sh 2025 # 2 workers (measured ceiling)
+#   NCAA_VENDOR=decodo_patchright WORKERS=8 CHUNK=1500 ./scripts/run_wbb_backfill.sh 2025
 #
 # Watch live:  tail -f logs/backfill_<season>_<ts>.log   (path is printed on start;
 #              per-stage logs under logs/ are also printed as each stage starts)
@@ -56,10 +59,19 @@ if [ "$SEASON" -gt "$MAX_SEASON" ]; then
 fi
 
 WORKERS="${WORKERS:-1}"
-case "$WORKERS" in 1|2) ;; *)
-  echo "REFUSING WORKERS='$WORKERS' -- measured safe ceiling is 2 (4 workers => ban). Use 1 or 2." >&2
-  exit 2 ;;
+# The old ceiling of 2 was measured on a SHARED datacenter proxy pool, where
+# every worker piled onto the same handful of IPs. With canary-vendor sticky
+# residential sessions (NCAA_VENDOR=...), _vendor_fetcher rotates each worker's
+# proxy list to a disjoint offset, so what binds is per-IP pacing, not process
+# count. 16 is the cap; raise it only with a fresh measurement.
+case "$WORKERS" in
+  ''|*[!0-9]*) WORKERS=0 ;;
 esac
+if [ "$WORKERS" -lt 1 ] || [ "$WORKERS" -gt 16 ]; then
+  echo "REFUSING WORKERS='${WORKERS}' -- must be 1..16 (each worker rides its own" >&2
+  echo "  disjoint sticky proxy session; more than 16 has not been measured)." >&2
+  exit 2
+fi
 
 mkdir -p logs
 TS="$(date +%Y%m%d_%H%M%S)"
