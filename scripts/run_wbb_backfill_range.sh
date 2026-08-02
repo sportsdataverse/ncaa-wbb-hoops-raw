@@ -70,10 +70,22 @@ for season in $(seq "$START" -1 "$END"); do
       say "season ${season}: MAX_ROUNDS=${MAX_ROUNDS} reached with $(remaining "$season") remaining -- moving on (re-run later to finish)"
       break
     fi
+    before="$(remaining "$season")"
     NCAA_VENDOR="$VENDOR" CHUNK="$CHUNK" WORKERS="$WORKERS" \
       ./scripts/run_wbb_backfill.sh "$season" 2>&1 | tee -a "$LOG"
     rc=${PIPESTATUS[0]}
     left="$(remaining "$season")"
+    # A clean round that captured NOTHING means the remainder is un-capturable,
+    # not merely un-captured: every season carries a few pageless/cancelled
+    # contests that sit in schedule_master but have no game page and never
+    # will. Without this, each season burns MAX_ROUNDS x COOLDOWN_S chasing
+    # them -- ~1 idle hour per season, ~13 across a full backfill. Compared
+    # before-vs-after so it is caught in ONE round. rc!=0 is excluded: a ban
+    # hard-stop also makes no progress but MUST cool down and retry, not skip.
+    if [ "$rc" -eq 0 ] && [ "$left" != "-1" ] && [ "$left" = "$before" ] && [ "$left" != "0" ]; then
+      say "season ${season}: round ${round} captured nothing (${left} left, un-capturable) -- treating as done"
+      break
+    fi
     if [ "$left" = "0" ]; then
       say "season ${season}: COMPLETE (round ${round})"
       break
