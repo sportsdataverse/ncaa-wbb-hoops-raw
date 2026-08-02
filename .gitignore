@@ -199,3 +199,6 @@ cython_debug/
 # builder's HTTP ingest, which fetches
 # https://raw.githubusercontent.com/sportsdataverse/ncaa-wbb-hoops-raw/main/wbb
 # -- a path that only resolves if the tree is committed to main.
+
+# oh-my-claudecode tooling scratch (not project files)
+.omc/
