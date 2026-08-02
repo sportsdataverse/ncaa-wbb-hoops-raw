@@ -163,7 +163,7 @@ def test_schedule_carries_espn_ids_for_both_sides(root: Path) -> None:
 
 
 def test_schedule_espn_ids_null_when_the_crosswalk_is_absent(root: Path, monkeypatch) -> None:
-    monkeypatch.setattr(nd, "_espn_crosswalk", lambda league: None)
+    monkeypatch.setattr(nd._engine, "_espn_crosswalk", lambda league: None)
     nd._teams_with_espn.cache_clear()
     df = persist_schedule(_SCHEDULE_HTML, _TEAM_ID, _SEASON, league=_LEAGUE, root=root)
 
@@ -293,7 +293,7 @@ def test_build_teams_espn_columns_present_even_without_the_crosswalk(root: Path)
 
 
 def test_build_teams_null_fills_when_the_espn_loader_is_absent(root: Path, monkeypatch) -> None:
-    monkeypatch.setattr(nd, "_espn_crosswalk", lambda league: None)
+    monkeypatch.setattr(nd._engine, "_espn_crosswalk", lambda league: None)
     df = build_teams(_SEASON, league=_LEAGUE, root=root)
 
     assert df.get_column("espn_team_id").null_count() == df.height
@@ -312,7 +312,7 @@ def test_build_teams_joins_a_present_espn_crosswalk(root: Path, monkeypatch) -> 
         },
         schema_overrides={"ncaa_team_id": pl.Int64},
     )
-    monkeypatch.setattr(nd, "_espn_crosswalk", lambda league: fake)
+    monkeypatch.setattr(nd._engine, "_espn_crosswalk", lambda league: fake)
     df = build_teams(_SEASON, league=_LEAGUE, root=root)
 
     row = df.filter(pl.col("ncaa_team_id") == str(_TEAM_ID)).row(0, named=True)
@@ -325,7 +325,7 @@ def test_build_teams_joins_a_present_espn_crosswalk(root: Path, monkeypatch) -> 
 
 
 def test_build_teams_survives_espn_crosswalk_schema_drift(root: Path, monkeypatch) -> None:
-    monkeypatch.setattr(nd, "_espn_crosswalk", lambda league: pl.DataFrame({"totally": ["different"]}))
+    monkeypatch.setattr(nd._engine, "_espn_crosswalk", lambda league: pl.DataFrame({"totally": ["different"]}))
     df = build_teams(_SEASON, league=_LEAGUE, root=root)
 
     assert df.columns == TEAMS_COLUMNS

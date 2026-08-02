@@ -1,77 +1,50 @@
-"""Raw-bundle read/write helpers for captured NCAA game pages.
+"""Contest bundle read/write + the resume check.
 
-Each captured contest is stored as one gzip-compressed JSON file at
-``root/{league}/raw/{season}/{contest_id}.json.gz`` containing the raw
-``play_by_play`` / ``box_score`` / ``individual_stats`` payloads plus their
-source URLs and capture timestamp.
+League binding for :mod:`sportsdataverse.scrape.ncaa.bundle` (sdv-py #328).
+
+There is no logic here. The engine takes ``league`` as a *required* keyword on
+every entry point -- a shared engine that defaults one is how a run silently
+reads the other league's tree -- so this module re-exports the engine's surface
+with this repo's league already bound.
+
+The re-export is dynamic on purpose: an explicit name list is a second thing to
+maintain, and the failure mode when it drifts (a name silently missing after an
+engine change) is worse than the loss of grep-ability. ``dir(_engine)`` is the
+contract.
+
+``_engine`` is the module the names come from -- patch THERE in tests
+(``monkeypatch.setattr(mod._engine, ...)``), because the engine resolves its
+own globals; patching this shim's namespace would have no effect.
 """
 
-from __future__ import annotations
+from functools import partial
+import inspect as _inspect
 
-import gzip
-import json
-import os
-from pathlib import Path
-from typing import Any
+from sportsdataverse.scrape.ncaa import bundle as _engine
 
-__all__ = ["bundle_path", "write_bundle", "read_bundle", "is_captured"]
+#: This repo's league. The engine keys every league-specific rule off it.
+LEAGUE = "wbb"
 
 
-def bundle_path(root: str | Path, league: str, season: str, contest_id: str) -> Path:
-    """Return the on-disk path for a captured contest bundle."""
-    return Path(root) / league / "raw" / season / f"{contest_id}.json.gz"
+def _needs_league(obj: object) -> bool:
+    """True for an engine callable whose ``league`` keyword has no default."""
+    if not _inspect.isfunction(obj):
+        return False
+    param = _inspect.signature(obj).parameters.get("league")
+    # KEYWORD-ONLY and undefaulted -- that exact shape is what the extraction
+    # created for the entry points a caller may omit. Functions that take
+    # `league` POSITIONALLY (e.g. write_parsed(root, league, ...)) always
+    # required it explicitly; binding those would break every positional call.
+    return (
+        param is not None
+        and param.default is _inspect.Parameter.empty
+        and param.kind is _inspect.Parameter.KEYWORD_ONLY
+    )
 
 
-def write_bundle(
-    root: str | Path,
-    league: str,
-    season: str,
-    contest_id: str,
-    pages: dict[str, Any],
-    urls: dict[str, Any],
-    captured_at: str,
-) -> Path:
-    """Gzip-write the contract bundle for a contest, atomically.
-
-    Args:
-        root: Root directory of the raw data tree.
-        league: League slug (e.g. ``"wbb"``).
-        season: Season label, used verbatim in the path (e.g. ``"2025-26"``).
-        contest_id: Contest identifier as a string (never cast to int).
-        pages: Dict with keys ``play_by_play``, ``box_score``, ``individual_stats``.
-        urls: Dict of source URLs matching ``pages`` keys.
-        captured_at: ISO-8601 capture timestamp (caller-supplied).
-
-    Returns:
-        The path the bundle was written to.
-    """
-    path = bundle_path(root, league, season, contest_id)
-    path.parent.mkdir(parents=True, exist_ok=True)
-
-    bundle = {
-        "contest_id": contest_id,
-        "league": league,
-        "season": season,
-        "captured_at": captured_at,
-        "urls": urls,
-        "pages": pages,
-    }
-    payload = json.dumps(bundle).encode("utf-8")
-
-    tmp_path = path.with_suffix(path.suffix + ".tmp")
-    with gzip.open(tmp_path, "wb") as f:
-        f.write(payload)
-    os.replace(tmp_path, path)
-
-    return path
-
-
-def read_bundle(path: str | Path) -> dict[str, Any]:
-    """Gunzip and parse a contest bundle written by :func:`write_bundle`."""
-    with gzip.open(path, "rb") as f:
-        return json.loads(f.read().decode("utf-8"))
-
-
-def is_captured(root: str | Path, league: str, season: str, contest_id: str) -> bool:
-    """Return True if a bundle already exists for this contest."""
-    return bundle_path(root, league, season, contest_id).exists()
+for _name in dir(_engine):
+    if _name.startswith("__"):
+        continue
+    _obj = getattr(_engine, _name)
+    globals()[_name] = partial(_obj, league=LEAGUE) if _needs_league(_obj) else _obj
+del _name, _obj

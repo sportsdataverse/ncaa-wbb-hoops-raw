@@ -79,7 +79,7 @@ def _espn(rows: list[tuple[str, date, str, str]]) -> pl.DataFrame:
 
 
 def _build(root: Path, espn: pl.DataFrame, monkeypatch) -> pl.DataFrame:
-    monkeypatch.setattr(xw, "espn_schedule_side", lambda league, season: espn)
+    monkeypatch.setattr(xw._engine, "espn_schedule_side", lambda league, season: espn)
     return build_season_xwalk(root, LEAGUE, SEASON)
 
 
