@@ -91,6 +91,28 @@ CHUNK=1500 ./scripts/run_wbb_backfill.sh 2025          # stop after 1500 new bun
 WORKERS=2 CHUNK=1500 ./scripts/run_wbb_backfill.sh 2025 # 2 workers (measured ceiling)
 ```
 
+`run_wbb_backfill.sh` is the **single-season** chain. The other wrapper
+drivers around the per-stage sequence:
+
+- `scripts/run_wbb_backfill_range.sh [start] [end]` — **multi-season
+  campaign** (default 2025 down to 2010), newest-first, wrapping
+  `run_wbb_backfill.sh` per season: capture runs in chunked rounds (a
+  fresh sticky IP each chunk) with cooldowns between rounds and after
+  ban hard-stops, and up to `MAX_ROUNDS` straggler rounds per season
+  before moving on (re-run later to finish the remainder).
+- `scripts/run_reference_backfill.sh [start] [end]` — reference-only
+  companion to the pbp backfill: per season (newest-first) it chains
+  `run_discover.sh` -> sharded `ncaa_rosters.py` -> `run_datasets.sh`,
+  then commits + pushes that season. Reference data is cheap (~2 pages
+  per team-season vs 3 per game), so it runs first / independently of
+  `run_wbb_backfill*.sh`; it does **no** pbp capture.
+- `scripts/run_autocommit.sh` — incremental commit(+push) sweep of
+  capture output every `INTERVAL` seconds. It stages only files whose
+  mtime has settled at least `SETTLE` minutes, so an in-flight bundle
+  is never committed half-flushed — safe to run **concurrently with an
+  active capture**. The backfill drivers deliberately do not commit;
+  this keeps the repo close to pushed during a long campaign.
+
 Watch a running job live:
 
 ```sh
