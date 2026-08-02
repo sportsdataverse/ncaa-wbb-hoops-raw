@@ -304,8 +304,8 @@ def test_enrichment_is_additive_and_stamps_ids_on_every_family() -> None:
         assert parsed["teams"][1]["espn_team_id"] == "7"
 
 
-def test_espn_team_ids_are_absent_from_every_per_game_family() -> None:
-    """ESPN ids are reference data: they belong on `teams`, not on play rows."""
+def test_espn_team_ids_are_present_on_every_per_game_family() -> None:
+    """Both id namespaces ride on the play rows, so each family joins standalone."""
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
         _write_tree(
@@ -333,14 +333,26 @@ def test_espn_team_ids_are_absent_from_every_per_game_family() -> None:
         }
         enrich_parsed(parsed, root=root, league=LEAGUE, season=SEASON)
 
+        # Every family carries BOTH namespaces, and the two sit side by side on
+        # the same team-name column rather than one replacing the other.
         for family in ("pbp", "player_box", "team_box", "shots", "possessions", "lineups"):
-            for row in parsed[family]:
-                offenders = [k for k in row if "espn" in k]
-                assert not offenders, f"{family} still carries {offenders}"
-            # ...but the NCAA ids that replaced them are all still there.
-            assert any("ncaa_team_id" in k for k in parsed[family][0])
+            row = parsed[family][0]
+            assert any("ncaa_team_id" in k for k in row), f"{family} lost its NCAA ids"
+            assert any("espn_team_id" in k for k in row), f"{family} lost its ESPN ids"
 
-        # The two-row reference block keeps its ESPN identity.
+        # Buffalo resolves to the same ESPN id whichever column it is named in.
+        assert parsed["pbp"][0]["home_espn_team_id"] == "42"
+        assert parsed["pbp"][0]["away_espn_team_id"] == "7"
+        assert parsed["pbp"][0]["event_team_espn_team_id"] == "42"
+        assert parsed["player_box"][0]["team_espn_team_id"] == "42"
+        assert parsed["team_box"][0]["team_espn_team_id"] == "42"
+        assert parsed["possessions"][0]["poss_team_espn_team_id"] == "42"
+        # `shots` keys its team on the bare form (its `team_id` holds a NAME).
+        assert parsed["shots"][0]["espn_team_id"] == "42"
+        assert parsed["lineups"][0]["team_espn_team_id"] == "42"
+        assert parsed["lineups"][0]["opponent_espn_team_id"] == "7"
+
+        # The two-row reference block keeps its full ESPN identity as well.
         assert parsed["teams"][0]["espn_team_id"] == "42"
 
 

@@ -36,9 +36,7 @@ KNOWN_GOOD_GAME = "5722355"
 def _fixture_bundle(contest_id: str) -> dict:
     pbp_html = (_FIX / f"pbp_{contest_id}.html").read_text(encoding="utf-8")
     box_html = (_FIX / f"box_{contest_id}.html").read_text(encoding="utf-8")
-    stats_html = (_FIX / f"individual_stats_{contest_id}.html").read_text(
-        encoding="utf-8"
-    )
+    stats_html = (_FIX / f"individual_stats_{contest_id}.html").read_text(encoding="utf-8")
     return {
         "contest_id": contest_id,
         "league": "wbb",
@@ -154,15 +152,11 @@ def test_wbb_quarter_period_model_changes_period_length() -> None:
     p1_end_mbb = max(r["game_seconds"] for r in parsed_mbb["pbp"] if r["period"] == 1)
 
     # a WBB quarter is 600s; under the wbb model, period 1 ends near there.
-    assert 540 <= p1_end_wbb <= 600, (
-        f"wbb period-1 end game_seconds out of quarter range: {p1_end_wbb}"
-    )
+    assert 540 <= p1_end_wbb <= 600, f"wbb period-1 end game_seconds out of quarter range: {p1_end_wbb}"
     # flip proof: the SAME page under the mbb half model (1200s/half) ends
     # period 1 near 1200 instead. If this also landed near 600 the delta
     # assertion above would prove nothing.
-    assert p1_end_mbb > 1100, (
-        f"mbb-flip period-1 end game_seconds not near a half boundary: {p1_end_mbb}"
-    )
+    assert p1_end_mbb > 1100, f"mbb-flip period-1 end game_seconds not near a half boundary: {p1_end_mbb}"
 
 
 def test_wbb_2ot_game_exceeds_regulation_period_count() -> None:
@@ -176,9 +170,7 @@ def test_wbb_2ot_game_exceeds_regulation_period_count() -> None:
     bundle = _fixture_bundle("5733807")
     parsed = parse_bundle(bundle, league="wbb")
     periods = [r["period"] for r in parsed["pbp"]]
-    assert max(periods) == 6, (
-        f"2OT game should reach period 6 (4 quarters + 2 OT), got {max(periods)}"
-    )
+    assert max(periods) == 6, f"2OT game should reach period 6 (4 quarters + 2 OT), got {max(periods)}"
 
 
 def test_wbb_shots_league_label_changes_arc_classification() -> None:
@@ -206,30 +198,64 @@ def test_wbb_shots_league_label_changes_arc_classification() -> None:
     assert len(parsed_wbb["shots"]) == len(parsed_mbb["shots"])
 
     # find a shot in the band where the two arcs disagree (womens 20.75ft < dist < mens 22.15ft)
-    band_idx = [
-        i for i, s in enumerate(parsed_wbb["shots"]) if 20.75 < s["dist_ft"] < 22.15
-    ]
-    assert band_idx, (
-        "fixture drifted: no shot left in the mens/womens arc-disagreement band"
-    )
+    band_idx = [i for i, s in enumerate(parsed_wbb["shots"]) if 20.75 < s["dist_ft"] < 22.15]
+    assert band_idx, "fixture drifted: no shot left in the mens/womens arc-disagreement band"
     i = band_idx[0]
 
     shot_wbb = parsed_wbb["shots"][i]
     shot_mbb = parsed_mbb["shots"][i]
-    assert shot_wbb["point_value"] == 3, (
-        f"womens arc should classify this shot as a 3: {shot_wbb}"
-    )
+    assert shot_wbb["point_value"] == 3, f"womens arc should classify this shot as a 3: {shot_wbb}"
     assert shot_wbb["shot_zone"] in ("abovebreak3", "corner3"), shot_wbb
 
     # flip proof: the SAME shot under the mens arc classifies as a 2. If it
     # also classified as a 3 the wbb assertions above would prove nothing.
-    assert shot_mbb["point_value"] == 2, (
-        f"mens arc should classify this shot as a 2: {shot_mbb}"
-    )
+    assert shot_mbb["point_value"] == 2, f"mens arc should classify this shot as a 2: {shot_mbb}"
     assert shot_mbb["shot_zone"] != "abovebreak3", shot_mbb
 
 
+def test_every_family_row_carries_contest_id_and_no_game_id() -> None:
+    """One per-game identifier, named `contest_id`, on every row of every family."""
+    for contest_id in CONTEST_IDS:
+        parsed = parse_bundle(_fixture_bundle(contest_id), league="wbb")
+        for family in FAMILY_KEYS:
+            for row in parsed[family]:
+                assert "game_id" not in row, f"{contest_id}/{family} still has game_id"
+                assert row["contest_id"] == contest_id, f"{contest_id}/{family} mismatch"
+                assert isinstance(row["contest_id"], str), f"{contest_id}/{family} not Utf8"
+
+
+def test_shots_contest_id_is_populated_and_agrees_with_the_other_families() -> None:
+    """Regression: the shots adapter hardcodes `game_id=None`, so shots used to be
+    the one family you could not join to the rest without enrichment."""
+    parsed = parse_bundle(_fixture_bundle(KNOWN_GOOD_GAME), league="wbb")
+    assert len(parsed["shots"]) > 0
+    shot_ids = {r["contest_id"] for r in parsed["shots"]}
+    pbp_ids = {r["contest_id"] for r in parsed["pbp"]}
+    assert shot_ids == pbp_ids == {KNOWN_GOOD_GAME}
+    assert None not in shot_ids
+
+
+def test_contest_id_is_never_a_float_stringification() -> None:
+    """`"5722355.0"` is the classic join-breaking defect; the value is the bundle's own str."""
+    parsed = parse_bundle(_fixture_bundle(KNOWN_GOOD_GAME), league="wbb")
+    for family in FAMILY_KEYS:
+        for row in parsed[family]:
+            assert "." not in row["contest_id"]
+
+
+def test_espn_game_id_present_on_every_family_even_without_a_crosswalk() -> None:
+    """The column never varies game-to-game: unbuilt crosswalk means null, not absent."""
+    parsed = parse_bundle(_fixture_bundle(KNOWN_GOOD_GAME), league="wbb")
+    for family in FAMILY_KEYS:
+        for row in parsed[family]:
+            assert "espn_game_id" in row, f"{family} is missing the espn_game_id column"
+
+
 def main() -> None:
+    test_every_family_row_carries_contest_id_and_no_game_id()
+    test_shots_contest_id_is_populated_and_agrees_with_the_other_families()
+    test_contest_id_is_never_a_float_stringification()
+    test_espn_game_id_present_on_every_family_even_without_a_crosswalk()
     test_all_fixtures_produce_six_family_keys()
     test_known_good_game_has_populated_families()
     test_write_parsed_round_trips_valid_json()

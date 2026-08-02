@@ -82,6 +82,18 @@ __all__ = ["parse_bundle", "write_parsed", "parse_and_write"]
 _WBB_PERIOD_MODEL: "tuple[int, int, int]" = (4, 600, 300)
 _SEASON_RE = re.compile(r"^(\d{4})-(\d{2})$")
 
+#: The six per-game families, i.e. every key of the parsed record that is a list
+#: of game rows. ``teams`` is deliberately absent: it is per-game reference data
+#: added by :mod:`ncaa_identity`, not a play/stat family.
+PER_GAME_FAMILIES: "tuple[str, ...]" = (
+    "pbp",
+    "lineups",
+    "player_box",
+    "team_box",
+    "shots",
+    "possessions",
+)
+
 
 def _ending_year(season: Optional[str]) -> int:
     """``"2025-26"`` -> ``2026``; falls back to the current year on drift."""
@@ -120,9 +132,7 @@ def _jsonable(obj: Any) -> Any:
     return obj
 
 
-def _parse_lineups(
-    contest_id: str, pbp_df: pl.DataFrame, pbp_html: str, stats_html: str
-) -> "list[dict[str, Any]]":
+def _parse_lineups(contest_id: str, pbp_df: pl.DataFrame, pbp_html: str, stats_html: str) -> "list[dict[str, Any]]":
     """Both teams' box lineups -> stint events (good stints only)."""
     home_team = pbp_df["home"][0]
     away_team = pbp_df["away"][0]
@@ -138,9 +148,7 @@ def _parse_lineups(
         )
         if isinstance(box_lineup, list):  # list[ParseError]
             continue
-        lineup_result = create_lineup_data(
-            f"pbp_{contest_id}.html", pbp_html, box_lineup, format_version=1
-        )
+        lineup_result = create_lineup_data(f"pbp_{contest_id}.html", pbp_html, box_lineup, format_version=1)
         if isinstance(lineup_result, list):  # list[ParseError]
             continue
         good, _bad = lineup_result
@@ -207,6 +215,10 @@ def parse_bundle(
         parse failed is an empty list (never raises). ``teams`` is the
         two-row readable team identity added by :mod:`ncaa_identity`, which
         also stamps ids + properly-cased names onto the other families.
+
+        EVERY row of the six per-game families carries ``contest_id`` (Utf8,
+        equal to the top-level key) -- that is the join key across families,
+        and it replaces the parser stack's own ``game_id``.
     """
     contest_id = str(bundle["contest_id"])
     pages = bundle.get("pages") or {}
@@ -231,17 +243,13 @@ def parse_bundle(
         pbp_df = parse_ncaa_bb_game_pbp(pbp_html, contest_id, **kwargs)
         result["pbp"] = pbp_df.to_dicts()
     except Exception:  # noqa: BLE001 -- one family's failure must not abort the others
-        logger.warning(
-            "ncaa_parse: family=pbp contest_id=%s failed", contest_id, exc_info=True
-        )
+        logger.warning("ncaa_parse: family=pbp contest_id=%s failed", contest_id, exc_info=True)
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
             result["lineups"] = _parse_lineups(contest_id, pbp_df, pbp_html, stats_html)
     except Exception:  # noqa: BLE001
-        logger.warning(
-            "ncaa_parse: family=lineups contest_id=%s failed", contest_id, exc_info=True
-        )
+        logger.warning("ncaa_parse: family=lineups contest_id=%s failed", contest_id, exc_info=True)
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
@@ -265,13 +273,9 @@ def parse_bundle(
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
-            result["shots"] = _parse_shots(
-                contest_id, pbp_df, stats_html, box_html, season, league
-            )
+            result["shots"] = _parse_shots(contest_id, pbp_df, stats_html, box_html, season, league)
     except Exception:  # noqa: BLE001
-        logger.warning(
-            "ncaa_parse: family=shots contest_id=%s failed", contest_id, exc_info=True
-        )
+        logger.warning("ncaa_parse: family=shots contest_id=%s failed", contest_id, exc_info=True)
 
     try:
         if pbp_df is not None and pbp_df.height > 0:
@@ -282,6 +286,17 @@ def parse_bundle(
             contest_id,
             exc_info=True,
         )
+
+    # ONE per-game identifier column, on every family, named the same thing the
+    # top-level key is. The parser stack emits `game_id` on five of the six
+    # (`lineups` has none, and `shots` hardcodes it to None -- so reading the
+    # families' own value would leave shots unjoinable). Stamping the bundle's
+    # contest_id instead makes all six agree by construction. Pure dict work, so
+    # deliberately NOT inside a try: it cannot fail and must not be skipped.
+    for family in PER_GAME_FAMILIES:
+        for row in result[family]:
+            row.pop("game_id", None)
+            row["contest_id"] = contest_id
 
     # Identity join LAST, over whatever the six families produced -- a pure
     # additive pass, so a family that failed above simply has no rows to stamp.
@@ -303,9 +318,7 @@ def parse_bundle(
     return result
 
 
-def write_parsed(
-    root: "Union[str, Path]", league: str, contest_id: str, parsed: "dict[str, Any]"
-) -> Path:
+def write_parsed(root: "Union[str, Path]", league: str, contest_id: str, parsed: "dict[str, Any]") -> Path:
     """Write *parsed* to ``root/{league}/json/{contest_id}.json`` (plain utf-8 JSON, atomic)."""
     path = Path(root) / league / "json" / f"{contest_id}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -315,9 +328,7 @@ def write_parsed(
     return path
 
 
-def parse_and_write(
-    bundle: "dict[str, Any]", root: "Union[str, Path]", *, league: str = "wbb"
-) -> Path:
+def parse_and_write(bundle: "dict[str, Any]", root: "Union[str, Path]", *, league: str = "wbb") -> Path:
     """Convenience: :func:`parse_bundle` then :func:`write_parsed`."""
     parsed = parse_bundle(bundle, league=league, root=root)
     return write_parsed(root, league, parsed["contest_id"], parsed)
@@ -338,9 +349,7 @@ def _main() -> None:
     from ncaa_bundle import read_bundle
     from ncaa_capture import shard
 
-    parser = argparse.ArgumentParser(
-        description="Parse raw captured bundles into combined per-contest JSON."
-    )
+    parser = argparse.ArgumentParser(description="Parse raw captured bundles into combined per-contest JSON.")
     parser.add_argument(
         "--root",
         default=str(Path(__file__).resolve().parents[1]),
@@ -355,9 +364,7 @@ def _main() -> None:
     args = parser.parse_args()
     i, n = _parse_shard(args.shard)
 
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s"
-    )
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
     root = Path(args.root)
     raw_dir = root / args.league / "raw"
@@ -370,9 +377,7 @@ def _main() -> None:
             pending.append(p)
 
     my_paths = shard([str(p) for p in pending], i, n)
-    print(
-        f"bundles={len(bundle_paths)} pending={len(pending)} shard={i}/{n} assigned={len(my_paths)}"
-    )
+    print(f"bundles={len(bundle_paths)} pending={len(pending)} shard={i}/{n} assigned={len(my_paths)}")
 
     counts = {"parsed": 0, "failed": 0}
     for path_str in my_paths:
@@ -381,9 +386,7 @@ def _main() -> None:
             parse_and_write(bundle, root, league=args.league)
             counts["parsed"] += 1
         except Exception:  # noqa: BLE001 -- one bad bundle must not abort the run
-            logger.warning(
-                "ncaa_parse CLI: failed to parse %s", path_str, exc_info=True
-            )
+            logger.warning("ncaa_parse CLI: failed to parse %s", path_str, exc_info=True)
             counts["failed"] += 1
 
     print(f"parsed={counts['parsed']} failed={counts['failed']}")

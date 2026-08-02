@@ -34,12 +34,14 @@ Two join keys, both reused rather than reinvented:
   first place, run over the roster's ``clean_name`` to invert it. Not a second
   name normalizer; a different key space (codes, not names).
 
-**ESPN ids are reference data, not per-play data.** They ride on the season
-``teams`` dataset and on the two-row per-game ``teams`` block ONLY. The per-game
-families (``pbp``, ``possessions``, ``player_box``, ``team_box``, ``shots``,
-``lineups``) carry the NCAA team id, the player ids and the readable names --
-join ``teams`` on ``ncaa_team_id`` for the ESPN identity rather than repeating
-it on millions of play rows.
+**The per-game families carry BOTH id namespaces.** Every team-name column on
+``pbp`` / ``possessions`` / ``player_box`` / ``team_box`` / ``shots`` /
+``lineups`` gets an ``_ncaa_team_id`` AND an ``_espn_team_id`` beside it, and
+every row gets the game-level ``espn_game_id`` (from
+:mod:`ncaa_espn_game_xwalk`) next to its ``contest_id``. That makes each family
+independently joinable against both the NCAA and the ESPN/hoopR-wehoop sides
+without a lookup hop through the ``teams`` block -- which keeps its own full
+ESPN identity (display name, mascot, conference) as the reference row.
 
 **Never guesses, never drops.** The player index is scoped to the two teams in
 the game, and any key that resolves to more than one ``player_id`` is dropped
@@ -127,8 +129,8 @@ def _utf8_id(value: Any) -> Optional[str]:
 
 
 # --- the enriched column plan ----------------------------------------------
-#: family -> the existing team-NAME columns that get ``_ncaa_team_id`` stamped
-#: beside them. Deliberately NOT ``_espn_team_id``: see the module docstring.
+#: family -> the existing team-NAME columns that get ``_ncaa_team_id`` and
+#: ``_espn_team_id`` stamped beside them.
 TEAM_COLUMNS: Dict[str, Tuple[str, ...]] = {
     "pbp": ("home", "away", "event_team", "poss_team"),
     "possessions": ("home", "away", "poss_team"),
@@ -136,7 +138,7 @@ TEAM_COLUMNS: Dict[str, Tuple[str, ...]] = {
     "team_box": ("home", "away", "team"),
     # `shots.team_id` holds a team NAME despite its column name (the shots
     # adapter fills it from `shooting.team.name`); it is left untouched and the
-    # real id lands in `ncaa_team_id`.
+    # real ids land in `ncaa_team_id` / `espn_team_id`.
     "shots": ("team_id",),
 }
 
@@ -163,10 +165,26 @@ PLAYER_COLUMNS: Dict[str, Tuple[Tuple[str, str, str], ...]] = {
     "possessions": _ONCOURT_SPECS,
 }
 
-#: The one id column stamped for every team-name column, in both the
-#: ``{column}_`` suffixed form and (on ``shots``) the bare form.
-_TEAM_ID_KEY = "ncaa_team_id"
+#: The id columns stamped for every team-name column, in both the ``{column}_``
+#: suffixed form and (on ``shots``) the bare form.
+_TEAM_ID_KEYS = ("ncaa_team_id", "espn_team_id")
 _SHOTS_PLAYER_KEYS = ("shooter_player_id", "shooter_clean_name")
+
+#: The game-level ESPN event id, stamped on every row of every per-game family
+#: beside ``contest_id``. Built offline by :mod:`ncaa_espn_game_xwalk`.
+_ESPN_GAME_ID_KEY = "espn_game_id"
+
+#: The six per-game families, i.e. every family that gets ``espn_game_id``.
+#: Kept in sync with ``ncaa_parse.PER_GAME_FAMILIES`` (duplicated for the same
+#: reason ``_key_name`` is: no shared package across these checkouts).
+_PER_GAME_FAMILIES: Tuple[str, ...] = (
+    "pbp",
+    "lineups",
+    "player_box",
+    "team_box",
+    "shots",
+    "possessions",
+)
 
 
 def _teams_path(root: Union[str, Path], league: str, season: int) -> Path:
@@ -287,10 +305,11 @@ def _stamp_team(
     teams: Dict[str, Dict[str, Optional[str]]],
     stats: Dict[str, int],
 ) -> None:
-    """Write ``{column}_ncaa_team_id`` beside *column*. NCAA id only."""
+    """Write ``{column}_ncaa_team_id`` / ``{column}_espn_team_id`` beside *column*."""
     name = row.get(column)
     hit = teams.get(name) if name else None
-    row[f"{column}_{_TEAM_ID_KEY}"] = hit[_TEAM_ID_KEY] if hit else None
+    for key in _TEAM_ID_KEYS:
+        row[f"{column}_{key}"] = hit[key] if hit else None
     if name:
         stats["team_total"] += 1
         stats["team_hit" if hit else "team_miss"] += 1
@@ -312,6 +331,19 @@ def _stamp_player(
     if raw and raw.upper() not in _NOT_A_PLAYER:
         stats["player_total"] += 1
         stats["player_hit" if hit else "player_miss"] += 1
+
+
+def _espn_game_id_for(root: Union[str, Path], league: str, season: Optional[int], contest_id: Any) -> Optional[str]:
+    """This contest's ESPN event id from the offline crosswalk, or ``None``.
+
+    Absence of a crosswalk is never an exception: an unbuilt season, an
+    unmatched contest and an unreadable file all yield ``None``.
+    """
+    if season is None or not contest_id:
+        return None
+    from ncaa_espn_game_xwalk import load_espn_game_index
+
+    return load_espn_game_index(str(root), league, season).get(str(contest_id))
 
 
 def _team_name(value: Any) -> Optional[str]:
@@ -352,7 +384,10 @@ def enrich_parsed(
 
     Returns:
         The same dict, mutated in place, plus a new top-level ``teams`` list
-        (one row per side with the full readable team identity).
+        (one row per side with the full readable team identity). Every row of
+        every per-game family additionally carries ``espn_game_id`` -- always
+        present, null when the season's crosswalk is unbuilt or the contest has
+        no unambiguous ESPN match.
     """
     teams = load_team_index(str(root), league, season) if season is not None else {}
     rosters = load_roster_index(str(root), league, season) if season is not None else {}
@@ -387,7 +422,8 @@ def enrich_parsed(
             for column in columns:
                 if family == "shots":
                     hit = teams.get(row.get(column))
-                    row[_TEAM_ID_KEY] = hit[_TEAM_ID_KEY] if hit else None
+                    for key in _TEAM_ID_KEYS:
+                        row[key] = hit[key] if hit else None
                     if row.get(column):
                         stats["team_total"] += 1
                         stats["team_hit" if hit else "team_miss"] += 1
@@ -411,7 +447,8 @@ def enrich_parsed(
     for lineup in parsed.get("lineups") or []:
         for side in LINEUP_TEAM_COLUMNS:
             hit = teams.get(_team_name(lineup.get(side)))
-            lineup[f"{side}_{_TEAM_ID_KEY}"] = hit[_TEAM_ID_KEY] if hit else None
+            for key in _TEAM_ID_KEYS:
+                lineup[f"{side}_{key}"] = hit[key] if hit else None
             if _team_name(lineup.get(side)):
                 stats["team_total"] += 1
                 stats["team_hit" if hit else "team_miss"] += 1
@@ -429,9 +466,20 @@ def enrich_parsed(
                 stats["player_total"] += 1
                 stats["player_hit" if hit else "player_miss"] += 1
 
+    # The game-level ESPN event id, on every row of every family beside its
+    # contest_id. A season with no crosswalk built (or a contest ESPN has no
+    # match for) emits the key as null -- the column is always PRESENT so the
+    # frame schema never varies game-to-game.
+    espn_game_id = _espn_game_id_for(root, league, season, parsed.get("contest_id"))
+    for family in _PER_GAME_FAMILIES:
+        for row in parsed.get(family) or []:
+            row[_ESPN_GAME_ID_KEY] = espn_game_id
+
     parsed["teams"] = [
         dict(teams[name], side=side) if name in teams else {"side": side, "team": name} for side, name in sides if name
     ]
+    for team_row in parsed["teams"]:
+        team_row[_ESPN_GAME_ID_KEY] = espn_game_id
 
     # The join rate is REPORTED, never enforced: an unmatched name keeps its row
     # with a null id (a non-D-I exhibition opponent has no crosswalk row, a
