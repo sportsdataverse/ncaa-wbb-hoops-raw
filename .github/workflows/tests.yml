@@ -1,0 +1,52 @@
+name: tests
+
+# Offline capture-stack suite. This repo had NO CI at all (2026-08-02 pipeline
+# audit): the WBB scrapers were verified only when a human remembered to run
+# pytest locally, against a sibling sdv-py checkout.
+#
+# Runnable here at all only since the HTML fixtures were copied in-repo
+# (python/tests/fixtures/) -- they previously lived in a sibling ../../sdv-py
+# checkout, a path no runner has.
+#
+# Sparse-checkout on purpose: the captured `wbb/` tree is ~175k files the tests
+# never read. canary_vendors.toml.example IS read (test_ncaa_canary).
+
+on:
+  push:
+    branches: [main]
+    paths: ['python/**', '.github/workflows/tests.yml']
+  pull_request:
+    paths: ['python/**', '.github/workflows/tests.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            python
+            canary_vendors.toml.example
+          sparse-checkout-cone-mode: false
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: '3.12'
+
+      # No pyproject here by design -- the launchers run against a local sdv-py
+      # checkout via PYTHONPATH. CI has none, so install the engine from git;
+      # `main` is what the launchers effectively track.
+      - name: Install the engine + pytest
+        run: |
+          uv pip install --system pytest             "sportsdataverse @ git+https://github.com/sportsdataverse/sportsdataverse-py"
+
+      - name: Run the capture-stack suite
+        env:
+          PYTHONPATH: python
+        run: pytest python/ -q

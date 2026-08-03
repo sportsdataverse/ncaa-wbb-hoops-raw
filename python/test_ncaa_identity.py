@@ -20,8 +20,7 @@ from ncaa_identity import (
 )
 from ncaa_parse import parse_bundle
 
-_SDV_PY_ROOT = Path(__file__).resolve().parents[3] / "sdv-py"
-_FIX = _SDV_PY_ROOT / "tests" / "fixtures" / "ncaa" / "bigballr" / "html"
+_FIX = Path(__file__).resolve().parent / "tests" / "fixtures" / "ncaa" / "bigballr" / "html"
 
 LEAGUE = "wbb"
 SEASON = 2025
