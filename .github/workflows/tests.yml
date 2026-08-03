@@ -42,11 +42,14 @@ jobs:
       # No pyproject here by design -- the launchers run against a local sdv-py
       # checkout via PYTHONPATH. CI has none, so install the engine from git;
       # `main` is what the launchers effectively track.
+      # A venv, not --system: the runner's python is an externally-managed
+      # Debian install and rejects system-level pip installs (PEP 668).
       - name: Install the engine + pytest
         run: |
-          uv pip install --system pytest             "sportsdataverse @ git+https://github.com/sportsdataverse/sportsdataverse-py"
+          uv venv
+          uv pip install pytest             "sportsdataverse @ git+https://github.com/sportsdataverse/sportsdataverse-py"
 
       - name: Run the capture-stack suite
         env:
           PYTHONPATH: python
-        run: pytest python/ -q
+        run: .venv/bin/python -m pytest python/ -q
