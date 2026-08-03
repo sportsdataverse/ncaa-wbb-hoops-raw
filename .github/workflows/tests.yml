@@ -33,6 +33,8 @@ jobs:
           sparse-checkout: |
             python
             canary_vendors.toml.example
+            pyproject.toml
+            uv.lock
           sparse-checkout-cone-mode: false
 
       - uses: astral-sh/setup-uv@v6
