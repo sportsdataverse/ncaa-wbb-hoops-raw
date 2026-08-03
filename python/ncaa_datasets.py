@@ -19,6 +19,7 @@ own globals; patching this shim's namespace would have no effect.
 
 from functools import partial
 import inspect as _inspect
+import pathlib as _pathlib
 
 from sportsdataverse.scrape.ncaa import datasets as _engine
 
@@ -50,9 +51,14 @@ for _name in dir(_engine):
 del _name, _obj
 
 
+#: This repo's root -- the engine never infers it from its own location
+#: (it lives in sdv-py, not here), so every CLI is handed this explicitly.
+REPO_ROOT = str(_pathlib.Path(__file__).resolve().parents[1])
+
+
 def _main() -> None:
-    """CLI entry point -- ``--league`` defaults to this repo's league."""
-    _engine._main(LEAGUE)
+    """CLI entry point -- ``--league`` and ``--root`` default to this repo."""
+    _engine._main(LEAGUE, REPO_ROOT)
 
 
 if __name__ == "__main__":
