@@ -1,0 +1,42 @@
+[project]
+name = "ncaa-wbb-hoops-raw-scrape"
+version = "0.1.0"
+description = "stats.ncaa.org WBB capture-stack launchers for the ncaa-wbb-hoops-raw archive."
+requires-python = ">=3.11"
+# Verified against the actual import set of python/*.py, which outside stdlib
+# and the repo's own ncaa_* shims is exactly polars + sportsdataverse.
+dependencies = [
+    "sportsdataverse",
+    "polars>=1.0,<2.0",
+]
+
+[dependency-groups]
+# Declared, not assumed: `uv run pytest` executes inside the synced project
+# env, which has no access to globally-installed tools.
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+# The launchers are shims over sportsdataverse.scrape.ncaa, the shared NCAA
+# hoops engine (sdv-py #328/#330/#331), which lands on main ahead of PyPI.
+# Before this file, CI hand-installed that from git in the workflow body with
+# no lock, and the launchers relied on a PYTHONPATH into a sibling sdv-py
+# checkout that no runner has.
+[tool.uv.sources]
+sportsdataverse = { git = "https://github.com/sportsdataverse/sportsdataverse-py", branch = "main" }
+
+# Not an installable package: python/ holds flat ncaa_* modules and their
+# launchers, imported by path. uv still manages the venv and lock.
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+testpaths = ["python"]
+pythonpath = ["python"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# Pin the rule set explicitly; ruff's defaults shift between versions and can
+# turn a green tree red with no code change.
+select = ["E4", "E7", "E9", "F", "I"]
+ignore = ["E712"]

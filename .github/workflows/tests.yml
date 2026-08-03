@@ -39,17 +39,13 @@ jobs:
         with:
           python-version: '3.12'
 
-      # No pyproject here by design -- the launchers run against a local sdv-py
-      # checkout via PYTHONPATH. CI has none, so install the engine from git;
-      # `main` is what the launchers effectively track.
-      # A venv, not --system: the runner's python is an externally-managed
-      # Debian install and rejects system-level pip installs (PEP 668).
-      - name: Install the engine + pytest
-        run: |
-          uv venv
-          uv pip install pytest             "sportsdataverse @ git+https://github.com/sportsdataverse/sportsdataverse-py"
+      # pyproject.toml + uv.lock are the source of truth (2026-08-03). This
+      # workflow used to hand-install the engine from git in its own body, with
+      # no lock -- so CI and a developer's machine could silently resolve
+      # different sdv-py commits, which is the drift this repo has been bitten
+      # by before.
+      - name: Sync the locked project environment
+        run: uv sync --upgrade-package sportsdataverse
 
       - name: Run the capture-stack suite
-        env:
-          PYTHONPATH: python
-        run: .venv/bin/python -m pytest python/ -q
+        run: uv run --no-sync pytest -q
