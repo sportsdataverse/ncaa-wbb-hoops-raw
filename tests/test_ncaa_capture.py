@@ -10,13 +10,7 @@ from ncaa_bundle import is_captured, read_bundle
 from ncaa_capture import _select_pending, capture_contests, shard
 
 # Sibling checkout: .../sdv-dev/{wehoop-dev/ncaa-wbb-hoops-raw, sdv-py}.
-FIXTURE_DIR = (
-    Path(__file__).resolve().parent
-    / "fixtures"
-    / "ncaa"
-    / "bigballr"
-    / "html"
-)
+FIXTURE_DIR = Path(__file__).resolve().parent / "fixtures" / "ncaa" / "bigballr" / "html"
 
 CONTEST_IDS = [
     "1613299",
@@ -37,9 +31,7 @@ _FIXTURE_NAME = {
 
 
 def _fixture_text(key: str, contest_id: str) -> str:
-    return (FIXTURE_DIR / f"{_FIXTURE_NAME[key]}_{contest_id}.html").read_text(
-        encoding="utf-8"
-    )
+    return (FIXTURE_DIR / f"{_FIXTURE_NAME[key]}_{contest_id}.html").read_text(encoding="utf-8")
 
 
 def _fixture_fetch_pages_fn(fetcher: object, contest_id: str) -> dict:
@@ -57,9 +49,7 @@ def test_capture_contests_writes_bundles_matching_fixtures() -> None:
 
         for contest_id in CONTEST_IDS:
             assert is_captured(root, "wbb", "2026", contest_id) is True
-            bundle = read_bundle(
-                root / "wbb" / "raw" / "2026" / f"{contest_id}.json.gz"
-            )
+            bundle = read_bundle(root / "wbb" / "raw" / "2026" / f"{contest_id}.json.gz")
             fixture_len = len(_fixture_text("play_by_play", contest_id).encode("utf-8"))
             got_len = len(bundle["pages"]["play_by_play"].encode("utf-8"))
             assert abs(got_len - fixture_len) / fixture_len <= 0.02
@@ -68,9 +58,7 @@ def test_capture_contests_writes_bundles_matching_fixtures() -> None:
 def test_capture_contests_is_idempotent() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
-        capture_contests(
-            CONTEST_IDS, 2026, root=root, fetch_pages_fn=_fixture_fetch_pages_fn
-        )
+        capture_contests(CONTEST_IDS, 2026, root=root, fetch_pages_fn=_fixture_fetch_pages_fn)
 
         counts = capture_contests(
             CONTEST_IDS, 2026, root=root, fetch_pages_fn=_fixture_fetch_pages_fn
@@ -207,6 +195,8 @@ def test_select_pending_scopes_to_requested_season() -> None:
 
         assert sorted(pending_2025) == ["3", "4"]
         assert sorted(pending_2024) == ["1", "2"]
+        # int season vs Utf8 master column must not silently match nothing
+        assert _select_pending(master_path, 2099) == []
 
 
 def test_shard_disjoint_and_covers_all() -> None:
