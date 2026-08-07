@@ -15,7 +15,6 @@ from ncaa_discover import _season_str, discover_season
 # Sibling checkout: .../sdv-dev/{wehoop-dev/ncaa-wbb-hoops-raw, sdv-py}.
 FIXTURE = (
     Path(__file__).resolve().parent
-    / "tests"
     / "fixtures"
     / "ncaa"
     / "bigballr"

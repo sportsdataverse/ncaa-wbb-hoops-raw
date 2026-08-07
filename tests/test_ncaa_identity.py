@@ -20,7 +20,7 @@ from ncaa_identity import (
 )
 from ncaa_parse import parse_bundle
 
-_FIX = Path(__file__).resolve().parent / "tests" / "fixtures" / "ncaa" / "bigballr" / "html"
+_FIX = Path(__file__).resolve().parent / "fixtures" / "ncaa" / "bigballr" / "html"
 
 LEAGUE = "wbb"
 SEASON = 2025

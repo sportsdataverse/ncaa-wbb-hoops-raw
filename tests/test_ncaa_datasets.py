@@ -36,7 +36,7 @@ from ncaa_discover import discover_season
 from ncaa_rosters import capture_rosters
 
 # Sibling checkout: .../sdv-dev/{wehoop-dev/ncaa-wbb-hoops-raw, sdv-py}.
-_FIXTURES = Path(__file__).resolve().parent / "tests" / "fixtures" / "ncaa" / "bigballr" / "html"
+_FIXTURES = Path(__file__).resolve().parent / "fixtures" / "ncaa" / "bigballr" / "html"
 # South Carolina WBB, season 2025 (ending-year) -> crosswalk "2024-25".
 _TEAM_ID = 592003
 _SEASON = 2025

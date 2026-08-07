@@ -13,7 +13,6 @@ from ncaa_capture import _select_pending, capture_contests, shard
 # Sibling checkout: .../sdv-dev/{wehoop-dev/ncaa-wbb-hoops-raw, sdv-py}.
 FIXTURE_DIR = (
     Path(__file__).resolve().parent
-    / "tests"
     / "fixtures"
     / "ncaa"
     / "bigballr"

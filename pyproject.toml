@@ -29,7 +29,7 @@ sportsdataverse = { git = "https://github.com/sportsdataverse/sportsdataverse-py
 package = false
 
 [tool.pytest.ini_options]
-testpaths = ["python"]
+testpaths = ["tests"]
 pythonpath = ["python"]
 markers = [
     "archive: needs the full committed wbb/ raw archive tree (deselected in CI, which sparse-checks out only the code paths)",
