@@ -5,18 +5,20 @@ name: tests
 # pytest locally, against a sibling sdv-py checkout.
 #
 # Runnable here at all only since the HTML fixtures were copied in-repo
-# (python/tests/fixtures/) -- they previously lived in a sibling ../../sdv-py
+# (tests/fixtures/) -- they previously lived in a sibling ../../sdv-py
 # checkout, a path no runner has.
 #
-# Sparse-checkout on purpose: the captured `wbb/` tree is ~175k files the tests
-# never read. canary_vendors.toml.example IS read (test_ncaa_canary).
+# Sparse-checkout on purpose: the committed `wbb/` tree never lands on a
+# runner; the tests never read it. canary_vendors.toml.example IS read
+# (test_ncaa_canary). Tests that would need the archive tree carry the
+# `archive` marker and are deselected here.
 
 on:
   push:
     branches: [main]
-    paths: ['python/**', '.github/workflows/tests.yml']
+    paths: ['python/**', 'tests/**', 'scripts/**', 'pyproject.toml', 'uv.lock', '.github/workflows/tests.yml']
   pull_request:
-    paths: ['python/**', '.github/workflows/tests.yml']
+    paths: ['python/**', 'tests/**', 'scripts/**', 'pyproject.toml', 'uv.lock', '.github/workflows/tests.yml']
   workflow_dispatch:
 
 permissions:
@@ -32,6 +34,8 @@ jobs:
           fetch-depth: 1
           sparse-checkout: |
             python
+            tests
+            scripts
             canary_vendors.toml.example
             pyproject.toml
             uv.lock
@@ -40,14 +44,20 @@ jobs:
       - uses: astral-sh/setup-uv@v6
         with:
           python-version: '3.12'
+          cache-dependency-glob: uv.lock
 
-      # pyproject.toml + uv.lock are the source of truth (2026-08-03). This
-      # workflow used to hand-install the engine from git in its own body, with
-      # no lock -- so CI and a developer's machine could silently resolve
-      # different sdv-py commits, which is the drift this repo has been bitten
-      # by before.
+      # --frozen: the lockfile is the contract. sportsdataverse is a git source
+      # pinned in uv.lock, so a green run proves the launchers work against the
+      # sdv-py revision this repo actually claims -- not whatever main happens
+      # to resolve to at run time. Bump deliberately with `uv lock`.
       - name: Sync the locked project environment
-        run: uv sync --upgrade-package sportsdataverse
+        run: uv sync --frozen
+
+      - name: Lint (pinned ruff rule set)
+        run: uv run --no-sync ruff check python/ tests/
+
+      - name: Shell syntax check
+        run: bash -n scripts/*.sh
 
       - name: Run the capture-stack suite
-        run: uv run --no-sync pytest -q
+        run: uv run --no-sync pytest -q -m "not archive"
