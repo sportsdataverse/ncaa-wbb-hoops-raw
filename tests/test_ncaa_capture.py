@@ -6,7 +6,6 @@ import tempfile
 from pathlib import Path
 
 import polars as pl
-
 from ncaa_bundle import is_captured, read_bundle
 from ncaa_capture import _select_pending, capture_contests, shard
 

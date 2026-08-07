@@ -17,8 +17,8 @@ contract.
 own globals; patching this shim's namespace would have no effect.
 """
 
-from functools import partial
 import inspect as _inspect
+from functools import partial
 
 from sportsdataverse.scrape.ncaa import bundle as _engine
 

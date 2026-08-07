@@ -14,10 +14,9 @@ import json
 import tempfile
 from pathlib import Path
 
+import ncaa_datasets as nd
 import polars as pl
 import pytest
-
-import ncaa_datasets as nd
 from ncaa_datasets import (
     ROSTER_COLUMNS,
     SCHEDULE_COLUMNS,

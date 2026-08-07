@@ -17,9 +17,9 @@ contract.
 own globals; patching this shim's namespace would have no effect.
 """
 
-from functools import partial
 import inspect as _inspect
 import pathlib as _pathlib
+from functools import partial
 
 from sportsdataverse.scrape.ncaa import rosters as _engine
 

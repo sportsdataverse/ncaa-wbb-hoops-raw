@@ -11,9 +11,9 @@ from ncaa_canary import (
     CHALLENGE,
     CLEAN,
     STUB,
+    _vendor_ready,
     classify,
     classify_error,
-    _vendor_ready,
 )
 
 _REAL_PAGE = "<html>" + "<tr><td>play</td></tr>" * 100 + "</html>"  # >1 KB, no markers

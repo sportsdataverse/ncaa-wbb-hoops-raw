@@ -12,9 +12,8 @@ import tempfile
 from datetime import date
 from pathlib import Path
 
-import polars as pl
-
 import ncaa_espn_game_xwalk as xw
+import polars as pl
 from ncaa_espn_game_xwalk import (
     build_season_xwalk,
     load_espn_game_index,
