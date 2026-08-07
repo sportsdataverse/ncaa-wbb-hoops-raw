@@ -56,7 +56,6 @@ cover/
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -180,8 +179,12 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
-# Scrape logs (transient; the data tree is NOT ignored -- see below).
-/logs/
+# Stray root logs only (D8: top-level *.log/*.out never belong in git).
+# NOTE: `logs/` is deliberately NOT ignored (D22: run logs are tracked in
+# every repo; per-season names overwrite). The data tree is NOT ignored
+# either -- see below.
+/*.log
+/*.out
 
 # Proxy canary: creds + scorecards are local-only (canary_vendors.toml.example
 # IS committed; the filled-in canary_vendors.toml is NOT).
@@ -200,5 +203,18 @@ cython_debug/
 # https://raw.githubusercontent.com/sportsdataverse/ncaa-wbb-hoops-raw/main/wbb
 # -- a path that only resolves if the tree is committed to main.
 
-# oh-my-claudecode tooling scratch (not project files)
+# Tool scratch dirs (D10) -- bare and nested
 .omc/
+**/.omc/
+.Rproj.user/
+**/.Rproj.user/
+.ruff_cache/
+**/.ruff_cache/
+.understand-anything/
+**/.understand-anything/
+.superpowers/
+**/.superpowers/
+.pytest_cache/
+**/.pytest_cache/
+.venv/
+**/.venv/
