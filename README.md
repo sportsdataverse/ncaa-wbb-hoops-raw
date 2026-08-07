@@ -124,33 +124,38 @@ tail -f logs/backfill_<season>_<ts>.log   # path is printed at start of run_wbb_
 datacenter/cloud IPs, so it must be launched from a real terminal on a
 residential connection -- not scheduled or run from a cloud agent.
 
-## Season ceiling: 2025 (i.e. 2024-25) is the max
+## Season ceiling: tracks the bundled crosswalk (currently 2026, i.e. 2025-26)
 
 The bundled WBB team-id crosswalk
 (`sportsdataverse/wbb/data/ncaa_teamids_wbb.csv`) covers **2009-10 through
-2024-25 only** -- there is no 2025-26 row yet. This differs from MBB, whose
-crosswalk does cover 2025-26 (which is why the MBB launcher can default to
-the current season).
+2025-26** (the 2025-26 rows landed in sdv-py; 2026 discovery has already run
+clean here -- 6,019 contests in `schedule_master`, 359 schedule pages
+committed).
 
-`discover_season(2026, league="wbb")` raises `ValueError("No teams found in
-crosswalk for season=... ")`, worded as if the NCAA team-ids URL format had
-drifted -- for WBB the real cause is crosswalk coverage, not format drift.
-`scripts/run_wbb_backfill.sh` guards this up front and refuses `season >
-2025` with a message naming the actual cause, before any network call is
-made. `run_discover.sh` / `run_capture.sh` / `run_parse.sh` don't carry
+For a season past the crosswalk, `discover_season(..., league="wbb")` raises
+`ValueError("No teams found in crosswalk for season=... ")`, worded as if
+the NCAA team-ids URL format had drifted -- the real cause is crosswalk
+coverage, not format drift. `scripts/run_wbb_backfill.sh` guards this up
+front (`MAX_SEASON`, currently 2026) and refuses out-of-range seasons with a
+message naming the actual cause, before any network call is made. **Bump
+`MAX_SEASON` when the crosswalk grows** -- a stale guard reads as a capture
+hard-stop to the range driver (this burned the 2026-08-01 campaign's first
+round). `run_discover.sh` / `run_capture.sh` / `run_parse.sh` don't carry
 their own guard (they're thin pass-throughs to the python CLIs), so calling
 them directly with an out-of-range season still surfaces the raw
 crosswalk-coverage `ValueError` from `discover_season`.
 
-Extending the crosswalk to cover 2025-26 is a separate `sdv-py` change --
-out of scope for this repo.
-
 ## Safe-rate rule (capture)
 
-**1-2 workers max, ever.** Each worker is a *separate process* running
-`run_capture.sh` with a disjoint `--shard i/N` -- never threads inside one
-process, never 4+ processes. Measured: 1-2 browser workers is safe, 4
-workers gets banned.
+**The worker ceiling is pool-relative, not absolute** (user-verified
+2026-08-01 on the MBB sibling, `docs/SCRAPING_NOTES.md`): the old "1-2
+workers max" rule was measured on a shared datacenter pool. With per-worker
+DISJOINT sticky residential ports (the `decodo_patchright` port pool), up to
+8 workers have run clean — what matters is **per-IP pacing**, and the
+fetcher shards the port pool by worker index so workers never pile onto one
+port. Each worker is a *separate process* running `run_capture.sh` with a
+disjoint `--shard i/N` -- never threads inside one process. On a
+shared/unsharded pool, stay at 1-2:
 
 ```sh
 ./scripts/run_capture.sh --season 2025                    # 1 worker (proven-safe default)
@@ -158,8 +163,8 @@ workers gets banned.
 ./scripts/run_capture.sh --season 2025 --shard 1/2 &
 ```
 
-`run_wbb_backfill.sh` enforces the same ceiling: `WORKERS` must be `1` or
-`2`, anything else is refused before any network call.
+`run_wbb_backfill.sh` caps `WORKERS` at 1..16 (keep at least 2 ports per
+worker); anything else is refused before any network call.
 
 A ban-suspect response is a **hard stop**, not a retry: the process exits
 immediately (`BAN-SUSPECT: capture halted at contest_id=...`). Wait out the
@@ -185,10 +190,13 @@ automatically; nothing else in the capture/discover pipeline changes.
 Every stage is idempotent and re-runnable:
 
 - **discover** merges new contest_ids into the existing `schedule_master.parquet`
-  without touching rows already `captured=True`.
-- **capture** only fetches contest_ids where `captured==False` in the master
-  file; re-running after a ban-suspect stop (or a plain interruption) picks up
-  where it left off.
+  (and checkpoints each swept team page under `wbb/.discover/{season}/`, so an
+  aborted sweep resumes instead of restarting).
+- **capture** resume is **file-exists based**: a contest is skipped iff its
+  `wbb/raw/{season}/{contest_id}.json.gz` bundle is already on disk. The
+  master's `captured` column is vestigial (always `False`) — see
+  `docs/SCRAPING_NOTES.md` §5. Re-running after a ban-suspect stop (or a plain
+  interruption) picks up where it left off.
 - **parse** skips any contest_id that already has a `wbb/json/{contest_id}.json`
   output; re-running only parses newly captured bundles.
 
@@ -198,15 +206,19 @@ wholesale after any interruption.
 
 ## Status
 
-The `python/` package (bundle/capture/discover/parse + 25 tests) is
-complete and validated offline. **The live WBB backfill has not been run
-yet** -- these launchers are prepped, not exercised end-to-end against
-`stats.ncaa.org`. Run it yourself per "Run order" above.
+The `python/` package (league-binding shims over the shared
+`sportsdataverse.scrape.ncaa` engine, sdv-py #328/#330) is complete and
+validated offline. **The reference backfill HAS run live**: schedules,
+rosters and teams for 2011-2026 are committed under `wbb/` (2026: 359
+schedule + 359 roster pages, 2026-08-01). **The pbp capture has NOT yet
+produced bundles** -- the 2026-08-01 campaign's first round died on the
+stale season guard (fixed; see the season-ceiling section) and no
+`wbb/raw/` tree exists yet. Run it per "Run order" above.
 
-## Next step (Phase 2, not yet built)
+## Phase 2: the season `-data` builder
 
-The season `-data` builder (`../ncaa-wbb-hoops-data`, package
-`ncaa_wbb_data_build`, 9 `ncaa_wbb_*` datasets) is a **separate,
-not-yet-created repo** -- planned as a follow-up PR after this one merges,
-mirroring `../ncaa-mbb-hoops-data`. Don't expect
-`python -m ncaa_wbb_data_build` to work until that repo exists.
+The season `-data` builder lives in the sibling repo
+`../ncaa-wbb-hoops-data` (package `ncaa_wbb_data_build`), mirroring
+`../ncaa-mbb-hoops-data`. It ingests this repo's committed `wbb/` tree over
+HTTP from `main`, which is why the data tree must stay committed (see
+`.gitignore`).
