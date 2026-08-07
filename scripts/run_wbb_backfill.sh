@@ -17,12 +17,13 @@
 # capture loop now also self-aborts on a soft-ban (25 consecutive challenge
 # failures) instead of hammering.
 #
-# SEASON CEILING: the bundled WBB crosswalk (sportsdataverse/wbb/data/
-# ncaa_teamids_wbb.csv) covers 2009-10..2024-25 ONLY -- there is no 2025-26
-# row yet (unlike MBB's crosswalk, which does cover 2025-26). Season 2026 is
-# refused below with an accurate cause instead of letting discover_season()
-# raise its generic "crosswalk drift" ValueError. Extending the crosswalk to
-# 2025-26 is a separate sdv-py change, out of scope here.
+# SEASON CEILING: MAX_SEASON below must track the bundled WBB crosswalk
+# (sportsdataverse/wbb/data/ncaa_teamids_wbb.csv), which now covers
+# 2009-10..2025-26. An out-of-range season is refused below with an accurate
+# cause instead of letting discover_season() raise its generic "crosswalk
+# drift" ValueError. When sdv-py extends the crosswalk another season, bump
+# MAX_SEASON here (the 2026-08-01 campaign lost its first round to a stale
+# guard refusing a season the crosswalk already covered).
 #
 # Usage (run in YOUR terminal, on a residential IP -- stats.ncaa.org bans datacenter IPs):
 #   ./scripts/run_wbb_backfill.sh 2025                      # 1 worker, unlimited
@@ -39,7 +40,7 @@ PY="${SDV_PY}/.venv/Scripts/python.exe"
 
 SEASON="${1:?usage: run_wbb_backfill.sh <season>  (ending year, e.g. 2025)}"
 MIN_SEASON=2010
-MAX_SEASON=2025
+MAX_SEASON=2026
 case "$SEASON" in
   ''|*[!0-9]*)
     echo "REFUSING SEASON='${SEASON}' -- must be a plain integer ending year (e.g. 2025)." >&2
@@ -52,9 +53,10 @@ if [ "$SEASON" -lt "$MIN_SEASON" ]; then
 fi
 if [ "$SEASON" -gt "$MAX_SEASON" ]; then
   echo "REFUSING season=${SEASON} -- the bundled WBB crosswalk (sportsdataverse/wbb/data/ncaa_teamids_wbb.csv)" >&2
-  echo "  only covers seasons through ${MAX_SEASON} (i.e. 2024-25); there is no 2025-26 row yet." >&2
+  echo "  only covers seasons through ${MAX_SEASON}; there is no later row yet." >&2
   echo "  This is a crosswalk coverage gap, not the 'team-ids format drift' that discover_season()" >&2
-  echo "  would otherwise report. Extending the crosswalk to 2025-26 is a separate sdv-py change." >&2
+  echo "  would otherwise report. Extending the crosswalk is a separate sdv-py change; once it" >&2
+  echo "  lands, bump MAX_SEASON in this script." >&2
   exit 2
 fi
 
