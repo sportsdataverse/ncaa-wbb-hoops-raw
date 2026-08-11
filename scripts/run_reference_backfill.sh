@@ -53,23 +53,23 @@ for season in $(seq "$START" -1 "$END"); do
     rm -rf "${LEAGUE}/.discover/${season}"
   fi
   NCAA_VENDOR="$VENDOR" DISCOVER_WORKERS="$WORKERS" \
-    ./scripts/run_discover.sh --season "$season" >> "$LOG" 2>&1 \
+    ./scripts/run_01_schedules.sh --season "$season" >> "$LOG" 2>&1 \
     || say "  discover ${season} returned non-zero (tolerated; partial is fine)"
 
   say "=== ${season}: rosters (${WORKERS} shards) ==="
-  # run_rosters.sh has no fan-out of its own -- shard here. Serial would be
+  # run_04_rosters.sh has no fan-out of its own -- shard here. Serial would be
   # ~365 pages x ~11s = an hour per season; 12 disjoint shards on disjoint
   # sticky ports cut that to minutes.
   pids=()
   for i in $(seq 0 $((WORKERS - 1))); do
-    NCAA_VENDOR="$VENDOR" "$PY" python/ncaa_rosters.py \
+    NCAA_VENDOR="$VENDOR" "$PY" python/ncaa_wbb_04_rosters_scrape.py \
       --season "$season" --league "$LEAGUE" --shard "${i}/${WORKERS}" >> "$LOG" 2>&1 &
     pids+=($!)
   done
   for p in "${pids[@]}"; do wait "$p" || say "  a rosters shard exited non-zero (tolerated)"; done
 
   say "=== ${season}: compile teams/schedules/rosters ==="
-  ./scripts/run_datasets.sh --season "$season" --overwrite >> "$LOG" 2>&1 \
+  ./scripts/run_05_datasets.sh --season "$season" --overwrite >> "$LOG" 2>&1 \
     || say "  datasets ${season} returned non-zero"
 
   sched=$(ls "${LEAGUE}/schedules/html/${season}" 2>/dev/null | wc -l | tr -d ' ')

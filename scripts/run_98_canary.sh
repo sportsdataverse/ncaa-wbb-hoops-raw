@@ -5,8 +5,8 @@
 # needed -- creds come from canary_vendors.toml.
 #
 #   cp canary_vendors.toml.example canary_vendors.toml   # then fill in trial creds
-#   ./scripts/run_canary.sh                               # all vendors
-#   ./scripts/run_canary.sh --games 5                     # quick 5-game pass
+#   ./scripts/run_98_canary.sh                               # all vendors
+#   ./scripts/run_98_canary.sh --games 5                     # quick 5-game pass
 #   watch:  tail -f logs/canary_*.log
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1   # -> ncaa-wbb-hoops-raw repo root
@@ -27,7 +27,7 @@ export PYTHONIOENCODING=utf-8
 mkdir -p logs
 LOG="logs/canary_$(date +%Y%m%d_%H%M%S).log"
 echo "log -> ${LOG}  (watch: tail -f ${LOG})"
-"${PY}" python/ncaa_canary.py "$@" 2>&1 | tee -a "${LOG}"
+"${PY}" python/ncaa_wbb_98_canary_probe.py "$@" 2>&1 | tee -a "${LOG}"
 rc=${PIPESTATUS[0]}
 echo "EXIT=${rc}" | tee -a "${LOG}"
 exit "${rc}"

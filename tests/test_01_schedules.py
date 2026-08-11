@@ -7,7 +7,7 @@ from pathlib import Path
 
 import polars as pl
 import pytest
-from ncaa_discover import _season_str, discover_season
+from ncaa_wbb_01_schedules_scrape import _season_str, discover_season
 from sportsdataverse.mbb.mbb_ncaa_team_ids import ncaa_mbb_team_ids
 from sportsdataverse.wbb.wbb_ncaa_team_ids import ncaa_wbb_team_ids
 

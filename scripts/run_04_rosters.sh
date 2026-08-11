@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 # Capture one season's team rosters (with stats.ncaa.org player ids).
 #
-#   NCAA_VENDOR=decodo_patchright ./scripts/run_rosters.sh --season 2025
-#   ./scripts/run_rosters.sh --season 2025 --limit-teams 3    # smoke
+#   NCAA_VENDOR=decodo_patchright ./scripts/run_04_rosters.sh --season 2025
+#   ./scripts/run_04_rosters.sh --season 2025 --limit-teams 3    # smoke
 #
 # Also persists the rosters dataset tree from the SAME fetch (zero extra HTTP):
 #   wbb/rosters/html/{season}/{team_id}.html   -- the raw page
 #   wbb/rosters/json/{season}/{team_id}.json   -- player_id + clean_name + player
 # The compiled wbb/rosters/parquet/{season}.parquet is built separately by
-# ./scripts/run_datasets.sh (one non-sharded pass -- shards would race it).
+# ./scripts/run_05_datasets.sh (one non-sharded pass -- shards would race it).
 #
 # Resumable: existing wbb/team_rosters/{season}/{team_id}.json are skipped, and
 # a team whose rosters html is already committed is re-parsed offline.
@@ -23,7 +23,7 @@ export PYTHONPATH="${SDV_PY};$(pwd)/python"
 mkdir -p logs
 LOG="logs/rosters_$(date +%Y%m%d_%H%M%S).log"
 echo "log -> ${LOG}   (watch: tail -f ${LOG})"
-"$PY" python/ncaa_rosters.py "$@" 2>&1 | tee -a "$LOG"
+"$PY" python/ncaa_wbb_04_rosters_scrape.py "$@" 2>&1 | tee -a "$LOG"
 rc=${PIPESTATUS[0]}
 echo "EXIT=${rc}" | tee -a "$LOG"
 # Propagate the python exit code -- `$?` after a pipe is TEE's status, and a

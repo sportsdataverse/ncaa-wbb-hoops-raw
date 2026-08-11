@@ -1,4 +1,4 @@
-"""Offline tests for ncaa_parse (raw bundle -> combined parsed JSON). No network.
+"""Offline tests for ncaa_wbb_03_games_parse (raw bundle -> combined parsed JSON). No network.
 
 WBB retarget of the shared template's parser tests: sweeps the 4 real WBB
 fixture games under ``league="wbb"`` (the mbb template sweeps 8 ids -- 4 mbb
@@ -17,7 +17,7 @@ import tempfile
 from pathlib import Path
 
 from ncaa_bundle import read_bundle, write_bundle
-from ncaa_parse import parse_and_write, parse_bundle, write_parsed
+from ncaa_wbb_03_games_parse import parse_and_write, parse_bundle, write_parsed
 
 _FIX = Path(__file__).resolve().parent / "fixtures" / "ncaa" / "bigballr" / "html"
 

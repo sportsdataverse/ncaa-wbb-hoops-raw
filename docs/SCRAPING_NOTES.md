@@ -32,12 +32,12 @@ wbb/.discover/{season}/{team_id}.json   # per-team discovery checkpoints (gitign
 
 | Script | Stage |
 |---|---|
-| `run_canary.sh` | score proxy vendors against the bm-verify canary |
-| `run_discover.sh` | season -> contest_ids (fans out `DISCOVER_WORKERS`, default 12, then one merge pass) |
-| `run_capture.sh` | contest_ids -> raw bundles |
-| `run_parse.sh` | raw bundles -> json (fans out `PARSE_WORKERS`, default 12; offline) |
-| `run_rosters.sh` | season team rosters (with stats.ncaa.org player ids) |
-| `run_datasets.sh` | compile the season reference parquets (offline, not sharded) |
+| `run_98_canary.sh` | score proxy vendors against the bm-verify canary |
+| `run_01_schedules.sh` | season -> contest_ids (fans out `DISCOVER_WORKERS`, default 12, then one merge pass) |
+| `run_02_games.sh` | contest_ids -> raw bundles |
+| `run_03_parse.sh` | raw bundles -> json (fans out `PARSE_WORKERS`, default 12; offline) |
+| `run_04_rosters.sh` | season team rosters (with stats.ncaa.org player ids) |
+| `run_05_datasets.sh` | compile the season reference parquets (offline, not sharded) |
 | `run_wbb_backfill.sh` | one season, discover -> capture -> parse |
 | `run_wbb_backfill_range.sh` | multi-season campaign, newest-first, chunked + cooldowns |
 | `run_reference_backfill.sh` | reference-only campaign (schedules/rosters/teams) |
@@ -53,8 +53,8 @@ on 2026-08-01 a stale guard (still 2025) refused season 2026, and the range
 driver read the rc=2 as a capture hard-stop and burned the round on
 cooldowns.
 
-**League selection.** `ncaa_discover.discover_season` /
-`ncaa_rosters.capture_rosters` take `league="wbb"` (default) or `"mbb"` and pick
+**League selection.** `ncaa_wbb_01_schedules_scrape.discover_season` /
+`ncaa_wbb_04_rosters_scrape.capture_rosters` take `league="wbb"` (default) or `"mbb"` and pick
 the matching crosswalk from `_TEAM_ID_CROSSWALKS`. The page parsers, the fetch
 layer, and the canary are league-agnostic — `sportsdataverse.wbb.wbb_ncaa_fetch`
 re-exports the mbb fetch core *by reference*, and contest ids at stats.ncaa.org
@@ -177,7 +177,7 @@ and the OSS "fingerprint-only HTTP client" class can't work either), and OSS sen
 generators (none is a working/safe/maintained Python web generator).
 
 **Cost:** ~$9–45 per ~6300-game season (patchright free + residential ~$3/GB).
-Tooling: `python/ncaa_canary.py` + `scripts/run_canary.sh`.
+Tooling: `python/ncaa_wbb_98_canary_probe.py` + `scripts/run_98_canary.sh`.
 
 ---
 
@@ -218,7 +218,7 @@ Why it slipped through: the stub is HTTP **200** with **no ban marker**, so
 Callers rejected it as too-small and logged `"challenge not cleared"` — while the
 fetcher, believing it had succeeded, never re-solved and never rotated.
 
-> ⚠️ `ncaa_capture`'s `"challenge not cleared"` warning is emitted for **any** page
+> ⚠️ `ncaa_wbb_02_games_scrape`'s `"challenge not cleared"` warning is emitted for **any** page
 > failing `_is_clean`. It is not evidence of a challenge. It misled a whole
 > debugging session. Do not trust that log line — inspect the actual bytes.
 

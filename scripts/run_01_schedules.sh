@@ -6,7 +6,7 @@
 #   wbb/schedules/html/{season}/{team_id}.html   -- the raw page
 #   wbb/schedules/json/{season}/{team_id}.json   -- team/opponent ids AND names
 # The compiled wbb/schedules/parquet/{season}.parquet is built separately by
-# ./scripts/run_datasets.sh (one non-sharded pass -- shards would race it).
+# ./scripts/run_05_datasets.sh (one non-sharded pass -- shards would race it).
 #
 # Fans out DISCOVER_WORKERS shard processes (default 12) over disjoint team
 # slices, then runs ONE shard-less merge pass that reads every shard's per-team
@@ -47,12 +47,12 @@ echo "log -> ${LOG}  (watch: tail -f ${LOG})"
 PY="${SDV_PY}/.venv/Scripts/python.exe"
 rc=0
 if [[ " $* " == *" --shard "* ]]; then
-  "$PY" python/ncaa_discover.py "$@" 2>&1 | tee -a "${LOG}"
+  "$PY" python/ncaa_wbb_01_schedules_scrape.py "$@" 2>&1 | tee -a "${LOG}"
   rc=${PIPESTATUS[0]}
 else
   pids=()
   for i in $(seq 0 $((DISCOVER_WORKERS - 1))); do
-    "$PY" python/ncaa_discover.py "$@" --shard "${i}/${DISCOVER_WORKERS}" >> "${LOG}" 2>&1 &
+    "$PY" python/ncaa_wbb_01_schedules_scrape.py "$@" --shard "${i}/${DISCOVER_WORKERS}" >> "${LOG}" 2>&1 &
     pids+=($!)
   done
   # A shard that hard-stops on a ban is tolerated here: its teams stay
@@ -60,7 +60,7 @@ else
   # on a second team's page, so the loss is near-zero either way).
   for p in "${pids[@]}"; do wait "$p" || echo "a discover shard exited non-zero" >> "${LOG}"; done
   echo "=== merge pass (reads all shard checkpoints, writes schedule_master) ===" | tee -a "${LOG}"
-  "$PY" python/ncaa_discover.py "$@" 2>&1 | tee -a "${LOG}"
+  "$PY" python/ncaa_wbb_01_schedules_scrape.py "$@" 2>&1 | tee -a "${LOG}"
   rc=${PIPESTATUS[0]}
 fi
 echo "EXIT=${rc}" | tee -a "${LOG}"
