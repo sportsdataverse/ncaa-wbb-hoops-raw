@@ -10,7 +10,7 @@ name: tests
 #
 # Sparse-checkout on purpose: the committed `wbb/` tree never lands on a
 # runner; the tests never read it. canary_vendors.toml.example IS read
-# (test_ncaa_canary). Tests that would need the archive tree carry the
+# (test_98_canary). Tests that would need the archive tree carry the
 # `archive` marker and are deselected here.
 
 on:

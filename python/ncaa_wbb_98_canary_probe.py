@@ -48,3 +48,17 @@ for _name in dir(_engine):
     _obj = getattr(_engine, _name)
     globals()[_name] = partial(_obj, league=LEAGUE) if _needs_league(_obj) else _obj
 del _name, _obj
+
+
+def _main() -> None:
+    """CLI entry point -- the engine's ``main`` parses its own argv.
+
+    Unlike the other stages there is no ``(league, root)`` to hand over: the
+    canary reads its vendors and contest ids from ``canary_vendors.toml``
+    relative to the cwd the driver already sets.
+    """
+    raise SystemExit(_engine.main())
+
+
+if __name__ == "__main__":
+    _main()

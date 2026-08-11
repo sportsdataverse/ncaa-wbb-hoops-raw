@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # One-command NCAA WBB backfill: discover -> capture -> parse, resumable.
 #
-# Chains the per-stage launchers (run_discover/run_capture/run_parse.sh) in order.
+# Chains the per-stage launchers (run_discover/run_capture/run_03_parse.sh) in order.
 # RESUMABLE: capture skips already-captured contests; if it hard-stops on a ban,
 # wait a while and just re-run this script -- it picks up where it left off.
 # Parse is fully offline and safe to run on a partial capture.
@@ -92,7 +92,7 @@ need_discover() {
 }
 if need_discover; then
   say "=== discover ${SEASON} (season not in schedule_master yet) ==="
-  ./scripts/run_discover.sh --season "$SEASON" || { say "discover FAILED -- stopping (fix creds/network, then re-run)"; exit 1; }
+  ./scripts/run_01_schedules.sh --season "$SEASON" || { say "discover FAILED -- stopping (fix creds/network, then re-run)"; exit 1; }
 else
   say "=== skip discover (season ${SEASON} already in schedule_master; delete wbb/schedule_master.parquet to force) ==="
 fi
@@ -107,11 +107,11 @@ else
 fi
 rc=0
 if [ "$WORKERS" -eq 1 ]; then
-  ./scripts/run_capture.sh "${CAP_ARGS[@]}" --shard 0/1 || rc=$?
+  ./scripts/run_02_games.sh "${CAP_ARGS[@]}" --shard 0/1 || rc=$?
 else
   pids=()
   for i in $(seq 0 $((WORKERS-1))); do
-    ./scripts/run_capture.sh "${CAP_ARGS[@]}" --shard "${i}/${WORKERS}" &
+    ./scripts/run_02_games.sh "${CAP_ARGS[@]}" --shard "${i}/${WORKERS}" &
     pids+=($!)
   done
   for p in "${pids[@]}"; do wait "$p" || rc=$?; done
@@ -124,7 +124,7 @@ fi
 
 # --- 3) parse (offline; safe on a partial capture) -> wbb/json/{contest_id}.json ---
 say "=== parse captured bundles -> wbb/json/ ==="
-./scripts/run_parse.sh --league wbb || { say "parse FAILED"; exit 1; }
+./scripts/run_03_parse.sh --league wbb || { say "parse FAILED"; exit 1; }
 
 # --- summary + next step ---
 CAP="$(find wbb/raw -name '*.json.gz' 2>/dev/null | wc -l | tr -d ' ')"

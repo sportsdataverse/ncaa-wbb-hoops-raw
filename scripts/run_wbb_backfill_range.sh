@@ -8,7 +8,7 @@
 # canary_vendors.toml — the sticky session id is re-minted on every chunk, so
 # each chunk gets a fresh IP and the ~70min/~1400-bundle session ceiling never
 # binds). Discovery (team pages, ~350/season) stays on the sdv-py
-# ProxyBonanza browser transport inside run_discover.sh.
+# ProxyBonanza browser transport inside run_01_schedules.sh.
 #
 # SAFE RATE (measured 2026-07): 1-2 capture workers, serial preferred; chunk
 # ~1400 bundles per session. A ban/soft-ban hard-stops the chunk; this script

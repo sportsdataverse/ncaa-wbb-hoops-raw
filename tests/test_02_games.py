@@ -7,7 +7,7 @@ from pathlib import Path
 
 import polars as pl
 from ncaa_bundle import is_captured, read_bundle
-from ncaa_capture import _select_pending, capture_contests, shard
+from ncaa_wbb_02_games_scrape import _select_pending, capture_contests, shard
 
 # Sibling checkout: .../sdv-dev/{wehoop-dev/ncaa-wbb-hoops-raw, sdv-py}.
 FIXTURE_DIR = Path(__file__).resolve().parent / "fixtures" / "ncaa" / "bigballr" / "html"

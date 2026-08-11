@@ -47,7 +47,7 @@ game-scoped roster index as `player_1`/`player_2`.
 
 This is a retarget of the sibling `hoopR-dev/ncaa-mbb-hoops-raw` scraper --
 same transport, same fetcher, same safe-rate rules. The `python/` package
-(`ncaa_bundle.py` / `ncaa_capture.py` / `ncaa_discover.py` / `ncaa_parse.py`)
+(`ncaa_bundle.py` / `ncaa_wbb_02_games_scrape.py` / `ncaa_wbb_01_schedules_scrape.py` / `ncaa_wbb_03_games_parse.py`)
 defaults `--league` to `"wbb"` throughout; `"mbb"` remains a legitimate
 runtime value there for parity/regression checks against the MBB scraper.
 
@@ -69,15 +69,15 @@ values. `parse` is fully offline and needs no creds.
 ## Run order
 
 ```sh
-bash scripts/run_discover.sh --season 2025     # -> wbb/schedule_master.parquet
+bash scripts/run_01_schedules.sh --season 2025  # -> wbb/schedule_master.parquet
                                                #    + wbb/schedules/{html,json}/2025/
-bash scripts/run_capture.sh  --season 2025     # -> wbb/raw/2025/{contest_id}.json.gz
-bash scripts/run_parse.sh                      # -> wbb/json/{contest_id}.json
-bash scripts/run_rosters.sh  --season 2025     # -> wbb/rosters/{html,json}/2025/
-bash scripts/run_datasets.sh --season 2025     # -> the season parquets + wbb/teams/
+bash scripts/run_02_games.sh     --season 2025  # -> wbb/raw/2025/{contest_id}.json.gz
+bash scripts/run_03_parse.sh                    # -> wbb/json/{contest_id}.json
+bash scripts/run_04_rosters.sh   --season 2025  # -> wbb/rosters/{html,json}/2025/
+bash scripts/run_05_datasets.sh  --season 2025  # -> the season parquets + wbb/teams/
 ```
 
-`run_datasets.sh` is fully offline (no creds, no network) and **not sharded**:
+`run_05_datasets.sh` is fully offline (no creds, no network) and **not sharded**:
 each season parquet is a single output file, so concurrent `--shard` workers
 would race it. Run it once, after the sharded sweeps finish. It also re-derives
 any missing per-team json from committed html, so a parser fix can be replayed
@@ -102,7 +102,7 @@ drivers around the per-stage sequence:
   before moving on (re-run later to finish the remainder).
 - `scripts/run_reference_backfill.sh [start] [end]` — reference-only
   companion to the pbp backfill: per season (newest-first) it chains
-  `run_discover.sh` -> sharded `ncaa_rosters.py` -> `run_datasets.sh`,
+  `run_01_schedules.sh` -> sharded `ncaa_wbb_04_rosters_scrape.py` -> `run_05_datasets.sh`,
   then commits + pushes that season. Reference data is cheap (~2 pages
   per team-season vs 3 per game), so it runs first / independently of
   `run_wbb_backfill*.sh`; it does **no** pbp capture.
@@ -140,7 +140,7 @@ front (`MAX_SEASON`, currently 2026) and refuses out-of-range seasons with a
 message naming the actual cause, before any network call is made. **Bump
 `MAX_SEASON` when the crosswalk grows** -- a stale guard reads as a capture
 hard-stop to the range driver (this burned the 2026-08-01 campaign's first
-round). `run_discover.sh` / `run_capture.sh` / `run_parse.sh` don't carry
+round). `run_01_schedules.sh` / `run_02_games.sh` / `run_03_parse.sh` don't carry
 their own guard (they're thin pass-throughs to the python CLIs), so calling
 them directly with an out-of-range season still surfaces the raw
 crosswalk-coverage `ValueError` from `discover_season`.
@@ -153,14 +153,14 @@ workers max" rule was measured on a shared datacenter pool. With per-worker
 DISJOINT sticky residential ports (the `decodo_patchright` port pool), up to
 8 workers have run clean — what matters is **per-IP pacing**, and the
 fetcher shards the port pool by worker index so workers never pile onto one
-port. Each worker is a *separate process* running `run_capture.sh` with a
+port. Each worker is a *separate process* running `run_02_games.sh` with a
 disjoint `--shard i/N` -- never threads inside one process. On a
 shared/unsharded pool, stay at 1-2:
 
 ```sh
-./scripts/run_capture.sh --season 2025                    # 1 worker (proven-safe default)
-./scripts/run_capture.sh --season 2025 --shard 0/2 &       # 2 workers, only after 1-worker is stable
-./scripts/run_capture.sh --season 2025 --shard 1/2 &
+./scripts/run_02_games.sh --season 2025                    # 1 worker (proven-safe default)
+./scripts/run_02_games.sh --season 2025 --shard 0/2 &       # 2 workers, only after 1-worker is stable
+./scripts/run_02_games.sh --season 2025 --shard 1/2 &
 ```
 
 `run_wbb_backfill.sh` caps `WORKERS` at 1..16 (keep at least 2 ports per
@@ -181,7 +181,7 @@ cooldown before resuming.
 
 WBB play-by-play ships **one table per quarter** (4 regulation periods, 10
 minutes each, 5-minute overtimes -- `_WBB_PERIOD_MODEL = (4, 600, 300)` in
-`python/ncaa_parse.py`), where MBB ships **one table per half** (2 periods).
+`python/ncaa_wbb_03_games_parse.py`), where MBB ships **one table per half** (2 periods).
 `parse_bundle(..., league="wbb")` (the default) selects this period model
 automatically; nothing else in the capture/discover pipeline changes.
 
@@ -200,7 +200,7 @@ Every stage is idempotent and re-runnable:
 - **parse** skips any contest_id that already has a `wbb/json/{contest_id}.json`
   output; re-running only parses newly captured bundles.
 
-So `bash scripts/run_discover.sh --season 2025 && bash scripts/run_capture.sh --season 2025 && bash scripts/run_parse.sh`
+So `bash scripts/run_01_schedules.sh --season 2025 && bash scripts/run_02_games.sh --season 2025 && bash scripts/run_03_parse.sh`
 (or the equivalent `./scripts/run_wbb_backfill.sh 2025`) is safe to re-run
 wholesale after any interruption.
 

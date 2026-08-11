@@ -1,12 +1,16 @@
 """Offline checks for the canary's pure logic: classifier + vendor gating.
 
-No network, no browser. Run: pytest python/test_ncaa_canary.py
-(with PYTHONPATH="${SDV_PY}:${ROOT}/python", same as scripts/run_canary.sh).
+No network, no browser. Run: pytest tests/test_98_canary.py
+(with PYTHONPATH="${SDV_PY}:${ROOT}/python", same as scripts/run_98_canary.sh).
 """
 
 from __future__ import annotations
 
-from ncaa_canary import (
+import subprocess
+import sys
+from pathlib import Path
+
+from ncaa_wbb_98_canary_probe import (
     BAN,
     CHALLENGE,
     CLEAN,
@@ -87,3 +91,30 @@ def test_example_config_every_vendor_is_skipped() -> None:
         assert _vendor_ready(vendor), (
             f"{vendor.get('name')} should be skipped in the example config"
         )
+
+
+def test_module_entry_point_actually_runs_the_engine(tmp_path: Path) -> None:
+    """``python python/ncaa_<lg>_98_canary_probe.py`` must reach the engine.
+
+    Structural sibling to the stage gate's numbered/library check, but from
+    the other side: that one proves a ``__main__`` block EXISTS, this proves
+    it is WIRED to the engine's ``main``. A missing --config is the cheapest
+    engine-observable behavior (it returns 2 rather than probing anything),
+    so the check needs no network, no browser, and no vendor creds.
+
+    Regression: the shim reduction dropped this entry point entirely and
+    ``run_98_canary.sh`` reported EXIT=0 without probing a single vendor.
+    """
+    shim = next((Path(__file__).resolve().parents[1] / "python").glob("ncaa_*_98_canary_probe.py"))
+    missing = tmp_path / "not_a_config.toml"
+    done = subprocess.run(
+        [sys.executable, str(shim), "--config", str(missing)],
+        capture_output=True,
+        text=True,
+    )
+    assert done.returncode == 2, (
+        f"expected the engine's missing-config exit code 2, got {done.returncode}. "
+        f"rc=0 with empty output means the module ran and did nothing.\n"
+        f"stdout={done.stdout!r}\nstderr={done.stderr!r}"
+    )
+    assert "config not found" in done.stderr

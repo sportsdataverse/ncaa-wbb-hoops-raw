@@ -59,16 +59,31 @@ A stale guard does not fail loudly — it burns a campaign.
 ## Layout
 
 ```
-python/       # flat ncaa_* modules, run by path (NOT an installable package)
-  ncaa_discover.py  ncaa_capture.py  ncaa_parse.py  ncaa_bundle.py
-  ncaa_datasets.py  ncaa_rosters.py  ncaa_identity.py
-  ncaa_canary.py    ncaa_espn_game_xwalk.py
-scripts/      # bash drivers (see below)
+python/       # flat modules, run by path (NOT an installable package)
+  # numbered == a runnable stage with a CLI; the number is intended BUILD
+  # order, and a retired stage leaves a HOLE rather than renumbering the rest
+  ncaa_wbb_01_schedules_scrape.py   # -> schedule_master + schedules/
+  ncaa_wbb_02_games_scrape.py       # -> raw/{season}/{contest_id}.json.gz
+  ncaa_wbb_03_games_parse.py        # -> json/{contest_id}.json
+  ncaa_wbb_04_rosters_scrape.py     # -> rosters/{html,json}/{season}/
+  ncaa_wbb_05_datasets_build.py     # -> season parquets + teams/
+  ncaa_wbb_06_xwalk_build.py        # -> xwalk/{season}.parquet (no driver)
+  ncaa_wbb_98_canary_probe.py       # operator pre-flight, not a campaign stage
+  # 99 is reserved (D31) for the schedule-master/coverage split, which is
+  # still part of 01 and needs an engine change to separate.
+  # unnumbered == a LIBRARY imported by the stages, never run:
+  ncaa_bundle.py  ncaa_identity.py
+scripts/      # bash drivers (see below); run_NN_*.sh mirrors the shim number
 tests/        # suite + fixtures/ at repo ROOT, not under python/
 docs/         # SCRAPING_NOTES.md (required reading)
 logs/         # run logs (no longer gitignored — D22)
 wbb/          # the committed capture tree; see README.md
 ```
+
+`tests/test_stage_numbering.py` is the twin-parity gate over that layout: it
+holds the stage table, checks each `run_NN_*.sh` invokes its OWN numbered
+shim, and enforces the numbered/library split above. It is byte-identical
+with the MBB twin's copy — edit both.
 
 The `python/` modules are **shims over `sportsdataverse.scrape.ncaa`**, the
 shared NCAA hoops engine (sdv-py #328/#330/#331). Fix transport, fetcher, and
@@ -78,10 +93,10 @@ half-fixes the problem.
 
 ### scripts/
 
-Per-stage: `run_discover.sh`, `run_capture.sh`, `run_parse.sh`,
-`run_rosters.sh`, `run_datasets.sh`.
+Per-stage: `run_01_schedules.sh`, `run_02_games.sh`, `run_03_parse.sh`,
+`run_04_rosters.sh`, `run_05_datasets.sh`.
 
-Wrappers: `run_canary.sh` (pre-flight proxy-vendor scorecard),
+Wrappers: `run_98_canary.sh` (pre-flight proxy-vendor scorecard),
 `run_wbb_backfill.sh` (single-season discover->capture->parse chain; holds the
 `MAX_SEASON` guard), `run_wbb_backfill_range.sh` (multi-season campaign
 wrapping it), `run_reference_backfill.sh` (reference-only companion; no pbp

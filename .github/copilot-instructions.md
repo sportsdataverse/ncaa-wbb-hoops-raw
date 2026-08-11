@@ -58,16 +58,16 @@ uv sync --frozen
 uv run pytest -q -m "not archive"
 uv run ruff check python/ tests/
 
-bash scripts/run_discover.sh --season 2025
-bash scripts/run_capture.sh  --season 2025
-bash scripts/run_parse.sh
+bash scripts/run_01_schedules.sh --season 2025
+bash scripts/run_02_games.sh  --season 2025
+bash scripts/run_03_parse.sh
 ```
 
-Wrapper drivers: `run_canary.sh` (proxy pre-flight), `run_wbb_backfill.sh`
+Wrapper drivers: `run_98_canary.sh` (proxy pre-flight), `run_wbb_backfill.sh`
 (single-season chain; holds the `MAX_SEASON` guard),
 `run_wbb_backfill_range.sh` (multi-season campaign),
-`run_reference_backfill.sh` (reference-only), `run_rosters.sh`,
-`run_datasets.sh`, `run_autocommit.sh` (settle-aware incremental commits).
+`run_reference_backfill.sh` (reference-only), `run_04_rosters.sh`,
+`run_05_datasets.sh`, `run_autocommit.sh` (settle-aware incremental commits).
 
 ## Code Style
 

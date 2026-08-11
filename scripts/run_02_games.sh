@@ -2,9 +2,9 @@
 # User-run launcher: capture the 3-page bundle for a season's not-yet-captured
 # contests. SAFE RATE: 1-2 WORKERS MAX -- run this script as 1-2 separate
 # PROCESSES with disjoint --shard i/N, never 4+. See README.md.
-#   ./scripts/run_capture.sh --season 2025                  # 1 worker
-#   ./scripts/run_capture.sh --season 2025 --shard 0/2 &     # worker 0 of 2
-#   ./scripts/run_capture.sh --season 2025 --shard 1/2 &     # worker 1 of 2
+#   ./scripts/run_02_games.sh --season 2025                  # 1 worker
+#   ./scripts/run_02_games.sh --season 2025 --shard 0/2 &     # worker 0 of 2
+#   ./scripts/run_02_games.sh --season 2025 --shard 1/2 &     # worker 1 of 2
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1   # -> ncaa-wbb-hoops-raw repo root
 ROOT="$(pwd)"
@@ -29,7 +29,7 @@ export PYTHONIOENCODING=utf-8
 mkdir -p logs
 LOG="logs/capture_$(date +%Y%m%d_%H%M%S).log"
 echo "log -> ${LOG}  (watch: tail -f ${LOG})"
-"${SDV_PY}/.venv/Scripts/python.exe" python/ncaa_capture.py "$@" 2>&1 | tee -a "${LOG}"
+"${SDV_PY}/.venv/Scripts/python.exe" python/ncaa_wbb_02_games_scrape.py "$@" 2>&1 | tee -a "${LOG}"
 rc=${PIPESTATUS[0]}
 echo "EXIT=${rc}" | tee -a "${LOG}"
 # Propagate the python exit code -- a bare trailing `echo` would mask a

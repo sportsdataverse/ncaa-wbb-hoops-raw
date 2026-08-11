@@ -14,10 +14,12 @@ import json
 import tempfile
 from pathlib import Path
 
-import ncaa_datasets as nd
+import ncaa_wbb_05_datasets_build as nd
 import polars as pl
 import pytest
-from ncaa_datasets import (
+from ncaa_wbb_01_schedules_scrape import discover_season
+from ncaa_wbb_04_rosters_scrape import capture_rosters
+from ncaa_wbb_05_datasets_build import (
     ROSTER_COLUMNS,
     SCHEDULE_COLUMNS,
     TEAMS_COLUMNS,
@@ -31,8 +33,6 @@ from ncaa_datasets import (
     season_ncaa,
     season_teams,
 )
-from ncaa_discover import discover_season
-from ncaa_rosters import capture_rosters
 
 # Sibling checkout: .../sdv-dev/{wehoop-dev/ncaa-wbb-hoops-raw, sdv-py}.
 _FIXTURES = Path(__file__).resolve().parent / "fixtures" / "ncaa" / "bigballr" / "html"

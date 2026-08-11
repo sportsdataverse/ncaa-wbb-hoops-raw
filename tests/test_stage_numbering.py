@@ -4,23 +4,31 @@
 league-binding shims over ``sportsdataverse.scrape.ncaa`` (sdv-py #328):
 every ``python/ncaa_*.py`` module here is a thin ``LEAGUE``-bound re-export
 (see any of them -- there is no logic in this repo, only the binding), and
-both repos run the SAME five named stages in the SAME order --
-``discover -> capture -> parse -> rosters -> datasets`` (README "Run order").
+both repos run the SAME numbered stages in the SAME order (README "Run
+order").
 
-There is no numbered (``NN_``) stage-shim convention in this family -- that
-pattern belongs to the sibling ``*-data`` build repos (see
-``hoopR-nba-stats-data/tests/test_stage_inventory.py``), which iterate a
-dataset REGISTRY the numbers must track build-order against. This repo has
-no such registry: the "stages" are five fixed, named scripts wired by prose
-in the README and composed by the ``run_*_backfill*.sh`` drivers, not
-iterated by a build loop. So the parity contract here is the file INVENTORY
-plus the declared stage order, not NN<->registry-key agreement -- ordinal
-position in ``STAGES`` below stands in for the number.
+Stage files carry the house ``NN_`` convention (D31): a python shim is
+``ncaa_<lg>_<NN>_<key>_<verb>.py``, its driver is ``run_<NN>_<short>.sh``,
+and its suite is ``tests/test_<NN>_<short>.py``. The numbers are INTENDED
+BUILD ORDER, not the order a campaign driver happens to invoke them in, and
+a retired stage leaves a HOLE rather than renumbering its successors --
+cross-repo number semantics beat dense numbering. 99 is deliberately unused
+here: D31 reserves it for the schedule-master/coverage split, which is still
+part of discover (01) and cannot be separated without an engine change.
+
+The number also carries the delineation this family previously left to
+prose: **numbered == a runnable stage with a CLI, unnumbered == a library**
+imported by the stages (``ncaa_bundle``, ``ncaa_identity``). That is an
+executable rule, not a naming preference -- see
+``test_numbered_modules_are_runnable_and_libraries_are_not``, which exists
+because the shim reduction silently dropped the canary's ``__main__`` block
+and left its driver exiting 0 without probing anything.
 
 Portability: this file is designed to be byte-identical in both repos -- it
 derives its own league token from the repo directory name
-(``ncaa-<lg>-hoops-raw``) rather than hardcoding "mbb" or "wbb". Any diff
-between the two copies is drift, not a league difference.
+(``ncaa-<lg>-hoops-raw``) rather than hardcoding "mbb" or "wbb", and every
+test/script name below is league-free for the same reason. Any diff between
+the two copies is drift, not a league difference.
 """
 
 from __future__ import annotations
@@ -31,30 +39,42 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 
-# The five run-order stages, in the order README.md's "## Run order" section
-# runs them. This tuple IS the number-semantics contract for this family.
-STAGES = ("discover", "capture", "parse", "rosters", "datasets")
-
-# python/ shims that exist but are not one of the five pipeline stages.
-NON_STAGE_MODULES = ("bundle", "canary", "espn_game_xwalk", "identity")
-
-# python/ shims with no dedicated tests/test_ncaa_*.py -- exercised instead
-# through another module's test file (ncaa_rosters via test_ncaa_datasets).
-NO_DEDICATED_TEST = ("rosters",)
-
-# scripts/ wrappers common to both leagues (no league token in the name).
-COMMON_SCRIPTS = (
-    "run_autocommit",
-    "run_canary",
-    "run_capture",
-    "run_datasets",
-    "run_discover",
-    "run_parse",
-    "run_reference_backfill",
-    "run_rosters",
+# The numbered stages. Fields:
+#   num          -- the NN token (build order; holes are intentional)
+#   module_key   -- python/ncaa_<lg>_<num>_<module_key>.py
+#   short        -- run_<num>_<short>.sh and tests/test_<num>_<short>.py
+#   in_run_order -- appears in README's "## Run order" block, in this order
+#   has_test     -- carries a dedicated tests/test_<num>_<short>.py
+#   has_driver   -- carries a scripts/run_<num>_<short>.sh
+STAGES: tuple[tuple[str, str, str, bool, bool, bool], ...] = (
+    ("01", "schedules_scrape", "schedules", True, True, True),
+    ("02", "games_scrape", "games", True, True, True),
+    ("03", "games_parse", "parse", True, True, True),
+    # rosters is exercised through test_05_datasets (both persist via the
+    # same engine writers), so it carries no dedicated suite of its own.
+    ("04", "rosters_scrape", "rosters", True, False, True),
+    ("05", "datasets_build", "datasets", True, True, True),
+    # Run directly (python python/ncaa_<lg>_06_xwalk_build.py) after a
+    # season's schedules exist; no driver because it takes no proxy creds
+    # and no sharding.
+    ("06", "xwalk_build", "xwalk", False, True, False),
+    # Operator pre-flight, not part of a campaign -- hence the 98 block.
+    ("98", "canary_probe", "canary", False, True, True),
 )
 
-# Test FUNCTION names every twin must carry in each tests/test_ncaa_*.py file.
+# python/ncaa_<name>.py modules that are LIBRARIES, not stages: imported by
+# the numbered shims, never run. They keep the league-free ncaa_ prefix and
+# take no number precisely so the listing separates them at a glance.
+LIBRARY_MODULES = ("bundle", "identity")
+
+# scripts/ drivers that compose stages rather than being one. The league
+# pair (run_<lg>_backfill{,_range}) is added per-repo in the check below.
+CAMPAIGN_SCRIPTS = (
+    "run_autocommit",
+    "run_reference_backfill",
+)
+
+# Test FUNCTION names every twin must carry in each registered tests/ file.
 # This is the file-inventory checks' missing rung: those only prove the FILE
 # exists, so a same-named-file rewrite that quietly drops or renames a guard
 # (the 2026-08 finding: a "cleaner" rewrite dropped a dtype-mismatch probe,
@@ -66,12 +86,12 @@ COMMON_SCRIPTS = (
 # name sets (see the module docstring's portability note -- this file itself
 # must then stay byte-identical, so both copies get the same edit).
 REQUIRED_TEST_FUNCTIONS: dict[str, frozenset[str]] = {
-    "test_ncaa_bundle.py": frozenset(
+    "test_bundle.py": frozenset(
         {
             "test_round_trip",
         }
     ),
-    "test_ncaa_canary.py": frozenset(
+    "test_98_canary.py": frozenset(
         {
             "test_classify_ban_beats_size_floor",
             "test_classify_challenge_beats_size_floor",
@@ -79,11 +99,12 @@ REQUIRED_TEST_FUNCTIONS: dict[str, frozenset[str]] = {
             "test_classify_error_buckets",
             "test_classify_markerless_stub",
             "test_example_config_every_vendor_is_skipped",
+            "test_module_entry_point_actually_runs_the_engine",
             "test_vendor_ready_accepts_real_creds",
             "test_vendor_ready_skips_placeholders",
         }
     ),
-    "test_ncaa_capture.py": frozenset(
+    "test_02_games.py": frozenset(
         {
             "test_capture_contests_is_idempotent",
             "test_capture_contests_rejects_shell_page",
@@ -96,7 +117,7 @@ REQUIRED_TEST_FUNCTIONS: dict[str, frozenset[str]] = {
             "test_shard_disjoint_and_covers_all",
         }
     ),
-    "test_ncaa_datasets.py": frozenset(
+    "test_05_datasets.py": frozenset(
         {
             "test_build_teams_espn_columns_present_even_without_the_crosswalk",
             "test_build_teams_joins_a_present_espn_crosswalk",
@@ -132,7 +153,7 @@ REQUIRED_TEST_FUNCTIONS: dict[str, frozenset[str]] = {
             "test_season_teams_shape_and_utf8_id",
         }
     ),
-    "test_ncaa_discover.py": frozenset(
+    "test_01_schedules.py": frozenset(
         {
             "test_discover_aborts_on_consecutive_team_failures",
             "test_discover_resumes_from_checkpoint",
@@ -147,7 +168,7 @@ REQUIRED_TEST_FUNCTIONS: dict[str, frozenset[str]] = {
             "test_write_master_merges_and_preserves_captured",
         }
     ),
-    "test_ncaa_espn_game_xwalk.py": frozenset(
+    "test_06_xwalk.py": frozenset(
         {
             "test_ambiguous_single_team_day_resolves_to_null",
             "test_date_window_tier_absorbs_a_one_day_offset",
@@ -163,7 +184,7 @@ REQUIRED_TEST_FUNCTIONS: dict[str, frozenset[str]] = {
             "test_write_then_load_round_trips_an_offline_index",
         }
     ),
-    "test_ncaa_identity.py": frozenset(
+    "test_identity.py": frozenset(
         {
             "test_ambiguous_name_key_yields_null_not_a_coin_flip",
             "test_enrichment_is_additive_and_stamps_ids_on_every_family",
@@ -180,7 +201,7 @@ REQUIRED_TEST_FUNCTIONS: dict[str, frozenset[str]] = {
             "test_utf8_id_never_stringifies_a_float_as_dot_zero",
         }
     ),
-    "test_ncaa_parse.py": frozenset(
+    "test_03_parse.py": frozenset(
         {
             "test_all_fixtures_produce_six_family_keys",
             "test_bundle_written_then_read_still_parses",
@@ -202,7 +223,7 @@ REQUIRED_TEST_FUNCTIONS: dict[str, frozenset[str]] = {
 # reason so this dict can't quietly absorb something that should instead
 # have been added to REQUIRED_TEST_FUNCTIONS (in BOTH twins).
 LEAGUE_SPECIFIC_TESTS: dict[str, dict[str, tuple[str, str]]] = {
-    "test_ncaa_discover.py": {
+    "test_01_schedules.py": {
         "test_discover_season_league_wbb_selects_wbb_crosswalk_not_mbb": (
             "wbb",
             "asserts the wbb crosswalk sweep is disjoint from mbb's -- a fact "
@@ -210,7 +231,7 @@ LEAGUE_SPECIFIC_TESTS: dict[str, dict[str, tuple[str, str]]] = {
             "wrote it down; not a behavior MBB lacks.",
         ),
     },
-    "test_ncaa_parse.py": {
+    "test_03_parse.py": {
         "test_wbb_quarter_period_model_changes_period_length": (
             "wbb",
             "WBB-only delta: proves league='wbb' selects the 4-quarter period "
@@ -241,7 +262,37 @@ def _python_modules() -> set[str]:
 
 
 def _test_modules() -> set[str]:
-    return {p.stem.removeprefix("test_ncaa_") for p in (REPO / "tests").glob("test_ncaa_*.py")}
+    """Every tests/ file except this gate itself."""
+    return {p.name for p in (REPO / "tests").glob("test_*.py") if p.name != Path(__file__).name}
+
+
+def _expected_modules() -> set[str]:
+    lg = _league()
+    numbered = {f"ncaa_{lg}_{num}_{key}" for num, key, *_ in STAGES}
+    return numbered | {f"ncaa_{lib}" for lib in LIBRARY_MODULES}
+
+
+def _expected_test_files() -> set[str]:
+    staged = {f"test_{num}_{short}.py" for num, _key, short, _o, has_test, _d in STAGES if has_test}
+    return staged | {f"test_{lib}.py" for lib in LIBRARY_MODULES}
+
+
+def _has_cli(module_stem: str) -> bool:
+    """True if ``python python/<module_stem>.py`` actually does something.
+
+    Checked with ast, not by importing: a shim's body injects the engine's
+    names into its globals, so importing it to look for ``__main__`` would
+    both run that injection and still not tell us whether the file is
+    runnable. The marker is a module-level ``if __name__ == "__main__":``.
+    """
+    tree = ast.parse((REPO / "python" / f"{module_stem}.py").read_text(encoding="utf-8"))
+    return any(
+        isinstance(node, ast.If)
+        and isinstance(node.test, ast.Compare)
+        and isinstance(node.test.left, ast.Name)
+        and node.test.left.id == "__name__"
+        for node in tree.body
+    )
 
 
 def _test_functions(filename: str) -> set[str]:
@@ -260,18 +311,18 @@ def _scripts() -> set[str]:
 
 
 def _readme_run_order() -> list[str]:
-    """The stage sequence inside README's fenced ```sh Run order block, in order."""
+    """The ``NN`` tokens inside README's fenced ```sh Run order block, in order."""
     text = (REPO / "README.md").read_text(encoding="utf-8")
     section = text.split("## Run order", 1)[1]
     block = section.split("```sh", 1)[1].split("```", 1)[0]
-    return re.findall(r"run_(discover|capture|parse|rosters|datasets)\.sh", block)
+    return re.findall(r"run_(\d{2})_[a-z_]+\.sh", block)
 
 
 def test_layout_is_discoverable() -> None:
     """Guard the guard: if these come back empty, every check below is vacuous."""
     assert _league(), "could not derive a league token from the repo path"
     assert _python_modules(), "no python/ncaa_*.py shims found"
-    assert _test_modules(), "no tests/test_ncaa_*.py files found"
+    assert _test_modules(), "no tests/test_*.py files found"
     assert _scripts(), "no scripts/run_*.sh drivers found"
     assert _readme_run_order(), "README has no parseable '## Run order' stage sequence"
     assert REQUIRED_TEST_FUNCTIONS, "REQUIRED_TEST_FUNCTIONS registry is empty"
@@ -281,52 +332,117 @@ def test_layout_is_discoverable() -> None:
     )
 
 
+def test_numbered_modules_are_runnable_and_libraries_are_not() -> None:
+    """The number IS the promise: numbered == runnable stage, unnumbered == library.
+
+    This exists because the promise was silently broken. The shim reduction
+    (``8e92a31d9``) rewrote the canary as a re-export and dropped the
+    ``if __name__ == "__main__": raise SystemExit(main())`` its predecessor
+    carried, so ``run_98_canary.sh`` ran a file that defined some names and
+    exited 0 -- a green log, a written EXIT=0, and no probe. Nothing else in
+    the suite could see that: every other test imports the module rather
+    than running it.
+    """
+    lg = _league()
+    problems: list[str] = []
+    for num, key, *_ in STAGES:
+        module = f"ncaa_{lg}_{num}_{key}"
+        if not _has_cli(module):
+            problems.append(
+                f"{module}.py is numbered but has no `if __name__ == '__main__'` "
+                "block -- running it does nothing and its driver still exits 0"
+            )
+    for lib in LIBRARY_MODULES:
+        if _has_cli(f"ncaa_{lib}"):
+            problems.append(
+                f"ncaa_{lib}.py is documented as a LIBRARY but carries a CLI -- "
+                "give it a stage number or drop the entry point"
+            )
+    assert not problems, "\n".join(problems)
+
+
+def test_stage_numbers_are_unique_and_ascending() -> None:
+    """The table itself must stay a legible build order (holes allowed)."""
+    nums = [num for num, *_ in STAGES]
+    assert len(set(nums)) == len(nums), f"duplicate stage number(s) in STAGES: {nums}"
+    assert nums == sorted(nums), f"STAGES is not in ascending number order: {nums}"
+
+
 def test_python_shim_inventory_matches_the_documented_set() -> None:
-    expected = {f"ncaa_{s}" for s in (*STAGES, *NON_STAGE_MODULES)}
+    expected = _expected_modules()
     found = _python_modules()
     missing = expected - found
     extra = found - expected
     assert not missing, f"python/ is missing expected shim(s): {sorted(missing)}"
     assert not extra, (
         f"python/ has undocumented shim(s): {sorted(extra)} -- update STAGES/"
-        "NON_STAGE_MODULES in this file (in BOTH twins) if it's intentional."
+        "LIBRARY_MODULES in this file (in BOTH twins) if it's intentional."
     )
 
 
 def test_test_inventory_matches_shims_minus_documented_exceptions() -> None:
-    modules = {m.removeprefix("ncaa_") for m in _python_modules()}
-    needs_test = modules - set(NO_DEDICATED_TEST)
+    expected = _expected_test_files()
     found = _test_modules()
-    missing = needs_test - found
-    extra = found - modules
-    assert not missing, f"no tests/test_ncaa_*.py for: {sorted(missing)}"
-    assert not extra, f"tests/ has a test file with no matching python/ shim: {sorted(extra)}"
+    missing = expected - found
+    extra = found - expected
+    assert not missing, f"tests/ is missing expected suite(s): {sorted(missing)}"
+    assert not extra, (
+        f"tests/ has a suite with no matching entry in STAGES/LIBRARY_MODULES: {sorted(extra)}"
+    )
 
 
 def test_script_inventory_matches_the_documented_set() -> None:
     lg = _league()
-    expected = {*COMMON_SCRIPTS, f"run_{lg}_backfill", f"run_{lg}_backfill_range"}
+    expected = {
+        *CAMPAIGN_SCRIPTS,
+        *(f"run_{num}_{short}" for num, _k, short, _o, _t, has_driver in STAGES if has_driver),
+        f"run_{lg}_backfill",
+        f"run_{lg}_backfill_range",
+    }
     found = _scripts()
     missing = expected - found
     extra = found - expected
     assert not missing, f"scripts/ is missing expected driver(s): {sorted(missing)}"
     assert not extra, (
-        f"scripts/ has undocumented driver(s): {sorted(extra)} -- update COMMON_SCRIPTS "
-        "in this file (in BOTH twins), or add the league-specific pair, if intentional."
+        f"scripts/ has undocumented driver(s): {sorted(extra)} -- update STAGES/"
+        "CAMPAIGN_SCRIPTS in this file (in BOTH twins), or add the league-specific "
+        "pair, if intentional."
     )
 
 
+def test_every_stage_driver_invokes_its_own_numbered_shim() -> None:
+    """``run_NN_x.sh`` must call ``python/ncaa_<lg>_NN_*.py`` -- not a sibling.
+
+    The number is only meaningful if the driver and the shim it runs agree on
+    it; a copy-pasted driver still pointing at the stage it was cloned from
+    would otherwise look correctly numbered from the directory listing.
+    """
+    lg = _league()
+    problems: list[str] = []
+    for num, key, short, _order, _test, has_driver in STAGES:
+        if not has_driver:
+            continue
+        body = (REPO / "scripts" / f"run_{num}_{short}.sh").read_text(encoding="utf-8")
+        expected = f"python/ncaa_{lg}_{num}_{key}.py"
+        if expected not in body:
+            called = sorted(set(re.findall(r"python/(ncaa_\w+)\.py", body)))
+            problems.append(f"run_{num}_{short}.sh does not invoke {expected} (calls: {called})")
+    assert not problems, "\n".join(problems)
+
+
 def test_readme_run_order_matches_the_stage_tuple() -> None:
+    expected = tuple(num for num, _k, _s, in_order, _t, _d in STAGES if in_order)
     order = tuple(_readme_run_order())
-    assert order == STAGES, (
-        f"README '## Run order' lists {order}, expected the canonical sequence {STAGES}"
+    assert order == expected, (
+        f"README '## Run order' runs stages {order}, expected {expected} -- the "
+        "prose and the numbering are the same contract."
     )
 
 
 def test_test_function_inventory_has_no_undeclared_drift() -> None:
     """Per-file test FUNCTION names, not just filenames, must match the twins.
 
-    The file-inventory checks above only prove ``tests/test_ncaa_discover.py``
+    The file-inventory checks above only prove ``tests/test_01_schedules.py``
     exists in both repos -- they say nothing about what's INSIDE it. That gap
     is exactly how this repo's own drift shipped: one twin's rewrite of a
     regression test quietly dropped a guarded assertion under a new function

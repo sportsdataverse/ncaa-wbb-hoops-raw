@@ -18,13 +18,13 @@ from ncaa_identity import (
     load_roster_index,
     load_team_index,
 )
-from ncaa_parse import parse_bundle
+from ncaa_wbb_03_games_parse import parse_bundle
 
 _FIX = Path(__file__).resolve().parent / "fixtures" / "ncaa" / "bigballr" / "html"
 
 LEAGUE = "wbb"
 SEASON = 2025
-#: A real captured game with all six families populated (see test_ncaa_parse).
+#: A real captured game with all six families populated (see test_03_parse).
 KNOWN_GOOD_GAME = "5722355"
 
 
@@ -50,7 +50,7 @@ def _write_tree(
     *,
     season: int = SEASON,
 ) -> None:
-    """Materialize a {lg}/teams/json + {lg}/rosters/json tree, as ncaa_datasets writes it."""
+    """Materialize a {lg}/teams/json + {lg}/rosters/json tree, as ncaa_wbb_05_datasets_build writes it."""
     teams_path = root / LEAGUE / "teams" / "json" / f"{season}.json"
     teams_path.parent.mkdir(parents=True, exist_ok=True)
     teams_path.write_text(json.dumps(teams), encoding="utf-8")

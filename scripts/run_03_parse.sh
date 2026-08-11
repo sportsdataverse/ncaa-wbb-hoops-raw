@@ -22,12 +22,12 @@ echo "log -> ${LOG}  (watch: tail -f ${LOG})"
 PY="${SDV_PY}/.venv/Scripts/python.exe"
 rc=0
 if [[ " $* " == *" --shard "* ]]; then
-  "$PY" python/ncaa_parse.py "$@" 2>&1 | tee -a "${LOG}"
+  "$PY" python/ncaa_wbb_03_games_parse.py "$@" 2>&1 | tee -a "${LOG}"
   rc=${PIPESTATUS[0]}
 else
   pids=()
   for i in $(seq 0 $((PARSE_WORKERS - 1))); do
-    "$PY" python/ncaa_parse.py "$@" --shard "${i}/${PARSE_WORKERS}" >> "${LOG}" 2>&1 &
+    "$PY" python/ncaa_wbb_03_games_parse.py "$@" --shard "${i}/${PARSE_WORKERS}" >> "${LOG}" 2>&1 &
     pids+=($!)
   done
   for p in "${pids[@]}"; do wait "$p" || rc=$?; done
