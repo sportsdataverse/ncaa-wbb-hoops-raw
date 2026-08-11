@@ -16,9 +16,9 @@ name: tests
 on:
   push:
     branches: [main]
-    paths: ['python/**', 'tests/**', 'scripts/**', 'pyproject.toml', 'uv.lock', '.github/workflows/tests.yml']
+    paths: ['python/**', 'tests/**', 'scripts/**', 'pyproject.toml', 'uv.lock', 'README.md', '.github/workflows/tests.yml']
   pull_request:
-    paths: ['python/**', 'tests/**', 'scripts/**', 'pyproject.toml', 'uv.lock', '.github/workflows/tests.yml']
+    paths: ['python/**', 'tests/**', 'scripts/**', 'pyproject.toml', 'uv.lock', 'README.md', '.github/workflows/tests.yml']
   workflow_dispatch:
 
 permissions:
@@ -39,6 +39,10 @@ jobs:
             canary_vendors.toml.example
             pyproject.toml
             uv.lock
+            # tests/test_stage_numbering.py reads README.md ("## Run order")
+            # -- the gate's whole point is that prose and code cannot drift, so
+            # the runner must actually have the prose.
+            README.md
           sparse-checkout-cone-mode: false
 
       - uses: astral-sh/setup-uv@v6
