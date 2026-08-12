@@ -13,6 +13,83 @@ burned ~3 hours re-deriving facts already recorded in the sibling copy.
 
 ---
 
+## 2026-08-11 (MBB-measured) — WORKERS must be COPRIME to the run that left the gap
+
+**This one has not bitten WBB yet, and it will the first time a WBB campaign
+loses a shard.** Recorded here BEFORE the WBB capture runs, because the cost of
+learning it live is a campaign that looks healthy while one worker does all the
+remaining work.
+
+`capture.shard()` splits a season by `k % n` over the SORTED contest-id list —
+the same shared-engine function both leagues use. If a campaign runs with `n`
+workers and ONE shard dies (ban, hard-stop, round cap), the contests it never
+captured are exactly the positions `k ≡ r (mod n)`: a **stride-n residual**.
+Re-running with `m` workers lands that residual on exactly **`m / gcd(n, m)`**
+shards. A coprime `m` spreads it across ALL `m`; a shared factor concentrates
+it -- worst case `gcd(n, m) == m` puts every remaining fetch on ONE worker
+while the rest exit instantly with `captured=0 skipped=NNN`. (n=24, m=16 is
+the middle case: gcd 8, so 2 busy shards -- better than 1, far worse than 16.)
+
+Measured on the MBB twin, whose August campaign ran `WORKERS=24`:
+
+| WORKERS | shards with work | deepest shard (= wall clock) |
+|---|---|---|
+| 8 | 2 of 8 | 172 fetches |
+| 12 | 2 of 12 | 172 |
+| 16 | 3 of 16 | 86 |
+| 24 | 2 of 24 | 172 |
+| **23** | **23 of 23** | **9** |
+
+Switching 8 → 23 took the rate from **~3 captures/min to 34.6/min (11x)** and
+closed a 711-contest residual in ~50 minutes.
+
+**The rule: pick a `WORKERS` value coprime to the one that created the gap.**
+Against a stride-24 residual, 23 works; so would 25, 7, or 5. `run_wbb_backfill.sh`
+allows 1..24 (raised from 16 on 2026-08-12 specifically so the coprime 23 is
+reachable — a ceiling of 16 forces 8/12/16, all of which share a factor with 24).
+
+**The tell, in the log:** most workers printing `captured=0 skipped=~N/n` and
+exiting within seconds while one or two keep running. That is NOT "the season is
+nearly done" — it is the whole remainder queued behind one process.
+
+**Compute the shard depth BEFORE choosing WORKERS** — do not assume the stride
+is 24 for WBB; it will be whatever worker count WBB's own stranded run used:
+
+```python
+ids  = sorted(master.filter(season == S).contest_id)      # from schedule_master
+have = {p.name.split(".")[0] for p in os.scandir(f"wbb/raw/{S}")}
+miss = [k for k, c in enumerate(ids) if c not in have]
+for n in (8, 16, 23, 24):
+    deepest = max(sum(1 for k in miss if k % n == r) for r in range(n))
+    print(n, "->", deepest, "fetches deep")
+```
+
+**Corollary, also MBB-measured:** a `MAX_ROUNDS` abandonment, and the straggler
+guard's "un-capturable" label, are **NOT** evidence a contest has no page. 692 of
+711 contests so labelled captured cleanly on a healthy vendor once the work was
+spread. Do not write a season off on that signal alone.
+
+**What to actually DO about it:** the range driver advances past a season after
+a clean round leaves an unchanged nonzero remainder — it does not retry with a
+different shard count, so the residual survives until someone re-runs that
+season deliberately. The recovery is operator-driven:
+
+1. Re-canary (`run_98_canary.sh --games 10`) — confirm the vendor is healthy,
+   since a refused vendor produces the same "captured nothing" shape.
+2. Compute the shard depth (snippet above) for the season's CURRENT residual.
+3. Re-run that season alone with a coprime `WORKERS`
+   (`START=<s> END=<s> WORKERS=<coprime>`).
+4. If a round then captures nothing with a healthy vendor AND the deepest shard
+   is small, the remainder really is pageless — MBB's converged to 1-12 per
+   season that way.
+
+**And kill leftover workers between runs** — MBB found capture workers from a
+FINISHED season still alive 45 minutes later, holding proxy sessions and
+competing with the current round for the same port pool. Check for python
+processes older than the current season's start time and stop those by PID.
+
+---
+
 ## What is WBB-specific
 
 **Repo layout** (identical shape to MBB, `wbb/` instead of `mbb/`):

@@ -68,13 +68,22 @@ WORKERS="${WORKERS:-1}"
 # every worker piled onto the same handful of IPs. With canary-vendor sticky
 # residential sessions (NCAA_VENDOR=...), _vendor_fetcher rotates each worker's
 # proxy list to a disjoint offset, so what binds is per-IP pacing, not process
-# count. 16 is the cap; raise it only with a fresh measurement.
+# count. 24 is the cap: the Decodo pool is 50 ports and the rule is >=2 ports
+# per worker. Raised from 16 to match the MBB twin, where 23 workers ran a full
+# season clean at 34.6 captures/min on 2026-08-11.
+#
+# WHY THE CEILING MATTERS BEYOND THROUGHPUT: capture.shard() splits a season by
+# `k % n`, so a campaign that loses one shard leaves a stride-n residual. On a
+# re-run with m workers that residual lands on m/gcd(n,m) shards -- so a coprime
+# m spreads it across ALL m, while a shared factor concentrates it. Against the
+# stride-24 case MBB hit, m=23 gave 23 busy shards (deepest 9) where m=8/24 gave
+# 2 (deepest 172). A ceiling of 16 would REFUSE 23. See SCRAPING_NOTES 2026-08-11.
 case "$WORKERS" in
   ''|*[!0-9]*) WORKERS=0 ;;
 esac
-if [ "$WORKERS" -lt 1 ] || [ "$WORKERS" -gt 16 ]; then
-  echo "REFUSING WORKERS='${WORKERS}' -- must be 1..16 (each worker rides its own" >&2
-  echo "  disjoint sticky proxy session; more than 16 has not been measured)." >&2
+if [ "$WORKERS" -lt 1 ] || [ "$WORKERS" -gt 24 ]; then
+  echo "REFUSING WORKERS='${WORKERS}' -- must be 1..24 (each worker rides its own" >&2
+  echo "  disjoint sticky proxy session; pool is 50 ports, keep >=2 per worker)." >&2
   exit 2
 fi
 
