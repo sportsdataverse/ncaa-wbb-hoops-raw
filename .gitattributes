@@ -8,3 +8,12 @@ wbb/**/*.json.gz binary
 
 # Parquet is binary — `* text=auto` must never get a vote on it
 *.parquet binary
+
+# Shell scripts must be LF (Windows CRLF breaks them in bash/sh)
+*.sh text eol=lf
+
+# Additional binary types (line-ending normalization would corrupt these)
+*.rds  binary
+*.qs   binary
+*.png  binary
+*.gz   binary
