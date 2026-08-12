@@ -40,10 +40,12 @@ campaign.
 ## Before you launch — four preconditions
 
 1. **Decodo IPs only.** Binding user directive (2026-08-11). Set `VENDOR` /
-   `NCAA_VENDOR` to a `decodo_*` entry. `run_02_games.sh` now skips the
-   ProxyBonanza cred check when `--vendor` is passed (ported from the MBB twin
-   2026-08-12) — before that it demanded ProxyBonanza creds even for a
-   Decodo run.
+   `NCAA_VENDOR` to a `decodo_*` entry. `run_02_games.sh` skips the ProxyBonanza
+   cred check when **`NCAA_VENDOR`** is set (`2ae4a4a8`) — before that it
+   demanded ProxyBonanza creds even for a Decodo run. The gate keys on the ENV
+   VAR, not a `--vendor` CLI flag, because `run_wbb_backfill.sh` exports
+   `NCAA_VENDOR` and does not pass a flag; MBB carried the flag-keyed form as a
+   documented latent bug until 2026-08-12.
 
 2. **Canary first.** `bash scripts/run_98_canary.sh --games 10` and confirm
    PASS (>=90% clean games) before scaling. On 2026-08-11 the MBB canary scored
