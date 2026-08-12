@@ -35,8 +35,11 @@
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1          # -> ncaa-wbb-hoops-raw repo root
 ROOT="$(pwd)"
-SDV_PY="C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py"
-PY="${SDV_PY}/.venv/Scripts/python.exe"
+SDV_PY="${SDV_PY:-C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py}"
+# .venv layout is OS-dependent: Linux/droplet = .venv/bin, Windows = .venv/Scripts
+if [ -x "${SDV_PY}/.venv/bin/python" ]; then PY="${PY:-${SDV_PY}/.venv/bin/python}"
+else PY="${PY:-${SDV_PY}/.venv/Scripts/python.exe}"; fi
+export SDV_PY PY
 
 SEASON="${1:?usage: run_wbb_backfill.sh <season>  (ending year, e.g. 2025)}"
 MIN_SEASON=2010

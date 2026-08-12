@@ -20,7 +20,7 @@
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1   # -> ncaa-wbb-hoops-raw repo root
 ROOT="$(pwd)"
-SDV_PY="C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py"
+SDV_PY="${SDV_PY:-C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py}"
 DISCOVER_WORKERS="${DISCOVER_WORKERS:-12}"
 
 if [ -z "${NCAA_VENDOR:-}" ]; then
@@ -44,7 +44,9 @@ mkdir -p logs
 LOG="logs/discover_$(date +%Y%m%d_%H%M%S).log"
 echo "log -> ${LOG}  (watch: tail -f ${LOG})"
 
-PY="${SDV_PY}/.venv/Scripts/python.exe"
+# .venv layout is OS-dependent: Linux/droplet = .venv/bin, Windows = .venv/Scripts
+if [ -x "${SDV_PY}/.venv/bin/python" ]; then PY="${PY:-${SDV_PY}/.venv/bin/python}"
+else PY="${PY:-${SDV_PY}/.venv/Scripts/python.exe}"; fi
 rc=0
 if [[ " $* " == *" --shard "* ]]; then
   "$PY" python/ncaa_wbb_01_schedules_scrape.py "$@" 2>&1 | tee -a "${LOG}"

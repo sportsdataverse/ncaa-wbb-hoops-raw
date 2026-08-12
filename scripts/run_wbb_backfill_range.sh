@@ -33,7 +33,11 @@
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 ROOT="$(pwd)"
-PY="C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py/.venv/Scripts/python.exe"
+SDV_PY="${SDV_PY:-C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py}"
+# .venv layout is OS-dependent: Linux/droplet = .venv/bin, Windows = .venv/Scripts
+if [ -x "${SDV_PY}/.venv/bin/python" ]; then PY="${PY:-${SDV_PY}/.venv/bin/python}"
+else PY="${PY:-${SDV_PY}/.venv/Scripts/python.exe}"; fi
+export SDV_PY PY
 
 START="${1:-2025}"   # newest season to backfill (ending year; 2025 = 2024-25)
 END="${2:-2010}"     # oldest (crosswalk floor is 2009-10 -> season 2010)
