@@ -1,0 +1,9 @@
+[02:43:21] NCAA WBB backfill: season=2017 workers=32
+[02:43:21] watch this run:  tail -f /c/Users/saiem/Documents/GitHub-Data/sdv-dev/wehoop-dev/ncaa-wbb-hoops-raw/logs/backfill_2017_20260814_024321.log
+[02:43:21] === skip discover (season 2017 already in schedule_master; delete wbb/schedule_master.parquet to force) ===
+[02:43:21] === capture 2017: 32 worker(s), chunk=400 new bundles per worker ===
+[04:33:12] === parse captured bundles -> wbb/json/ ===
+[04:39:47] DONE: captured_bundles=52309 parsed_json=52309 (capture rc=0)
+[04:39:47] next -> build the -data parquet (Phase 2, not yet built as of this branch):
+[04:39:47]   cd /c/Users/saiem/Documents/GitHub-Data/sdv-dev/wehoop-dev/ncaa-wbb-hoops-raw/../ncaa-wbb-hoops-data && python -m ncaa_wbb_data_build build --dataset all --season 2017
+EXIT=0

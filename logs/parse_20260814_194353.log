@@ -1,0 +1,23 @@
+seasons=all bundles=92590 pending=311 force=False shard=2/16 assigned=20
+2026-08-14 19:44:13,374 INFO ncaa_identity: contest_id=1992645 teams 2698/2698 matched, players 6824/7404 matched
+2026-08-14 19:44:20,213 INFO ncaa_identity: contest_id=1996346 teams 2720/2720 matched, players 7377/7441 matched
+2026-08-14 19:44:21,743 INFO ncaa_identity: contest_id=1997592 teams 2533/2533 matched, players 6521/6900 matched
+2026-08-14 19:44:23,835 INFO ncaa_identity: contest_id=2047729 teams 1246/2497 matched, players 3511/6985 matched
+2026-08-14 19:44:26,201 INFO ncaa_identity: contest_id=2055632 teams 2299/2299 matched, players 6175/6261 matched
+parsed=20 failed=0
+841 INFO ncaa_identity: contest_id=2060419 teams 2628/2628 matched, players 6402/7212 matched
+parsed=20 failed=0
+945 INFO ncaa_identity: contest_id=2056538 teams 2935/2935 matched, players 8082/8132 matched
+2026-08-14 19:44:28,421 INFO ncaa_identity: contest_id=2060868 teams 2292/22parsed=19 failed=0
+6062/6233 matched
+parsed=20 failed=0
+683 INFO ncaa_identity: contest_id=2060408 teams 2602/2602 matched, players 6577/7110 matched
+parsed=20 failed=0
+
+id=2055029 teams 1980/1980 matched, players 4958/5337 matched
+parsed=19 failed=0
+19:44:23,422026-08-14 19:44:24,698 INFO ncaa_identity: contest_id=2053519 teams 2559/2559 matched, playe2026-08-14 19:44:24,802026-08-14 19:44:26,994 INFO ncaa_identity: contest_id=2056509 t2026-08-14 19:44:27,066 INFO 2026-08-14 19:44:27,34parsed=20 failed=0
+: contest_id=2060402 teams 2603/2603 matchedparsed=20 failed=0
+matched
+parsed=19 failed=0
+EXIT=0

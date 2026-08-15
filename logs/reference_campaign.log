@@ -1,0 +1,101 @@
+[2026-08-01 17:03:56] reference backfill: wbb seasons 2026..2011, workers=16, push=1
+[2026-08-01 17:03:56] watch: tail -f /c/Users/saiem/Documents/GitHub-Data/sdv-dev/wehoop-dev/ncaa-wbb-hoops-raw/logs/reference_backfill_20260801_170356.log
+[2026-08-01 17:03:56] === 2026: schedules ===
+[2026-08-01 17:03:56]   dropping stale .discover/2026 (checkpoints without HTML)
+[2026-08-01 17:09:35] === 2026: rosters (16 shards) ===
+[2026-08-01 17:14:58] === 2026: compile teams/schedules/rosters ===
+[2026-08-01 17:15:11] 2026: schedules_html=359 rosters_html=359
+[2026-08-01 17:15:15] 2026: committed
+[2026-08-01 17:15:27] 2026: pushed
+[2026-08-01 17:15:27] === 2025: schedules ===
+[2026-08-01 17:21:05] === 2025: rosters (16 shards) ===
+[2026-08-01 17:25:19] === 2025: compile teams/schedules/rosters ===
+[2026-08-01 17:25:44] 2025: schedules_html=359 rosters_html=359
+[2026-08-01 17:25:50] 2025: committed
+[2026-08-01 17:25:57] 2025: pushed
+[2026-08-01 17:25:57] === 2024: schedules ===
+[2026-08-01 17:31:35] === 2024: rosters (16 shards) ===
+[2026-08-01 17:36:24] === 2024: compile teams/schedules/rosters ===
+[2026-08-01 17:36:39] 2024: schedules_html=358 rosters_html=358
+[2026-08-01 17:36:44] 2024: committed
+[2026-08-01 17:36:53] 2024: pushed
+[2026-08-01 17:36:53] === 2023: schedules ===
+[2026-08-01 17:42:26] === 2023: rosters (16 shards) ===
+[2026-08-01 17:46:57] === 2023: compile teams/schedules/rosters ===
+[2026-08-01 17:47:12] 2023: schedules_html=361 rosters_html=361
+[2026-08-01 17:47:17] 2023: committed
+[2026-08-01 17:47:28] 2023: pushed
+[2026-08-01 17:47:28] === 2022: schedules ===
+[2026-08-01 17:53:33] === 2022: rosters (16 shards) ===
+[2026-08-01 17:58:43] === 2022: compile teams/schedules/rosters ===
+[2026-08-01 17:58:56] 2022: schedules_html=356 rosters_html=356
+[2026-08-01 17:59:00] 2022: committed
+[2026-08-01 17:59:08] 2022: pushed
+[2026-08-01 17:59:08] === 2021: schedules ===
+[2026-08-01 18:04:54] === 2021: rosters (16 shards) ===
+[2026-08-01 18:10:32] === 2021: compile teams/schedules/rosters ===
+[2026-08-01 18:10:43] 2021: schedules_html=355 rosters_html=355
+[2026-08-01 18:10:48] 2021: committed
+[2026-08-01 18:10:58] 2021: pushed
+[2026-08-01 18:10:58] === 2020: schedules ===
+[2026-08-01 18:17:11] === 2020: rosters (16 shards) ===
+[2026-08-01 18:23:43] === 2020: compile teams/schedules/rosters ===
+[2026-08-01 18:23:56] 2020: schedules_html=351 rosters_html=351
+[2026-08-01 18:24:00] 2020: committed
+[2026-08-01 18:24:08] 2020: pushed
+[2026-08-01 18:24:08] === 2019: schedules ===
+[2026-08-01 18:30:11] === 2019: rosters (16 shards) ===
+[2026-08-01 18:35:07] === 2019: compile teams/schedules/rosters ===
+[2026-08-01 18:35:19] 2019: schedules_html=351 rosters_html=351
+[2026-08-01 18:35:24] 2019: committed
+[2026-08-01 18:35:32] 2019: pushed
+[2026-08-01 18:35:32] === 2018: schedules ===
+[2026-08-01 18:41:39] === 2018: rosters (16 shards) ===
+[2026-08-01 18:47:06] === 2018: compile teams/schedules/rosters ===
+[2026-08-01 18:47:17] 2018: schedules_html=349 rosters_html=349
+[2026-08-01 18:47:21] 2018: committed
+[2026-08-01 18:47:30] 2018: pushed
+[2026-08-01 18:47:30] === 2017: schedules ===
+[2026-08-01 18:52:00] === 2017: rosters (16 shards) ===
+[2026-08-01 18:57:00] === 2017: compile teams/schedules/rosters ===
+[2026-08-01 18:57:11] 2017: schedules_html=349 rosters_html=349
+[2026-08-01 18:57:15] 2017: committed
+[2026-08-01 18:57:23] 2017: pushed
+[2026-08-01 18:57:23] === 2016: schedules ===
+[2026-08-01 19:02:15] === 2016: rosters (16 shards) ===
+[2026-08-01 19:07:06] === 2016: compile teams/schedules/rosters ===
+[2026-08-01 19:07:17] 2016: schedules_html=349 rosters_html=349
+[2026-08-01 19:07:22] 2016: committed
+[2026-08-01 19:07:29] 2016: pushed
+[2026-08-01 19:07:29] === 2015: schedules ===
+[2026-08-01 19:13:06] === 2015: rosters (16 shards) ===
+[2026-08-01 19:19:06] === 2015: compile teams/schedules/rosters ===
+[2026-08-01 19:19:17] 2015: schedules_html=349 rosters_html=349
+[2026-08-01 19:19:22] 2015: committed
+[2026-08-01 19:19:31] 2015: pushed
+[2026-08-01 19:19:31] === 2014: schedules ===
+[2026-08-01 19:24:58] === 2014: rosters (16 shards) ===
+[2026-08-01 19:30:32] === 2014: compile teams/schedules/rosters ===
+[2026-08-01 19:30:43] 2014: schedules_html=349 rosters_html=349
+[2026-08-01 19:30:46] 2014: committed
+[2026-08-01 19:30:54] 2014: pushed
+[2026-08-01 19:30:54] === 2013: schedules ===
+[2026-08-01 19:36:44] === 2013: rosters (16 shards) ===
+[2026-08-01 19:41:46] === 2013: compile teams/schedules/rosters ===
+[2026-08-01 19:41:57] 2013: schedules_html=345 rosters_html=345
+[2026-08-01 19:42:02] 2013: committed
+[2026-08-01 19:42:10] 2013: pushed
+[2026-08-01 19:42:10] === 2012: schedules ===
+[2026-08-01 19:47:12] === 2012: rosters (16 shards) ===
+[2026-08-01 19:52:34] === 2012: compile teams/schedules/rosters ===
+[2026-08-01 19:52:46] 2012: schedules_html=343 rosters_html=343
+[2026-08-01 19:52:50] 2012: committed
+[2026-08-01 19:52:57] 2012: pushed
+[2026-08-01 19:52:57] === 2011: schedules ===
+[2026-08-01 19:58:56] === 2011: rosters (16 shards) ===
+[2026-08-01 20:03:59] === 2011: compile teams/schedules/rosters ===
+[2026-08-01 20:04:10] 2011: schedules_html=344 rosters_html=344
+[2026-08-01 20:04:13] 2011: committed
+[2026-08-01 20:04:20] 2011: pushed
+[2026-08-01 20:04:20] reference backfill finished 2026..2011
+EXIT=0

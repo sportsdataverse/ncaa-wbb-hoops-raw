@@ -1,0 +1,9 @@
+2026-08-01 17:47:00,198 INFO ESPN crosswalk joined: 361/361 teams matched (season=2023)
+2026-08-01 17:47:06,710 INFO rebuilt 361 schedules frames for season=2023 from committed html
+2026-08-01 17:47:06,909 INFO schedules season parquet: 11423 rows from 361 teams (season=2023)
+2026-08-01 17:47:07,412 INFO backfilled 361 rosters for season=2023 from team_rosters/ (no html available)
+2026-08-01 17:47:11,386 INFO rebuilt 722 rosters frames for season=2023 from committed html
+2026-08-01 17:47:11,551 INFO rosters season parquet: 5062 rows from 361 teams (season=2023)
+2026-08-01 17:47:11,557 INFO teams season=2023 league=wbb: 361 teams
+datasets season=2023 league=wbb: {"schedules": 11423, "rosters": 5062, "teams": 361}
+EXIT=0

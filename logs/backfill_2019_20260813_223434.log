@@ -1,0 +1,11 @@
+[22:34:34] NCAA WBB backfill: season=2019 workers=32
+[22:34:34] watch this run:  tail -f /c/Users/saiem/Documents/GitHub-Data/sdv-dev/wehoop-dev/ncaa-wbb-hoops-raw/logs/backfill_2019_20260813_223434.log
+[22:34:34] === skip discover (season 2019 already in schedule_master; delete wbb/schedule_master.parquet to force) ===
+[22:34:34] === capture 2019: 32 worker(s), chunk=400 new bundles per worker ===
+[00:28:13] capture stopped (rc=127) -- a ban/soft-ban hard-stop or Ctrl-C (see the capture log).
+[00:28:13]   This is RESUMABLE: cool down (a ban clears in minutes-hours), then re-run this
+[00:28:13]   script -- already-captured contests are skipped.
+[00:28:13] === parse captured bundles -> wbb/json/ ===
+[00:35:27] DONE: captured_bundles=41411 parsed_json=41411 (capture rc=127)
+[00:35:27] capture INCOMPLETE (rc=127) -- re-run this script to continue before building.
+EXIT=127

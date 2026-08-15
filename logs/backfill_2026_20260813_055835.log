@@ -1,0 +1,4 @@
+[05:58:35] NCAA WBB backfill: season=2026 workers=32
+[05:58:35] watch this run:  tail -f /c/Users/saiem/Documents/GitHub-Data/sdv-dev/wehoop-dev/ncaa-wbb-hoops-raw/logs/backfill_2026_20260813_055835.log
+[05:58:35] === skip discover (season 2026 already in schedule_master; delete wbb/schedule_master.parquet to force) ===
+[05:58:35] === capture 2026 with 32 worker(s) (no chunk limit) ===

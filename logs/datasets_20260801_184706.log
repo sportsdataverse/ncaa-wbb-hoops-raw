@@ -1,0 +1,9 @@
+2026-08-01 18:47:08,210 INFO ESPN crosswalk joined: 349/349 teams matched (season=2018)
+2026-08-01 18:47:13,428 INFO rebuilt 349 schedules frames for season=2018 from committed html
+2026-08-01 18:47:13,618 INFO schedules season parquet: 10979 rows from 349 teams (season=2018)
+2026-08-01 18:47:14,068 INFO backfilled 349 rosters for season=2018 from team_rosters/ (no html available)
+2026-08-01 18:47:16,962 INFO rebuilt 698 rosters frames for season=2018 from committed html
+2026-08-01 18:47:17,109 INFO rosters season parquet: 4905 rows from 349 teams (season=2018)
+2026-08-01 18:47:17,114 INFO teams season=2018 league=wbb: 349 teams
+datasets season=2018 league=wbb: {"schedules": 10979, "rosters": 4905, "teams": 349}
+EXIT=0

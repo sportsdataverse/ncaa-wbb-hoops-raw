@@ -1,0 +1,28 @@
+pending=5602 shard=27/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:15:24,368 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786752924w27
+pending=5602 shard=29/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+pending=5602 shard=25/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:15:25,337 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786752925w29
+2026-08-14 20:15:25,369 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786752925w25
+pending=5602 shard=30/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:15:25,485 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786752925w30
+pending=5602 shard=28/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:15:26,926 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786752926w28
+2026-08-14 20:16:05,332 WARNING challenge not cleared for contest_id=390770 -- bundle not written
+2026-08-14 20:17:40,464 WARNING challenge not cleared for contest_id=396701 -- bundle not written
+2026-08-14 20:19:25,245 WARNING challenge not cleared for contest_id=399561 -- bundle not written
+captured=7 skipped=173 failed=0
+EXIT=0
+captured=8 skipped=172 failed=0
+captured=7 skipped=172 failed=1
+EXIT=0
+EXIT=0
+captured=8 skipped=172 failed=0
+EXIT=0
+captured=7 skipped=171 failed=2
+EXIT=0

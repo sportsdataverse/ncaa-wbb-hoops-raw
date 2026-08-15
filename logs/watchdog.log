@@ -1,0 +1,202 @@
+[2026-08-13 08:38:58] watchdog: league=wbb stall=900s interval=120s
+[2026-08-13 11:50:26] watchdog: league=wbb stall=480s interval=60s
+[2026-08-13 11:50:27] STALL: 6 worker(s) alive, no bundle written for 841s (>480) -- killing them
+  killed 102256
+  killed 22892
+  killed 66028
+  killed 106104
+  killed 71124
+  killed 114356
+[2026-08-13 11:50:28] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-13 14:39:25] STALL: 14 worker(s) alive, no bundle written for 517s (>480) -- killing them
+  killed 58252
+  killed 116720
+  killed 67536
+  killed 88900
+  killed 19180
+  killed 107112
+  killed 99392
+  killed 10540
+  killed 21524
+  killed 68620
+  killed 104068
+  killed 100900
+  killed 35828
+  killed 98692
+[2026-08-13 14:39:26] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-13 14:48:38] STALL: 64 worker(s) alive, no bundle written for 1070s (>480) -- killing them
+  killed 106600
+  killed 73876
+  killed 67168
+  killed 74644
+  killed 107732
+  killed 113640
+  killed 97372
+  killed 115516
+  killed 67648
+  killed 120136
+  killed 112328
+  killed 64044
+  killed 2244
+  killed 81324
+  killed 98120
+  killed 114484
+  killed 63476
+  killed 116152
+  killed 89160
+  killed 103536
+  killed 76744
+  killed 103488
+  killed 95764
+  killed 103332
+  killed 69708
+  killed 104704
+  killed 74096
+  killed 35096
+  killed 72072
+  killed 90356
+  killed 120164
+  killed 111408
+  killed 87740
+  killed 86324
+  killed 62308
+  killed 62608
+  killed 117876
+  killed 63392
+  killed 86960
+  killed 53980
+  killed 115424
+  killed 89116
+  killed 77904
+  killed 61500
+  killed 89216
+  killed 63424
+  killed 97848
+  killed 87332
+  killed 60992
+  killed 105580
+  killed 117424
+  killed 92000
+  killed 119856
+  killed 81048
+  killed 83108
+  killed 114360
+  killed 114376
+  killed 119604
+  killed 104560
+  killed 119476
+  killed 87992
+  killed 76080
+  killed 64320
+  killed 62912
+[2026-08-13 14:48:44] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-13 15:07:49] watchdog: league=wbb stall=480s interval=60s
+[2026-08-13 17:10:39] STALL: 10 worker(s) alive, no bundle written for 501s (>480) -- killing them
+  killed 116264
+  killed 110392
+  killed 46360
+  killed 92092
+  killed 81092
+  killed 111956
+  killed 114256
+  killed 63640
+  killed 87796
+  killed 53488
+[2026-08-13 17:10:39] killed; the season driver's wait() should now return and the campaign advance
+      0 [main] bash (69208) child_copy: cygheap read copy failed, 0x0..0x800014F80, done 0, windows pid 69208, Win32 error 299
+      0 [main] bash 470611 dofork: child -1 - forked process 69208 died unexpectedly, retry 0, exit code 0xC0000142, errno 11
+ops/watchdog_stalled_capture.sh: fork: retry: Resource temporarily unavailable
+[2026-08-13 18:57:51] STALL: 18 worker(s) alive, no bundle written for 501s (>480) -- killing them
+  killed 119124
+  killed 59444
+  killed 95844
+  killed 100836
+  killed 72064
+  killed 70848
+  killed 57892
+  killed 120668
+  killed 89772
+  killed 111844
+  killed 86796
+  killed 91608
+  killed 96984
+  killed 90940
+  killed 72196
+  killed 97008
+  killed 73580
+  killed 60016
+[2026-08-13 18:57:53] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-13 20:34:13] STALL: 14 worker(s) alive, no bundle written for 518s (>480) -- killing them
+  killed 63280
+  killed 60628
+  killed 126936
+  killed 119076
+  killed 71252
+  killed 106812
+  killed 57364
+  killed 50412
+  killed 77028
+  killed 3832
+  killed 123984
+  killed 110488
+  killed 79308
+  killed 104556
+[2026-08-13 20:34:14] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 00:28:12] STALL: 4 worker(s) alive, no bundle written for 490s (>480) -- killing them
+  killed 40300
+  killed 52108
+  killed 118488
+  killed 113392
+[2026-08-14 00:28:13] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 02:35:13] STALL: 4 worker(s) alive, no bundle written for 515s (>480) -- killing them
+  killed 74216
+  killed 125148
+  killed 25220
+  killed 54872
+[2026-08-14 02:35:14] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 08:28:43] STALL: 4 worker(s) alive, no bundle written for 491s (>480) -- killing them
+  killed 113124
+  killed 74900
+  killed 67872
+  killed 126304
+[2026-08-14 08:28:44] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 12:06:07] STALL: 2 worker(s) alive, no bundle written for 504s (>480) -- killing them
+  killed 106404
+  killed 86580
+[2026-08-14 12:06:08] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 13:58:59] STALL: 2 worker(s) alive, no bundle written for 524s (>480) -- killing them
+  killed 44872
+  killed 107488
+[2026-08-14 13:59:00] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 15:54:40] STALL: 2 worker(s) alive, no bundle written for 527s (>480) -- killing them
+  killed 4656
+  killed 28116
+[2026-08-14 15:54:40] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 17:54:11] STALL: 2 worker(s) alive, no bundle written for 497s (>480) -- killing them
+  killed 65400
+  killed 62660
+[2026-08-14 17:54:12] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 18:57:32] STALL: 2 worker(s) alive, no bundle written for 511s (>480) -- killing them
+  killed 87812
+  killed 61452
+[2026-08-14 18:57:32] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 19:29:44] STALL: 2 worker(s) alive, no bundle written for 483s (>480) -- killing them
+  killed 77100
+  killed 72792
+[2026-08-14 19:29:45] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 20:30:12] STALL: 2 worker(s) alive, no bundle written for 525s (>480) -- killing them
+  killed 75156
+  killed 78112
+[2026-08-14 20:30:13] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 20:58:59] STALL: 4 worker(s) alive, no bundle written for 542s (>480) -- killing them
+  killed 99904
+  killed 49496
+  killed 50604
+  killed 80112
+[2026-08-14 20:59:00] killed; the season driver's wait() should now return and the campaign advance
+[2026-08-14 21:09:44] STALL: 4 worker(s) alive, no bundle written for 1186s (>480) -- killing them
+  killed 113152
+  killed 84560
+  killed 32748
+  killed 112848
+[2026-08-14 21:09:44] killed; the season driver's wait() should now return and the campaign advance

@@ -1,0 +1,37 @@
+seasons=all bundles=91414 pending=940 force=False shard=14/16 assigned=5822026-08-14 18:38:05,374 INFO ncaa_identity: contest_id=3974746 teams 2659/2659 matched, players 6820/7248 matched2026-08-14 18:38:12,417 INFO 5 starters not found for period 5; using estimate
+2026-08-14 18:38:15,977 INFO ncaa_identity: contest_id=3977079 teams 2582/2582 matched, players 6511/7077 matched
+2026-08-14 18:38:19,675 INFO ncaa_identity: contest_id=3977974 teams 2892/2892 matched, players 7420/7949 matched
+2026-08-14 18:38:21,045 INFO ncaa_i2026-08-14 18:38:26,040 INFO ncaa_identity: contest_id=3979284 teams 2638/2638 m2026-08-14 18:38:28,118 INFO ncaa_i2026-08-14 18:38:31,438 INFO ncaa_identity: contest_id=3980275 teams 2249/2249 matched, players 5953/6123 matched
+2026-08-14 18:38:40,674 INFO ncaa_identity: contest_id=3982253 teams 2412/2412 matched, players 6483/6533 matched
+2026-08-14 18:38:42,797 INFO ncaa_identity: contest_id=3982866 teams 2390/2390 matched, players 6177/6503 matched
+2026-08-14 18:38:45,180 INFO ncaa_identity: contest_id=3983243 teams 2853/2853 matched, players 7671/7855 matched
+2026-08-14 18:38:49,977 INFO ncaa_identity: contest_id=3983903 teams 2633/2633 matched, players 7054/7252 matched
+2026-08-14 18:38:59,162 INFO ncaa_identity: contest_id=3996561 teams 2383/2383 matched, players 6018/6483 matched
+2parsed=58 failed=0
+81 INFO ncaa_identity: contest_id=5250285 teams 2649/2649 matched, players 7017/7272 matched
+2026-08-14 18:39:04,895 INFO ncaa_identity: contest_id=5250677 teams 2559/2559 matched, players 6649/7034 matched
+parsed=59 failed=0
+491 INFO ncaa_identity: contest_id=5249779 teams 2484/2484 matched, players 6155/6728 matched
+2026-08-14 18:39:08,576 INFO ncaa_identity: contest_id=5254415 teams 2656/2656 matched, players 6843/7268 matched
+parsed=59 failed=0
+652 INFO ncaa_identity: contest_id=5250881 teams 2927/2927 m2parsed=59 failed=0
+64 INFO ncaa_iparsed=59 failed=0
+944 INFO ncaa_identity: contest_id=5254198 teams 2546/2546 mparsed=59 failed=0
+/6918 matched
+parsed=59 failed=0
+135 INFO ncaa_identity: contest_id=5254425 teams 2725/2725 maparsed=58 failed=0
+7482 matched
+parsed=59 failed=0
+818 INFO ncaa_identity: contest_id=5250668 teams 2680/2680 matched, players 7099/7360 matched
+parsed=59 failed=0
+
+FO ncaa_identity: contest_id=5249794 teams 1120/2271 matched, players 3091/6185 matched
+parsed=59 failed=0
+_id=3984704 teams 2448/2448 matched, players 6652/6688 matched
+2026-08-14 18:39:00,487 INFO ncaa_identity: contest_id=4469493 teams 2229/2229 matched, players 5724/6074 matched
+2026-08-14 18:39:01,789 INFO ncaa_identity: contest_id=5246878 teams 2617/2617 matched, players 6595/7153 matched
+2026-08-14 18:39:04,061 INFO ncaa_identity: contest_id=5250278 teams 2484/2484 matched, players 6726/6812 matched
+[p1_s_e_e] [WARNING] [TeamId(name='Creighton')]v[TeamId(name='UNLV')] Flip court for periods: [[2, 3, 4]] because [total_shots={1: 35, 2: 33, 3: 30, 4:parsed=59 failed=0
+18, 2: 33, 3: 30, 4: 29}]
+parsed=59 failed=0
+EXIT=0

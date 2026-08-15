@@ -1,0 +1,701 @@
+[2026-08-01 17:03:56] reference backfill: wbb seasons 2026..2011, workers=16, push=1
+[2026-08-01 17:03:56] watch: tail -f /c/Users/saiem/Documents/GitHub-Data/sdv-dev/wehoop-dev/ncaa-wbb-hoops-raw/logs/reference_backfill_20260801_170356.log
+[2026-08-01 17:03:56] === 2026: schedules ===
+[2026-08-01 17:03:56]   dropping stale .discover/2026 (checkpoints without HTML)
+log -> logs/discover_20260801_170356.log  (watch: tail -f logs/discover_20260801_170356.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 17:09:29,613 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785618569w0
+2026-08-01 17:09:29,638 INFO resuming discovery: 359/359 team pages already checkpointed
+2026-08-01 17:09:29,657 INFO ESPN crosswalk joined: 359/359 teams matched (season=2026)
+discovered 6019 contest_ids for season=2026 shard=0/1
+EXIT=0
+[2026-08-01 17:09:35] === 2026: rosters (16 shards) ===
+2026-08-01 17:09:44,698 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785618584w5
+22026-08-01 17:10:03,633 INFO ESPN crosswalk joined: 359/359 teams matched (season=2026)
+2026-08-01 17:10:03,649 INFO team_id=610171 (Arkansas): 13 playe20262026-08-01 17:10:13,753 INFO team_id=610207 (Bradley): 14 playe22022026-08-01 17:10:23,595 INFO team_id=610271 (Central Mich.): 22026-08-2022026-08-01 17:10:33,677 INFO team_id=610311 (Dartmouth):2026-08-01 172026-08-01 17:10:43,940 INFO team_id=610351 (Eastern Mich.)2026-08-0120262026-08-01 17:12026-08-01 17:11:25,603 INFO team_id=610391 (Ga. Southern): 15 players
+2026-08-01 17:11:36,044 INFO team_id=610415 (Hofstra): 15 players
+2026-08-01 17:11:46,323 INFO team_id=610450 (Jacksonville): 12026-08-01 17:11:56,589 INFO team_id=610468 (LIU): 14 players
+2026-08-01 17:2026-08-01 17:12:06,715 INFO team_id=610043 (Mar2026-08-2026-08-01 12026-08-01 17:12:16,910 INFO team_id=610550 (Miss2026-082026-08-01 12026-08-01 17:12:27,151 INFO team_id=610590 2026-08-01 12026-08-012026-08-01 17:12:37,524 INFO team_id=609754 (Northe2026-02022026-08-01 17:12:50,012 INFO team_id=609768 (Ohio St.): 2026-08-02022026-08-01 2026-08-01 17:13:44,309 INFO team_id=609809 (Radford): 14 players
+2026-08-01 17:13:54,652 INFO team_id=609833 (Saint Peter's): 13 players
+2026-08-01 17:14:05,334 INFO team_id=609858 (South Fla.): 15 players
+2026-08-01 17:14:15,771 INFO team_id=609890 (Syracuse): 15 players
+2026-08-01 17:14:25,971 INFO team_id=609928 (Tulsa): 15 players
+2026-08-01 17:14:35,959 INFO team_id=610479 (UMass Lowell): 15 players
+2026-08-01 17:14:47,172 INFO team_id=609948 (VCU): 14 players
+2026-08-01 17:14:57,588 INFO team_id=609969 (Western Ky.): 14 players
+rosters season=2026 shard=11/16: written=22 skipped_existing=0 failed=0
+failed=0
+3/16: written=23 skipped_existing=0 failed=0
+ failed=0
+=0 failed=0
+[2026-08-01 17:14:58] === 2026: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_171458.log  (watch: tail -f logs/datasets_20260801_171458.log)
+2026-08-01 17:15:00,418 INFO ESPN crosswalk joined: 359/359 teams matched (season=2026)
+2026-08-01 17:15:06,392 INFO rebuilt 359 schedules frames for season=2026 from committed html
+2026-08-01 17:15:06,604 INFO schedules season parquet: 11548 rows from 359 teams (season=2026)
+2026-08-01 17:15:07,051 INFO backfilled 359 rosters for season=2026 from team_rosters/ (no html available)
+2026-08-01 17:15:10,591 INFO rebuilt 718 rosters frames for season=2026 from committed html
+2026-08-01 17:15:10,726 INFO rosters season parquet: 4969 rows from 359 teams (season=2026)
+2026-08-01 17:15:10,731 INFO teams season=2026 league=wbb: 359 teams
+datasets season=2026 league=wbb: {"schedules": 11548, "rosters": 4969, "teams": 359}
+EXIT=0
+[2026-08-01 17:15:11] 2026: schedules_html=359 rosters_html=359
+[2026-08-01 17:15:15] 2026: committed
+[2026-08-01 17:15:27] 2026: pushed
+[2026-08-01 17:15:27] === 2025: schedules ===
+log -> logs/discover_20260801_171527.log  (watch: tail -f logs/discover_20260801_171527.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 17:20:58,437 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785619258w0
+2026-08-01 17:20:58,461 INFO resuming discovery: 359/359 team pages already checkpointed
+2026-08-01 17:20:58,485 INFO ESPN crosswalk joined: 359/359 teams matched (season=2025)
+discovered 5960 contest_ids for season=2025 shard=0/1
+EXIT=0
+[2026-08-01 17:21:05] === 2025: rosters (16 shards) ===
+2026-08-01 17:21:12,012 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785619272w2
+2026-08-01 17:21:35,095 INFO ESPN crosswalk joined: 359/359 teams matched (season=2025)
+2026-08-01 17:21:35,105 INFO team_id=591934 (Air Force): 13 playe22022026-08-01 17:21:45,244 INFO team_id=591692 (BYU): 15 players
+2026-08-012026-08-01 17:22:02,299 INFO team_id=591711 (Canisius): 2026-08-01 12026-08-01 17:22:12,980 INFO team_id=591724 (Coppin St.2026-08-01 17:22026-08-01 17:22:24,776 INFO team_id=591737 (East Carolin2026-08-01 17:222026-08-01 17:22:34,979 INFO team_id=591700 (Fr2026-08-01 17:22:35,7292026-08-01 17:22:45,527 INFO team_id=591763 (Haw2026-08-01 17:22:42026-08-01 17:22:55,793 INFO team_id=591777 (Iowa St.): 12 players
+2026-08-01 17:23:06,111 INFO team_id=591786 (Lamar University): 13 players
+2026-08-01 17:23:16,303 INFO team_id=591799 (Marist): 15 players
+2026-08-01 17:23:26,406 INFO team_id=591813 (M2026-08-01 17:23:26,407 INFO 2026-08-01 17:23:36,677 INFO team_id=591936 (Navy): 14 players
+2026-08-01 17:23:47,294 INFO team_id=591846 (Northeastern): 15 players
+2026-08-01 17:23:57,570 INFO team_id=591862 (Oregon): 15 players
+2026-08-01 17:24:07,789 INFO team_id=591873 (Quinnipiac): 15 players
+2026-08-01 17:24:17,907 INFO team_id=591884 (Saint Mary's (CA)): 15 players
+2026-08-01 17:24:27,975 INFO team_id=592004 (South Dakota St.): 15 players
+2026-08-01 17:24:38,144 INFO team_id=591913 (Stony Brook): 14 players202026-08-01 17:24:48,148 INFO team_id=591930 (Tulane): 15 players
+2026-08-01 17:24:58,386 INFO team_id=591803 (UMES): 15 players
+2026-08-01 17:25:08,746 INFO team_id=591660 (Utah Valley): 14 playe20262026-08-01 17:25:18,806 INFO team_id=591953 (Western Ill.): 14 players
+rosters season=2025 shard=10/16: written=22 skipped_existing=0 failed=0
+sters season=2025 shard=6/16: written=23 skipped_existing=0 failed=0
+[2026-08-01 17:25:19] === 2025: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_172519.log  (watch: tail -f logs/datasets_20260801_172519.log)
+2026-08-01 17:25:26,350 INFO ESPN crosswalk joined: 359/359 teams matched (season=2025)
+2026-08-01 17:25:38,398 INFO rebuilt 359 schedules frames for season=2025 from committed html
+2026-08-01 17:25:38,594 INFO schedules season parquet: 11483 rows from 359 teams (season=2025)
+2026-08-01 17:25:39,120 INFO backfilled 359 rosters for season=2025 from team_rosters/ (no html available)
+2026-08-01 17:25:44,153 INFO rebuilt 718 rosters frames for season=2025 from committed html
+2026-08-01 17:25:44,333 INFO rosters season parquet: 5113 rows from 359 teams (season=2025)
+2026-08-01 17:25:44,339 INFO teams season=2025 league=wbb: 359 teams
+datasets season=2025 league=wbb: {"schedules": 11483, "rosters": 5113, "teams": 359}
+EXIT=0
+[2026-08-01 17:25:44] 2025: schedules_html=359 rosters_html=359
+[2026-08-01 17:25:50] 2025: committed
+[2026-08-01 17:25:57] 2025: pushed
+[2026-08-01 17:25:57] === 2024: schedules ===
+log -> logs/discover_20260801_172558.log  (watch: tail -f logs/discover_20260801_172558.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 17:31:27,853 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785619887w0
+2026-08-01 17:31:27,910 INFO resuming discovery: 358/358 team pages already checkpointed
+2026-08-01 17:31:27,941 INFO ESPN crosswalk joined: 358/358 teams matched (season=2024)
+discovered 5897 contest_ids for season=2024 shard=0/1
+EXIT=0
+[2026-08-01 17:31:35] === 2024: rosters (16 shards) ===
+2026-08-01 17:31:47,766 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785619907w142026-08-01 17:32:08,810 INFO ESPN crosswalk joined: 358/358 teams matched (season=2024)
+2026-08-01 17:32:08,831 INFO team_id=561175 (Air Force): 15 player2222026-08-01 17:32:19,198 INFO team_id=560627 (BYU): 14 players
+2026-08-01 17:32:29,703 INFO team_id=560638 (Butler): 14 players22026-08-01 17:32:40,086 INFO team_id=560679 (Clemson): 14 players
+2026-08-01 17:32:50,534 INFO team_id=560713 (Delaware St.): 17 players
+2026-08-01 17:33:00,878 INFO team_id=560753 (FIU): 13 players
+2026-08-01 17:33:11,252 INFO team_id=560770 (Georgia St.): 14 players
+2026-08-01 17:33:21,898 INFO team_id=560801 (Idaho): 14 players
+2026-08-01 17:33:32,328 INFO team_id=561250 (Kennesaw St.): 14 player2022026-08-01 17:33:42,730 INFO team_id=560848 (Longwood): 13 players202026-08-01 17:33:53,238 INFO team_id=560564 (Merrimack): 16 players202026-08-01 17:34:03,833 INFO team_id=560918 (Morgan St.): 14 p2026-08-2026-08-01 17:34:14,425 INFO team_id=560954 (Nicholls): 18 play2026-2026-08-01 17:34:24,980 INFO team_id=52026-08-01 17:34:25,018 IN2026-08-01 17:34:35,395 INFO team_id=52026-08-01 17:34:38,455 INFO team_2026-08-01 17:34:45,721 INFO t2026-08-01 17:34:48,754 INFO team2026-08-01 17:34:56,291 INFO team_2026-08-01 17:34:59,085 INFO team_id=2026-08-01 17:35:06,840 INFO team_id=562026-08-01 17:35:09,554 INFO tea2026-08-01 17:35:17,553 INFO team_id=5612026-08-01 17:35:19,873 I2026-08-01 17:35:28,058 INFO team_id=560652026-08-01 17:35:30,265 INFO team_2026-08-01 17:35:38,482 INFO team_id=5612026-08-01 17:36:13,477 INFO team_id=561187 (Vanderbilt): 13 players
+2026-08-01 17:36:23,687 INFO team_id=561221 (William & Mary): 15 players
+rosters season=2024 shard=13/16: written=22 skipped_existing=0 failed=0
+xisting=0 failed=0
+ten=23 skipped_existing=0 failed=0
+d=0
+[2026-08-01 17:36:24] === 2024: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_173624.log  (watch: tail -f logs/datasets_20260801_173624.log)
+2026-08-01 17:36:26,914 INFO ESPN crosswalk joined: 358/358 teams matched (season=2024)
+2026-08-01 17:36:34,030 INFO rebuilt 358 schedules frames for season=2024 from committed html
+2026-08-01 17:36:34,255 INFO schedules season parquet: 11429 rows from 358 teams (season=2024)
+2026-08-01 17:36:34,799 INFO backfilled 358 rosters for season=2024 from team_rosters/ (no html available)
+2026-08-01 17:36:38,848 INFO rebuilt 716 rosters frames for season=2024 from committed html
+2026-08-01 17:36:39,034 INFO rosters season parquet: 5055 rows from 358 teams (season=2024)
+2026-08-01 17:36:39,042 INFO teams season=2024 league=wbb: 358 teams
+datasets season=2024 league=wbb: {"schedules": 11429, "rosters": 5055, "teams": 358}
+EXIT=0
+[2026-08-01 17:36:39] 2024: schedules_html=358 rosters_html=358
+[2026-08-01 17:36:44] 2024: committed
+[2026-08-01 17:36:53] 2024: pushed
+[2026-08-01 17:36:53] === 2023: schedules ===
+log -> logs/discover_20260801_173653.log  (watch: tail -f logs/discover_20260801_173653.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 17:42:19,096 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785620539w0
+2026-08-01 17:42:19,138 INFO resuming discovery: 361/361 team pages already checkpointed
+2026-08-01 17:42:19,163 INFO ESPN crosswalk joined: 361/361 teams matched (season=2023)
+discovered 5821 contest_ids for season=2023 shard=0/1
+EXIT=0
+[2026-08-01 17:42:26] === 2023: rosters (16 shards) ===
+2026-08-01 17:42:36,543 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785620556w3
+2026-08-01 17:42:58,480 INFO ESPN crosswalk joined: 361/361 teams matched (season=2023)
+2026-08-01 17:42:58,494 INFO team_id=542067 (Alabama St.): 15 pla2022022026-08-01 17:43:09,403 INFO team_id=542803 (Belmont): 12 pla2026-02026-08-01 17:43:19,939 INFO team_id=542144 (Cal St. Fuller22026-08-01 2022022026-08-01 17:43:30,381 INFO team_id=542775 (Col. of 2026-08-01 17:42026-08-012026-08-01 17:43:40,572 INFO team_id=5422212026-08-01 122026-08-02026-08-01 17:43:50,728 INFO team_id=542252026-08-01 172026-08-01 17:43:52026-08-01 17:44:00,997 INFO team_id2026-08-01 17:44:05,7202026-08-012026-08-01 17:44:11,263 INFO team2026-08-2026-08-01 17:44:21,166 INF2026-08-01 17:44:21,401 INFO team_id2026-2026-08-01 17:44:56,183 INFO team_id=542373 (Manhattan): 14 players
+2026-08-01 17:45:06,319 INFO team_id=542409 (Minnesota): 14 players
+2026-08-01 17:45:16,550 INFO team_id=542459 (NJIT): 16 players
+2026-08-01 17:45:26,515 INFO team_id=542482 (North Texas): 15 players
+2026-08-01 17:45:36,556 INFO team_id=542518 (Oral Roberts): 14 players
+2026-08-01 17:45:46,667 INFO team_id=543491 (Queens (NC)): 14 players
+2026-08-01 17:45:56,810 INFO team_id=542580 (Saint Louis): 16 players
+2026-08-01 17:46:06,693 INFO team_id=542618 (South Dakota): 14 players
+2026-08-01 17:46:17,007 INFO team_id=542653 (Stetson): 14 players
+2026-08-01 17:46:27,080 INFO team_id=542686 (Toledo): 13 players
+2026-08-01 17:46:37,146 INFO team_id=542796 (UIW): 13 players
+2026-08-01 17:46:47,299 INFO team_id=542710 (Utah): 13 players
+2026-08-01 17:46:57,289 INFO team_id=542738 (West Virginia): 13 players
+rosters season=2023 shard=10/16: written=22 skipped_existing=0 failed=0
+FO team_id=542770 (Youngstown St.): 15 players
+rosters season=2023 shard=8/16: written=23 skipped_existing=0 failed=0
+[2026-08-01 17:46:57] === 2023: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_174657.log  (watch: tail -f logs/datasets_20260801_174657.log)
+2026-08-01 17:47:00,198 INFO ESPN crosswalk joined: 361/361 teams matched (season=2023)
+2026-08-01 17:47:06,710 INFO rebuilt 361 schedules frames for season=2023 from committed html
+2026-08-01 17:47:06,909 INFO schedules season parquet: 11423 rows from 361 teams (season=2023)
+2026-08-01 17:47:07,412 INFO backfilled 361 rosters for season=2023 from team_rosters/ (no html available)
+2026-08-01 17:47:11,386 INFO rebuilt 722 rosters frames for season=2023 from committed html
+2026-08-01 17:47:11,551 INFO rosters season parquet: 5062 rows from 361 teams (season=2023)
+2026-08-01 17:47:11,557 INFO teams season=2023 league=wbb: 361 teams
+datasets season=2023 league=wbb: {"schedules": 11423, "rosters": 5062, "teams": 361}
+EXIT=0
+[2026-08-01 17:47:12] 2023: schedules_html=361 rosters_html=361
+[2026-08-01 17:47:17] 2023: committed
+[2026-08-01 17:47:28] 2023: pushed
+[2026-08-01 17:47:28] === 2022: schedules ===
+log -> logs/discover_20260801_174728.log  (watch: tail -f logs/discover_20260801_174728.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 17:53:27,613 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785621207w0
+2026-08-01 17:53:27,634 INFO resuming discovery: 356/356 team pages already checkpointed
+2026-08-01 17:53:27,653 INFO ESPN crosswalk joined: 356/356 teams matched (season=2022)
+discovered 5511 contest_ids for season=2022 shard=0/1
+EXIT=0
+[2026-08-01 17:53:33] === 2022: rosters (16 shards) ===
+2026-08-01 17:53:38,147 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785621218w4
+2026-08-01 17:54:03,954 INFO ESPN crosswalk joined: 356/356 teams matched (season=2022)
+2026-08-01 17:54:03,964 INFO team_id=527225 (Abilene Christian): 15 2026-08-02026-08-01 17:54:14,084 INFO team_id=528480 (Auburn): 15 pla2026222026-08-01 17:54:34,488 INFO team_id=528495 (Bucknell): 12 players
+2026-08-01 17:54:53,120 INFO team_id=528743 (Chattanooga): 13 players
+2026-08-01 17:55:03,507 INFO team_id=528531 (Dayton): 14 players
+2026-08-01 17:55:31,275 INFO team_id=528546 (Eastern Wash.): 16 players
+2026-08-01 17:55:41,860 INFO team_id=528557 (George Mason): 14 players
+2026-08-01 17:55:52,213 INFO team_id=528571 (Holy Cross): 12 players
+2026-08-01 17:56:03,356 INFO team_id=528587 (Jacksonville St.): 13 players
+2026-08-01 17:56:13,567 INFO team_id=528812 (Lipscomb): 14 players
+2026-08-01 17:56:24,039 INFO team_id=528617 (McNeese): 13 players
+2026-08-01 17:56:34,473 INFO team_id=528632 (Montana): 13 players
+2026-08-01 17:56:45,710 INFO team_id=528650 (New Orleans): 15 players
+2026-08-02026-08-01 17:57:20,094 INFO team_id=528677 (Oregon St.): 13 players
+2026-08-01 17:57:30,621 INFO team_id=528693 (Rhode Island): 14 players
+2026-08-01 17:57:40,908 INFO team_id=528708 (Sam Houston): 16 players
+2026-08-01 17:57:51,222 INFO team_id=528723 (Southeast Mo. St.): 14 players
+2026-08-01 17:58:01,668 INFO team_id=527222 (Tarleton St.): 15 players
+2026-08-01 17:58:11,952 INFO team_id=528507 (UC Davis): 14 players
+2026-08-01 17:58:22,230 INFO team_id=528641 (UNCW): 16 players
+2026-08-01 17:58:32,641 INFO team_id=528769 (Villanova): 12 players
+2026-08-01 17:58:42,791 INFO team_id=528787 (Wisconsin): 14 players
+rosters season=2022 shard=13/16: written=22 skipped_existing=0 failed=0
+3 players
+rosters season=2022 shard=1/16: written=23 skipped_existing=0 failed=0
+[2026-08-01 17:58:43] === 2022: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_175843.log  (watch: tail -f logs/datasets_20260801_175843.log)
+2026-08-01 17:58:45,631 INFO ESPN crosswalk joined: 356/356 teams matched (season=2022)
+2026-08-01 17:58:51,625 INFO rebuilt 356 schedules frames for season=2022 from committed html
+2026-08-01 17:58:51,833 INFO schedules season parquet: 11211 rows from 356 teams (season=2022)
+2026-08-01 17:58:52,343 INFO backfilled 356 rosters for season=2022 from team_rosters/ (no html available)
+2026-08-01 17:58:55,854 INFO rebuilt 712 rosters frames for season=2022 from committed html
+2026-08-01 17:58:56,001 INFO rosters season parquet: 5211 rows from 356 teams (season=2022)
+2026-08-01 17:58:56,006 INFO teams season=2022 league=wbb: 356 teams
+datasets season=2022 league=wbb: {"schedules": 11211, "rosters": 5211, "teams": 356}
+EXIT=0
+[2026-08-01 17:58:56] 2022: schedules_html=356 rosters_html=356
+[2026-08-01 17:59:00] 2022: committed
+[2026-08-01 17:59:08] 2022: pushed
+[2026-08-01 17:59:08] === 2021: schedules ===
+log -> logs/discover_20260801_175908.log  (watch: tail -f logs/discover_20260801_175908.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 18:04:48,378 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785621888w0
+2026-08-01 18:04:48,400 INFO resuming discovery: 355/355 team pages already checkpointed
+2026-08-01 18:04:48,418 INFO ESPN crosswalk joined: 355/355 teams matched (season=2021)
+discovered 3823 contest_ids for season=2021 shard=0/1
+EXIT=0
+[2026-08-01 18:04:54] === 2021: rosters (16 shards) ===
+2026-08-01 18:05:00,448 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785621900w2
+2026-08-01 18:05:26,134 INFO ESPN crosswalk joined: 355/355 teams matched (season=2021)
+2026-08-01 18:05:26,144 INFO team_id=505814 (Alabama A&M): 13 pla2202202026-08-01 18:05:37,344 INFO team_id=505851 (Baylor): 12 players222026-08-01 18:05:48,788 INFO team_id=505890 (CSUN): 12 players
+2026-08-01 18:06:00,379 INFO team_id=505906 (Cleveland St.): 16 players
+2026-08-01 18:06:11,984 INFO team_id=505922 (Denver): 15 players
+2026-08-01 18:06:23,776 INFO team_id=505959 (FIU): 12 players
+2026-08-01 18:06:35,244 INFO team_id=505968 (Georgia St.): 14 players
+2026-08-01 18:06:48,486 INFO team_id=506368 (IUPUI): 14 players
+2026-08-01 18:07:00,394 INFO team_id=506017 (Kansas St.): 14 players
+2026-08-01 18:07:11,666 INFO team_id=506261 (Louisiana): 14 players
+2026-08-01 18:07:22,82026-08-01 18:07:27,805 INFO team_id=506259 (Miss2026-08-01 18:07:34,0622026-08-01 18:07:40,490 INFO team_id=506136 (New Mexi2026-08-01 18:07:2026-08-01 18:07:51,646 INFO team_id=506153 (Northern2026-08-01 18:07:562026-08-01 18:08:09,551 INFO team_id=506169 (Penn): 15 players
+2026-08-01 18:08:28,214 INFO team_id=506202 (Richmond): 16 players
+2026-08-01 18:08:39,144 INFO team_id=506238 (San Diego): 14 players
+2026-08-01 18:08:56,621 INFO team_id=506252 (Southern California): 14 players
+2026-08-01 18:09:07,490 INFO team_id=506268 (Tennessee St.): 13 players
+2026-08-01 18:09:25,269 INFO team_id=506842 (UC San Diego): 11 players
+2026-08-01 18:09:48,730 INFO team_id=506393 (USC Upstate): 14 players
+2026-08-01 18:10:10,323 INFO team_id=506338 (Wagner): 15 players
+2026-08-01 18:10:32,024 INFO team_id=506355 (Wyoming): 15 players
+rosters season=2021 shard=15/16: written=22 skipped_existing=0 failed=0
+er): 15 players
+rosters season=2021 shard=0/16: written=23 skipped_existing=0 failed=0
+[2026-08-01 18:10:32] === 2021: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_181032.log  (watch: tail -f logs/datasets_20260801_181032.log)
+2026-08-01 18:10:34,630 INFO ESPN crosswalk joined: 355/355 teams matched (season=2021)
+2026-08-01 18:10:39,643 INFO rebuilt 355 schedules frames for season=2021 from committed html
+2026-08-01 18:10:39,834 INFO schedules season parquet: 9465 rows from 355 teams (season=2021)
+2026-08-01 18:10:40,243 INFO backfilled 355 rosters for season=2021 from team_rosters/ (no html available)
+2026-08-01 18:10:43,210 INFO rebuilt 710 rosters frames for season=2021 from committed html
+2026-08-01 18:10:43,378 INFO rosters season parquet: 4984 rows from 355 teams (season=2021)
+2026-08-01 18:10:43,383 INFO teams season=2021 league=wbb: 355 teams
+datasets season=2021 league=wbb: {"schedules": 9465, "rosters": 4984, "teams": 355}
+EXIT=0
+[2026-08-01 18:10:43] 2021: schedules_html=355 rosters_html=355
+[2026-08-01 18:10:48] 2021: committed
+[2026-08-01 18:10:58] 2021: pushed
+[2026-08-01 18:10:58] === 2020: schedules ===
+log -> logs/discover_20260801_181059.log  (watch: tail -f logs/discover_20260801_181059.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 18:17:06,142 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785622626w0
+2026-08-01 18:17:06,164 INFO resuming discovery: 351/351 team pages already checkpointed
+2026-08-01 18:17:06,183 INFO ESPN crosswalk joined: 351/351 teams matched (season=2020)
+discovered 5433 contest_ids for season=2020 shard=0/1
+EXIT=0
+[2026-08-01 18:17:11] === 2020: rosters (16 shards) ===
+2026-08-01 18:17:19,845 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785622639w1
+2026-08-01 18:17:48,247 INFO ESPN crosswalk joined: 351/351 teams matched (season=2020)
+2026-08-01 18:17:48,256 INFO team_id=483778 (Alabama A&M): 13 players
+2026-08-01 18:17:59,544 INFO team_id=483811 (Baylor): 11 players
+2026-08-01 18:18:11,674 INFO team_id=483839 (Cal Poly): 17 players
+2026-08-01 18:18:22,017 INFO team_id=483891 (Coastal Carolina): 15 players
+2026-08-01 18:18:34,094 INFO team_id=483922 (Detroit Mercy): 13 players
+2026-08-01 18:18:47,231 INFO team_id=483947 (Fairleigh Dickinson): 12026-08-01 2026-08-01 18:18:58,869 INFO team_id=483978 (Gonzaga): 14 players22026-08-01 18:19:15,043 INFO team_id=484000 (Idaho St.): 15 player2022026-08-01 18:19:25,604 INFO team_id=484033 (Kent St.): 13 players
+2026-08-01 18:19:38,556 INFO team_id=484056 (Louisville): 16 players
+2026-08-01 18:19:49,031 INFO team_id=484084 (Michigan): 11 players
+2026-08-01 18:20:01,128 INFO team_id=484145 (N.C. A&T): 14 players
+2026-08-01 18:20:14,557 INFO team_id=484154 (North Dakota): 15 players
+2026-08-01 18:20:26,539 INFO team_id=484183 (Oklahoma St.): 15 players202026-08-01 18:20:37,198 INFO team_id=484211 (Prin2026-08-01 18:21:23,639 INFO team_id=484302 (SMU): 11 players
+2026-08-01 18:21:34,134 INFO team_id=484276 (Seton Hall): 16 players
+2026-08-01 18:21:44,505 INFO team_id=484246 (St. Francis Brooklyn): 11 players
+2026-08-01 18:22:19,588 INFO team_id=484354 (Toledo): 15 players
+2026-08-01 18:22:51,129 INFO team_id=484074 (UMBC): 13 players
+2026-08-01 18:23:19,415 INFO team_id=484456 (Utah Valley): 13 players
+2026-08-01 18:23:43,146 INFO team_id=484397 (Western Ky.): 13 players
+rosters season=2020 shard=3/16: written=22 skipped_existing=0 failed=0
+ped_existing=0 failed=0
+kipped_existing=0 failed=0
+[2026-08-01 18:23:43] === 2020: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_182343.log  (watch: tail -f logs/datasets_20260801_182343.log)
+2026-08-01 18:23:45,928 INFO ESPN crosswalk joined: 351/351 teams matched (season=2020)
+2026-08-01 18:23:51,499 INFO rebuilt 351 schedules frames for season=2020 from committed html
+2026-08-01 18:23:51,702 INFO schedules season parquet: 10700 rows from 351 teams (season=2020)
+2026-08-01 18:23:52,236 INFO backfilled 351 rosters for season=2020 from team_rosters/ (no html available)
+2026-08-01 18:23:55,780 INFO rebuilt 702 rosters frames for season=2020 from committed html
+2026-08-01 18:23:55,940 INFO rosters season parquet: 4934 rows from 351 teams (season=2020)
+2026-08-01 18:23:55,946 INFO teams season=2020 league=wbb: 351 teams
+datasets season=2020 league=wbb: {"schedules": 10700, "rosters": 4934, "teams": 351}
+EXIT=0
+[2026-08-01 18:23:56] 2020: schedules_html=351 rosters_html=351
+[2026-08-01 18:24:00] 2020: committed
+[2026-08-01 18:24:08] 2020: pushed
+[2026-08-01 18:24:08] === 2019: schedules ===
+log -> logs/discover_20260801_182408.log  (watch: tail -f logs/discover_20260801_182408.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 18:30:05,555 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785623405w0
+2026-08-01 18:30:05,578 INFO resuming discovery: 351/351 team pages already checkpointed
+2026-08-01 18:30:05,597 INFO ESPN crosswalk joined: 351/351 teams matched (season=2019)
+discovered 5658 contest_ids for season=2019 shard=0/1
+EXIT=0
+[2026-08-01 18:30:11] === 2019: rosters (16 shards) ===
+2026-08-01 18:30:16,673 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785623416w122026-08-01 18:30:36,186 INFO ESPN crosswalk joined: 351/351 teams matched (season=2019)
+2026-08-01 18:30:36,195 INFO team_id=451563 (Akron): 12 players
+2026-08-01 18:30:46,406 INFO team_id=451589 (BYU): 16 players
+2026-08-01 18:30:56,489 INFO team_id=451596 (CSU Bakersfield): 17 playe20262026-08-01 18:31:06,643 INFO team_id=451615 (Clemson): 15 players
+2026-08-01 18:31:16,851 INFO team_id=451630 (Delaware St.): 13 playe20262026-08-01 18:31:27,076 INFO team_id=451649 (FIU): 11 players
+2026-08-01 18:31:37,304 INFO team_id=451658 (Georgia St.): 16 players22026-08-01 18:31:47,338 INFO team_id=451899 (IUPUI): 15 players
+202026-08-01 18:32:06,906 INFO team_id=451691 (La Salle): 13 players
+2026-08-01 18:32:32,249 INFO team_id=451707 (Marist): 14 players
+2026-08-01 18:32:48,411 INFO2026-08-01 18:32:50,349 INFO team_id=451830 (Mis2026-08-01 18:32:58,798 2026-08-01 18:33:00,288 INFO team_id=451742026-08-01 18:33:09,077 INFO2026-08-01 18:33:10,391 INFO team_id=451763 (N2026-08-01 18:33:19,485 IN2026-08-01 18:33:20,344 INFO team_id=451779 2026-08-01 18:33:29,2026-08-01 18:33:30,300 INFO team_id=451792 (Richmon2026-08-01 18:33:40,299 INFO team_id=451805 (Sam Houston): 14 players
+2026-08-01 18:33:50,667 INFO team_id=451820 (South Fla.): 13 players
+2026-08-01 18:34:01,147 INFO team_id=451838 (Temple): 13 players
+2026-08-01 18:34:11,463 INFO team_id=451605 (UC Irvine): 12 players
+2026-08-01 18:34:21,736 INFO team_id=451741 (UNLV): 15 players
+2026-08-01 18:34:31,920 INFO team_id=451867 (Virginia Tech): 14 players
+2026-08-01 18:34:42,222026-08-01 18:35:07,203 INFO team_id=451881 (Winthrop): 15 players
+rosters season=2019 shard=7/16: written=22 skipped_existing=0 failed=0
+ting=0 failed=0
+failed=0
+[2026-08-01 18:35:07] === 2019: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_183507.log  (watch: tail -f logs/datasets_20260801_183507.log)
+2026-08-01 18:35:09,871 INFO ESPN crosswalk joined: 351/351 teams matched (season=2019)
+2026-08-01 18:35:15,285 INFO rebuilt 351 schedules frames for season=2019 from committed html
+2026-08-01 18:35:15,486 INFO schedules season parquet: 11041 rows from 351 teams (season=2019)
+2026-08-01 18:35:15,969 INFO backfilled 351 rosters for season=2019 from team_rosters/ (no html available)
+2026-08-01 18:35:19,087 INFO rebuilt 702 rosters frames for season=2019 from committed html
+2026-08-01 18:35:19,239 INFO rosters season parquet: 4905 rows from 351 teams (season=2019)
+2026-08-01 18:35:19,244 INFO teams season=2019 league=wbb: 351 teams
+datasets season=2019 league=wbb: {"schedules": 11041, "rosters": 4905, "teams": 351}
+EXIT=0
+[2026-08-01 18:35:19] 2019: schedules_html=351 rosters_html=351
+[2026-08-01 18:35:24] 2019: committed
+[2026-08-01 18:35:32] 2019: pushed
+[2026-08-01 18:35:32] === 2018: schedules ===
+log -> logs/discover_20260801_183532.log  (watch: tail -f logs/discover_20260801_183532.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 18:41:34,355 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785624094w0
+2026-08-01 18:41:34,378 INFO resuming discovery: 349/349 team pages already checkpointed
+2026-08-01 18:41:34,396 INFO ESPN crosswalk joined: 349/349 teams matched (season=2018)
+discovered 5628 contest_ids for season=2018 shard=0/1
+EXIT=0
+[2026-08-01 18:41:39] === 2018: rosters (16 shards) ===
+2026-08-01 18:41:45,288 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785624105w1
+2026-08-01 18:42:24,522 INFO ESPN crosswalk joined: 349/349 teams matched (season=2018)
+2026-08-01 18:42:24,530 INFO team_id=185571 (A&M-Corpus Christi): 17 players
+2026-08-01 18:42:34,516 INFO team_id=185522 (Army West Point): 162026-08-01 18:42:49,630 INFO team_id=185244 (Charleston So.): 14 players
+2026-08-01 18:42:59,848 INFO team_id=185290 (Dartmouth): 13 players
+2026-08-01 18:43:09,949 INFO team_id=185306 (Eastern Mich.): 14 players22026-08-01 18:43:20,347 INFO team_id=185557 (Gardner-Webb): 15 player2022026-08-01 18:43:30,891 INFO team_id=185331 (Hofstra): 14 players
+2026-08-01 18:43:41,348 INFO team_id=185349 (Jacksonville): 14 players
+2026-08-01 18:43:51,777 INFO team_id=185359 (Liberty): 17 players
+2026-08-01 18:44:02,279 INFO team_id=185377 (Massachusetts): 14 players
+2026-08-01 18:44:12,339 INFO team_id=185393 (Montana): 15 players
+2026-08-01 18:44:23,318 INFO team_id=185411 (New Orleans): 16 2026-08-02026-08-01 18:44:33,635 INFO team_id=185430 (Notre Dame): 14 pl2026-082026-08-01 18:44:43,901 INFO team_id=185445 (Pittsburgh)2026-08-01 18:45:10,138 INFO team_id=185452 (Quinnipiac): 15 players
+2026-08-01 18:45:20,044 INFO team_id=185467 (Saint Mary's (CA)): 15 players
+2026-2026-08-01 18:45:30,295 INFO team_id=185481 (South Carolina): 12 pl2026-082026-08-01 18:46:16,453 INFO team_id=185499 (Stetson): 13 players
+2026-08-01 18:46:35,330 INFO team_id=185519 (Tulane): 12 players
+2026-08-01 18:46:45,349 INFO team_id=185398 (UNC Asheville): 14 players
+2026-08-01 18:46:55,479 INFO team_id=185527 (Vanderbilt): 13 players
+2026-08-01 18:47:05,608 INFO team_id=185544 (William & Mary): 15 players
+rosters season=2018 shard=4/16: written=22 skipped_existing=0 failed=0
+=0
+[2026-08-01 18:47:06] === 2018: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_184706.log  (watch: tail -f logs/datasets_20260801_184706.log)
+2026-08-01 18:47:08,210 INFO ESPN crosswalk joined: 349/349 teams matched (season=2018)
+2026-08-01 18:47:13,428 INFO rebuilt 349 schedules frames for season=2018 from committed html
+2026-08-01 18:47:13,618 INFO schedules season parquet: 10979 rows from 349 teams (season=2018)
+2026-08-01 18:47:14,068 INFO backfilled 349 rosters for season=2018 from team_rosters/ (no html available)
+2026-08-01 18:47:16,962 INFO rebuilt 698 rosters frames for season=2018 from committed html
+2026-08-01 18:47:17,109 INFO rosters season parquet: 4905 rows from 349 teams (season=2018)
+2026-08-01 18:47:17,114 INFO teams season=2018 league=wbb: 349 teams
+datasets season=2018 league=wbb: {"schedules": 10979, "rosters": 4905, "teams": 349}
+EXIT=0
+[2026-08-01 18:47:17] 2018: schedules_html=349 rosters_html=349
+[2026-08-01 18:47:21] 2018: committed
+[2026-08-01 18:47:30] 2018: pushed
+[2026-08-01 18:47:30] === 2017: schedules ===
+log -> logs/discover_20260801_184730.log  (watch: tail -f logs/discover_20260801_184730.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 18:51:55,537 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785624715w0
+2026-08-01 18:51:55,561 INFO resuming discovery: 349/349 team pages already checkpointed
+2026-08-01 18:51:55,580 INFO ESPN crosswalk joined: 349/349 teams matched (season=2017)
+discovered 5623 contest_ids for season=2017 shard=0/1
+EXIT=0
+[2026-08-01 18:52:00] === 2017: rosters (16 shards) ===
+2026-08-01 18:52:06,336 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785624726w8
+22026-08-01 18:52:49,137 INFO ESPN crosswalk joined: 349/349 teams matched (season=2017)
+2026-08-01 18:52:49,146 INFO team_id=109407 (Arkansas St.): 14 playe2026-08-01 18:53:07,519 INFO team_id=109423 (Brown): 13 players
+2026-08-01 18:53:34,814 INFO team_id=109569 (Charlotte): 11 players
+2026-08-01 18:53:44,590 INFO team_id=109460 (Davidson): 11 players
+2026-08-01 18:53:54,234 INFO team_id=109476 (Eastern Wash.): 15 players
+2026-08-01 18:54:05,462 INFO team_id=109487 (George Mason): 15 players
+2026-08-01 18:54:16,200 INFO team_id=109501 (Holy Cross): 14 players
+2026-08-01 18:54:25,968 INFO team_id=109517 (Jacksonville St.): 14 players
+2026-08-01 18:54:36,359 INFO team_id=109741 (Lipscomb): 20 players
+2026-08-01 18:54:46,376 INFO team_id=109547 (McNeese): 14 players
+2026-08-01 18:54:56,027 INFO team_id=109561 (Montana St.): 13 players
+2026-08-01 18:55:06,121 INFO team_id=109581 (Niagara): 15 players
+2026-08-01 18:55:16,127 INFO team_id=109600 (Oakland): 15 players
+2026-08-01 18:55:25,952 INFO team_id=109616 (Portland): 13 players
+2026-08-01 18:55:36,016 INFO team_id=109667 (SFA): 13 players
+2026-08-01 18:55:45,655 INFO team_id=109644 (Santa Clara): 16 players
+2026-08-01 18:55:55,230 INFO team_id=109661 (Southern U.): 14 players
+2026-08-01 18:56:04,839 INFO team_id=109679 (Texas Southern): 16 players
+2026-08-01 18:56:14,481 INFO team_id=109509 (UIC): 15 players
+2026-08-01 18:56:24,344 INFO team_id=109684 (UTSA): 13 players
+2026-08-01 18:56:33,988 INFO team_id=109707 (West Virginia): 14 players
+rosters season=2017 shard=14/12026-08-01 18:56:59,925 INFO team_id=109722 (Youngstown St.): 16 players
+rosters season=2017 shard=12/16: written=22 skipped_existing=0 failed=0
+[2026-08-01 18:57:00] === 2017: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_185700.log  (watch: tail -f logs/datasets_20260801_185700.log)
+2026-08-01 18:57:02,345 INFO ESPN crosswalk joined: 349/349 teams matched (season=2017)
+2026-08-01 18:57:07,326 INFO rebuilt 349 schedules frames for season=2017 from committed html
+2026-08-01 18:57:07,498 INFO schedules season parquet: 10974 rows from 349 teams (season=2017)
+2026-08-01 18:57:07,949 INFO backfilled 349 rosters for season=2017 from team_rosters/ (no html available)
+2026-08-01 18:57:10,669 INFO rebuilt 698 rosters frames for season=2017 from committed html
+2026-08-01 18:57:10,810 INFO rosters season parquet: 4866 rows from 349 teams (season=2017)
+2026-08-01 18:57:10,816 INFO teams season=2017 league=wbb: 349 teams
+datasets season=2017 league=wbb: {"schedules": 10974, "rosters": 4866, "teams": 349}
+EXIT=0
+[2026-08-01 18:57:11] 2017: schedules_html=349 rosters_html=349
+[2026-08-01 18:57:15] 2017: committed
+[2026-08-01 18:57:23] 2017: pushed
+[2026-08-01 18:57:23] === 2016: schedules ===
+log -> logs/discover_20260801_185723.log  (watch: tail -f logs/discover_20260801_185723.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 19:02:10,519 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785625330w0
+2026-08-01 19:02:10,542 INFO resuming discovery: 349/349 team pages already checkpointed
+2026-08-01 19:02:10,561 INFO ESPN crosswalk joined: 349/349 teams matched (season=2016)
+discovered 5618 contest_ids for season=2016 shard=0/1
+EXIT=0
+[2026-08-01 19:02:15] === 2016: rosters (16 shards) ===
+2026-08-01 19:02:21,546 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785625341w142026-08-01 19:03:04,883 INFO ESPN crosswalk joined: 349/349 teams matched (season=2016)
+2026-08-01 19:03:04,891 INFO team_id=22830 (American): 13 players
+2026-08-01 19:03:14,944 INFO team_id=22844 (Boise St.): 14 players
+2026-08-01 19:03:24,890 INFO team_id=22869 (Canisius): 14 players
+2026-08-01 19:03:35,148 INFO team_id=22881 (Columbia): 17 players
+2026-08-01 19:03:45,136 INFO team_id=22899 (ETSU): 13 players
+2026-08-01 19:03:55,123 INFO team_id=22912 (Fordham): 14 players
+2026-08-01 19:04:05,300 INFO team_id=22924 (Hartford): 15 players
+2026-08-01 19:04:16,020 INFO team_id=22940 (Iona): 13 players
+2026-08-01 19:04:26,168 INFO team_id=22951 (La Salle): 12 players
+2026-08-01 19:04:36,318 INFO team_id=22967 (Marist): 14 players
+2026-08-01 192026-08-01 19:04:51,509 INFO team_id=22977 (Miami (OH)): 14 pl2026-082026-08-01 19:05:01,793 INFO team_id=22993 (Murray St.): 12026-08-01 2026-08-01 19:05:11,936 INFO team_id=23015 (North Dakota): 182026-08-012026-08-01 19:05:22,707 INFO team_id=23030 (Oklahoma St.2026-08-01 19:02026-08-01 19:05:33,011 INFO team_id=23045 (Prin2026-08-01 19:05:2022026-08-01 19:05:43,342 INFO team_id=23056 (Sa2026-08-01 19:05:47,520262026-08-012026-02026-08-01 19:06:16,752 INFO team_id=23076 (South Carolina St.): 13 players
+2026-08-01 19:06:26,798 INFO team_id=23096 (Stony Brook): 13 players
+2026-08-01 19:06:36,691 INFO team_id=23116 (Tulsa): 14 players
+2026-08-01 19:06:46,548 INFO team_id=22997 (UNC Greensboro): 14 players
+2026-08-01 19:06:56,280 INFO team_id=23124 (Vermont): 13 players
+2026-08-01 19:07:06,033 INFO team_id=23141 (Winthrop): 14 players
+rosters season=2016 shard=5/16: written=22 skipped_existing=0 failed=0
+led=0
+[2026-08-01 19:07:06] === 2016: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_190706.log  (watch: tail -f logs/datasets_20260801_190706.log)
+2026-08-01 19:07:08,722 INFO ESPN crosswalk joined: 349/349 teams matched (season=2016)
+2026-08-01 19:07:13,936 INFO rebuilt 349 schedules frames for season=2016 from committed html
+2026-08-01 19:07:14,130 INFO schedules season parquet: 10968 rows from 349 teams (season=2016)
+2026-08-01 19:07:14,586 INFO backfilled 349 rosters for season=2016 from team_rosters/ (no html available)
+2026-08-01 19:07:17,385 INFO rebuilt 698 rosters frames for season=2016 from committed html
+2026-08-01 19:07:17,522 INFO rosters season parquet: 4864 rows from 349 teams (season=2016)
+2026-08-01 19:07:17,528 INFO teams season=2016 league=wbb: 349 teams
+datasets season=2016 league=wbb: {"schedules": 10968, "rosters": 4864, "teams": 349}
+EXIT=0
+[2026-08-01 19:07:17] 2016: schedules_html=349 rosters_html=349
+[2026-08-01 19:07:22] 2016: committed
+[2026-08-01 19:07:29] 2016: pushed
+[2026-08-01 19:07:29] === 2015: schedules ===
+log -> logs/discover_20260801_190729.log  (watch: tail -f logs/discover_20260801_190729.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 19:13:00,785 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785625980w0
+2026-08-01 19:13:00,853 INFO resuming discovery: 349/349 team pages already checkpointed
+2026-08-01 19:13:00,873 INFO ESPN crosswalk joined: 349/349 teams matched (season=2015)
+discovered 5602 contest_ids for season=2015 shard=0/1
+EXIT=0
+[2026-08-01 19:13:06] === 2015: rosters (16 shards) ===
+2026-08-01 19:13:11,698 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785625991w9
+22026-08-01 19:13:53,419 INFO ESPN crosswalk joined: 349/349 teams matched (season=2015)
+2026-08-01 19:13:53,427 INFO team_id=16603 (Arizona St.): 13 players2026-08-01 19:14:10,737 INFO team_id=16616 (Boston College): 15 playe2026-08-01 19:15:10,258 INFO team_id=16625 (Butler): 13 players
+2026-08-01 19:15:35,405 INFO team_id=16646 (Clemson): 14 players
+2026-08-01 19:16:19,417 INFO team_id=16661 (Delaware St.): 16 players
+2026-08-01 19:16:29,665 INFO team_id=16680 (FIU): 12 players
+2026-08-01 19:16:39,681 INFO team_id=16689 (Georgia St.): 15 players
+2026-08-01 19:16:49,524 INFO team_id=16930 (IUPUI): 14 players
+2026-08-01 19:16:59,253 INFO team_id=16718 (Kansas St.): 15 players
+2026-08-01 19:17:09,013 INFO team_id=16863 (Louisiana): 15 players
+2026-08-01 19:17:19,108 INFO team_id=16748 (Miami (OH)): 11 players
+2026-08-01 19:17:28,792 INFO team_id=16764 (Murray St.): 14 players
+2026-08-01 19:17:38,409 INFO team_id=16786 (North Dakota): 18 players
+2026-08-01 19:17:48,051 INFO team_id=16801 (Oklahoma St.): 16 players
+2026-08-01 19:17:57,835 INFO team_id=16816 (Princeton): 15 players
+2026-08-01 19:18:07,557 INFO team_id=16827 (Sacred Heart): 12 players
+2026-08-01 19:18:17,347 INFO team_id=16845 (Siena): 13 players
+2026-08-01 19:18:27,073 INFO team_id=16831 (St. John's (NY)): 13 players
+2026-08-01 19:18:37,032 INFO team_id=16884 (Towson): 15 players
+2026-08-01 19:18:46,713 INFO team_id=16743 (UMES): 13 players
+2026-08-01 19:18:56,421 INFO team_id=16897 (VCU): 13 players
+2026-08-01 19:19:06,110 INFO team_id=16909 (Western Mich.): 14 players
+rosters season=2015 shard=2/16: written=22 skipped_existing=0 failed=0
+=22 skipped_existing=0 failed=0
+0
+=0
+[2026-08-01 19:19:06] === 2015: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_191906.log  (watch: tail -f logs/datasets_20260801_191906.log)
+2026-08-01 19:19:08,721 INFO ESPN crosswalk joined: 349/349 teams matched (season=2015)
+2026-08-01 19:19:13,600 INFO rebuilt 349 schedules frames for season=2015 from committed html
+2026-08-01 19:19:13,787 INFO schedules season parquet: 10959 rows from 349 teams (season=2015)
+2026-08-01 19:19:14,240 INFO backfilled 349 rosters for season=2015 from team_rosters/ (no html available)
+2026-08-01 19:19:17,006 INFO rebuilt 698 rosters frames for season=2015 from committed html
+2026-08-01 19:19:17,156 INFO rosters season parquet: 4871 rows from 349 teams (season=2015)
+2026-08-01 19:19:17,161 INFO teams season=2015 league=wbb: 349 teams
+datasets season=2015 league=wbb: {"schedules": 10959, "rosters": 4871, "teams": 349}
+EXIT=0
+[2026-08-01 19:19:17] 2015: schedules_html=349 rosters_html=349
+[2026-08-01 19:19:22] 2015: committed
+[2026-08-01 19:19:31] 2015: pushed
+[2026-08-01 19:19:31] === 2014: schedules ===
+log -> logs/discover_20260801_191931.log  (watch: tail -f logs/discover_20260801_191931.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 19:24:52,748 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785626692w0
+2026-08-01 19:24:52,777 INFO resuming discovery: 349/349 team pages already checkpointed
+2026-08-01 19:24:52,806 INFO ESPN crosswalk joined: 349/349 teams matched (season=2014)
+discovered 5588 contest_ids for season=2014 shard=0/1
+EXIT=0
+[2026-08-01 19:24:58] === 2014: rosters (16 shards) ===
+2026-08-01 19:25:04,644 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785626704w132026-08-01 19:25:47,187 INFO ESPN crosswalk joined: 349/349 teams matched (season=2014)
+2026-08-01 19:25:47,195 INFO team_id=37663 (Akron): 15 players
+2026-08-01 19:25:57,189 INFO team_id=37689 (BYU): 18 players
+2026-08-01 19:26:07,022 INFO team_id=37696 (CSU Bakersfield): 14 players
+2026-08-01 19:26:17,049 INFO team_id=37716 (Cleveland St.): 11 players
+2026-08-01 19:26:27,040 INFO team_id=37732 (Denver): 15 players
+2026-08-01 19:26:38,806 INFO team_id=37745 (Fairfield): 12 players
+2026-08-01 19:26:42026-08-01 19:27:38,295 INFO team_id=37765 (Harvard): 16 players
+2026-08-01 19:27:48,187 INFO team_id=37782 (Iowa): 11 players
+2026-08-01 19:27:58,161 INFO team_id=37792 (Lafayette): 15 players
+2026-08-01 19:28:08,727 INFO team_id=37808 (Marquette): 12 players
+2026-08-01 19:28:18,631 INFO team_id=37826 (Missouri): 14 players
+2026-08-01 19:28:28,507 INFO team_id=37843 (New Hampshire): 12 players
+2026-08-01 19:28:38,322 INFO team_id=37863 (Northern Ky.): 12 players
+2026-08-01 19:28:48,648 INFO team_id=37879 (Penn): 16 p2026-08-01 19:29:17,940 INFO team_id=37885 (Princeton): 14 players
+2026-08-01 19:29:28,611 INFO team_id=37896 (Sacred Heart): 14 players
+2026-08-01 19:29:39,014 INFO team_id=37914 (Siena): 15 players
+2026-08-01 19:29:49,677 INFO team_id=37900 (St. John's (NY)): 14 players
+2026-08-01 19:30:00,250 INFO team_id=37953 (Towson): 13 players
+2026-08-01 19:30:10,804 INFO team_id=37812 (UMES): 15 players
+2026-08-01 19:30:21,392 INFO team_id=37966 (VCU): 15 players
+2026-08-01 19:30:31,974 INFO team_id=37978 (Western Mich.): 14 players
+rosters season=2014 shard=2/16: written=22 skipped_existing=0 failed=0
+=22 skipped_existing=0 failed=0
+0
+=0
+[2026-08-01 19:30:32] === 2014: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_193032.log  (watch: tail -f logs/datasets_20260801_193032.log)
+2026-08-01 19:30:34,644 INFO ESPN crosswalk joined: 349/349 teams matched (season=2014)
+2026-08-01 19:30:39,536 INFO rebuilt 349 schedules frames for season=2014 from committed html
+2026-08-01 19:30:39,719 INFO schedules season parquet: 10981 rows from 349 teams (season=2014)
+2026-08-01 19:30:40,142 INFO backfilled 349 rosters for season=2014 from team_rosters/ (no html available)
+2026-08-01 19:30:42,911 INFO rebuilt 698 rosters frames for season=2014 from committed html
+2026-08-01 19:30:43,046 INFO rosters season parquet: 4762 rows from 349 teams (season=2014)
+2026-08-01 19:30:43,052 INFO teams season=2014 league=wbb: 349 teams
+datasets season=2014 league=wbb: {"schedules": 10981, "rosters": 4762, "teams": 349}
+EXIT=0
+[2026-08-01 19:30:43] 2014: schedules_html=349 rosters_html=349
+[2026-08-01 19:30:46] 2014: committed
+[2026-08-01 19:30:54] 2014: pushed
+[2026-08-01 19:30:54] === 2013: schedules ===
+log -> logs/discover_20260801_193054.log  (watch: tail -f logs/discover_20260801_193054.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 19:36:39,029 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785627399w0
+2026-08-01 19:36:39,050 INFO resuming discovery: 345/345 team pages already checkpointed
+2026-08-01 19:36:39,068 INFO ESPN crosswalk joined: 345/345 teams matched (season=2013)
+discovered 5484 contest_ids for season=2013 shard=0/1
+EXIT=0
+[2026-08-01 19:36:44] === 2013: rosters (16 shards) ===
+2026-08-01 19:36:49,458 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785627409w122026-08-01 19:37:37,502 INFO ESPN crosswalk joined: 345/345 teams matched (season=2013)
+2026-08-01 19:37:37,510 INFO team_id=77284 (App State): 13 players
+2026-08-01 19:37:47,566 INFO team_id=77298 (Boston College): 13 players
+2026-08-01 19:37:57,888 INFO team_id=77602 (Central Ark.): 17 players
+2026-08-01 19:38:08,161 INFO team_id=77336 (Coppin St.): 13 players
+2026-08-01 19:38:18,483 INFO team_id=77351 (East Carolina): 15 players
+2026-08-01 19:38:28,706 INFO team_id=77310 (Fresno St.): 13 players
+2026-08-01 19:38:39,036 INFO team_id=77379 (Hawaii): 14 players
+2026-08-01 19:38:49,317 INFO team_id=77394 (Iowa St.): 12 players
+2026-08-01 19:38:59,580 INFO team_id=77406 (Lamar University): 16 players
+2026-08-01 19:39:10,206 INFO team_id=77421 (Marshall): 13 players
+2026-08-01 19:39:20,386 INFO team_id=77542 (Missouri St.): 15 players
+2026-08-01 19:39:31,039 INFO team_id=77458 (New Mexico): 15 players
+2026-08-01 19:39:41,907 INFO team_id=77477 (Northwestern): 15 players
+2026-08-01 19:39:52,187 INFO team_id=77490 (Penn St.): 11 players
+2026-08-01 19:40:02,604 INFO team_id=77505 (Rider): 14 players
+2026-08-01 19:40:13,117 INFO team_id=77519 (San Diego St.): 15 players
+2026-08-01 19:40:23,245 INFO team_id=77535 (Southern California): 15 players
+2026-08-01 19:40:33,584 INFO team_id=77552 (Tennessee Tech): 16 players2026-08-01 19:40:52,291 INFO team_id=77568 (Tulsa): 11 players
+2026-08-01 19:41:25,865 INFO team_id=77474 (UNI): 16 players
+2026-08-01 19:41:36,039 INFO team_id=77580 (Virginia): 12 players
+2026-08-01 19:41:45,975 INFO team_id=77613 (Wofford): 13 players
+rosters season=2013 shard=3/16: written=22 skipped_existing=0 failed=0
+[2026-08-01 19:41:46] === 2013: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_194146.log  (watch: tail -f logs/datasets_20260801_194146.log)
+2026-08-01 19:41:48,577 INFO ESPN crosswalk joined: 345/345 teams matched (season=2013)
+2026-08-01 19:41:53,389 INFO rebuilt 345 schedules frames for season=2013 from committed html
+2026-08-01 19:41:53,541 INFO schedules season parquet: 10809 rows from 345 teams (season=2013)
+2026-08-01 19:41:53,995 INFO backfilled 345 rosters for season=2013 from team_rosters/ (no html available)
+2026-08-01 19:41:56,852 INFO rebuilt 690 rosters frames for season=2013 from committed html
+2026-08-01 19:41:57,006 INFO rosters season parquet: 4777 rows from 345 teams (season=2013)
+2026-08-01 19:41:57,012 INFO teams season=2013 league=wbb: 345 teams
+datasets season=2013 league=wbb: {"schedules": 10809, "rosters": 4777, "teams": 345}
+EXIT=0
+[2026-08-01 19:41:57] 2013: schedules_html=345 rosters_html=345
+[2026-08-01 19:42:02] 2013: committed
+[2026-08-01 19:42:10] 2013: pushed
+[2026-08-01 19:42:10] === 2012: schedules ===
+log -> logs/discover_20260801_194211.log  (watch: tail -f logs/discover_20260801_194211.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 19:47:06,693 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785628026w0
+2026-08-01 19:47:06,715 INFO resuming discovery: 343/343 team pages already checkpointed
+2026-08-01 19:47:06,735 INFO ESPN crosswalk joined: 343/343 teams matched (season=2012)
+discovered 5464 contest_ids for season=2012 shard=0/1
+EXIT=0
+[2026-08-01 19:47:12] === 2012: rosters (16 shards) ===
+2026-08-01 19:47:18,314 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785628038w4
+22026-08-01 19:48:03,620 INFO ESPN crosswalk joined: 343/343 teams matched (season=2012)
+2026-08-01 19:48:03,628 INFO team_id=30270 (Arizona St.): 13 players
+2026-08-01 19:48:14,040 INFO team_id=30285 (Bowling Green): 15 players
+2026-08-01 19:48:24,060 INFO team_id=30310 (Central Mich.): 14 players
+2026-08-01 19:48:33,943 INFO team_id=30323 (Creighton): 12 players
+2026-08-01 19:48:43,879 INFO team_id=30339 (Eastern Ky.): 14 players
+2026-08-01 19:48:53,694 INFO team_id=30355 (Ga. Southern): 15 players
+2026-08-01 19:49:03,742 INFO team_id=30365 (Hofstra): 13 players
+2026-08-01 19:49:13,912 INFO team_id=30383 (Jacksonville): 14 2026-08-02026-08-01 19:49:23,916 INFO team_id=30393 (Liberty): 142026-08-012026-08-01 19:49:33,795 INFO team_id2026-08-01 19:49:34,42026-08-01 19:42026-08-01 19:49:43,734 INFO te2026-08-01 19:50:49,538 INFO team_id=30440 (New Hampshire): 14 players
+2026-08-01 19:50:59,692 INFO team_id=30459 (Northwestern St.): 15 players
+2026-08-01 19:51:09,289 INFO team_id=30475 (Pepperdine): 15 players
+2026-08-01 19:51:18,906 INFO team_id=30489 (Robert Morris): 13 players
+2026-08-01 19:51:28,657 INFO team_id=30504 (San Francisco): 13 players
+2026-08-01 19:51:38,200 INFO team_id=30519 (Southern Ill.): 14 players
+2026-08-01 19:51:47,911 INFO team_id=30544 (Texas): 14 players
+2026-08-012026-08-01 19:52:12,968 INFO team_id=30309 (UCF): 13 players
+2026-08-01 19:52:23,633 INFO team_id=30472 (UTRGV): 15 players
+2026-08-01 19:52:34,095 INFO team_id=30568 (Weber St.): 15 players
+rosters season=2012 shard=7/16: written=21 skipped_existing=0 failed=0
+0 failed=0
+sters season=2012 shard=4/16: written=22 skipped_existing=0 failed=0
+ailed=0
+[2026-08-01 19:52:34] === 2012: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_195234.log  (watch: tail -f logs/datasets_20260801_195234.log)
+2026-08-01 19:52:36,971 INFO ESPN crosswalk joined: 343/343 teams matched (season=2012)
+2026-08-01 19:52:42,200 INFO rebuilt 343 schedules frames for season=2012 from committed html
+2026-08-01 19:52:42,376 INFO schedules season parquet: 10731 rows from 343 teams (season=2012)
+2026-08-01 19:52:42,827 INFO backfilled 343 rosters for season=2012 from team_rosters/ (no html available)
+2026-08-01 19:52:45,538 INFO rebuilt 686 rosters frames for season=2012 from committed html
+2026-08-01 19:52:45,676 INFO rosters season parquet: 4759 rows from 343 teams (season=2012)
+2026-08-01 19:52:45,682 INFO teams season=2012 league=wbb: 343 teams
+datasets season=2012 league=wbb: {"schedules": 10731, "rosters": 4759, "teams": 343}
+EXIT=0
+[2026-08-01 19:52:46] 2012: schedules_html=343 rosters_html=343
+[2026-08-01 19:52:50] 2012: committed
+[2026-08-01 19:52:57] 2012: pushed
+[2026-08-01 19:52:57] === 2011: schedules ===
+log -> logs/discover_20260801_195257.log  (watch: tail -f logs/discover_20260801_195257.log)
+=== merge pass (reads all shard checkpoints, writes schedule_master) ===
+2026-08-01 19:58:49,461 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785628729w0
+2026-08-01 19:58:49,483 INFO resuming discovery: 344/344 team pages already checkpointed
+2026-08-01 19:58:49,502 INFO ESPN crosswalk joined: 344/344 teams matched (season=2011)
+discovered 5461 contest_ids for season=2011 shard=0/1
+EXIT=0
+[2026-08-01 19:58:56] === 2011: rosters (16 shards) ===
+2026-08-01 19:59:02,450 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785628742w2
+2026-08-01 19:59:22,043 INFO ESPN crosswalk joined: 344/344 teams matched (season=2011)
+2026-08-01 19:59:22,051 INFO team_id=55533 (Alabama A&M): 14 pla2020202026-08-01 19:59:31,811 INFO team_id=55550 (Baylor): 15 2026-02022026-08-01 19:59:41,415 INFO team_id=55564 (Cal Poly): 17 pla2026-02026-08-01 19:59:51,225 INFO team_id=55587 (Coastal Carolina): 12020262026-202026-08-01 20:00:00,990 INFO team_id=55605 (Drexel):202026-08-01 2026-08-01 20:00:12,021 INFO team_id=55624 (George Maso202026-08-01 20:2026-08-01 20:00:22,558 INFO team_id=55640 (Houston)202022026-08-02026-08-01 20:00:34,067 INFO team_id=55656 (James Ma2026-082026-08-01 202026-08-01 20:00:45,330 INFO team_id=55545 (Li2026-2022026-08-01 20:002026-08-01 20:00:57,761 INFO team_id=55684 (2026-08-222026-08-01 22026-08-01 20:01:08,597 INFO team_id=55699 (Morehead S22022026-08-01 20:01:25,083 INFO team_id=55710 (Nevada): 16 players
+2026-08-01 20:01:35,340 INFO team_id=55729 (Northern Ill.): 12 players
+2026-08-01 20:01:47,333 INFO team_id=55745 (Penn St.): 11 players
+2026-08-01 20:02:00,738 INFO team_id=55760 (Rider): 11 players
+2026-08-01 20:02026-08-01 20:02:25,809 INFO team_id=55770 (Saint Mary's (CA)): 15 players
+2026-08-01 20:02:36,114 INFO team_id=55786 (South Dakota): 13 players
+2026-08-01 20:02:46,081 INFO team_id=55804 (Syracuse): 15 players
+2026-08-01 20:02:56,156 INFO team_id=55536 (UAB): 18 players
+2026-08-01 20:03:06,286 INFO team_id=55709 (UNLV): 15 players
+2026-08-01 20:03:16,200 INFO team_id=55834 (Virginia Tech): 14 players
+2026-08-01 20:03:58,501 INFO team_id=55852 (Wright St.): 14 players
+rosters season=2011 shard=3/16: written=22 skipped_existing=0 failed=0
+ng=0 failed=0
+[2026-08-01 20:03:59] === 2011: compile teams/schedules/rosters ===
+log -> logs/datasets_20260801_200359.log  (watch: tail -f logs/datasets_20260801_200359.log)
+2026-08-01 20:04:01,216 INFO ESPN crosswalk joined: 344/344 teams matched (season=2011)
+2026-08-01 20:04:06,198 INFO rebuilt 344 schedules frames for season=2011 from committed html
+2026-08-01 20:04:06,384 INFO schedules season parquet: 10747 rows from 344 teams (season=2011)
+2026-08-01 20:04:06,814 INFO backfilled 344 rosters for season=2011 from team_rosters/ (no html available)
+2026-08-01 20:04:09,448 INFO rebuilt 688 rosters frames for season=2011 from committed html
+2026-08-01 20:04:09,599 INFO rosters season parquet: 4743 rows from 344 teams (season=2011)
+2026-08-01 20:04:09,604 INFO teams season=2011 league=wbb: 344 teams
+datasets season=2011 league=wbb: {"schedules": 10747, "rosters": 4743, "teams": 344}
+EXIT=0
+[2026-08-01 20:04:10] 2011: schedules_html=344 rosters_html=344
+[2026-08-01 20:04:13] 2011: committed
+[2026-08-01 20:04:20] 2011: pushed
+[2026-08-01 20:04:20] reference backfill finished 2026..2011
+EXIT=0

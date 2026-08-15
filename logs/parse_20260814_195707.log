@@ -1,0 +1,11 @@
+seasons=all bundles=92808 pending=218 force=False shard=13/16 assigned=1322026-08-14 19:57:25,492 INFO ncaa_identity: contest_id=1631203 teams 2289/2289 matched, players 6343/6475 matched22026-08-14 19:57:28,846 INFO ncaa_identity: contest_id=1633192 teams 2322/2322 matched, players 5695/6543 matchedparsed=14 failed=0
+303 INFO ncaa_identity: contest_id=1633559 teams 2138/2138 matched, players 6020/6044 matched
+2parsed=13 failed=0
+335 INFO ncaa_identity: contest_id=1638330 teams 1316/2576 matched, players 3653/7277 matchedparsed=14 failed=0
+,614 INFO ncaa_identity: contest_id=1717877 teams 2077/2077 matched, players 5799/5870 matched[p1_s_e_e] [WARNING] [TeamId(name='Texas')]v[TeamId(name='Indiana')] Flip court for periods: [[3, 4]] because [total_shots={1: 41, 2: 33, 3: 23, 4: 29} long_shots={3: 23, 4: 29}]
+parsed=14 failed=0
+d, players 5938/6511 matched
+parsed=14 failed=0
+529 INFO ncaa_identity: contest_id=1719755 teams 2413/2413 matched, players 5968/6585 matched
+parsed=14 failed=0
+EXIT=0

@@ -1,0 +1,44 @@
+pending=3823 shard=2/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:01,990 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662421w2
+pending=3823 shard=1/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:02,773 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662422w1
+pending=3823 shard=0/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:02,794 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662422w0
+pending=3823 shard=4/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:02,849 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662422w4
+pending=3823 shard=8/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:03,602 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662423w8
+pending=3823 shard=6/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:03,853 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662423w6
+pending=3823 shard=7/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:04,259 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662424w7
+pending=3823 shard=3/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:07,471 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662427w3
+pending=3823 shard=5/32 assigned=120
+transport: canary vendor 'decodo_patchright'
+2026-08-13 19:07:08,069 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786662428w5
+2026-08-13 19:32:42,064 WARNING challenge not cleared for contest_id=1981336 -- bundle not written
+2026-08-13 19:54:27,681 WARNING challenge not cleared for contest_id=1991227 -- bundle not written
+captured=120 skipped=0 failed=0
+EXIT=0
+captured=120 skipped=0 failed=0
+EXIT=0
+captured=120 skipped=0 failed=0
+EXIT=0
+captured=120 skipped=0 failed=0
+EXIT=0
+captured=119 skipped=0 failed=1
+EXIT=0
+captured=119 skipped=0 failed=1
+EXIT=0
+EXIT=127
+EXIT=127
+EXIT=127

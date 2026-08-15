@@ -1,0 +1,9 @@
+2026-08-01 20:04:01,216 INFO ESPN crosswalk joined: 344/344 teams matched (season=2011)
+2026-08-01 20:04:06,198 INFO rebuilt 344 schedules frames for season=2011 from committed html
+2026-08-01 20:04:06,384 INFO schedules season parquet: 10747 rows from 344 teams (season=2011)
+2026-08-01 20:04:06,814 INFO backfilled 344 rosters for season=2011 from team_rosters/ (no html available)
+2026-08-01 20:04:09,448 INFO rebuilt 688 rosters frames for season=2011 from committed html
+2026-08-01 20:04:09,599 INFO rosters season parquet: 4743 rows from 344 teams (season=2011)
+2026-08-01 20:04:09,604 INFO teams season=2011 league=wbb: 344 teams
+datasets season=2011 league=wbb: {"schedules": 10747, "rosters": 4743, "teams": 344}
+EXIT=0

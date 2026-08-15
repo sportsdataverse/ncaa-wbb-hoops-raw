@@ -1,0 +1,64 @@
+pending=5484 shard=9/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:16:56,137 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717016w9
+pending=5484 shard=5/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:16:57,030 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717017w5
+pending=5484 shard=1/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:16:57,448 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717017w1
+pending=5484 shard=0/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:16:57,870 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717017w0
+pending=5484 shard=8/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:16:58,666 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717018w8
+pending=5484 shard=3/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+pending=5484 shard=2/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:16:59,129 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717019w3
+2026-08-14 10:16:59,454 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717019w2
+pending=5484 shard=12/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+pending=5484 shard=10/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+pending=5484 shard=4/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:17:02,418 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717022w12
+2026-08-14 10:17:02,627 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717022w4
+2026-08-14 10:17:02,728 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717022w10
+pending=5484 shard=7/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:17:03,415 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717023w7
+pending=5484 shard=6/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-14 10:17:03,640 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786717023w6
+2026-08-14 10:30:42,685 WARNING challenge not cleared for contest_id=624531 -- bundle not written
+2026-08-14 10:32:20,470 WARNING challenge not cleared for contest_id=624779 -- bundle not written
+2026-08-14 10:42:54,982 WARNING challenge not cleared for contest_id=627097 -- bundle not written
+2026-08-14 11:42:28,915 WARNING challenge not cleared for contest_id=637149 -- bundle not written
+2026-08-14 11:49:12,625 WARNING challenge not cleared for contest_id=637684 -- bundle not written
+captured=170 skipped=0 failed=1
+EXIT=0
+captured=171 skipped=0 failed=1
+EXIT=0
+captured=172 skipped=0 failed=0
+EXIT=0
+captured=172 skipped=0 failed=0
+EXIT=0
+captured=172 skipped=0 failed=0
+EXIT=0
+captured=172 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=1
+EXIT=0
+captured=172 skipped=0 failed=0
+EXIT=0
+captured=172 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=1
+EXIT=0
+captured=171 skipped=0 failed=1
+EXIT=0
+EXIT=127

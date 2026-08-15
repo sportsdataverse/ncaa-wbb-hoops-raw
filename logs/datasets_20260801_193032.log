@@ -1,0 +1,9 @@
+2026-08-01 19:30:34,644 INFO ESPN crosswalk joined: 349/349 teams matched (season=2014)
+2026-08-01 19:30:39,536 INFO rebuilt 349 schedules frames for season=2014 from committed html
+2026-08-01 19:30:39,719 INFO schedules season parquet: 10981 rows from 349 teams (season=2014)
+2026-08-01 19:30:40,142 INFO backfilled 349 rosters for season=2014 from team_rosters/ (no html available)
+2026-08-01 19:30:42,911 INFO rebuilt 698 rosters frames for season=2014 from committed html
+2026-08-01 19:30:43,046 INFO rosters season parquet: 4762 rows from 349 teams (season=2014)
+2026-08-01 19:30:43,052 INFO teams season=2014 league=wbb: 349 teams
+datasets season=2014 league=wbb: {"schedules": 10981, "rosters": 4762, "teams": 349}
+EXIT=0

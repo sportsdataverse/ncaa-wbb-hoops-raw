@@ -1,0 +1,5 @@
+seasons=all bundles=93884 pending=29 force=False shard=11/16 assigned=2
+2026-08-14 21:22:00,265 INFO ncaa_identity: contest_id=1357882 season=2010 league=wbb -- teams rosters not built; ids emitted as nulls2026-08-14 21:22:01,051 INFO ncaa_identity: contest_id=1358299 season=2010 league=wbb -- teams rosters not built; ids emitted as nulls
+2026-08-14 21:22:01,055 INFO ncaa_identity: contest_id=1358299 teams 0/2798 matched, players 0/1106 matched
+parsed=2 failed=0
+EXIT=0

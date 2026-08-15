@@ -1,0 +1,4 @@
+seasons=all bundles=92279 pending=3 force=False shard=5/16 assigned=0
+2026-08-14 19:35:11,759 INFO ncaa_identity: contest_id=2258094 teams 2492/2492 matched, players 6540/6785 matched
+parsed=1 failed=0
+EXIT=0

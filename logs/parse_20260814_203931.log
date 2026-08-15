@@ -1,0 +1,4 @@
+seasons=all bundles=93476 pending=104 force=False shard=7/16 assigned=7
+2026-08-14 20:39:43,543 INFO ncaa_identity: contest_id=637590 teams 3112/3112 matched, players 7994/8830 matched
+parsed=7 failed=0
+EXIT=0

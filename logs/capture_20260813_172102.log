@@ -1,0 +1,190 @@
+pending=5511 shard=4/32 assigned=173
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:07,365 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656067w4
+pending=5511 shard=5/32 assigned=173
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:07,635 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656067w5
+pending=5511 shard=2/32 assigned=173
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:08,283 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656068w2
+pending=5511 shard=3/32 assigned=173
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:08,497 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656068w3
+pending=5511 shard=0/32 assigned=173
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:09,473 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656069w0
+pending=5511 shard=7/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:09,660 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656069w7
+pending=5511 shard=1/32 assigned=173
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:09,870 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656069w1
+pending=5511 shard=10/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:10,226 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656070w10
+pending=5511 shard=9/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:10,319 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656070w9
+pending=5511 shard=6/32 assigned=173
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:10,506 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656070w6
+pending=5511 shard=18/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:10,619 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656070w18
+pending=5511 shard=26/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:11,069 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656071w26
+pending=5511 shard=21/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:11,003 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656071w21
+pending=5511 shard=11/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:11,151 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656071w11
+pending=5511 shard=31/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:13,563 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656073w31
+pending=5511 shard=30/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:13,854 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656073w30
+pending=5511 shard=23/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:14,144 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656074w23
+pending=5511 shard=27/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:14,658 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656074w27
+pending=5511 shard=17/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:14,963 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656074w17
+pending=5511 shard=16/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:14,986 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656074w16
+pending=5511 shard=20/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:15,057 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656075w20
+pending=5511 shard=15/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:15,382 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656075w15
+pending=5511 shard=28/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:15,430 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656075w28
+pending=5511 shard=19/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:15,537 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656075w19
+pending=5511 shard=22/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:15,753 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656075w22
+pending=5511 shard=14/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:15,825 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656075w14
+pending=5511 shard=25/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:16,397 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656076w25
+pending=5511 shard=13/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+pending=5511 shard=29/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:16,754 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656076w29
+2026-08-13 17:21:16,721 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656076w13
+pending=5511 shard=24/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+pending=5511 shard=12/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+pending=5511 shard=8/32 assigned=172
+transport: canary vendor 'decodo_patchright'
+2026-08-13 17:21:17,732 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656077w12
+2026-08-13 17:21:17,697 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656077w24
+2026-08-13 17:21:17,703 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786656077w8
+2026-08-13 17:44:18,837 WARNING challenge not cleared for contest_id=2131660 -- bundle not written
+2026-08-13 18:14:22,734 WARNING challenge not cleared for contest_id=2137265 -- bundle not written
+Error occurred in event listener
+Traceback (most recent call last):
+  File "C:\Users\saiem\Documents\GitHub-Data\sdv-dev\sdv-py\.venv\Lib\site-packages\patchright\_impl\_connection.py", line 434, in dispatch
+    g.switch(self._replace_guids_with_channels(params))
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MemoryError
+Error occurred in event listener
+Traceback (most recent call last):
+  File "C:\Users\saiem\Documents\GitHub-Data\sdv-dev\sdv-py\.venv\Lib\site-packages\patchright\_impl\_connection.py", line 434, in dispatch
+    g.switch(self._replace_guids_with_channels(params))
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MemoryError
+node:internal/process/promises:394
+    triggerUncaughtException(err, true /* fromPromise */);
+    ^
+
+ProtocolError: Protocol error (Network.setCacheDisabled): Internal server error, session closed.
+    at C:\Users\saiem\Documents\GitHub-Data\sdv-dev\sdv-py\.venv\Lib\site-packages\patchright\driver\package\lib\coreBundle.js:35961:61
+    at new Promise (<anonymous>)
+    at _CRSession.send (C:\Users\saiem\Documents\GitHub-Data\sdv-dev\sdv-py\.venv\Lib\site-packages\patchright\driver\package\lib\coreBundle.js:35960:16)
+    at C:\Users\saiem\Documents\GitHub-Data\sdv-dev\sdv-py\.venv\Lib\site-packages\patchright\driver\package\lib\coreBundle.js:36841:61
+    at C:\Users\saiem\Documents\GitHub-Data\sdv-dev\sdv-py\.venv\Lib\site-packages\patchright\driver\package\lib\coreBundle.js:36806:20
+    at Array.map (<anonymous>)
+    at CRNetworkManager._forEachSession (C:\Users\saiem\Documents\GitHub-Data\sdv-dev\sdv-py\.venv\Lib\site-packages\patchright\driver\package\lib\coreBundle.js:36804:56)
+    at CRNetworkManager.setRequestInterception (C:\Users\saiem\Documents\GitHub-Data\sdv-dev\sdv-py\.venv\Lib\site-packages\patchright\driver\package\lib\coreBundle.js:36841:22) {
+  type: 'closed',
+  method: 'Network.setCacheDisabled',
+  logs: '\n' +
+    '<launching> C:\\Users\\saiem\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-breakpad --no-default-browser-check --disable-dev-shm-usage --disable-edgeupdater --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --disable-hang-monitor --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --disable-blink-features=AutomationControlled --no-sandbox --proxy-server=http://us.decodo.com:10028 --proxy-bypass-list=<-loopback> --headless=new --user-data-dir=C:\\Users\\saiem\\AppData\\Local\\Temp\\patchright_udd_ftmqfh43 --remote-debugging-pipe about:blank\n' +
+    '<launched> pid=49464'
+}
+
+Node.js v24.16.0
+2026-08-13 18:21:13,362 ERROR BAN-SUSPECT: hard-stopping capture at contest_id=2137866: NCAA fetch failed after rotating proxies: https://stats.ncaa.org/contests/2137866/play_by_play: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+BAN-SUSPECT: capture halted at contest_id=2137866: NCAA fetch failed after rotating proxies: https://stats.ncaa.org/contests/2137866/play_by_play: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+EXIT=1
+2026-08-13 18:23:11,554 WARNING challenge not cleared for contest_id=2138323 -- bundle not written
+captured=141 skipped=31 failed=0
+EXIT=0
+captured=141 skipped=31 failed=0
+EXIT=0
+captured=142 skipped=30 failed=0
+EXIT=0
+captured=142 skipped=29 failed=1
+EXIT=0
+captured=142 skipped=30 failed=0
+EXIT=0
+captured=142 skipped=30 failed=0
+EXIT=0
+captured=143 skipped=29 failed=0
+EXIT=0
+captured=141 skipped=31 failed=0
+EXIT=0
+captured=144 skipped=29 failed=0
+EXIT=0
+captured=143 skipped=30 failed=0
+EXIT=0
+captured=142 skipped=30 failed=0
+EXIT=0
+captured=143 skipped=29 failed=0
+EXIT=0
+captured=142 skipped=30 failed=0
+EXIT=0
+captured=144 skipped=28 failed=1
+EXIT=0
+captured=143 skipped=29 failed=0
+EXIT=0
+captured=142 skipped=30 failed=0
+EXIT=0
+captured=142 skipped=30 failed=0
+EXIT=0
+captured=145 skipped=27 failed=0
+EXIT=0
+captured=143 skipped=29 failed=0
+EXIT=0
+captured=143 skipped=29 failed=0
+EXIT=0
+captured=145 skipped=27 failed=0
+EXIT=0
+captured=149 skipped=24 failed=0
+EXIT=0
+EXIT=127
+EXIT=127
+EXIT=127
+EXIT=127
+EXIT=127
+EXIT=127
+EXIT=127
+EXIT=127
+EXIT=127

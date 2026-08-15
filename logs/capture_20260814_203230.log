@@ -1,0 +1,38 @@
+pending=5602 shard=26/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:32:37,300 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786753957w26
+captured=0 skipped=180 failed=0
+pending=5602 shard=27/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:32:39,676 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786753959w27
+captured=0 skipped=180 failed=0
+EXIT=0
+pending=5602 shard=29/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:32:40,188 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786753960w29
+captured=0 skipped=180 failed=0
+pending=5602 shard=30/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:32:40,259 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786753960w30
+captured=0 skipped=180 failed=0
+EXIT=0
+pending=5602 shard=24/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:32:40,452 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786753960w24
+pending=5602 shard=28/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:32:40,452 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786753960w28
+captured=0 skipped=180 failed=0
+pending=5602 shard=25/31 assigned=180
+transport: canary vendor 'decodo_patchright'
+2026-08-14 20:32:40,556 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786753960w25
+EXIT=0
+EXIT=0
+EXIT=0
+2026-08-14 20:33:14,543 WARNING challenge not cleared for contest_id=390770 -- bundle not written
+2026-08-14 20:33:16,585 WARNING challenge not cleared for contest_id=396701 -- bundle not written
+captured=0 skipped=179 failed=1
+EXIT=0
+2026-08-14 20:33:45,480 WARNING challenge not cleared for contest_id=399561 -- bundle not written
+captured=0 skipped=178 failed=2
+EXIT=0

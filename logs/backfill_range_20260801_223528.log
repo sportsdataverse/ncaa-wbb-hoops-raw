@@ -1,0 +1,8 @@
+[2026-08-01 22:35:28] campaign: seasons 2026..2011 (desc), vendor=decodo_patchright, chunk=400, workers=12
+[2026-08-01 22:35:28] log -> logs/backfill_range_20260801_223528.log   (watch: tail -f logs/backfill_range_20260801_223528.log)
+[2026-08-01 22:35:29] === season 2026 ===
+REFUSING season=2026 -- the bundled WBB crosswalk (sportsdataverse/wbb/data/ncaa_teamids_wbb.csv)
+  only covers seasons through 2025 (i.e. 2024-25); there is no 2025-26 row yet.
+  This is a crosswalk coverage gap, not the 'team-ids format drift' that discover_season()
+  would otherwise report. Extending the crosswalk to 2025-26 is a separate sdv-py change.
+[2026-08-01 22:35:30] season 2026: chunk 1 hard-stopped (rc=2), 6019 remaining -- cooling 1800s

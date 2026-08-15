@@ -1,0 +1,9 @@
+2026-08-01 19:41:48,577 INFO ESPN crosswalk joined: 345/345 teams matched (season=2013)
+2026-08-01 19:41:53,389 INFO rebuilt 345 schedules frames for season=2013 from committed html
+2026-08-01 19:41:53,541 INFO schedules season parquet: 10809 rows from 345 teams (season=2013)
+2026-08-01 19:41:53,995 INFO backfilled 345 rosters for season=2013 from team_rosters/ (no html available)
+2026-08-01 19:41:56,852 INFO rebuilt 690 rosters frames for season=2013 from committed html
+2026-08-01 19:41:57,006 INFO rosters season parquet: 4777 rows from 345 teams (season=2013)
+2026-08-01 19:41:57,012 INFO teams season=2013 league=wbb: 345 teams
+datasets season=2013 league=wbb: {"schedules": 10809, "rosters": 4777, "teams": 345}
+EXIT=0

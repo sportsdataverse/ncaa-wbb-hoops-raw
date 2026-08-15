@@ -1,0 +1,20 @@
+pending=5464 shard=3/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:01,102 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723741w3
+pending=5464 shard=1/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:04,733 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723744w1
+pending=5464 shard=0/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:04,998 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723744w0
+pending=5464 shard=4/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:07,142 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723747w4
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0

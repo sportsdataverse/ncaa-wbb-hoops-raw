@@ -1,0 +1,242 @@
+[2026-08-13 05:59:42] campaign: seasons 2026..2010 (desc), vendor=decodo_patchright, chunk=400, workers=32
+[2026-08-13 05:59:42] log -> logs/backfill_range_20260813_055942.log   (watch: tail -f logs/backfill_range_20260813_055942.log)
+[2026-08-13 05:59:42] === season 2026 ===
+[05:59:43] NCAA WBB backfill: season=2026 workers=32
+[05:59:43] watch this run:  tail -f /c/Users/saiem/Documents/GitHub-Data/sdv-dev/wehoop-dev/ncaa-wbb-hoops-raw/logs/backfill_2026_20260813_055943.log
+[05:59:43] === skip discover (season 2026 already in schedule_master; delete wbb/schedule_master.parquet to force) ===
+[05:59:43] === capture 2026: 32 worker(s), chunk=400 new bundles per worker ===
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055943.log  (watch: tail -f logs/capture_20260813_055943.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055943.log  (watch: tail -f logs/capture_20260813_055943.log)
+log -> logs/capture_20260813_055943.log  (watch: tail -f logs/capture_20260813_055943.log)
+log -> logs/capture_20260813_055943.log  (watch: tail -f logs/capture_20260813_055943.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055943.log  (watch: tail -f logs/capture_20260813_055943.log)
+log -> logs/capture_20260813_055943.log  (watch: tail -f logs/capture_20260813_055943.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055943.log  (watch: tail -f logs/capture_20260813_055943.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055943.log  (watch: tail -f logs/capture_20260813_055943.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+log -> logs/capture_20260813_055944.log  (watch: tail -f logs/capture_20260813_055944.log)
+pending=6019 shard=4/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:49,823 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615189w4
+pending=6019 shard=1/32 assigned=189
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:49,846 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615189w1
+pending=6019 shard=7/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:51,351 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615191w7
+pending=6019 shard=3/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:51,411 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615191w3
+pending=6019 shard=6/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:51,483 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615191w6
+pending=6019 shard=2/32 assigned=189
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:51,513 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615191w2
+pending=6019 shard=5/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:51,581 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615191w5
+pending=6019 shard=11/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:52,116 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615192w11
+pending=6019 shard=0/32 assigned=189
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:52,500 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615192w0
+pending=6019 shard=20/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+pending=6019 shard=10/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:52,683 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615192w10
+2026-08-13 05:59:52,683 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615192w20
+pending=6019 shard=24/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:52,926 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615192w24
+pending=6019 shard=13/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+pending=6019 shard=22/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+pending=6019 shard=12/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:56,677 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615196w12
+2026-08-13 05:59:56,659 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615196w13
+pending=6019 shard=14/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:56,717 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615196w22
+2026-08-13 05:59:56,869 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615196w14
+pending=6019 shard=16/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:56,930 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615196w16
+pending=6019 shard=15/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+pending=6019 shard=8/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+pending=6019 shard=27/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:57,383 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615197w15
+pending=6019 shard=28/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+pending=6019 shard=26/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+pending=6019 shard=18/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:57,642 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615197w8
+pending=6019 shard=23/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+pending=6019 shard=17/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:57,982 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615197w27
+pending=6019 shard=30/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:58,046 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w28
+pending=6019 shard=9/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:58,135 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w18
+2026-08-13 05:59:58,209 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w9
+2026-08-13 05:59:58,275 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w30
+pending=6019 shard=19/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:58,349 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w17
+2026-08-13 05:59:58,409 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w26
+pending=6019 shard=25/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:58,528 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w23
+2026-08-13 05:59:58,581 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w25
+pending=6019 shard=29/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:58,581 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w29
+2026-08-13 05:59:58,612 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w19
+pending=6019 shard=21/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:58,753 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w21
+pending=6019 shard=31/32 assigned=188
+transport: canary vendor 'decodo_patchright'
+2026-08-13 05:59:58,870 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786615198w31
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=189 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=189 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+captured=188 skipped=0 failed=0
+EXIT=0
+EXIT=127
+EXIT=127
+[08:37:29] capture stopped (rc=127) -- a ban/soft-ban hard-stop or Ctrl-C (see the capture log).
+[08:37:29]   This is RESUMABLE: cool down (a ban clears in minutes-hours), then re-run this
+[08:37:29]   script -- already-captured contests are skipped.
+[08:37:29] === parse captured bundles -> wbb/json/ ===
+log -> logs/parse_20260813_083729.log  (watch: tail -f logs/parse_20260813_083729.log)
+2026-08-13 08:44:31,421 INFO ncaa_identity: contest_id=6510718 teams 1368/2737 matched, players 3846/7649 matched
+2026-08-13 08:44:34,897 INFO ncaa_identity: contest_id=6557303 teams 2737/2737 matched, players 7523/7533 matched
+parsed=358 failed=0
+EXIT=0
+[08:45:01] DONE: captured_bundles=5731 parsed_json=5731 (capture rc=127)
+[08:45:01] capture INCOMPLETE (rc=127) -- re-run this script to continue before building.
+EXIT=127
+[2026-08-13 08:45:01] season 2026: chunk 1 hard-stopped (rc=127), 288 remaining -- cooling 1800s

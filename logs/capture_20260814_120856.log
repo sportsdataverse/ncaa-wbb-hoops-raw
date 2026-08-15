@@ -1,0 +1,146 @@
+pending=5464 shard=8/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:01,229 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723741w8
+pending=5464 shard=7/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:01,346 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723741w7
+pending=5464 shard=6/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:01,704 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723741w6
+pending=5464 shard=15/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:01,681 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723741w15
+pending=5464 shard=18/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:01,708 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723741w18
+pending=5464 shard=11/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:02,784 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723742w11
+pending=5464 shard=5/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:02,812 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723742w5
+pending=5464 shard=9/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:02,986 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723742w9
+pending=5464 shard=19/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:03,050 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723743w19
+pending=5464 shard=24/32 assigned=170
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:04,797 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723744w24
+pending=5464 shard=12/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:05,409 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723745w12
+pending=5464 shard=14/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:05,703 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723745w14
+pending=5464 shard=16/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:05,728 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723745w16
+pending=5464 shard=29/32 assigned=170
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:05,729 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723745w29
+pending=5464 shard=17/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:05,755 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723745w17
+pending=5464 shard=23/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+pending=5464 shard=28/32 assigned=170
+transport: canary vendor 'decodo_patchright'
+pending=5464 shard=25/32 assigned=170
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:06,099 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723746w25
+2026-08-14 12:09:06,258 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723746w23
+2026-08-14 12:09:06,358 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723746w28
+pending=5464 shard=26/32 assigned=170
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:06,476 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723746w26
+pending=5464 shard=2/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:06,497 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723746w2
+pending=5464 shard=20/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:06,566 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723746w20
+pending=5464 shard=21/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+pending=5464 shard=22/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+pending=5464 shard=30/32 assigned=170
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:07,015 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723747w30
+pending=5464 shard=13/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+pending=5464 shard=10/32 assigned=171
+transport: canary vendor 'decodo_patchright'
+pending=5464 shard=27/32 assigned=170
+transport: canary vendor 'decodo_patchright'
+pending=5464 shard=31/32 assigned=170
+transport: canary vendor 'decodo_patchright'
+2026-08-14 12:09:08,159 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723748w21
+2026-08-14 12:09:08,260 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723748w10
+2026-08-14 12:09:08,442 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723748w22
+2026-08-14 12:09:08,578 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723748w27
+2026-08-14 12:09:08,678 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723748w31
+2026-08-14 12:09:09,064 INFO vendor decodo_patchright: 64 prox(y/ies), sticky session re-minted -> session-cap1786723749w13
+2026-08-14 12:36:16,810 WARNING challenge not cleared for contest_id=809323 -- bundle not written
+2026-08-14 12:51:24,724 ERROR BAN-SUSPECT: hard-stopping capture at contest_id=806319: NCAA fetch failed after rotating proxies: https://stats.ncaa.org/contests/806319/play_by_play: patchright: bm-verify not passed after 3 attempts (26-byte body)
+BAN-SUSPECT: capture halted at contest_id=806319: NCAA fetch failed after rotating proxies: https://stats.ncaa.org/contests/806319/play_by_play: patchright: bm-verify not passed after 3 attempts (26-byte body)
+EXIT=1
+2026-08-14 13:00:18,104 ERROR BAN-SUSPECT: hard-stopping capture at contest_id=807794: NCAA fetch failed after rotating proxies: https://stats.ncaa.org/contests/807794/play_by_play: patchright: bm-verify not passed after 3 attempts (26-byte body)
+BAN-SUSPECT: capture halted at contest_id=807794: NCAA fetch failed after rotating proxies: https://stats.ncaa.org/contests/807794/play_by_play: patchright: bm-verify not passed after 3 attempts (26-byte body)
+EXIT=1
+2026-08-14 13:28:25,588 WARNING challenge not cleared for contest_id=818574 -- bundle not written
+2026-08-14 13:39:31,249 WARNING challenge not cleared for contest_id=820102 -- bundle not written
+2026-08-14 13:41:33,727 WARNING challenge not cleared for contest_id=820299 -- bundle not written
+2026-08-14 13:41:34,629 WARNING challenge not cleared for contest_id=820324 -- bundle not written
+captured=170 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=170 skipped=0 failed=0
+EXIT=0
+captured=169 skipped=0 failed=1
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=170 skipped=0 failed=1
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=170 skipped=0 failed=1
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=170 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+captured=171 skipped=0 failed=0
+EXIT=0
+EXIT=0
+captured=169 skipped=0 failed=1
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=170 skipped=0 failed=1
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=171 skipped=0 failed=0
+EXIT=0
+captured=170 skipped=0 failed=0
+EXIT=0
+EXIT=127

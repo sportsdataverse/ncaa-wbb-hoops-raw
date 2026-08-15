@@ -1,0 +1,187 @@
+seasons=all bundles=46688 pending=5277 force=False shard=8/16 assigned=330
+22026-08-14 02:35:27,248 INFO ncaa_identity: contest_id=26527 teams 1608/3163 matched, players 4544/8976 matched
+2026-08-14 02:35:29,523 INFO ncaa_identity: contest_id=26573 teams 2229/2229 matched, players 5749/6256 matched22026-08-14 02:35:30,856 INFO ncaa_identity: contest_id=26595 teams 2628/2628 matched, players 7193/7412 matche2026-08-14 02:35:34,051 INFO ncaa_identity: contest_id=26687 teams 1313/2454 matched, players 3486/6910 matched
+2026-08-14 02:35:37,582 INFO ncaa_identity: contest_id=26892 teams 2447/2447 matched, players 6637/6909 matched
+2026-08-14 02:35:39,687 INFO ncaa_identity: contest_id=26934 teams 1210/2395 matched, players 3138/6748 matched
+2026-08-14 02:35:40,949 INFO ncaa_identity: contest_id=26967 teams 2635/2635 matched, players 7353/7410 matched
+2022026-08-14 02:35:44,684 INFO ncaa_identity: contest_id=27088 teams 2407/2407 matched, players 6519/6799 matche2022026-08-14 02:35:47,817 INFO ncaa_identity: contest_id=27256 teams 2110/2110 matched, players 5660/5988 matched
+2026-08-14 02:35:50,152 INFO ncaa_identity: contest_id=27386 teams 3256/3256 matched, players 9169/9170 matched
+2026-08-14 02:35:53,470 INFO ncaa_identity: contest_id=27500 teams 2128/2128 matched, players 5425/5989 matched
+2026-08-14 02:35:54,648 INFO ncaa_identity: contest_id=27552 teams 2192/2192 matched, players 5549/6215 matched
+2026-08-14 02:35:59,261 INFO ncaa_identity: contest_id=27963 teams 3018/3018 matched, players 8243/8660 matched
+2026-08-14 02:36:00,494 INFO ncaa_identity: contest_id=28070 teams 2400/2400 matched, players 6201/6772 matched
+2026-08-14 02:36:02,503 INFO ncaa_identity: contest_id=28101 teams 2898/2898 matched, players 7525/8112026-08-14 02:36:05,548 INFO ncaa_identity: contest_id=28110 teams 2646/2646 matched, players 7065/7483 matched
+2026-08-14 02:36:08,755 INFO ncaa_identity: contest_id=28244 teams 2192/2192 matched, players 5958/6173 matched
+2026-08-14 02:36:09,852 INFO ncaa_identity: contest_id=28297 teams 2223/2223 matched, players 5943/6272 matched
+2026-08-14 02:36:13,542 INFO ncaa_identity: contest_id=28503 teams 2829/2829 matched, players 7673/8046 matched
+2026-08-14 02:36:15,839 INFO ncaa_identity: contest_id=28612 teams 2449/2449 matched, players 6227/6881 matched
+2026-08-14 02:36:16,987 INFO ncaa_identity: contest_id=28645 teams 2437/2437 matched, players 6570/6875 matched
+2026-08-14 02:36:24,886 INFO ncaa_identity: contest_id=28852 teams 2194/2194 matched, players 6089/6177 matched
+2026-08-14 02:36:29,686 INFO ncaa_identity: contest_id=29020 teams 2790/2790 matched, players 6925/7918 matched
+2026-08-14 02:36:31,091 INFO ncaa_identity: contest_id=29097 teams 1263/2528 matched, players 3228/7032 matched
+2026-08-14 02:36:33,225 INFO ncaa_identity: contest_id=29181 teams 2469/2469 matched, players 6645/6985 matched
+2026-08-14 02:36:34,488 INFO ncaa_identity: contest_id=29211 teams 2684/2684 matched, players 7221/7570 matched
+2026-08-14 02:36:35,570 INFO ncaa_identity: contest_id=29291 teams 2489/2489 matched, players 6909/6995 matched
+2026-08-14 02:36:36,216 INFO ncaa_identity: contest_id=29335 teams 1098/2186 matched, players 3080/6117 matched
+2026-08-14 02:36:37,190 INFO ncaa_identity: contest_id=29400 teams 2311/2311 matched, players 6271/6489 matched
+2026-08-14 02:36:39,390 INFO ncaa_identity: contest_id=29512 teams 1214/2440 matched, players 3456/6932 matched
+2026-08-14 02:36:40,512 INFO ncaa_identity: contest_id=29563 teams 2241/2241 matched, players 5931/6314 matched
+2026-08-14 02:36:42,711 INFO ncaa_identity: contest_id=29678 teams 2261/2261 matched, players 5798/6340 matched
+2026-08-14 02:36:43,714 INFO ncaa_identity: contest_id=29724 teams 2661/2661 matched, players 6927/7468 matched
+2026-08-14 02:36:47,006 INFO ncaa_identity: contest_id=29872 teams 2245/2245 matched, players 5937/6328 matched
+2026-08-14 02:36:47,504 INFO ncaa_identity: contest_id=29954 teams 1261/2480 matched, players 3228/6958 matched
+2026-08-14 02:36:49,728 INFO ncaa_identity: contest_id=30140 teams 2727/2727 matched, players 7563/7655 matched
+2026-08-14 02:36:51,883 INFO ncaa_identity: contest_id=30316 teams 2061/2061 matched, players 5447/5800 matched
+2026-08-14 02:36:53,256 INFO ncaa_identity: contest_id=30343 teams 2556/2556 matched, players 6433/7182 matched
+2026-08-14 02:36:55,357 INFO ncaa_identity: contest_id=30387 teams 2372/2372 matched, players 6384/6726 matched
+2026-08-14 2026-08-14 02:36:57,721 INFO ncaa_identity: contest_id=30460 teams 2407/2407 matched, players 6338/6792026-08-14 2026-08-14 02:37:04,531 INFO ncaa_identity: contest_id=30860 teams 1087/2121 matched, players 3011/5960 matched
+2026-08-14 02:37:05,711 INFO ncaa_identity: contest_id=30912 teams 2711/2711 matched, players 7269/7625 matched
+2026-08-14 02:37:06,976 INFO ncaa_identity: contest_id=30966 teams 2497/2497 matched, players 6075/7040 matched
+2026-08-14 02:37:08,110 INFO ncaa_identity: contest_id=31048 teams 2394/2394 matched, players 6352/6729 matched
+2026-08-14 02:37:09,409 INFO ncaa_identity: contest_id=31120 teams 1296/2613 matched, players 3702/7372026-08-14 02:37:10,372 INFO ncaa_identity: contest_id=31138 teams 1243/2527 matched, players 3611/7115 matched
+2026-08-14 02:37:12,780 INFO ncaa_identity: contest_id=31294 teams 2720/2720 matched, players 7509/7639 matched
+2026-08-14 02:37:15,645 INFO ncaa_identity: contest_id=31365 teams 1135/2311 matched, players 3242/6466 matched
+2026-08-14 02:37:16,950 INFO ncaa_identity: contest_id=31421 teams 963/1913 matched, players 2676/5356 matched
+2026-08-14 02:37:18,105 INFO ncaa_identity: contest_id=31483 teams 2392/2392 matched, players 6106/6730 matched
+2026-08-14 02:37:19,672 INFO ncaa_identity: contest_id=31556 teams 2735/2735 matched, players 7395/7688 matched
+2026-08-14 02:37:30,701 INFO ncaa_identity: contest_id=32051 teams 2251/2251 matched, players 6154/6349 matched
+2026-08-14 02:37:31,777 INFO ncaa_identity: contest_id=32122 teams 1323/2615 matched, players 3749/7350 matched
+2026-08-14 02:37:33,184 INFO ncaa_identity: contest_id=32170 teams 1753/3463 matched, players 4942/9837 matched
+2026-08-14 02:37:34,398 INFO ncaa_identity: contest_id=32221 teams 2522/2522 matched, players 6742/7087 matched
+2026-08-14 02:37:34,869 INFO ncaa_identity: contest_id=32264 teams 1156/2288 matched, players 3230/6391 matched
+2026-08-14 02:37:35,856 INFO ncaa_identity: contest_id=32288 teams 2362/2362 matched, players 6466/6666 matched
+2026-08-14 02:37:36,984 INFO ncaa_identity: contest_id=32311 teams 1286/2488 matched, players 3551/7031 matched
+2026-08-14 02:37:39,287 INFO ncaa_identity: contest_id=32371 teams 2978/2978 matched, players 7885/8448 matched
+2026-08-14 02:37:40,218 INFO ncaa_identity: contest_id=32390 teams 2319/2319 matched, players 5735/6525 matched
+2026-08-14 02:37:42,538 INFO ncaa_identity: contest_id=32430 teams 2512/2512 matched, players 6487/7046 matched
+2026-08-14 02:37:43,577 INFO ncaa_identity: contest_id=32463 teams 2307/2307 matched, players 5088/6489 matched
+2026-08-14 02:37:46,872 INFO ncaa_identity: contest_id=32522 teams 2485/2485 matched, players 6593/6990 matched
+2026-08-14 02:37:48,781 INFO ncaa_identity: contest_id=32558 teams 2358/2358 matched, players 6484/6715 matched
+2026-08-14 02:37:51,494 INFO ncaa_identity: contest_id=32611 teams 1508/3051 matched, players 4277/8581 matched
+2026-08-14 02:37:52,501 INFO ncaa_identity: contest_id=32644 teams 2140/2140 matched, players 5970/6017 matched
+2026-08-14 02:37:53,721 INFO ncaa_identity: contest_id=32672 teams 2443/2443 matched, players 6501/6900 matched
+2026-08-14 02:37:54,731 INFO ncaa_identity: contest_id=32754 teams 2512/2512 matched, players 6478/7066 matched
+2026-08-14 02:37:57,015 INFO ncaa_identity: contest_id=32853 teams 1297/2559 matched, players 3568/7228 matched
+2026-08-14 02:37:59,325 INFO ncaa_identity: contest_id=32962 teams 2718/2718 matched, players 7319/7759 matched
+2026-08-14 02:38:01,296 INFO ncaa_identity: contest_id=33103 teams 2424/2424 matched, players 6384/6812 matched
+2026-08-14 02:38:02,470 INFO ncaa_identity: contest_id=33127 teams 2434/2434 matched, players 6342/6886 matched
+2026-08-14 02:38:03,497 INFO ncaa_identity: contest_id=33151 teams 2570/2570 matched, players 6544/7252 matched
+2026-02026-08-14 02:38:05,708 INFO ncaa_identity: contest_id=33427 teams 2201/2201 matched, players 5616/6244 ma2026-082026-08-14 02:38:06,816 INFO ncaa_identity: contest_id=33501 teams 2199/2199 matched, players 5163/6172 ma2026-082026-08-14 02:38:07,692 INFO ncaa_identity: contest_id=33543 teams 2166/2166 matched, players 5244/6139 2026-08-14 02:38:11,853 INFO ncaa_identity: contest_id=33588 teams 2375/2375 matched, players 6601/6694 matched
+2026-08-14 02:38:13,020 INFO ncaa_identity: contest_id=33634 teams 2212/2212 matched, players 6158/6173 matched
+2026-08-14 02:38:18,337 INFO ncaa_identity: contest_id=33919 teams 3382/3382 matched, players 9525/9614 matched
+2026-08-14 02:38:19,485 INFO ncaa_identity: contest_id=33982 teams 2235/2235 matched, players 6040/6283 matched
+2026-08-14 02:38:25,951 INFO ncaa_identity: contest_id=34291 teams 2304/2304 matched, players 6136/6471 matched
+2026-08-14 02:38:26,522 INFO ncaa_identity: contest_id=34412 teams 1066/2207 matched, players 3039/6103 matched
+2026-08-14 02:38:27,762 INFO ncaa_identity: contest_id=34453 teams 2573/2573 matched, players 6556/7286 matched
+2026-08-14 02:38:30,862 INFO ncaa_identity: contest_id=34665 teams 2436/2436 matched, players 6435/6871 matched
+2026-08-14 02:38:35,526 INFO ncaa_identity: contest_id=34930 teams 2317/2317 matched, players 5964/6461 matched
+2026-08-14 02:38:37,749 INFO ncaa_identity: contest_id=35054 teams 2537/2537 matched, players 6924/7154 matched
+2026-08-14 02:38:38,751 INFO ncaa_identity: contest_id=35108 teams 2021/2021 matched, players 5398/5703 matched
+2026-08-14 02:38:41,042 INFO ncaa_identity: contest_id=35227 teams 2157/2157 matched, players 5254/6062 matched
+2026-08-14 02:38:42,036 INFO ncaa_identity: contest_id=35306 teams 2371/2371 matched, players 6314/6707 matched
+2026-08-14 02:38:43,154 INFO ncaa_identity: contest_id=35333 teams 2358/2358 matched, players 6182/6671 matched
+2026-08-14 02:38:44,188 INFO ncaa_identity: contest_id=35378 teams 2291/2291 matched, players 6074/6456 matched
+2026-08-14 02:38:46,220 INFO ncaa_identity: contest_id=35513 teams 1948/1948 matched, players 5326/5473 matched
+2026-08-14 02:38:47,547 INFO ncaa_identity: contest_id=35586 teams 2873/2873 matched, players 7200/8126 matched
+2026-08-14 02:38:48,745 INFO ncaa_identity: contest_id=35648 teams 1302/2583 matched, players 3665/7274 matched
+2026-08-14 02:38:51,990 INFO ncaa_identity: contest_id=35824 teams 2367/2367 matched, players 6454/6658 matched
+2026-08-14 02:38:53,166 INFO ncaa_identity: contest_id=35866 teams 2177/2177 matched, players 5693/6112 matched
+2026-082026-08-14 02:38:54,360 INFO ncaa_identity: contest_id=36151 teams 2295/2295 matched, players 5864/6463 ma2026-08-14 02:38:55,619 INFO ncaa_identity: contest_id=36056 teams 2137/2137 matched, players 5808/6009 matched
+2026-082026-08-14 02:38:58,533 INFO ncaa_identity: contest_id=36415 teams 2555/2555 matched, players 7120/7170 ma2026-08-14 02:39:02,308 INFO ncaa_identity: contest_id=36444 teams 2101/2101 matched, players 5860/5945 matched
+2026-08-14 02:39:03,517 INFO ncaa_identity: contest_id=36479 teams 1468/3042 matched, players 3595/8633 matched
+2026-08-14 02:39:04,675 INFO ncaa_identity: contest_id=36516 teams 2388/2388 matched, players 6517/6744 matched
+2026-08-14 02:39:05,764 INFO ncaa_identity: contest_id=36616 teams 2611/2611 matched, players 6935/7373 matched
+2026-08-14 02:39:07,768 INFO ncaa_identity: contest_id=36757 teams 2276/2276 matched, players 6422/6455 matched
+2026-08-14 02:39:13,160 INFO ncaa_identity: contest_id=37048 teams 2510/2510 matched, players 6539/7034 matched
+2026-08-14 02:39:15,247 INFO ncaa_identity: contest_id=37198 teams 1988/1988 matched, players 5364/5600 matched
+2026-08-14 02:39:17,318 INFO ncaa_identity: contest_id=37307 teams 1243/2590 matched, players 3589/7310 matched
+2026-08-14 02:39:18,143 INFO ncaa_identity: contest_id=37362 teams 1995/1995 matched, players 5137/5608 matched
+2026-08-14 02:39:19,218 INFO ncaa_identity: contest_id=37408 teams 1951/1951 matched, players 5016/5469 matched
+2026-08-14 02:39:21,226 INFO ncaa_identity: contest_id=37532 teams 2136/2136 matched, players 5754/6071 matched
+2026-08-14 02:39:22,158 INFO ncaa_identity: contest_id=37558 teams 2086/2086 matched, players 5344/5815 matche2026-08-14 02:39:25,638 INFO ncaa_identity: contest_id=37854 teams 2164/2164 matched, players 5780/6088 matched
+2026-08-142026-08-14 02:39:30,496 INFO ncaa_identity: contest_id=38140 teams 2337/2337 matched, players 6305/66052026-08-142026-08-14 02:39:33,514 INFO ncaa_identity: contest_id=38309 teams 2190/2190 matched, players 5815/6141 matched
+2026-08-14 02:39:34,635 INFO ncaa_identity: contest_id=38406 teams 2125/2125 matched, players 5783/5970 matched
+2026-08-14 02:39:35,594 INFO ncaa_identity: contest_id=38453 teams 2229/2229 matched, players 6255/6307 matched
+2026-08-14 02:39:39,618 INFO ncaa_identity: contest_id=38656 teams 2118/2118 matched, players 5740/5965 matched
+2026-08-14 02:39:40,696 INFO ncaa_identity: contest_id=38686 teams 2313/2313 matched, players 6461/6527 matched
+2026-08-14 02:39:41,721 INFO ncaa_identity: contest_id=38718 teams 2343/2343 matched, players 5518/6600 matched
+2026-08-14 02:39:46,863 INFO ncaa_identity: contest_id=39057 teams 2038/2038 matched, players 5494/5741 matched
+2026-08-14 02:39:47,797 INFO ncaa_identity: contest_id=39105 teams 2199/2199 matched, players 5995/6199 matched
+2026-08-14 02:39:53,293 INFO ncaa_identity: contest_id=39409 teams 2244/2244 matched, players 6259/6291 matched
+2026-08-14 02:39:54,333 INFO ncaa_identity: contest_id=39471 teams 2513/2513 matched, players 6840/7110 matched
+2026-08-14 02:39:55,569 INFO ncaa_identity: contest_id=39530 teams 2544/2544 matched, players 6020/7120 matched
+2026-08-14 02:39:56,481 INFO ncaa_identity: contest_id=39592 teams 2046/2046 matched, players 5514/5713 matched
+2026-08-14 02:40:00,861 INFO ncaa_identity: contest_id=39780 teams 2433/2433 matched, players 6414/6850 matched
+2026-08-14 02:40:02,027 INFO ncaa_identity: contest_id=39808 teams 2478/2478 matched, players 6786/6982 matched
+2026-08-14 02:40:03,945 INFO ncaa_identity: contest_id=39985 teams 2266/2266 matched, players 5895/6395 matched
+2026-08-14 02:40:09,653 INFO ncaa_identity: contest_id=40301 teams 2180/2180 matched, players 5760/6177 matched
+2026-08-14 02:40:10,762 INFO ncaa_identity: contest_id=40345 teams 2123/2123 matched, players 5507/5978 matched
+2026-08-14 02:40:11,654 INFO ncaa_identity: contest_id=40402 teams 2121/2121 matched, players 5780/5940 matched
+2026-08-14 02:40:12,995 INFO ncaa_identity: contest_id=40455 teams 2975/2975 matched, players 7494/8388 matched
+2026-08-14 02:40:15,220 INFO ncaa_identity: contest_id=40560 teams 1053/2210 matched, players 3046/6218 matched
+2026-08-14 02:40:16,157 INFO ncaa_identity: contest_id=40621 teams 2202/2202 matched, players 5729/6154 matched
+2026-08-14 02:40:19,286 INFO ncaa_identity: contest_id=40804 teams 2339/2339 matched, players 5765/6572 matched
+2026-08-14 02:40:23,504 INFO ncaa_identity: contest_id=40997 teams 2618/2618 matched, players 6645/7420 matched
+2026-08-14 02:40:25,563 INFO ncaa_identity: contest_id=41095 teams 2306/2306 matched, players 5319/6451 matched
+2026-08-14 02:40:26,542 INFO ncaa_identity: contest_id=41130 teams 2485/2485 matched, players 6101/6970 matched
+2026-08-14 02:40:30,279 INFO ncaa_identity: contest_id=41323 teams 1146/2338 matched, players 2723/6588 matched
+2026-08-14 02:40:31,479 INFO ncaa_identity: contest_id=41356 teams 2641/2641 matched, players 7266/7477 matched
+2026-08-14 02:40:33,511 INFO ncaa_identity: contest_id=41418 teams 2247/2247 matched, players 6013/6354 matched
+2026-08-14 02:40:34,429 INFO ncaa_identity: contest_id=41456 teams 1942/1942 matched, players 4713/5448 matched
+2026-08-14 02:40:35,586 INFO ncaa_identity: contest_id=41483 teams 1298/2606 matched, players 3678/7384 matched
+2026-08-14 02:40:37,727 INFO ncaa_identity: contest_id=41607 teams 2400/2400 matched, players 6215/6769 matched
+2026-08-14 02:40:38,641 INFO ncaa_identity: contest_id=41624 teams 2124/2124 matched, players 5586/6013 matched
+2026-08-14 02:40:39,750 INFO ncaa_identity: contest_id=41642 teams 2335/2335 matched, players 6267/6583 matched
+2026-08-14 02:40:40,764 INFO ncaa_identity: contest_id=41678 teams 2826/2826 matched, players 7382/79792026-08-142026-08-14 02:40:42,661 INFO ncaa_identity: contest_id=41751 teams 2129/2129 matched, players 5834/60372026-08-14 02:40:44,700 INFO ncaa_identity: contest_id=41797 teams 2365/2365 matched, players 6318/6671 matched
+2026-08-14 02:40:46,997 INFO ncaa_identity: contest_id=41845 teams 2136/2136 matched, players 5877/6012 matched
+2026-08-142026-08-14 02:40:48,781 INFO ncaa_identity: contest_id=41922 teams 2487/2487 matched, players 5498/70482026-08-14 02:40:50,465 INFO ncaa_identity: contest_id=41954 teams 2158/2158 matched, players 5486/6104 matched
+2026-08-142026-08-14 02:40:54,010 INFO ncaa_identity: contest_id=42065 teams 2794/2794 matched, players 7854/79052026-08-142026-08-14 02:40:55,029 INFO ncaa_identity: contest_id=42111 teams 1964/1964 matched, players 5453/54992026-08-14 02:40:59,950 INFO ncaa_identity: contest_id=42211 teams 2803/2803 matched, players 7284/7901 matched
+2026-08-14 02:41:03,105 INFO ncaa_identity: contest_id=42262 teams 2681/2681 matched, players 7204/7596 matched
+2026-08-14 02:41:05,166 INFO ncaa_identity: contest_id=42296 teams 2562/2562 matched, players 6513/7181 matched
+2026-08-14 02:41:08,207 INFO ncaa_identity: contest_id=42392 teams 2380/2380 matched, players 6175/6708 matched
+2026-08-14 02:41:09,339 INFO ncaa_identity: contest_id=42425 teams 2096/2096 matched, players 5833/5853 matched
+2026-08-14 02:41:11,409 INFO ncaa_identity: contest_id=42468 teams 1968/1968 matched, players 5262/5542 matched
+2026-08-14 02:41:12,312 INFO ncaa_identity: contest_id=42487 teams 2363/2363 matched, players 6136/6676 matched
+2026-08-14 02:41:16,879 INFO ncaa_identity: contest_id=42583 teams 1801/1801 matched, players 4782/5071 matched
+parsed=330 failed=0
+02:41:07,085 INFO ncaa_identity: contest_id=42402 teams 1885/12026-08-14 02:41:16,332 INFO ncaa_identity: contest_id=42522 teams 2190/2190 matched, players 6047/6181 matched
+parsed=330 failed=0
+4811/5769 matched
+2026-08-14 02:41:10,124 INFO ncaa_identity: contest_id=42480 teams 2434/2434 matched, players 6573/6892 matched
+2026-08-14 02:41:11,229 INFO ncaa_identity: contest_id=42498 teams 1430/2824 matched, 2026-08-14 02:41:11,504 INF2026-08-14 02:41:12,354 INFO ncaa_identity: contest_id=42518 teams 2411/2411 matched, 2026-08-14 02:41:12,737 INF2026-08-14 02:41:15,059 INFO ncaa_identity: contest_id=425752026-08-14 02:41:15,741 INFO ncaa_identity: contest_id=42581 teams 1883/1883 matched, players 5218/5300 matched
+parsed=330 failed=0
+s 5979/6477 matched
+parsed=330 failed=0
+ity: contest_id=42475 teams 2117/2117 ma2026-08-14 02:41:13,755 INFO ncaa_2026-08-14 02:41:15,792 INFO ncaa_identity: contest_id=42530 teams 2215/2215 ma2026-08-14 02:41:18,403 INFO ncaa_identity: contest_id=42535 teams 2221/2221 matched, players 5906/6301 matched
+2026-08-14 02:41:19,568 INFO ncaa_identity: contest_id=42576 teams 2906/2906 matched, players 7866/8193 matched
+parsed=329 failed=0
+148 matched
+parsed=330 failed=0
+ntity: contest_id=42504 teams 2112/2112 matched, players 5501/5922 matched
+2026-08-14 02:41:14,863 INFO ncaa_identity: contest_id=42564 teams 2401/2401 matched, players 6755/6810 matched
+parsed=330 failed=0
+41:14,957 INFO ncaa_identity: contest_id=42549 teams 2048/2048 matched, players 5360/5819 matched
+2026-08-14 02:41:15,870 INFO ncaa_identity: contest_id=42572 teams 2032/2032 matched, players 5665/5692 matched
+parsed=330 failed=0
+est_id=42448 teams 2006/2006 matc2026-08-14 02:41:12,896 INFO nca2026-08-14 02:41:16,492 INFO ncaa_identity: contest_id=42537 teams 2404/2404 matched, players 5783/6774 matched
+parsed=330 failed=0
+d=42573 teams 2227/2227 matched, players 6084/6308 matched
+parsed=330 failed=0
+matched
+2026-08-14 02:41:06,502 INFO ncaa_identity: contest_id=42284 teams 2734/2734 matched, players 6542/7819 matched
+2026-08-14 02:41:07,531 INFO ncaa_identity: contest_id=42300 teams 2409/2409 matched, players 6796/6822 matched
+2026-08-14 02:41:08,624 INFO ncaa_identity: contest_id=42331 teams 2546/2546 matched, players 6649/7219 matched
+2026-08-14 02:41:09,504 INFO ncaa_identity: contest_id=42365 teams 1817/1817 matched, players 4954/5038 matched
+2026-08-14 02:41:11,617 INFO ncaa_identity: contest_id=42429 teams 2619/2619 matched, players 7104/7340 matched
+2026-08-14 02:41:13,937 INFO ncaa_identity: contest_id=42474 teams 1220/2415 matched, players 3291/6757 matched
+2026-08-14 02:41:14,910 INFO ncaa_identity: contest_id=42491 teams 2074/2074 matched, players 5457/5868 matched
+2026-08-14 02:41:15,572 INFO ncaa_identity: contest_id=42510 teams 1850/1850 matched, players 4431/5207 matched
+2026-08-14 02:41:17,066 INFO ncaa_identity: contest_id=42547 teams 2580/2580 matched, players 6672/7332 matched
+2026-08-14 02:41:17,593 INFO ncaa_identity: contest_id=42569 teams 2040/2040 matched, players 5743/5789 matched
+parsed=330 failed=0
+2026-08-14 02:41:13,199 INFO ncaa_identity: contest_id=42568 teams 2336/2336 matched, players 6146/6612 matched
+2026-08-14 02:41:14,026 INFO ncaa_identity: contest_id=42587 teams 2130/2130 matched, players 5790/5996 matched
+parsed=330 failed=0
+1:11,244 INFO ncaa_identity: contest_id=42544 teams 2327/2327 matched, players 5973/6588 matched
+parsed=330 failed=0
+EXIT=0

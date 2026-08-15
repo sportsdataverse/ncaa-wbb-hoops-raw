@@ -1,0 +1,5 @@
+seasons=all bundles=91782 pending=9 force=False shard=5/16 assigned=1
+parsed=1 failed=0
+,833 INFO ncaa_identity: contest_id=2334008 teams 3102/3102 matched, players 7950/8545 matched
+parsed=1 failed=0
+EXIT=0

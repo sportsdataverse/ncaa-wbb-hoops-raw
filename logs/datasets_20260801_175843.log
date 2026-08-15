@@ -1,0 +1,9 @@
+2026-08-01 17:58:45,631 INFO ESPN crosswalk joined: 356/356 teams matched (season=2022)
+2026-08-01 17:58:51,625 INFO rebuilt 356 schedules frames for season=2022 from committed html
+2026-08-01 17:58:51,833 INFO schedules season parquet: 11211 rows from 356 teams (season=2022)
+2026-08-01 17:58:52,343 INFO backfilled 356 rosters for season=2022 from team_rosters/ (no html available)
+2026-08-01 17:58:55,854 INFO rebuilt 712 rosters frames for season=2022 from committed html
+2026-08-01 17:58:56,001 INFO rosters season parquet: 5211 rows from 356 teams (season=2022)
+2026-08-01 17:58:56,006 INFO teams season=2022 league=wbb: 356 teams
+datasets season=2022 league=wbb: {"schedules": 11211, "rosters": 5211, "teams": 356}
+EXIT=0

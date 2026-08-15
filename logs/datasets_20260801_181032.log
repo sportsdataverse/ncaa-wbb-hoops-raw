@@ -1,0 +1,9 @@
+2026-08-01 18:10:34,630 INFO ESPN crosswalk joined: 355/355 teams matched (season=2021)
+2026-08-01 18:10:39,643 INFO rebuilt 355 schedules frames for season=2021 from committed html
+2026-08-01 18:10:39,834 INFO schedules season parquet: 9465 rows from 355 teams (season=2021)
+2026-08-01 18:10:40,243 INFO backfilled 355 rosters for season=2021 from team_rosters/ (no html available)
+2026-08-01 18:10:43,210 INFO rebuilt 710 rosters frames for season=2021 from committed html
+2026-08-01 18:10:43,378 INFO rosters season parquet: 4984 rows from 355 teams (season=2021)
+2026-08-01 18:10:43,383 INFO teams season=2021 league=wbb: 355 teams
+datasets season=2021 league=wbb: {"schedules": 9465, "rosters": 4984, "teams": 355}
+EXIT=0
