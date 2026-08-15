@@ -68,9 +68,20 @@ WORKERS="${WORKERS:-1}"
 # every worker piled onto the same handful of IPs. With canary-vendor sticky
 # residential sessions (NCAA_VENDOR=...), _vendor_fetcher rotates each worker's
 # proxy list to a disjoint offset, so what binds is per-IP pacing, not process
-# count. 24 is the cap: the Decodo pool is 50 ports and the rule is >=2 ports
-# per worker. Raised from 16 to match the MBB twin, where 23 workers ran a full
-# season clean at 34.6 captures/min on 2026-08-11.
+# count. 32 is the cap: the Decodo pool was extended to 64 ports
+# (us.decodo.com:10001-10064, canary PASS on the new 10051-10064 range
+# 2026-08-13) and the rule is >=2 ports per worker -- 64/32 = exactly 2.00.
+#
+# THE PORT COUNT IS THE CEILING'S ONLY JUSTIFICATION. These are Decodo
+# PORT-BASED endpoints with a bare username (no `-country-us-session-<id>`
+# tag), so port == egress IP: _vendor_fetcher's `-session-` re-mint regex is a
+# NO-OP on this config, and a worker's IP comes from its port slice alone.
+# Two ports per worker is the rotation headroom that lets a worker move off a
+# dead IP without landing on a neighbour's. If the pool ever shrinks, LOWER
+# this number in the same change -- 32 workers on 50 ports is 1.56/worker and
+# puts concurrent workers on one IP, which is the documented ban pattern.
+# History: 16 -> 24 (50 ports) 2026-08-12, 24 -> 32 (64 ports) 2026-08-13.
+# MBB reference: 23 workers sustained 34.6 captures/min on 2026-08-11.
 #
 # WHY THE CEILING MATTERS BEYOND THROUGHPUT: capture.shard() splits a season by
 # `k % n`, so a campaign that loses one shard leaves a stride-n residual. On a
@@ -81,9 +92,9 @@ WORKERS="${WORKERS:-1}"
 case "$WORKERS" in
   ''|*[!0-9]*) WORKERS=0 ;;
 esac
-if [ "$WORKERS" -lt 1 ] || [ "$WORKERS" -gt 24 ]; then
-  echo "REFUSING WORKERS='${WORKERS}' -- must be 1..24 (each worker rides its own" >&2
-  echo "  disjoint sticky proxy session; pool is 50 ports, keep >=2 per worker)." >&2
+if [ "$WORKERS" -lt 1 ] || [ "$WORKERS" -gt 32 ]; then
+  echo "REFUSING WORKERS='${WORKERS}' -- must be 1..32 (each worker rides its own" >&2
+  echo "  disjoint sticky proxy port; pool is 64 ports, keep >=2 per worker)." >&2
   exit 2
 fi
 
