@@ -112,6 +112,26 @@ drivers around the per-stage sequence:
   is never committed half-flushed — safe to run **concurrently with an
   active capture**. The backfill drivers deliberately do not commit;
   this keeps the repo close to pushed during a long campaign.
+- `ops/watchdog_stalled_capture.sh` — **required alongside a
+  multi-season campaign.** A sticky session stops clearing bm-verify
+  after ~70 min, so the last workers of each season outlive their
+  session and spin without writing anything. Their `run_02_games.sh`
+  wrapper has already printed `EXIT=`, so the python child is orphaned
+  while the season driver is still blocked in `wait()` — the campaign
+  stalls until someone kills them by hand. The watchdog kills
+  non-producing capture workers by PID so `wait()` returns and the
+  campaign advances; nothing is lost, since disk is the checkpoint and
+  a later re-run picks up the stragglers. Launch it next to the range
+  driver:
+
+  ```sh
+  mkdir -p logs && nohup bash ops/watchdog_stalled_capture.sh >> logs/watchdog.log 2>&1 &
+  ```
+
+  Knobs: `STALL_S` (default 480 — a cold bm-verify solve is 45-80s and
+  retries for a few minutes, so 8 min clears real work but not a hang),
+  `INTERVAL` (default 120). Over the 2026→2010 campaign it fired 10
+  times, all correct, zero spurious.
 
 Watch a running job live:
 
