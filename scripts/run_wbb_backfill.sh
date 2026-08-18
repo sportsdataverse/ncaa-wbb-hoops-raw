@@ -93,8 +93,8 @@ case "$WORKERS" in
   ''|*[!0-9]*) WORKERS=0 ;;
 esac
 if [ "$WORKERS" -lt 1 ] || [ "$WORKERS" -gt 32 ]; then
-  echo "REFUSING WORKERS='${WORKERS}' -- must be 1..32 (each worker rides its own" >&2
-  echo "  disjoint sticky proxy port; pool is 64 ports, keep >=2 per worker)." >&2
+  echo "REFUSING WORKERS='${WORKERS}' -- must be 1..32 (each worker needs its own" >&2
+  echo "  disjoint pair of sticky proxy ports; pool is 64, so >=2 ports per worker)." >&2
   exit 2
 fi
 

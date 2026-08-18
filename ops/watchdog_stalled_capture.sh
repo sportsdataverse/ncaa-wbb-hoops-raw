@@ -16,7 +16,9 @@
 # returns, parse runs, and the campaign advances. Nothing is lost: the disk is
 # the checkpoint and a later re-run picks up the stragglers.
 #
-#   nohup bash ops/watchdog_stalled_capture.sh >> logs/watchdog.log 2>&1 &
+# The redirect is opened by the INVOKING shell before this script runs, so
+# logs/ must already exist -- the mkdir below is too late for it.
+#   mkdir -p logs && nohup bash ops/watchdog_stalled_capture.sh >> logs/watchdog.log 2>&1 &
 #
 # Env: STALL_S (default 480 -- a cold bm-verify solve is 45-80s and retries a
 #      few minutes, so 8min clears real work but not a hang), INTERVAL
@@ -26,6 +28,15 @@ cd "$(dirname "$0")/.." || exit 1
 case "$PWD" in *wbb*) LEAGUE="${LEAGUE:-wbb}" ;; *) LEAGUE="${LEAGUE:-mbb}" ;; esac
 STALL_S="${STALL_S:-480}"
 INTERVAL="${INTERVAL:-120}"
+
+# Both are used as bare integers (`-lt`, `sleep`). A non-numeric value would
+# error on every pass; 0 or negative would kill instantly or spin a tight
+# loop. Refuse up front rather than misbehaving for hours unattended.
+for _v in STALL_S INTERVAL; do
+  case "${!_v}" in
+    ''|*[!0-9]*|0) echo "REFUSING ${_v}='${!_v}' -- must be a positive integer" >&2; exit 2 ;;
+  esac
+done
 
 mkdir -p logs
 say() { echo "[$(date '+%F %T')] $*"; }
@@ -69,9 +80,27 @@ while :; do
     fi
     if [ "$age" -gt "$STALL_S" ]; then
       say "STALL: ${n} worker(s) alive, no bundle written for ${age}s (>${STALL_S}) -- killing them"
-      powershell -NoProfile -Command \
-        "Get-CimInstance Win32_Process -Filter \"Name='python.exe'\" | Where-Object { \$_.CommandLine -match 'ncaa_${LEAGUE}_02_games' } | ForEach-Object { Stop-Process -Id \$_.ProcessId -Force -ErrorAction SilentlyContinue; \"  killed \$(\$_.ProcessId)\" }" 2>/dev/null
-      say "killed; the season driver's wait() should now return and the campaign advance"
+      # Stop-Process raises NON-TERMINATING errors and returns before the
+      # process is actually gone, so `-ErrorAction SilentlyContinue` +
+      # an unconditional "killed" message would report success for a
+      # process that is still running -- and the watchdog would then sit
+      # quiet while the campaign stays wedged. Fail loudly instead: catch
+      # per-PID, Wait-Process for real exit, then re-check and exit 1 if
+      # anything survived.
+      if powershell -NoProfile -Command \
+        "\$ids = @(Get-CimInstance Win32_Process -Filter \"Name='python.exe'\" | Where-Object { \$_.CommandLine -match 'ncaa_${LEAGUE}_02_games' } | Select-Object -ExpandProperty ProcessId)
+         foreach (\$id in \$ids) {
+           try { Stop-Process -Id \$id -Force -ErrorAction Stop; \"  killed \$id\" }
+           catch { \"  FAILED to kill \$id -- \$(\$_.Exception.Message)\" }
+         }
+         if (\$ids) { Wait-Process -Id \$ids -Timeout 30 -ErrorAction SilentlyContinue }
+         \$left = @(Get-Process -Id \$ids -ErrorAction SilentlyContinue)
+         if (\$left) { \"  STILL ALIVE after 30s: \$(\$left.Id -join ',')\"; exit 1 }" 2>/dev/null
+      then
+        say "all workers confirmed exited; the season driver's wait() should now return and the campaign advance"
+      else
+        say "WARNING: one or more workers SURVIVED the kill -- the driver is still blocked in wait(); intervene manually"
+      fi
       sleep 60   # let the driver move on before re-arming
     fi
   fi
