@@ -24,6 +24,13 @@ set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 case "$PWD" in *wbb*) LEAGUE=wbb ;; *) LEAGUE=mbb ;; esac
 INTERVAL="${INTERVAL:-600}"
+# Commit subject. Default describes a capture campaign, which is what this
+# usually runs beside -- but the same batching is needed after a PARSER FIX
+# reprocess, and labelling those commits "capture progress" would put a false
+# provenance trail in `git log` (the raw json changed because the parser
+# changed, not because anything new was captured). Override per run, e.g.
+#   SUBJECT='fix(parse): wbb halves-era reparse' ./scripts/run_autocommit.sh
+SUBJECT="${SUBJECT:-feat(data): capture progress --}"
 PUSH="${PUSH:-1}"
 SETTLE="${SETTLE:-1}"
 
@@ -51,7 +58,7 @@ while :; do
       c=$(git diff --cached --name-only -- "${LEAGUE}/raw/${s}" | wc -l | tr -d ' ')
       [ "$c" -gt 0 ] && summary="${summary}${s}:+${c} "
     done
-    git commit -q -m "feat(data): capture progress -- ${summary:-incremental} (${n} files)" \
+    git commit -q -m "${SUBJECT} ${summary:-incremental} (${n} files)" \
       && say "committed ${n} files  ${summary}"
     if [ "$PUSH" = "1" ]; then
       git -c http.version=HTTP/1.1 -c http.postBuffer=1048576000 push -q origin main \
