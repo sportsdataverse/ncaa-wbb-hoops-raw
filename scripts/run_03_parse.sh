@@ -29,10 +29,23 @@ if [[ " $* " == *" --shard "* ]]; then
 else
   pids=()
   for i in $(seq 0 $((PARSE_WORKERS - 1))); do
-    "$PY" python/ncaa_wbb_03_games_parse.py "$@" --shard "${i}/${PARSE_WORKERS}" >> "${LOG}" 2>&1 &
+    # Each shard writes its OWN log. With every shard appending to one file the
+    # writes interleave mid-LINE -- a warning gets spliced by another shard's
+    # output and even `grep -c` returns different counts between reads.
+    "$PY" python/ncaa_wbb_03_games_parse.py "$@" --shard "${i}/${PARSE_WORKERS}" \
+      > "${LOG%.log}.shard${i}.log" 2>&1 &
     pids+=($!)
   done
   for p in "${pids[@]}"; do wait "$p" || rc=$?; done
+  # Fold the per-shard logs into the combined one, whole-file, so nothing is
+  # spliced and `tail -f ${LOG}` still finds everything in one place.
+  for f in "${LOG%.log}".shard*.log; do
+    [ -f "$f" ] || continue
+    printf '
+===== %s =====
+' "$(basename "$f")" >> "${LOG}"
+    cat "$f" >> "${LOG}"
+  done
   tail -3 "${LOG}"
 fi
 echo "EXIT=${rc}" | tee -a "${LOG}"

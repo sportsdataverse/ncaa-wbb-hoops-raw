@@ -61,6 +61,19 @@ while :; do
     git commit -q -m "${SUBJECT} ${summary:-incremental} (${n} files)" \
       && say "committed ${n} files  ${summary}"
     if [ "$PUSH" = "1" ]; then
+      # Integrate anything that landed on the remote FIRST. Without this the
+      # loop cannot self-heal: ONE unrelated commit on origin/main (a CI tweak
+      # is enough) makes every later push a non-fast-forward, and the loop
+      # retries the identical rejected push every INTERVAL, forever, while
+      # logging PUSH FAILED. That happened in BOTH raw repos and both data
+      # repos during the 2026-08-19 parser-fix reprocess.
+      #
+      # --no-rebase: merge, never rebase -- these commits are already pushed in
+      # the normal case and the tree holds ~100k files.
+      # merge.autoStash=false: an in-flight parse leaves tens of thousands of
+      # modified files and autostash dies with 'patch too large'.
+      git -c merge.autoStash=false pull -q --no-rebase --no-edit origin main \
+        || say "PULL FAILED (working tree untouched; next pass retries)"
       git -c http.version=HTTP/1.1 -c http.postBuffer=1048576000 push -q origin main \
         && say "pushed" || say "PUSH FAILED (commit is safe locally; next pass retries)"
     fi
