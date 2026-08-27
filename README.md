@@ -106,6 +106,41 @@ drivers around the per-stage sequence:
   then commits + pushes that season. Reference data is cheap (~2 pages
   per team-season vs 3 per game), so it runs first / independently of
   `run_wbb_backfill*.sh`; it does **no** pbp capture.
+- `scripts/droplet_wbb_capture.sh` — the **droplet (Linux) capture
+  launcher**. The base runners default to the Windows dev-box venv; this
+  exports the droplet's `SDV_PY` and the `decodo_patchright` vendor
+  transport (the US-residential sticky port pool in `canary_vendors.toml`,
+  gitignored) and delegates. Every other knob stays env-only, exactly as the
+  base runners document them. It refuses to start without
+  `canary_vendors.toml` or the droplet venv.
+
+  ```sh
+  ./scripts/droplet_wbb_capture.sh --season 2025 --max-contests 25
+  WORKERS=4 ./scripts/droplet_wbb_capture.sh --season 2025
+  tmux new -s wbb './scripts/droplet_wbb_capture.sh --season 2025'   # survive SSH loss
+  tail -f logs/capture_<ts>.log
+  ```
+
+- `scripts/droplet_wbb_campaign.sh` — the **OOM-shielded multi-worker
+  campaign** around `run_wbb_backfill.sh`, with auto-halving workers. The
+  droplet also runs postgres (sdv-db), sdv-db-api, the sdv-orch services and
+  a GH Actions runner; eight chrome workers can exceed available RAM, and
+  the kernel's OOM killer picks the largest RSS — which is postgres, not the
+  capture. `choom -n 1000` scores the capture tree maximally killable, and
+  `oom_score_adj` is inherited by every python and chrome descendant, so the
+  sweep is sacrificed before any production service. Capture checkpoints
+  per file, so an OOM kill costs at most one bundle per worker.
+
+  ```sh
+  ./scripts/droplet_wbb_campaign.sh 2025             # WORKERS=8 (default)
+  WORKERS=4 ./scripts/droplet_wbb_campaign.sh 2025
+  tail -f logs/campaign_<season>_<ts>.log
+  ```
+
+  Use `run_wbb_backfill_range.sh` for the multi-season sequence; the
+  campaign script deliberately does not duplicate its per-season round and
+  cooldown logic.
+
 - `scripts/run_autocommit.sh` — incremental commit(+push) sweep of
   capture output every `INTERVAL` seconds. It stages only files whose
   mtime has settled at least `SETTLE` minutes, so an in-flight bundle
