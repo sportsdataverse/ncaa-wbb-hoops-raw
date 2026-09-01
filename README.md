@@ -372,6 +372,17 @@ The season `-data` builder lives in the sibling repo
 HTTP from `main`, which is why the data tree must stay committed (see
 `.gitignore`).
 
+## Reports & explainers
+
+<!-- BEGIN GENERATED: reports -->
+
+| Report | What it is | Last updated |
+|---|---|---|
+| [Resume the NCAA WBB backfill](docs/RESUME.md) | explainer | 2026-08-12 |
+| [stats.ncaa.org scraping — everything we know (NCAA WBB raw)](docs/SCRAPING_NOTES.md) | explainer | 2026-08-12 |
+
+<!-- END GENERATED: reports -->
+
 ## Automation & status
 
 <!-- BEGIN GENERATED: status -->
