@@ -51,6 +51,100 @@ same transport, same fetcher, same safe-rate rules. The `python/` package
 defaults `--league` to `"wbb"` throughout; `"mbb"` remains a legitimate
 runtime value there for parity/regression checks against the MBB scraper.
 
+## ncaa-wbb-hoops workflow diagram
+
+```mermaid
+  graph LR;
+    S[stats.ncaa.org]-->A[ncaa-wbb-hoops-raw];
+    A[ncaa-wbb-hoops-raw]-->B[ncaa-wbb-hoops-data];
+    B[ncaa-wbb-hoops-data]-->C1[ncaa_wbb_team_ids];
+    B[ncaa-wbb-hoops-data]-->C2[ncaa_wbb_schedule];
+    B[ncaa-wbb-hoops-data]-->C3[ncaa_wbb_team_rosters];
+    B[ncaa-wbb-hoops-data]-->C4[ncaa_wbb_rosters];
+    B[ncaa-wbb-hoops-data]-->C5[ncaa_wbb_pbp];
+    B[ncaa-wbb-hoops-data]-->C6[ncaa_wbb_player_box];
+    B[ncaa-wbb-hoops-data]-->C7[ncaa_wbb_team_box];
+    B[ncaa-wbb-hoops-data]-->C8[ncaa_wbb_lineups];
+    B[ncaa-wbb-hoops-data]-->C9[ncaa_wbb_matchup_stints];
+    B[ncaa-wbb-hoops-data]-->C10[ncaa_wbb_possessions];
+    B[ncaa-wbb-hoops-data]-->C11[ncaa_wbb_shots];
+    B[ncaa-wbb-hoops-data]-->C12[ncaa_wbb_rapm];
+    B[ncaa-wbb-hoops-data]-->C13[ncaa_wbb_rapm_within_team];
+```
+
+```mermaid
+flowchart TB;
+    subgraph A[ncaa-wbb-hoops-raw];
+        direction TB;
+        A0[scripts/run_wbb_backfill.sh]-->A1[python/ncaa_wbb_01_schedules_scrape.py];
+        A1[python/ncaa_wbb_01_schedules_scrape.py]-->A2[python/ncaa_wbb_02_games_scrape.py];
+        A2[python/ncaa_wbb_02_games_scrape.py]-->A3[python/ncaa_wbb_03_games_parse.py];
+        A3[python/ncaa_wbb_03_games_parse.py]-->A4[python/ncaa_wbb_04_rosters_scrape.py];
+        A4[python/ncaa_wbb_04_rosters_scrape.py]-->A5[python/ncaa_wbb_05_datasets_build.py];
+        A5[python/ncaa_wbb_05_datasets_build.py]-->A6[python/ncaa_wbb_06_xwalk_build.py];
+        A6[python/ncaa_wbb_06_xwalk_build.py]-->A7[python/ncaa_wbb_98_canary_probe.py];
+    end;
+
+    subgraph B[ncaa-wbb-hoops-data];
+        direction TB;
+        B0[scripts/run_build.sh]-->B1[python/ncaa_wbb_01_team_ids_creation.py];
+        B1[python/ncaa_wbb_01_team_ids_creation.py]-->B2[python/ncaa_wbb_02_schedule_creation.py];
+        B2[python/ncaa_wbb_02_schedule_creation.py]-->B3[python/ncaa_wbb_03_team_rosters_creation.py];
+        B3[python/ncaa_wbb_03_team_rosters_creation.py]-->B4[python/ncaa_wbb_04_rosters_creation.py];
+        B4[python/ncaa_wbb_04_rosters_creation.py]-->B5[python/ncaa_wbb_05_pbp_creation.py];
+        B5[python/ncaa_wbb_05_pbp_creation.py]-->B6[python/ncaa_wbb_06_player_box_creation.py];
+        B6[python/ncaa_wbb_06_player_box_creation.py]-->B7[python/ncaa_wbb_07_team_box_creation.py];
+        B7[python/ncaa_wbb_07_team_box_creation.py]-->B8[python/ncaa_wbb_08_lineups_creation.py];
+        B8[python/ncaa_wbb_08_lineups_creation.py]-->B9[python/ncaa_wbb_09_matchup_stints_creation.py];
+        B9[python/ncaa_wbb_09_matchup_stints_creation.py]-->B10[python/ncaa_wbb_10_possessions_creation.py];
+        B10[python/ncaa_wbb_10_possessions_creation.py]-->B11[python/ncaa_wbb_11_shots_creation.py];
+        B11[python/ncaa_wbb_11_shots_creation.py]-->B12[python/ncaa_wbb_99_schedule_master_creation.py];
+        B12[python/ncaa_wbb_99_schedule_master_creation.py]-->B13[ops/build_rapm.py];
+        B13[ops/build_rapm.py]-->B14[ops/build_rapm_league.py];
+    end;
+
+    subgraph C[sportsdataverse-data Releases];
+        direction TB;
+        C1[ncaa_wbb_team_ids];
+        C2[ncaa_wbb_schedule];
+        C3[ncaa_wbb_team_rosters];
+        C4[ncaa_wbb_rosters];
+        C5[ncaa_wbb_pbp];
+        C6[ncaa_wbb_player_box];
+        C7[ncaa_wbb_team_box];
+        C8[ncaa_wbb_lineups];
+        C9[ncaa_wbb_matchup_stints];
+        C10[ncaa_wbb_possessions];
+        C11[ncaa_wbb_shots];
+        C12[ncaa_wbb_rapm];
+        C13[ncaa_wbb_rapm_within_team];
+    end;
+
+    A-->B;
+    B-->C;
+```
+
+`scripts/run_wbb_backfill.sh` (raw) and `scripts/run_build.sh` (data) are the
+drivers; `run_autocommit.sh` commits captures as they land. Stage numbers are
+intended build order, not run order. WBB is HALVES before season 2016; the
+quarters model silently empties those seasons.
+
+[wehoop-wbb-raw repository (source: ESPN)](https://github.com/sportsdataverse/wehoop-wbb-raw)
+
+[wehoop-wbb-data repository (source: ESPN)](https://github.com/sportsdataverse/wehoop-wbb-data)
+
+[wehoop-wnba-raw repository (source: ESPN)](https://github.com/sportsdataverse/wehoop-wnba-raw)
+
+[wehoop-wnba-data repository (source: ESPN)](https://github.com/sportsdataverse/wehoop-wnba-data)
+
+[wehoop-wnba-stats-raw repository (source: WNBA Stats)](https://github.com/sportsdataverse/wehoop-wnba-stats-raw)
+
+[wehoop-wnba-stats-data repository (source: WNBA Stats)](https://github.com/sportsdataverse/wehoop-wnba-stats-data)
+
+[ncaa-wbb-hoops-raw repository (source: stats.ncaa.org)](https://github.com/sportsdataverse/ncaa-wbb-hoops-raw)
+
+[ncaa-wbb-hoops-data repository (source: stats.ncaa.org)](https://github.com/sportsdataverse/ncaa-wbb-hoops-data)
+
 ## Setup
 
 Requires the sibling `sdv-py` checkout at
@@ -277,3 +371,14 @@ The season `-data` builder lives in the sibling repo
 `../ncaa-mbb-hoops-data`. It ingests this repo's committed `wbb/` tree over
 HTTP from `main`, which is why the data tree must stay committed (see
 `.gitignore`).
+
+## Automation & status
+
+<!-- BEGIN GENERATED: status -->
+
+| workflow | schedule | last run |
+|---|---|---|
+| [![orphan_scripts.yml](https://github.com/sportsdataverse/ncaa-wbb-hoops-raw/actions/workflows/orphan_scripts.yml/badge.svg)](https://github.com/sportsdataverse/ncaa-wbb-hoops-raw/actions/workflows/orphan_scripts.yml) | on push / PR / dispatch | 2026-08-27 |
+| [![tests.yml](https://github.com/sportsdataverse/ncaa-wbb-hoops-raw/actions/workflows/tests.yml/badge.svg)](https://github.com/sportsdataverse/ncaa-wbb-hoops-raw/actions/workflows/tests.yml) | on push / PR / dispatch | 2026-08-27 |
+
+<!-- END GENERATED: status -->
