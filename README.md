@@ -393,3 +393,22 @@ HTTP from `main`, which is why the data tree must stay committed (see
 | [![tests.yml](https://github.com/sportsdataverse/ncaa-wbb-hoops-raw/actions/workflows/tests.yml/badge.svg)](https://github.com/sportsdataverse/ncaa-wbb-hoops-raw/actions/workflows/tests.yml) | on push / PR / dispatch | 2026-08-27 |
 
 <!-- END GENERATED: status -->
+
+## Consumers
+
+The packages that read what this repo produces:
+
+- **R:** [wehoop](https://wehoop.sportsdataverse.org) — docs at <https://wehoop.sportsdataverse.org>
+- **Python:** [`sportsdataverse (wbb_ncaa engine)`](https://github.com/sportsdataverse/sportsdataverse-py) — docs at <https://py.sportsdataverse.org>
+
+## Stage inventory
+
+Every numbered pipeline stage in `python/` (auto-listed; run subsets with the `scripts/*.sh` drivers by number or name):
+
+- `python/ncaa_wbb_01_schedules_scrape.py`
+- `python/ncaa_wbb_02_games_scrape.py`
+- `python/ncaa_wbb_03_games_parse.py`
+- `python/ncaa_wbb_04_rosters_scrape.py`
+- `python/ncaa_wbb_05_datasets_build.py`
+- `python/ncaa_wbb_06_xwalk_build.py`
+- `python/ncaa_wbb_98_canary_probe.py`
