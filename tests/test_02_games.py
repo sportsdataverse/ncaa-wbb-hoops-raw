@@ -6,7 +6,7 @@ import tempfile
 from pathlib import Path
 
 import polars as pl
-from ncaa_bundle import is_captured, read_bundle
+from ncaa_wbb_raw_scrape.ncaa_bundle import is_captured, read_bundle
 from ncaa_wbb_02_games_scrape import _select_pending, capture_contests, shard
 
 # Sibling checkout: .../sdv-dev/{wehoop-dev/ncaa-wbb-hoops-raw, sdv-py}.

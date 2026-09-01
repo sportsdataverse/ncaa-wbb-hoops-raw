@@ -258,7 +258,13 @@ def _league() -> str:
 
 
 def _python_modules() -> set[str]:
-    return {p.stem for p in (REPO / "python").glob("ncaa_*.py")}
+    # Library modules live packaged under python/ncaa_<lg>_raw_scrape/ (2026-09-01);
+    # numbered stages stay flat.
+    lg = _league()
+    pkg = REPO / "python" / f"ncaa_{lg}_raw_scrape"
+    return {p.stem for p in (REPO / "python").glob("ncaa_*.py")} | {
+        p.stem for p in pkg.glob("ncaa_*.py")
+    }
 
 
 def _test_modules() -> set[str]:
@@ -285,7 +291,10 @@ def _has_cli(module_stem: str) -> bool:
     both run that injection and still not tell us whether the file is
     runnable. The marker is a module-level ``if __name__ == "__main__":``.
     """
-    tree = ast.parse((REPO / "python" / f"{module_stem}.py").read_text(encoding="utf-8"))
+    path = REPO / "python" / f"{module_stem}.py"
+    if not path.is_file():  # packaged library module
+        path = REPO / "python" / f"ncaa_{_league()}_raw_scrape" / f"{module_stem}.py"
+    tree = ast.parse(path.read_text(encoding="utf-8"))
     return any(
         isinstance(node, ast.If)
         and isinstance(node.test, ast.Compare)

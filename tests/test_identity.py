@@ -11,7 +11,7 @@ import json
 import tempfile
 from pathlib import Path
 
-from ncaa_identity import (
+from ncaa_wbb_raw_scrape.ncaa_identity import (
     _key_name,
     _utf8_id,
     enrich_parsed,

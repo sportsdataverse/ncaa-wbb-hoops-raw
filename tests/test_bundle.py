@@ -6,7 +6,7 @@ import gzip
 import tempfile
 from pathlib import Path
 
-from ncaa_bundle import bundle_path, is_captured, read_bundle, write_bundle
+from ncaa_wbb_raw_scrape.ncaa_bundle import bundle_path, is_captured, read_bundle, write_bundle
 
 CONTRACT_KEYS = {"contest_id", "league", "season", "captured_at", "urls", "pages"}
 PAGE_KEYS = {"play_by_play", "box_score", "individual_stats"}
