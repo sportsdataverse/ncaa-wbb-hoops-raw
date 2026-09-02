@@ -42,8 +42,16 @@ say "watch: tail -f $(pwd)/${LOG}"
 
 while :; do
   # Stage only SETTLED files so an in-flight write is never committed partially.
-  find "${LEAGUE}/raw" "${LEAGUE}/json" -type f -mmin "+${SETTLE}" -print0 2>/dev/null \
-    | xargs -0 -r git add --
+  # ONE git invocation: `| xargs git add` forks a NEW git per batch and each one
+  # rewrites the whole index. That fork churn is what killed both autocommitters
+  # on 2026-08-29 (MSYS `dofork ... exit code 0xC000026B` / `fork: retry:
+  # Resource temporarily unavailable`), and it is near-quadratic besides.
+  # --pathspec-from-file keeps the SETTLE semantics EXACTLY as before -- the
+  # settle window is load-bearing here (these captures do not write atomically).
+  _settled=$(mktemp)
+  find "${LEAGUE}/raw" "${LEAGUE}/json" -type f -mmin "+${SETTLE}" -print0 2>/dev/null > "$_settled"
+  [ -s "$_settled" ] && git add --pathspec-from-file="$_settled" --pathspec-file-nul --
+  rm -f "$_settled"
   # schedule_master is rewritten by discovery; safe to take whole.
   [ -f "${LEAGUE}/schedule_master.parquet" ] && git add "${LEAGUE}/schedule_master.parquet"
 
@@ -58,8 +66,22 @@ while :; do
       c=$(git diff --cached --name-only -- "${LEAGUE}/raw/${s}" | wc -l | tr -d ' ')
       [ "$c" -gt 0 ] && summary="${summary}${s}:+${c} "
     done
-    git commit -q -m "${SUBJECT} ${summary:-incremental} (${n} files)" \
-      && say "committed ${n} files  ${summary}"
+    # Capture the commit's OWN error and GATE THE PUSH ON IT. This was
+    # `git commit -q ... && say "committed"` with the push block running
+    # unconditionally after it, so a failed commit logged NOTHING and the
+    # no-op push that followed logged "pushed" -- success reported for work
+    # that never happened.
+    _err=$(mktemp)
+    if git commit -q -m "${SUBJECT} ${summary:-incremental} (${n} files)" 2>"$_err"; then
+      say "committed ${n} files  ${summary}"
+      rm -f "$_err"
+    else
+      say "COMMIT FAILED -- NOT pushing. git said:"
+      sed 's/^/    /' "$_err" | head -20 | tee -a "$LOG"
+      rm -f "$_err"
+      sleep "$INTERVAL"
+      continue
+    fi
     if [ "$PUSH" = "1" ]; then
       # Integrate anything that landed on the remote FIRST. Without this the
       # loop cannot self-heal: ONE unrelated commit on origin/main (a CI tweak
