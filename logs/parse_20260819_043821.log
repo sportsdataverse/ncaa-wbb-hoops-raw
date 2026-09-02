@@ -1,0 +1,1141 @@
+seasons=2010,2011,2012,2013,2014,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026 bundles=88292 pending=88292 force=True shard=1/10 assigned=8830
+2026-08-19 04:38:28,292 INFO ncaa_identity: contest_id=1343393 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:28,298 INFO ncaa_identity: contest_id=1343393 teams 0/2114 matched, players 0/843 matched
+2026-08-19 04:38:29,401 INFO ncaa_identity: contest_id=1343405 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:29,407 INFO ncaa_identity: contest_id=1343405 teams 0/2778 matched, players 0/985 matched
+2026-08-19 04:38:30,508 INFO ncaa_identity: contest_id=1343415 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:30,511 INFO ncaa_identity: contest_id=1343415 teams 0/2522 matched, players 0/964 matched
+2026-08-19 04:38:31,189 INFO ncaa_identity: contest_id=1343425 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:31,193 INFO ncaa_identity: contest_id=1343425 teams 0/2227 matched, players 0/877 matched
+2026-08-19 04:38:32,155 INFO ncaa_identity: contest_id=1343435 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:32,160 INFO ncaa_identity: contest_id=1343435 teams 0/2138 matched, players 0/749 matched
+2026-08-19 04:38:33,034 INFO ncaa_identity: contest_id=1343445 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:33,037 INFO ncaa_identity: contest_id=1343445 teams 0/2522 matched, players 0/888 matched
+2026-08-19 04:38:33,812 INFO ncaa_identity: contest_id=1343455 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:33,816 INFO ncaa_identity: contest_id=1343455 teams 0/2656 matched, players 0/906 matched
+2026-08-19 04:38:34,601 INFO ncaa_identity: contest_id=1343465 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:34,607 INFO ncaa_identity: contest_id=1343465 teams 0/2179 matched, players 0/919 matched
+2026-08-19 04:38:35,338 INFO ncaa_identity: contest_id=1343475 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:35,342 INFO ncaa_identity: contest_id=1343475 teams 0/1884 matched, players 0/657 matched
+2026-08-19 04:38:36,485 INFO ncaa_identity: contest_id=1343486 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:36,491 INFO ncaa_identity: contest_id=1343486 teams 0/2310 matched, players 0/919 matched
+2026-08-19 04:38:37,226 INFO ncaa_identity: contest_id=1343496 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:37,230 INFO ncaa_identity: contest_id=1343496 teams 0/1946 matched, players 0/812 matched
+2026-08-19 04:38:37,931 INFO ncaa_identity: contest_id=1343506 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:37,935 INFO ncaa_identity: contest_id=1343506 teams 0/2074 matched, players 0/695 matched
+2026-08-19 04:38:38,858 INFO ncaa_identity: contest_id=1343516 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:38,863 INFO ncaa_identity: contest_id=1343516 teams 0/2188 matched, players 0/847 matched
+2026-08-19 04:38:39,602 INFO ncaa_identity: contest_id=1343526 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:39,605 INFO ncaa_identity: contest_id=1343526 teams 0/2040 matched, players 0/732 matched
+2026-08-19 04:38:39,921 INFO ncaa_identity: contest_id=1343537 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:39,925 INFO ncaa_identity: contest_id=1343537 teams 0/2162 matched, players 0/544 matched
+2026-08-19 04:38:40,739 INFO ncaa_identity: contest_id=1343547 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:40,742 INFO ncaa_identity: contest_id=1343547 teams 0/2166 matched, players 0/911 matched
+2026-08-19 04:38:41,365 INFO ncaa_identity: contest_id=1343558 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:41,369 INFO ncaa_identity: contest_id=1343558 teams 0/1791 matched, players 0/588 matched
+2026-08-19 04:38:42,210 INFO ncaa_identity: contest_id=1343575 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:42,212 INFO ncaa_identity: contest_id=1343575 teams 0/2084 matched, players 0/868 matched
+2026-08-19 04:38:42,890 INFO ncaa_identity: contest_id=1343600 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:42,894 INFO ncaa_identity: contest_id=1343600 teams 0/1936 matched, players 0/564 matched
+2026-08-19 04:38:43,577 INFO ncaa_identity: contest_id=1343635 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:43,580 INFO ncaa_identity: contest_id=1343635 teams 0/2193 matched, players 0/798 matched
+2026-08-19 04:38:44,384 INFO ncaa_identity: contest_id=1343678 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:44,387 INFO ncaa_identity: contest_id=1343678 teams 0/2089 matched, players 0/812 matched
+2026-08-19 04:38:45,142 INFO ncaa_identity: contest_id=1343690 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:45,148 INFO ncaa_identity: contest_id=1343690 teams 0/2538 matched, players 0/1090 matched
+2026-08-19 04:38:45,921 INFO ncaa_identity: contest_id=1343701 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:45,925 INFO ncaa_identity: contest_id=1343701 teams 0/2627 matched, players 0/1018 matched
+2026-08-19 04:38:46,807 INFO ncaa_identity: contest_id=1343743 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:46,811 INFO ncaa_identity: contest_id=1343743 teams 0/2132 matched, players 0/844 matched
+2026-08-19 04:38:47,431 INFO ncaa_identity: contest_id=1343781 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:47,436 INFO ncaa_identity: contest_id=1343781 teams 0/2147 matched, players 0/791 matched
+2026-08-19 04:38:48,031 INFO ncaa_identity: contest_id=1343795 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:48,035 INFO ncaa_identity: contest_id=1343795 teams 0/2044 matched, players 0/730 matched
+2026-08-19 04:38:48,480 INFO ncaa_identity: contest_id=1343821 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:48,492 INFO ncaa_identity: contest_id=1343821 teams 0/2260 matched, players 0/6276 matched
+22026-08-19 04:38:48,935 INFO ncaa_identity: contest_id=1343863 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:48,937 INFO ncaa_identity: contest_id=1343863 teams 0/2142 matched, players 0/753 matched22026-08-19 04:38:49,754 INFO ncaa_identity: contest_id=1343905 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:49,759 INFO ncaa_identity: contest_id=1343905 teams 0/2388 matched, players 0/733 matched22026-08-19 04:38:50,549 INFO ncaa_identity: contest_id=1343919 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:50,555 INFO ncaa_identity: contest_id=1343919 teams 0/2214 matched, players 0/877 matched2026-08-19 04:38:51,352 INFO ncaa_identity: contest_id=1343963 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:51,355 INFO ncaa_identity: contest_id=1343963 teams 0/2318 matched, players 0/930 matched
+22026-08-19 04:38:52,345 INFO ncaa_identity: contest_id=1344007 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:52,350 INFO ncaa_identity: contest_id=1344007 teams 0/2502 matched, players 0/1016 matched202026-08-19 04:38:53,134 INFO ncaa_identity: contest_id=1344045 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:53,136 INFO ncaa_identity: contest_id=1344045 teams 0/2018 matched, players 0/631 matched202026-08-19 04:38:53,948 INFO ncaa_identity: contest_id=1344057 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:53,950 INFO ncaa_identity: contest_id=1344057 teams 0/1811 matched, players 0/568 matched202026-08-19 04:38:54,685 INFO ncaa_identity: contest_id=1344085 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:54,688 INFO ncaa_identity: contest_id=1344085 teams 0/2276 matched, players 0/955 matched
+2026-08-19 04:38:55,320 INFO ncaa_identity: contest_id=1344095 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:55,323 INFO ncaa_identity: contest_id=1344095 teams 0/2074 matched, players 0/706 matched
+2026-08-19 04:38:56,102 INFO ncaa_identity: contest_id=1344124 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:56,106 INFO ncaa_identity: contest_id=1344124 teams 0/2114 matched, players 0/728 matched
+2026-08-19 04:38:56,862 INFO ncaa_identity: contest_id=1344137 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:56,867 INFO ncaa_identity: contest_id=1344137 teams 0/2354 matched, players 0/840 matched
+2026-08-19 04:38:57,712 INFO ncaa_identity: contest_id=1344154 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:57,715 INFO ncaa_identity: contest_id=1344154 teams 0/2117 matched, players 0/837 matched
+2026-08-19 04:38:58,391 INFO ncaa_identity: contest_id=1344166 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:58,396 INFO ncaa_identity: contest_id=1344166 teams 0/2156 matched, players 0/889 matched
+2026-08-19 04:38:58,478 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:38:58,479 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:38:58,479 INFO 5 starters not found for period 2; using estim2026-08-19 04:38:58,983 INFO ncaa_identity: contest_id=1344234 season=2010 league=wbb2026-08-19 04:38:59,151 INFO ncaa_identity: contest_id=1344183 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:59,1572026-08-19 04:38:59,743 INFO ncaa_identity: contest_id=1344270 season=2010 league=wbb 2026-08-19 04:38:59,913 INFO ncaa_identity: contest_id=1344233 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:38:59,912026-08-19 04:39:00,434 INFO ncaa_identity: contest_id=1344304 season=2010 league=wbb 2026-08-19 04:39:00,599 INFO ncaa_identity: contest_id=1344265 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:00,602026-08-19 04:39:01,243 INFO ncaa_identity: contest_id=1344371 season=2010 league=wbb 2026-08-19 04:39:01,271 INFO ncaa_identity: contest_id=1344303 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:01,272026-08-19 04:39:02,100 INFO ncaa_identity: contest_id=1344456 season=2010 league=wbb 2026-08-19 04:39:02,189 INFO ncaa_identity: contest_id=1344370 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:02,192026-08-19 04:39:02,652 INFO ncaa_identity: contest_id=1344481 season=2010 league=wbb 2026-08-19 04:39:02,803 INFO ncaa_identity: contest_id=1344455 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:02,802026-08-19 04:39:03,168 INFO ncaa_identity: contest_id=1344549 season=2010 league=wbb 2026-08-19 04:39:03,502 INFO ncaa_identity: contest_id=1344475 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:03,502026-08-19 04:39:04,065 INFO ncaa_identity: contest_id=1344591 season=2010 league=wbb 2026-08-19 04:39:04,320 INFO ncaa_identity: contest_id=1344514 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:04,322026-08-19 04:39:04,680 INFO ncaa_identity: contest_id=1344624 season=2010 league=wbb 2026-08-19 04:39:04,966 INFO ncaa_identity: contest_id=1344589 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:04,972026-08-19 04:39:05,287 INFO ncaa_identity: contest_id=1344646 season=2010 league=wbb 2026-08-19 04:39:05,768 INFO ncaa_identity: contest_id=1344623 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:05,772026-08-19 04:39:06,195 INFO ncaa_identity: contest_id=1344743 season=2010 league=wbb 2026-08-19 04:39:06,468 INFO ncaa_identity: contest_id=1344645 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:06,472026-08-19 04:39:06,964 INFO ncaa_identity: contest_id=1344841 season=2010 league=wbb 2026-08-19 04:39:07,055 INFO ncaa_identity: contest_id=1344723 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:07,052026-08-19 04:39:07,542 INFO ncaa_identity: contest_id=1344853 season=2010 league=wbb 2026-08-19 04:39:07,824 INFO ncaa_identity: contest_id=1344840 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:07,822026-08-19 04:39:08,294 INFO ncaa_identity: contest_id=1344881 season=2010 league=wbb 2026-08-19 04:39:08,436 INFO ncaa_identity: contest_id=1344852 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:08,432026-08-19 04:39:08,857 INFO ncaa_identity: contest_id=1344892 season=2010 league=wbb 2026-08-19 04:39:09,259 INFO ncaa_identity: contest_id=1344874 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:09,262026-08-19 04:39:09,495 INFO ncaa_identity: contest_id=1344910 season=2010 league=wbb 2026-08-19 04:39:09,805 INFO ncaa_identity: contest_id=1344891 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:09,812026-08-19 04:39:10,230 INFO ncaa_identity: contest_id=1344920 season=2010 league=wbb 2026-08-19 04:39:10,520 INFO ncaa_identity: contest_id=1344908 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:10,522026-08-19 04:39:10,852 INFO ncaa_identity: contest_id=1344966 season=2010 league=wbb 2026-08-19 04:39:11,330 INFO ncaa_identity: contest_id=1344919 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:11,332026-08-19 04:39:11,511 INFO ncaa_identity: contest_id=1344989 season=2010 league=wbb 2026-08-19 04:39:12,091 INFO ncaa_identity: contest_id=1344965 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:12,096 INFO ncaa_identity: contest_id=1344965 teams 0/1999 matched, players 0/781 matched
+2026-08-19 04:39:12,761 INFO ncaa_identity: contest_id=1344979 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:12,766 INFO ncaa_identity: contest_id=1344979 teams 0/2214 matched, players 0/880 matched
+2026-08-19 04:39:13,567 INFO ncaa_identity: contest_id=1345003 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:13,570 INFO ncaa_identity: contest_id=1345003 teams 0/2166 matched, players 0/840 matched
+2026-08-19 04:39:14,248 INFO ncaa_identity: contest_id=1345022 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:14,252 INFO ncaa_identity: contest_id=1345022 teams 0/1844 matched, players 0/632 matched
+2026-08-19 04:39:14,848 INFO ncaa_identity: contest_id=1345064 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:14,851 2026-08-19 04:39:15,124 INFO ncaa_identity: contest_id=1345135 season=2010 league=wb2026-08-19 04:39:15,577 INFO ncaa_identity: contest_id=1345126 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:15,581 INFO ncaa_identity: contest_id=1345126 teams 0/2091 matched, players 0/709 matched
+2026-08-19 04:39:16,284 INFO ncaa_identity: contest_id=1345141 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:16,288 INFO ncaa_identity: contest_id=1345141 teams 0/1914 matched, players 0/624 matched
+2026-08-19 04:39:17,155 INFO ncaa_identity: contest_id=1345209 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:17,160 INFO ncaa_identity: contest_id=1345209 teams 0/2158 matched, players 0/910 matched
+2026-08-19 04:39:17,947 INFO ncaa_identity: contest_id=1345224 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:17,951 INFO ncaa_identity: contest_id=1345224 teams 0/2198 matched, players 0/653 matched
+2026-08-19 04:39:18,631 INFO ncaa_identity: contest_id=1345248 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:18,636 INFO ncaa_identity: contest_id=1345248 teams 0/2114 matched, players 0/757 matched
+2026-08-19 04:39:19,581 INFO ncaa_identity: contest_id=1345332 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:19,584 INFO ncaa_identity: contest_id=1345332 teams 0/2310 matched, players 0/914 matched
+2026-08-19 04:39:20,276 INFO ncaa_identity: contest_id=1345345 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:20,280 INFO ncaa_identity: contest_id=1345345 teams 0/2153 matched, players 0/821 matched
+2026-08-19 04:39:21,081 INFO ncaa_identity: contest_id=1345355 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:21,085 INFO ncaa_identity: contest_id=1345355 teams 0/2110 matched, players 0/722 matched
+2026-08-19 04:39:21,650 INFO ncaa_identity: contest_id=1345375 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:21,653 INFO ncaa_identity: contest_id=1345375 teams 0/1716 matched, players 0/563 matched
+2026-08-19 04:39:22,271 INFO ncaa_identity: contest_id=1345389 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:22,274 INFO ncaa_identity: contest_id=1345389 teams 0/2115 matched, players 0/786 matched
+2026-08-19 04:39:23,018 INFO ncaa_identity: contest_id=1345413 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:23,023 INFO ncaa_identity: contest_id=1345413 teams 0/2132 matched, players 0/767 matched
+2026-08-19 04:39:23,529 INFO ncaa_identity: contest_id=1345426 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:23,531 INFO ncaa_identity: contest_id=1345426 teams 0/1721 matched, players 0/523 matched
+2026-08-19 04:39:24,149 INFO ncaa_identity: contest_id=1345440 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:24,153 INFO ncaa_identity: contest_id=1345440 teams 0/1810 matched, players 0/586 matched
+2026-08-19 04:39:24,763 INFO ncaa_identity: contest_id=1345455 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:24,766 INFO ncaa_identity: contest_id=1345455 teams 0/1840 matched, players 0/761 matched
+2026-08-19 04:39:25,450 INFO ncaa_identity: contest_id=1345472 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:25,453 INFO ncaa_identity: contest_id=1345472 teams 0/1916 matched, players 0/723 matched
+2026-08-19 04:39:26,106 INFO ncaa_identity: contest_id=1345491 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:26,110 INFO ncaa_identity: contest_id=1345491 teams 0/1892 matched, players 0/652 matched
+2026-08-19 04:39:26,790 INFO ncaa_identity: contest_id=1345504 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:26,792 INFO ncaa_identity: contest_id=1345504 teams 0/1678 matched, players 0/514 matched
+2026-08-19 04:39:27,670 INFO ncaa_identity: contest_id=1345523 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:27,674 I2026-08-19 04:39:27,715 INFO ncaa_identity: contest_id=1345551 season=2010 league=w2026-08-19 04:39:28,262 INFO ncaa_identity: contest_id=1345537 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:28,266 IN2026-08-19 04:39:28,378 INFO ncaa_identity: contest_id=1345568 season=2010 league=2026-08-19 04:39:28,914 INFO ncaa_identity: contest_id=1345556 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:28,917 IN2026-08-19 04:39:29,218 INFO ncaa_identity: contest_id=1345590 season=2010 league=2026-08-19 04:39:29,326 INFO ncaa_identity: contest_id=1345574 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:29,344 IN2026-08-19 04:39:29,880 INFO ncaa_identity: contest_id=1345635 season=2010 league=w2026-08-19 04:39:29,993 INFO ncaa_identity: contest_id=1345597 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:29,996 I2026-08-19 04:39:30,511 INFO ncaa_identity: contest_id=1345679 season=2010 league=w2026-08-19 04:39:30,714 INFO ncaa_identity: contest_id=1345664 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:30,716 I2026-08-19 04:39:31,379 INFO ncaa_identity: contest_id=1345695 season=2010 league=w2026-08-19 04:39:31,509 INFO ncaa_identity: contest_id=1345685 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:31,513 I2026-08-19 04:39:31,911 INFO ncaa_identity: contest_id=1345738 season=2010 league=w2026-08-19 04:39:32,114 INFO ncaa_identity: contest_id=1345698 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:32,118 I2026-08-19 04:39:32,573 INFO ncaa_identity: contest_id=1345759 season=2010 league=w2026-08-19 04:39:32,644 INFO ncaa_identity: contest_id=1345742 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:32,646 I2026-08-19 04:39:33,469 INFO ncaa_identity: contest_id=1345771 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:33,475 INFO ncaa_identity: contest_id=1345771 teams 0/2706 matched, players 0/901 matched
+2026-08-19 04:39:34,087 INFO ncaa_identity: contest_id=1345793 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:34,091 INFO ncaa_identity: contest_id=1345793 teams 0/1848 matched, players 0/607 matched
+2026-08-19 04:39:34,946 INFO ncaa_identity: contest_id=1345817 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:34,949 INFO ncaa_identity: contest_id=1345817 teams 0/2000 matched, players 0/729 matched
+2026-08-19 04:39:35,609 INFO ncaa_identity: contest_id=1345840 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:35,612 INFO ncaa_identity: contest_id=1345840 teams 0/2008 matched, players 0/640 matched
+2026-08-19 04:39:36,169 INFO ncaa_identity: contest_id=1345868 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:36,173 INFO ncaa_identity: contest_id=1345868 teams 0/2008 matched, players 0/702 matched
+2026-08-19 04:39:36,901 INFO ncaa_identity: contest_id=1345893 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:36,905 INFO ncaa_identity: contest_id=1345893 teams 0/1820 matched, players 0/748 matched
+2026-08-19 04:39:37,538 INFO ncaa_identity: contest_id=1345906 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:37,540 INFO ncaa_identity: contest_id=1345906 teams 0/1912 matched, players 0/670 matched22026-08-19 04:39:38,103 INFO ncaa_identity: contest_id=1345938 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:38,106 INFO ncaa_identity: contest_id=1345938 teams 0/1896 matched, players 0/709 matched22026-08-19 04:39:38,936 INFO ncaa_identity: contest_id=1345985 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:38,939 INFO ncaa_identity: contest_id=1345985 teams 0/2392 matched, players 0/907 matched
+2026-08-19 04:39:39,600 INFO ncaa_identity: contest_id=1346038 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:39,604 INFO ncaa_identity: contest_id=1346038 teams 0/2012 matched, players 0/769 matched
+2026-08-19 04:39:40,181 INFO ncaa_identity: contest_id=1346068 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:40,185 INFO ncaa_identity: contest_id=1346068 teams 0/1827 matched, players 0/682 matched
+2026-08-19 04:39:41,108 INFO ncaa_identity: contest_id=1346094 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:41,113 INFO ncaa_identity: contest_id=1346094 teams 0/2226 matched, players 0/812 matched
+2026-08-19 04:39:41,690 INFO ncaa_identity: contest_id=1346131 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:41,693 INFO ncaa_identity: contest_id=1346131 teams 0/1914 matched, players 0/687 matched
+2026-08-19 04:39:42,507 INFO ncaa_identity: contest_id=1346184 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:42,510 INFO ncaa_identity: contest_id=1346184 teams 0/1954 matched, players 0/665 matched
+2026-08-19 04:39:43,310 INFO ncaa_identity: contest_id=1346233 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:43,317 INFO ncaa_identity: contest_id=1346233 teams 0/2800 matched, players 0/1142 matched
+2026-08-19 04:39:43,999 INFO ncaa_identity: contest_id=1346257 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:44,001 INFO ncaa_identity: contest_id=1346257 teams 0/2164 matched, players 0/757 matched
+2026-08-19 04:39:44,733 INFO ncaa_identity: contest_id=1346268 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:44,736 INFO ncaa_identity: contest_id=1346268 teams 0/2048 matched, players 0/838 matched
+2026-08-19 04:39:45,318 INFO ncaa_identity: contest_id=1346316 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:45,320 INFO ncaa_identity: contest_id=1346316 teams 0/1752 matched, players 0/468 matched
+2026-08-19 04:39:45,592 INFO ncaa_identity: contest_id=1346326 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:45,605 INFO ncaa_identity: contest_id=1346326 teams 0/2744 matched, players 0/7603 matched
+2026-08-19 04:39:46,110 INFO ncaa_identity: contest_id=1346360 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:46,114 INFO ncaa_identity: contest_id=1346360 teams 0/1712 matched, players 0/658 matched
+2026-08-19 04:39:46,646 INFO ncaa_identity: contest_id=1346385 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:46,648 INFO ncaa_identity: contest_id=1346385 teams 0/1711 matched, players 0/537 matched
+2026-08-19 04:39:47,320 INFO ncaa_identity: contest_id=1346423 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:47,324 INFO ncaa_identity: contest_id=1346423 teams 0/1580 matched, players 0/525 matched
+2026-08-19 04:39:48,044 INFO ncaa_identity: contest_id=1346481 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:48,048 INFO ncaa_identity: contest_id=1346481 teams 0/2252 matched, players 0/810 matched
+2026-08-19 04:39:48,545 INFO ncaa_identity: contest_id=1346491 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:48,548 INFO ncaa_identity: contest_id=1346491 teams 0/1811 matched, players 0/614 matched
+2026-08-19 04:39:49,409 INFO ncaa_identity: contest_id=1346515 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:49,413 INFO ncaa_identity: contest_id=1346515 teams 0/2496 matched, players 0/1057 matched
+2026-08-19 04:39:50,124 INFO ncaa_identity: contest_id=1346595 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:50,129 INFO ncaa_identity: contest_id=1346595 teams 0/2170 matched, players 0/793 matched
+2026-08-19 04:39:50,718 INFO ncaa_identity: contest_id=1346607 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:50,722 INFO ncaa_identity: contest_id=1346607 teams 0/1936 matched, players 0/710 matched
+2026-08-19 04:39:51,127 INFO ncaa_identity: contest_id=1346617 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:51,145 INFO ncaa_identity: contest_id=1346617 teams 0/2234 matched, players 0/6239 matched
+2026-08-19 04:39:51,725 INFO ncaa_identity: contest_id=1346631 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:51,728 INFO ncaa_identity: contest_id=1346631 teams 0/1912 matched, players 0/640 matched
+2026-08-19 04:39:52,366 INFO ncaa_identity: contest_id=1346662 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:52,370 INFO ncaa_identity: contest_id=1346662 teams 0/2286 matched, players 0/852 matched
+2026-08-19 04:39:53,049 INFO ncaa_identity: contest_id=1346734 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:53,052 INFO ncaa_identity: contest_id=1346734 teams 0/1678 matched, players 0/655 matched
+2026-08-19 04:39:53,647 INFO ncaa_identity: contest_id=1346769 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:53,651 INFO ncaa_identity: contest_id=1346769 teams 0/1914 matched, players 0/620 matched
+2026-08-19 04:39:54,221 INFO ncaa_identity: contest_id=1346842 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:54,225 INFO ncaa_id2026-08-19 04:39:54,372 INFO ncaa_identity: contest_id=1346737 season=202026-08-19 04:39:54,998 INFO ncaa_identity: contest_id=1346863 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:55,001 INFO ncaa_identity: contest_id=1346863 teams 0/2013 matched, players 0/641 matched
+2026-08-19 04:39:55,654 INFO ncaa_identity: contest_id=1346902 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:55,657 INFO ncaa_identity: contest_id=1346902 teams 0/2166 matched, players 0/843 matched
+2026-08-19 04:39:56,373 INFO ncaa_identity: contest_id=1346989 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:56,379 INFO ncaa_identity: contest_id=1346989 teams 0/2662 matched, players 0/997 matched
+2026-08-19 04:39:57,088 INFO ncaa_identity: contest_id=1346999 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:57,092 INFO ncaa_identity: contest_id=1346999 teams 0/1986 matched, players 0/598 matched
+2026-08-19 04:39:57,803 INFO ncaa_identity: contest_id=1347012 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:57,806 INFO ncaa_identity: contest_id=1347012 teams 0/2580 matched, players 0/1114 matched
+2026-08-19 04:39:58,401 INFO ncaa_identity: contest_id=1347026 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:58,403 INFO ncaa_identity: contest_id=1347026 teams 0/1830 matched, players 0/623 matched
+2026-08-19 04:39:59,170 INFO ncaa_identity: contest_id=1347043 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:59,175 INFO ncaa_identity: contest_id=1347043 teams 0/2108 matched, players 0/703 matched
+2026-08-19 04:39:59,780 INFO ncaa_identity: contest_id=1347054 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:39:59,783 INFO ncaa_identity: contest_id=1347054 teams 0/1908 matched, players 0/640 matched
+2026-08-19 04:40:00,442 INFO ncaa_identity: contest_id=1347077 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:00,444 INFO ncaa_identity: contest_id=1347077 teams 0/2092 matched, players 0/779 matched
+2026-08-19 04:40:01,223 INFO ncaa_identity: contest_id=1347118 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:01,228 INFO ncaa_identity: contest_id=1347118 teams 0/2093 matched, players 0/719 matched
+2026-08-19 04:40:01,774 INFO ncaa_identity: contest_id=1347145 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:01,778 INFO ncaa_identity: contest_id=1347145 teams 0/1822 matched, players 0/664 matched
+2026-08-19 04:40:02,084 INFO ncaa_identity: contest_id=1347188 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:02,102 INFO ncaa_i2026-08-19 04:40:02,367 INFO ncaa_identity: contest_id=1347121 season=20102026-08-19 04:40:02,373 INFO ncaa_identity: contest_id=1342026-08-19 04:40:02,383 INFO ncaa_identity: contest_id=1347174 season=22026-08-19 04:40:02,385 INFO ncaa_2026-08-19 04:40:02,977 INFO ncaa_identity: contest_id=1347170 season=2010 2026-08-19 04:40:03,173 INFO ncaa_identity: contest_id=1347238 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:03,177 INFO ncaa2026-08-19 04:40:03,690 INFO ncaa_identity: contest_id=1347195 season=2010 2026-08-19 04:40:03,750 INFO ncaa_identity: contest_id=1347267 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:03,754 INFO ncaa2026-08-19 04:40:04,139 INFO ncaa_identity: contest_id=1347231 season=2010 2026-08-19 04:40:04,342 INFO ncaa_identity: contest_id=132026-08-19 04:40:04,413 INFO ncaa_identity: contest_id=1347251 season=2010 league=wbb -- teams  not built;2026-08-19 04:40:04,737 INFO ncaa_identity: contest_id=1347241 season=20102026-08-19 04:40:05,105 INFO ncaa_identity: contest_id=1347343 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:05,109 INFO ncaa_2026-08-19 04:40:05,341 INFO ncaa_identity: contest_id=1347275 season=20102026-08-19 04:40:05,692 INFO ncaa_identity: contest_id=1347366 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:05,696 INFO ncaa_2026-08-19 04:40:06,147 INFO ncaa_identity: contest_id=1347312 season=20102026-08-19 04:40:06,287 INFO ncaa_identity: contest_id=1347436 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:06,292 INFO ncaa_2026-08-19 04:40:06,692 INFO ncaa_identity: contest_id=1347346 season=20102026-08-19 04:40:07,169 INFO ncaa_identity: contest_id=1347470 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:07,171 INFO ncaa_2026-08-19 04:40:07,267 INFO ncaa_identity: contest_id=1347383 season=20102026-08-19 04:40:07,903 INFO ncaa_identity: contest_id=1347521 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:07,908 INFO ncaa_2026-08-19 04:40:08,034 INFO ncaa_identity: contest_id=1347445 season=2010 2026-08-19 04:40:08,446 INFO ncaa_identity: contest_id=1347570 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:08,451 INFO ncaa2026-08-19 04:40:08,645 INFO ncaa_identity: contest_id=1347474 season=2010 2026-08-19 04:40:09,223 INFO ncaa_identity: contest_id=1347604 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:09,227 INFO ncaa_identity: contest_id=1347604 teams 0/1994 matched, players 0/701 matched
+2026-08-19 04:40:09,809 INFO ncaa_identity: contest_id=1347643 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:09,812 INFO ncaa2026-08-19 04:40:09,894 INFO ncaa_identity: contest_id=1347584 season=2010 2026-08-19 04:40:10,339 INFO ncaa_identity: contest_id=1347689 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:10,342 INFO ncaa2026-08-19 04:40:10,473 INFO ncaa_identity: contest_id=1347613 season=2010 2026-08-19 04:40:11,048 INFO ncaa_identity: contest_id=1347768 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:11,052 INFO ncaa2026-08-19 04:40:11,134 INFO ncaa_identity: contest_id=1347679 season=2010 2026-08-19 04:40:11,710 INFO ncaa_identity: contest_id=1347782 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:11,714 INFO ncaa_2026-08-19 04:40:11,936 INFO ncaa_identity: contest_id=1347692 season=20102026-08-19 04:40:12,260 INFO ncaa_identity: contest_id=1347800 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:12,264 INFO ncaa_2026-08-19 04:40:12,550 INFO ncaa_identity: contest_id=1347771 season=20102026-08-19 04:40:12,931 INFO ncaa_identity: contest_id=1347810 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:12,934 INFO ncaa_2026-08-19 04:40:13,112 INFO ncaa_identity: contest_id=1347786 season=20102026-08-19 04:40:13,528 INFO ncaa_identity: contest_id=1347827 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:13,532 INFO ncaa_2026-08-19 04:40:13,682 INFO ncaa_identity: contest_id=1347803 season=20102026-08-19 04:40:14,239 INFO ncaa_identity: contest_id=1347837 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:14,244 INFO ncaa_2026-08-19 04:40:14,451 INFO ncaa_identity: contest_id=1347813 season=20102026-08-19 04:40:14,786 INFO ncaa_identity: contest_id=1347874 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:14,788 INFO ncaa_2026-08-19 04:40:15,091 INFO ncaa_identity: contest_id=1347830 season=20102026-08-19 04:40:15,515 INFO ncaa_identity: contest_id=1347888 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:15,518 INFO ncaa_2026-08-19 04:40:15,840 INFO ncaa_identity: contest_id=1347840 season=20102026-08-19 04:40:16,189 INFO ncaa_identity: contest_id=1347919 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:16,209 INFO ncaa_2026-08-19 04:40:16,509 INFO ncaa_identity: contest_id=1347878 season=2010 2026-08-19 04:40:17,050 INFO ncaa_identity: contest_id=1347945 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:17,055 INFO ncaa2026-08-19 04:40:17,092 INFO ncaa_identity: contest_id=1347897 season=2010 2026-08-19 04:40:17,700 INFO ncaa_identity: contest_id=1347972 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:17,704 INFO ncaa2026-08-19 04:40:17,740 INFO ncaa_identity: contest_id=1347925 season=2010 2026-08-19 04:40:18,251 INFO ncaa_identity: contest_id=1347982 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:18,255 INFO ncaa2026-08-19 04:40:18,577 INFO ncaa_identity: contest_id=1347958 season=2010 2026-08-19 04:40:19,085 INFO ncaa_identity: contest_id=1348015 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:19,089 INFO ncaa2026-08-19 04:40:19,283 INFO ncaa_identity: contest_id=1347975 season=2010 2026-08-19 04:40:19,789 INFO ncaa_identity: contest_id=1348032 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:19,795 INFO ncaa2026-08-19 04:40:19,975 INFO ncaa_identity: contest_id=1347991 season=2010 2026-08-19 04:40:20,392 INFO ncaa_identity: contest_id=1348065 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:20,394 INFO ncaa2026-08-19 04:40:20,755 INFO ncaa_identity: contest_id=1348018 season=2010 2026-08-19 04:40:21,188 INFO ncaa_identity: contest_id=1348090 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:21,191 INFO ncaa2026-08-19 04:40:21,221 INFO ncaa_identity: contest_id=1348039 season=2010 2026-08-19 04:40:21,734 INFO ncaa_identity: contest_id=1348140 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:21,736 INFO ncaa2026-08-19 04:40:21,855 INFO ncaa_identity: contest_id=1348080 season=2010 2026-08-19 04:40:22,277 INFO ncaa_identity: contest_id=1348173 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:22,281 INFO ncaa2026-08-19 04:40:22,672 INFO ncaa_identity: contest_id=1348094 season=2010 2026-08-19 04:40:22,899 INFO ncaa_identity: contest_id=1348189 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:22,903 INFO ncaa2026-08-19 04:40:23,258 INFO ncaa_identity: contest_id=1348156 season=2010 2026-08-19 04:40:23,510 INFO ncaa_identity: contest_id=1348199 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:23,514 INFO ncaa2026-08-19 04:40:24,067 INFO ncaa_identity: contest_id=1348176 season=2010 2026-08-19 04:40:24,152 INFO ncaa_identity: contest_id=1348213 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:24,156 INFO ncaa_2026-08-19 04:40:24,803 INFO ncaa_identity: contest_id=1348192 season=20102026-08-19 04:40:24,870 INFO ncaa_identity: contest_id=1348239 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:24,874 INFO ncaa_2026-08-19 04:40:25,470 INFO ncaa_identity: contest_id=1348202 season=20102026-08-19 04:40:25,497 INFO ncaa_identity: contest_id=1348303 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:25,501 INFO ncaa_2026-08-19 04:40:26,276 INFO ncaa_identity: contest_id=1348219 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:26,280 INFO ncaa_identity: contest_id=1348219 teams 0/2050 matched, players 0/589 matched
+2026-08-19 04:40:26,879 INFO ncaa_identity: contest_id=1348292 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:26,882 INFO ncaa_identity: contest_id=1348292 teams 0/1847 matched, players 0/602 matched
+2026-08-19 04:40:27,418 INFO ncaa_identity: contest_id=1348308 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:27,420 INFO ncaa_identity: contest_id=1348308 teams 0/1770 matched, players 0/707 matched
+2026-08-19 04:40:28,211 INFO ncaa_identity: contest_id=1348325 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:28,214 INFO ncaa_identity: contest_id=1348325 teams 0/1943 matched, players 0/694 matched
+2026-08-19 04:40:28,885 INFO ncaa_identity: contest_id=1348335 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:28,888 INFO ncaa_identity: contest_id=1348335 teams 0/2536 matched, players 0/902 matched
+2026-08-19 04:40:29,479 INFO ncaa_identity: contest_id=1348347 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:29,484 INFO ncaa_identity: contest_id=1348347 teams 0/2227 matched, players 0/904 matched
+2026-08-19 04:40:30,190 INFO ncaa_identity: contest_id=1348359 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:30,193 INFO ncaa_identity: contest_id=1348359 teams 0/1968 matched, players 0/648 matched
+2026-08-19 04:40:30,717 INFO ncaa_identity: contest_id=1348372 season=20102026-08-19 04:40:30,780 INFO ncaa_identity: contest_id=1348426 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:30,786 INFO ncaa_2026-08-19 04:40:31,310 INFO ncaa_identity: contest_id=1348401 season=20102026-08-19 04:40:31,399 INFO ncaa_identity: contest_id=1348448 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:31,402 INFO ncaa_2026-08-19 04:40:32,016 INFO ncaa_identity: contest_id=1348419 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:32,018 INFO ncaa_identity: contest_id=1348419 teams 0/1726 matched, players 0/654 matched
+2026-08-19 04:40:32,740 INFO ncaa_identity: contest_id=1348434 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:32,743 INFO ncaa_identity: contest_id=1348434 teams 0/2412 matched, players 0/1090 matched
+2026-08-19 04:40:33,394 INFO ncaa_identity: contest_id=1348452 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:33,398 INFO ncaa_identity: contest_id=1348452 teams 0/2243 matched, players 0/849 matched
+2026-08-19 04:40:34,189 INFO ncaa_identity: contest_id=1348464 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:34,192 INFO ncaa_identity: contest_id=1348464 teams 0/1902 matched, players 0/783 matched
+2026-08-19 04:40:34,788 INFO ncaa_identity: contest_id=1348474 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:34,791 INFO ncaa_identity: contest_id=1348474 teams 0/1913 matched, players 0/669 matched
+2026-08-19 04:40:35,316 INFO ncaa_identity: contest_id=1348506 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:35,318 INFO ncaa_identity: contest_id=1348506 teams 0/1688 matched, players 0/666 matched
+2026-08-19 04:40:36,198 INFO ncaa_identity: contest_id=1348522 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:36,201 INFO ncaa_identity: contest_id=1348522 teams 0/2376 matched, players 0/895 matched
+2026-08-19 04:40:36,716 INFO ncaa_identity: contest_id=1348534 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:36,719 INFO ncaa_identity: contest_id=1348534 teams 0/1614 matched, players 0/652 matched
+2026-08-19 04:40:37,462 INFO ncaa_identity: contest_id=1348544 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:37,465 INFO ncaa_identity: contest_id=1348544 teams 0/1818 matched, players 0/728 matched
+2026-08-19 04:40:37,995 INFO ncaa_identity: contest_id=1348555 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:37,997 INFO ncaa_identity: contest_id=1348555 teams 0/1790 matched, players 0/546 matched
+2026-08-19 04:40:38,501 INFO ncaa_identity: contest_id=1348577 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:38,504 INFO ncaa_identity: contest_id=1348577 teams 0/1816 matched, players 0/545 matched
+2026-08-19 04:40:39,190 INFO ncaa_identity: contest_id=1348590 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:39,194 INFO ncaa_identity: contest_id=1348590 teams 0/1949 matched, players 0/622 matched
+2026-08-19 04:40:39,903 INFO ncaa_identity: contest_id=1348606 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:39,906 INFO ncaa_identity: contest_id=1348606 teams 0/1824 matched, players 0/646 matched
+2026-08-19 04:40:40,598 INFO ncaa_identity: contest_id=1348619 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:40,601 INFO ncaa_identity: contest_id=1348619 teams 0/1862 matched, players 0/643 matched
+2026-08-19 04:40:41,087 INFO ncaa_identity: contest_id=1348629 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:41,088 INFO ncaa_identity: contest_id=1348629 teams 0/1416 matched, players 0/371 matched
+2026-08-19 04:40:41,967 INFO ncaa_identity: contest_id=1348640 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:41,971 INFO ncaa_identity: contest_id=1348640 teams 0/2276 matched, players 0/1002 matched
+2026-08-19 04:40:42,682 INFO ncaa_identity: contest_id=1348653 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:42,686 INFO ncaa_identity: contest_id=1348653 teams 0/2189 matched, players 0/680 matched
+2026-08-19 04:40:43,274 INFO ncaa_identity: contest_id=1348689 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:43,277 INFO ncaa_identity: contest_id=1348689 teams 0/2122 matched, players 0/753 matched
+2026-08-19 04:40:43,652 INFO ncaa_identity: contest_id=1348701 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:43,672 INFO ncaa_identity: contest_id=1348701 teams 0/2533 matched, players 0/7070 matched
+2026-08-19 04:40:44,372 INFO ncaa_identity: contest_id=1348722 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:44,378 INFO ncaa_identity: contest_id=1348722 teams 0/2010 matched, players 0/783 matched
+2026-08-19 04:40:45,057 INFO ncaa_identity: contest_id=1348735 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:45,062 INFO ncaa_identity: contest_id=1348735 teams 0/1994 matched, players 0/695 matched
+2026-08-19 04:40:45,844 INFO ncaa_identity: contest_id=1348752 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:45,848 INFO ncaa_identity: contest_id=1348752 teams 0/2090 matched, players 0/871 matched
+2026-08-19 04:40:46,449 INFO ncaa_identity: contest_id=1348770 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:46,452 INFO ncaa_identity: contest_id=1348770 teams 0/1892 matched, players 0/557 matched
+2026-08-19 04:40:47,070 INFO ncaa_identity: contest_id=1348805 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:47,073 INFO ncaa_identity: contest_id=1348805 teams 0/2040 matched, players 0/755 matched
+2026-08-19 04:40:47,827 INFO ncaa_identity: contest_id=1348834 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:47,830 INFO ncaa_identity: contest_id=1348834 teams 0/1796 matched, players 0/652 matched
+2026-08-19 04:40:48,495 INFO ncaa_identity: contest_id=1348862 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:48,499 INFO ncaa_identity: contest_id=1348862 teams 0/1974 matched, 2026-08-19 04:40:48,5362026-08-19 04:40:49,188 INFO ncaa_identity: contest_id=1348891 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:49,190 INFO ncaa_identity: contest_id=1348891 teams 0/2144 matched, players 0/786 matched
+2026-08-19 04:40:49,624 INFO ncaa_identity: contest_id=1348908 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:49,645 INFO ncaa_identity: contest_id=1348908 teams 0/2808 matched, players 0/7797 matched
+2026-08-19 04:40:50,359 INFO ncaa_identity: contest_id=1348919 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:50,364 INFO ncaa_identity: contest_id=1348919 teams 0/1961 matched, players 0/604 matched
+2026-08-19 04:40:50,979 INFO ncaa_identity: contest_id=1348937 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:50,981 INFO ncaa_identity: contest_id=1348937 teams 0/1968 matched, players 0/747 matched
+2026-08-19 04:40:51,782 INFO ncaa_identity: contest_id=1348948 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:51,787 INFO ncaa_identity: contest_id=1348948 teams 0/1906 matched, players 0/607 matched
+2026-08-19 04:40:52,432 INFO ncaa_identity: contest_id=1348962 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:52,436 INFO ncaa_identity: contest_id=1348962 teams 0/1959 matched, players 0/615 matched
+2026-08-19 04:40:53,107 INFO ncaa_identity: contest_id=1349031 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:53,113 INFO ncaa_identity: contest_id=1349031 teams 0/2500 matched, players 0/846 matched
+2026-08-19 04:40:53,849 INFO ncaa_identity: contest_id=1349051 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:53,852 INFO ncaa_identity: contest_id=1349051 teams 0/1756 matched, players 0/562 matched
+2026-08-19 04:40:54,448 INFO ncaa_identity: contest_id=1349062 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:54,452 INFO ncaa_identity: contest_id=1349062 teams 0/2006 matched, players 0/573 matched
+2026-08-19 04:40:54,971 INFO ncaa_identity: contest_id=1349074 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:54,973 INFO ncaa_identity: contest_id=1349074 teams 0/1710 matched, players 0/546 matched
+2026-08-19 04:40:55,644 INFO ncaa_identity: contest_id=1349112 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:55,648 INFO ncaa_identity: contest_id=1349112 teams 0/1962 matched, players 0/661 matched
+2026-08-19 04:40:56,340 INFO ncaa_identity: contest_id=1349171 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:56,343 INFO ncaa_identity: contest_id=1349171 teams 0/1688 matched, players 0/637 matched
+2026-08-19 04:40:56,856 INFO ncaa_identity: contest_id=1349185 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:56,860 INFO ncaa_identity: contest_id=1349185 teams 0/1740 matched, players 0/592 matched
+2026-08-19 04:40:57,401 INFO ncaa_identity: contest_id=1349202 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:57,403 INFO ncaa_identity: contest_id=1349202 teams 0/1790 matched, players 0/711 matched
+2026-08-19 04:40:58,298 INFO ncaa_identity: contest_id=1349212 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:58,300 INFO ncaa_identity: contest_id=1349212 teams 0/2094 matched, players 0/705 matched
+2026-08-19 04:40:58,958 INFO ncaa_identity: contest_id=1349222 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:58,963 INF2026-08-19 04:40:58,985 INFO ncaa_identity: contest_id=1349268 season=2010 league2026-08-19 04:40:59,731 INFO ncaa_identity: contest_id=1349234 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:40:59,736 INFO ncaa_identity: contest_id=1349234 teams 0/2250 matched, players 0/974 matched
+2026-08-19 04:41:00,489 INFO ncaa_identity: contest_id=1349271 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:00,492 INFO ncaa_identity: contest_id=1349271 teams 0/2770 matched, players 0/1040 matched
+2026-08-19 04:41:01,139 INFO ncaa_identity: contest_id=1349287 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:01,144 INFO ncaa_identity: contest_id=1349287 teams 0/2184 matched, players 0/788 matched
+2026-08-19 04:41:01,928 INFO ncaa_identity: contest_id=1349394 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:01,931 INFO ncaa_identity: contest_id=1349394 teams 0/2088 matched, players 0/766 matched
+2026-08-19 04:41:02,444 INFO ncaa_identity: contest_id=1349426 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:02,446 INFO ncaa_identity: contest_id=1349426 teams 0/1478 matched, players 0/387 matched
+2026-08-19 04:41:03,005 INFO ncaa_identity: contest_id=1349440 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:03,010 INFO ncaa_identity: contest_id=1349440 teams 0/1808 matched, players 0/666 matched
+2026-08-19 04:41:03,579 INFO ncaa_identity: contest_id=1349455 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:03,581 INFO ncaa_identity: contest_id=1349455 teams 0/1901 matched, players 0/681 matched
+2026-08-19 04:41:04,445 INFO ncaa_identity: contest_id=1349526 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:04,448 INFO ncaa_identity: contest_id=1349526 teams 0/2182 matched, players 0/752 matched
+2026-08-19 04:41:05,125 INFO ncaa_identity: contest_id=1349538 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:05,129 INFO ncaa_identity: contest_id=1349538 teams 0/2042 matched, players 0/812 matched
+2026-08-19 04:41:05,939 INFO ncaa_identity: contest_id=1349548 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:05,943 INFO ncaa_identity: contest_id=1349548 teams 0/1894 matched, players 0/619 matched
+2026-08-19 04:41:06,695 INFO ncaa_identity: contest_id=1349567 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:06,700 INFO ncaa_identity: contest_id=1349567 teams 0/2054 matched, players 0/869 matched
+2026-08-19 04:41:07,261 INFO ncaa_identity: contest_id=1349598 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:07,264 INFO ncaa_identity: contest_id=1349598 teams 0/1721 matched, players 0/540 matched
+2026-08-19 04:41:08,151 INFO ncaa_identity: contest_id=1349608 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:08,155 INFO ncaa_identity: contest_id=1349608 teams 0/2110 matched, players 0/785 matched
+2026-08-19 04:41:08,860 INFO ncaa_identity: contest_id=1349656 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:08,864 INFO ncaa_identity: contest_id=1349656 teams 0/1860 matched, players 0/665 matched
+2026-08-19 04:41:09,441 INFO ncaa_identity: contest_id=1349678 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:09,444 INFO ncaa_identity: contest_id=1349678 teams 0/1786 matched, players 0/584 matched
+2026-08-19 04:41:10,192 INFO ncaa_identity: contest_id=1349716 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:10,196 INFO ncaa_identity: contest_id=1349716 teams 0/1854 matched, players 0/592 matched
+2026-08-19 04:41:10,811 INFO ncaa_identity: contest_id=1349744 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:10,816 INFO ncaa_identity: contest_id=1349744 teams 0/2168 matched, players 0/715 matched
+2026-08-19 04:41:11,496 INFO ncaa_identity: contest_id=1349793 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:11,501 INFO ncaa_identity: contest_id=1349793 teams 0/2248 matched, players 0/951 matched
+2026-08-19 04:41:12,092 INFO ncaa_identity: contest_id=1349858 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:12,095 INFO ncaa_identity: contest_id=1349858 teams 0/1898 matched, players 0/533 matched
+2026-08-19 04:41:12,931 INFO ncaa_identity: contest_id=1349895 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:12,935 INFO ncaa_identity: contest_id=1349895 teams 0/1876 matched, players 0/559 matched
+2026-08-19 04:41:13,692 INFO ncaa_identity: contest_id=1349923 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:13,697 INFO ncaa_identity: contest_id=1349923 teams 0/2367 matched, players 0/896 matched
+2026-08-19 04:41:14,537 INFO ncaa_identity: contest_id=1349949 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:14,540 INFO ncaa_identity: contest_id=1349949 teams 0/1670 matched, players 0/561 matched
+2026-08-19 04:41:15,185 INFO ncaa_identity: contest_id=1349968 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:15,190 INFO ncaa_identity: contest_id=1349968 teams 0/2292 matched, players 0/917 matched
+2026-08-19 04:41:15,798 INFO ncaa_identity: contest_id=1350002 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:15,803 INFO ncaa_identity: contest_id=1350002 teams 0/2126 matched, players 0/882 matched
+2026-08-19 04:41:16,596 INFO ncaa_identity: contest_id=1350012 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:16,600 INFO ncaa_identity: contest_id=1350012 teams 0/1954 matched, players 0/550 matched
+2026-08-19 04:41:17,224 INFO ncaa_identity: contest_id=1350061 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:17,228 INFO ncaa_identity: contest_id=1350061 teams 0/1936 matched, players 0/762 matched
+2026-08-19 04:41:17,894 INFO ncaa_identity: contest_id=1350091 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:17,898 INFO ncaa_identity: contest_id=1350091 teams 0/2130 matched, players 0/790 matched
+2026-08-19 04:41:18,702 INFO ncaa_identity: contest_id=1350131 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:18,706 INFO ncaa_identity: contest_id=1350131 teams 0/1630 matched, players 0/488 matched
+2026-08-19 04:41:19,376 INFO ncaa_identity: contest_id=1350174 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:19,379 INFO ncaa_identity: contest_id=1350174 teams 0/2082 matched, players 0/770 matched
+2026-08-19 04:41:20,018 INFO ncaa_identity: contest_id=1350221 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:20,022 INFO ncaa_identity: contest_id=1350221 teams 0/1953 matched, players 0/728 matched
+2026-08-19 04:41:20,698 INFO ncaa_identity: contest_id=1350260 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:20,702 INFO ncaa_identity: contest_id=1350260 teams 0/1868 matched, players 0/667 matched
+2026-08-19 04:41:21,629 INFO ncaa_identity: contest_id=1350289 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:21,633 INFO ncaa_identity: contest_id=1350289 teams 0/1938 matched, players 0/770 matched
+2026-08-19 04:41:22,248 INFO ncaa_identity: contest_id=1350315 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:22,251 INFO ncaa_identity: contest_id=1350315 teams 0/1760 matched, players 0/661 matched
+2026-08-19 04:41:22,787 INFO ncaa_identity: contest_id=1350336 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:22,790 INFO ncaa_identity: contest_id=1350336 teams 0/1886 matched, players 0/718 matched
+2026-08-19 04:41:23,653 INFO ncaa_identity: contest_id=1350391 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:23,658 INFO ncaa_identity: contest_id=1350391 teams 0/2154 matched, players 0/730 matched
+2026-08-19 04:41:24,360 INFO ncaa_identity: contest_id=1350405 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:24,364 INFO ncaa_identity: contest_id=1350405 teams 0/1928 matched, players 0/735 matched
+2026-08-19 04:41:25,149 INFO ncaa_identity: contest_id=1350431 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:25,151 INFO ncaa_identity: contest_id=1350431 teams 0/2004 matched, players 0/600 matched
+2026-08-19 04:41:25,732 INFO ncaa_identity: contest_id=1350466 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:25,735 INFO ncaa_identity: contest_id=1350466 teams 0/1880 matched, players 0/623 matched
+2026-08-19 04:41:26,547 INFO ncaa_identity: contest_id=1350557 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:26,551 INFO ncaa_identity: contest_id=1350557 teams 0/2586 matched, players 0/1056 matched
+2026-08-19 04:41:27,329 INFO ncaa_identity: contest_id=1350568 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:27,332 INFO ncaa_identity: contest_id=1350568 teams 0/1780 matched, players 0/685 matched
+2026-08-19 04:41:27,942 INFO ncaa_identity: contest_id=1350583 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:27,946 INFO ncaa_identity: contest_id=1350583 teams 0/1672 matched, players 0/569 matched
+2026-08-19 04:41:28,457 INFO ncaa_identity: contest_id=1350597 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:28,460 INFO ncaa_identity: contest_id=1350597 teams 0/1596 matched, players 0/429 matched
+2026-08-19 04:41:29,437 INFO ncaa_identity: contest_id=1350624 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:29,442 INFO ncaa_identity: contest_id=1350624 teams 0/2432 matched, players 0/880 matched
+2026-08-19 04:41:30,126 INFO ncaa_identity: contest_id=1350651 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:30,128 INFO ncaa_identity: contest_id=1350651 teams 0/1916 matched, players 0/564 matched
+2026-08-19 04:41:31,223 INFO ncaa_identity: contest_id=1350681 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:31,228 INFO ncaa_identity: contest_id=1350681 teams 0/2434 matched, players 0/949 matched
+2026-08-19 04:41:32,401 INFO ncaa_identity: contest_id=1350730 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:32,406 INFO ncaa_identity: contest_id=1350730 teams 0/1988 matched, players 0/759 matched
+2026-08-19 04:41:33,555 INFO ncaa_identity: contest_id=1350776 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:33,560 INFO ncaa_identity: contest_id=1350776 teams 0/1928 matched, players 0/735 matched
+2026-08-19 04:41:34,412 INFO ncaa_identity: contest_id=1350822 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:34,416 INFO ncaa_identity: contest_id=1350822 teams 0/1790 matched, players 0/568 matched
+2026-08-19 04:41:34,930 INFO ncaa_identity: contest_id=1350848 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:34,933 INFO ncaa_identity: contest_id=1350848 teams 0/1564 matched, players 0/487 matched
+2026-08-19 04:41:35,551 INFO ncaa_identity: contest_id=1350907 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:35,553 INFO ncaa_identity: contest_id=1350907 teams 0/1734 matched, players 0/504 matched
+2026-08-19 04:41:36,123 INFO ncaa_identity: contest_id=1350942 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:36,125 INFO ncaa_identity: contest_id=1350942 teams 0/1617 matched, players 0/572 matched
+2026-08-19 04:41:36,678 INFO ncaa_identity: contest_id=1350994 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:36,681 INFO ncaa_identity: contest_id=1350994 teams 0/1536 matched, players 0/485 matched
+2026-08-19 04:41:37,397 INFO ncaa_identity: contest_id=1351006 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:37,400 INFO ncaa_identity: contest_id=1351006 teams 0/1720 matched, players 0/614 matched
+2026-08-19 04:41:38,248 INFO ncaa_identity: contest_id=1351035 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:38,251 INFO ncaa_identity: contest_id=1351035 teams 0/2594 matched, players 0/1031 matched
+2026-08-19 04:41:38,990 INFO ncaa_identity: contest_id=1351066 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:38,992 INFO ncaa_identity: contest_id=1351066 teams 0/2046 matched, players 0/645 matched
+2026-08-19 04:41:39,806 INFO ncaa_identity: contest_id=1351094 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:39,808 INFO ncaa_identity: contest_id=1351094 teams 0/2084 matched, players 0/830 matched
+2026-08-19 04:41:40,387 INFO ncaa_identity: contest_id=1351106 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:40,391 INFO ncaa_identity: contest_id=1351106 teams 0/1926 matched, players 0/744 matched
+2026-08-19 04:41:41,411 INFO ncaa_identity: contest_id=1351191 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:41,416 INFO ncaa_identity: contest_id=1351191 teams 0/2394 matched, players 0/887 matched
+2026-08-19 04:41:42,059 INFO ncaa_identity: contest_id=1351245 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:42,062 INFO ncaa_identity: contest_id=1351245 teams 0/2042 matched, players 0/651 matched
+2026-08-19 04:41:42,739 INFO ncaa_identity: contest_id=1351257 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:42,744 INFO ncaa_identity: contest_id=1351257 teams 0/2048 matched, players 0/744 matched
+2026-08-19 04:41:43,597 INFO ncaa_identity: contest_id=1351274 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:43,601 INFO ncaa_identity: contest_id=1351274 teams 0/2022 matched, players 0/688 matched
+2026-08-19 04:41:44,194 INFO ncaa_identity: contest_id=1351284 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:44,198 INFO ncaa_identity: contest_id=1351284 teams 0/1850 matched, players 0/760 matched
+2026-08-19 04:41:44,716 INFO ncaa_identity: contest_id=1351314 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:44,718 INFO ncaa_identity: contest_id=1351314 teams 0/1796 matched, players 0/491 matched
+2026-08-19 04:41:45,463 INFO ncaa_identity: contest_id=1351349 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:45,467 INFO ncaa_identity: contest_id=1351349 teams 0/1972 matched, players 0/636 matched
+2026-08-19 04:41:46,155 INFO ncaa_identity: contest_id=1351424 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:46,159 INFO ncaa_identity: contest_id=1351424 teams 0/1966 matched, players 0/681 matched
+2026-08-19 04:41:46,784 INFO ncaa_identity: contest_id=1351453 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:46,787 INFO ncaa_identity: contest_id=1351453 teams 0/2286 matched, players 0/887 matched
+2026-08-19 04:41:47,602 INFO ncaa_identity: contest_id=1351476 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:47,605 INFO ncaa_identity: contest_id=1351476 teams 0/1930 matched, players 0/670 matched
+2026-08-19 04:41:48,247 INFO ncaa_identity: contest_id=1351486 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:48,249 INFO ncaa_identity: contest_id=1351486 teams 0/2172 matched, players 0/637 matched
+2026-08-19 04:41:49,010 INFO ncaa_identity: contest_id=1351515 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:49,014 INFO ncaa_identity: contest_id=1351515 teams 0/1882 matched, players 0/604 matched
+2026-08-19 04:41:49,674 INFO ncaa_identity: contest_id=1351549 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:49,686 INFO ncaa_identity: contest_id=1351549 teams 0/2572 matched, players 0/7277 matched
+2026-08-19 04:41:50,392 INFO ncaa_identity: contest_id=1351654 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:50,396 INFO ncaa_identity: contest_id=1351654 teams 0/2406 matched, players 0/1043 matched
+2026-08-19 04:41:51,135 INFO ncaa_identity: contest_id=1351667 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:51,138 INFO ncaa_identity: contest_id=1351667 teams 0/1964 matched, players 0/754 matched
+2026-08-19 04:41:51,717 INFO ncaa_identity: contest_id=1351679 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:51,721 INFO ncaa_identity: contest_id=1351679 teams 0/1846 matched, players 0/651 matched
+2026-08-19 04:41:52,327 INFO ncaa_identity: contest_id=1351696 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:52,331 INFO ncaa_identity: contest_id=1351696 teams 0/2014 matched, players 0/692 matched
+2026-08-19 04:41:52,395 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:41:52,396 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:41:52,396 INFO 5 starters not found for period 2; using estimate
+2026-08-19 04:41:52,397 INFO 5 starters not found for period 2; using estimate
+2026-08-19 04:41:52,990 INFO ncaa_identity: contest_id=1351721 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:52,995 INFO ncaa_identity: contest_id=1351721 teams 0/1699 matched, players 0/2568 matched
+2026-08-19 04:41:53,556 INFO ncaa_identity: contest_id=1351732 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:53,560 INFO ncaa_identity: contest_id=1351732 teams 0/1884 matched, players 0/551 matched
+2026-08-19 04:41:54,197 INFO ncaa_identity: contest_id=1351743 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:54,200 INFO ncaa_identity: contest_id=1351743 teams 0/2308 matched, players 0/867 matched
+2026-08-19 04:41:54,930 INFO ncaa_identity: contest_id=1351760 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:54,933 INFO ncaa_identity: contest_id=1351760 teams 0/2114 matched, players 0/830 matched
+2026-08-19 04:41:55,598 INFO ncaa_identity: contest_id=1351882 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:55,600 INFO ncaa_identity: contest_id=1351882 teams 0/1862 matched, players 0/535 matched
+2026-08-19 04:41:56,095 INFO ncaa_identity: contest_id=1351974 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:56,098 INFO ncaa_identity: contest_id=1351974 teams 0/1588 matched, players 0/440 matched
+2026-08-19 04:41:56,758 INFO ncaa_identity: contest_id=1352005 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:56,762 INFO ncaa_identity: contest_id=1352005 teams 0/2082 matched, players 0/760 matched
+2026-08-19 04:41:57,516 INFO ncaa_identity: contest_id=1352042 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:57,519 INFO ncaa_identity: contest_id=1352042 teams 0/2029 matched, players 0/634 matched
+2026-08-19 04:41:58,113 INFO ncaa_identity: contest_id=1352061 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:58,118 INFO ncaa_identity: contest_id=1352061 teams 0/2218 matched, players 0/798 matched
+2026-08-19 04:41:58,670 INFO ncaa_identity: contest_id=1352140 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:58,672 INFO ncaa_identity: contest_id=1352140 teams 0/1856 matched, players 0/769 matched
+2026-08-19 04:41:59,509 INFO ncaa_identity: contest_id=1352152 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:41:59,514 INFO ncaa_identity: contest_id=1352152 teams 0/2288 matched, players 0/873 matched
+2026-08-19 04:42:00,232 INFO ncaa_identity: contest_id=1352187 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:00,235 INFO ncaa_identity: contest_id=1352187 teams 0/1991 matched, players 0/675 matched
+2026-08-19 04:42:00,821 INFO ncaa_identity: contest_id=1352202 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:00,824 INFO ncaa_identity: contest_id=1352202 teams 0/1925 matched, players 0/626 matched
+2026-08-19 04:42:01,530 INFO ncaa_identity: contest_id=1352215 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:01,533 INFO ncaa_identity: contest_id=1352215 teams 0/1884 matched, players 0/663 matched
+2026-08-19 04:42:02,344 INFO ncaa_identity: contest_id=1352225 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:02,348 INFO ncaa_identity: contest_id=1352225 teams 0/2092 matched, players 0/840 matched
+2026-08-19 04:42:03,584 INFO ncaa_identity: contest_id=1352304 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:03,589 INFO ncaa_identity: contest_id=1352304 teams 0/2142 matched, players 0/822 matched
+2026-08-19 04:42:04,843 INFO ncaa_identity: contest_id=1352467 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:04,848 INFO ncaa_identity: contest_id=1352467 teams 0/2008 matched, players 0/845 matched
+2026-08-19 04:42:05,499 INFO ncaa_identity: contest_id=1352529 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:05,503 INFO ncaa_identity: contest_id=1352529 teams 0/2164 matched, players 0/889 matched
+2026-08-19 04:42:06,207 INFO ncaa_identity: contest_id=1352542 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:06,212 INFO ncaa_identity: contest_id=1352542 teams 0/2282 matched, players 0/889 matched
+2026-08-19 04:42:07,067 INFO ncaa_identity: contest_id=1352553 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:07,071 INFO ncaa_identity: contest_id=1352553 teams 0/2257 matched, players 0/750 matched
+2026-08-19 04:42:07,675 INFO ncaa_identity: contest_id=1352577 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:07,678 INFO ncaa_identity: contest_id=1352577 teams 0/2018 matched, players 0/679 matched
+2026-08-19 04:42:08,541 INFO ncaa_identity: contest_id=1352600 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:08,545 INFO ncaa_identity: contest_id=1352600 teams 0/1925 matched, players 0/677 matched
+2026-08-19 04:42:09,241 INFO ncaa_identity: contest_id=1352612 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:09,243 INFO ncaa_identity: contest_id=1352612 teams 0/1848 matched, players 0/664 matched
+2026-08-19 04:42:09,926 INFO ncaa_identity: contest_id=1352627 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:09,930 INFO ncaa_identity: contest_id=1352627 teams 0/1688 matched, players 0/652 matched
+2026-08-19 04:42:10,823 INFO ncaa_identity: contest_id=1352661 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:10,827 INFO ncaa_identity: contest_id=1352661 teams 0/1888 matched, players 0/580 matched
+2026-08-19 04:42:11,459 INFO ncaa_identity: contest_id=1352671 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:11,463 INFO ncaa_identity: contest_id=1352671 teams 0/2166 matched, players 0/774 matched
+2026-08-19 04:42:12,177 INFO ncaa_identity: contest_id=1352687 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:12,180 INFO ncaa_identity: contest_id=1352687 teams 0/1842 matched, players 0/682 matched
+2026-08-19 04:42:12,838 INFO ncaa_identity: contest_id=1352703 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:12,841 INFO ncaa_identity: contest_id=1352703 teams 0/2122 matched, players 0/907 matched
+2026-08-19 04:42:13,527 INFO ncaa_identity: contest_id=1352784 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:13,531 INFO ncaa_identity: contest_id=1352784 teams 0/1746 matched, players 0/516 matched
+2026-08-19 04:42:14,175 INFO ncaa_identity: contest_id=1352800 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:14,178 INFO ncaa_identity: contest_id=1352800 teams 0/2052 matched, players 0/752 matched
+2026-08-19 04:42:14,860 INFO ncaa_identity: contest_id=1352815 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:14,864 INFO ncaa_identity: contest_id=1352815 teams 0/1974 matched, players 0/754 matched
+2026-08-19 04:42:15,713 INFO ncaa_identity: contest_id=1352839 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:15,717 INFO ncaa_identity: contest_id=1352839 teams 0/2291 matched, players 0/859 matched
+2026-08-19 04:42:16,333 INFO ncaa_identity: contest_id=1352857 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:16,338 INFO ncaa_identity: contest_id=1352857 teams 0/2184 matched, players 0/864 matched
+2026-08-19 04:42:17,062 INFO ncaa_identity: contest_id=1352883 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:17,065 INFO ncaa_identity: contest_id=1352883 teams 0/2518 matched, players 0/961 matched
+2026-08-19 04:42:17,788 INFO ncaa_identity: contest_id=1352947 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:17,791 INFO ncaa_identity: contest_id=1352947 teams 0/1674 matched, players 0/601 matched
+2026-08-19 04:42:18,389 INFO ncaa_identity: contest_id=1353015 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:18,393 INFO ncaa_identity: contest_id=1353015 teams 0/1610 matched, players 0/684 matched
+2026-08-19 04:42:19,014 INFO ncaa_identity: contest_id=1353061 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:19,018 INFO ncaa_identity: contest_id=1353061 teams 0/1805 matched, players 0/635 matched
+2026-08-19 04:42:19,641 INFO ncaa_identity: contest_id=1353108 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:19,643 INFO ncaa_identity: contest_id=1353108 teams 0/1904 matched, players 0/772 matched
+2026-08-19 04:42:20,436 INFO ncaa_identity: contest_id=1353122 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:20,441 INFO ncaa_identity: contest_id=1353122 teams 0/2216 matched, players 0/919 matched
+2026-08-19 04:42:20,991 INFO ncaa_identity: contest_id=1353136 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:20,994 INFO ncaa_identity: contest_id=1353136 teams 0/1580 matched, players 0/466 matched
+2026-08-19 04:42:21,693 INFO ncaa_identity: contest_id=1353189 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:21,697 INFO ncaa_identity: contest_id=1353189 teams 0/2540 matched, players 0/1094 matched
+2026-08-19 04:42:22,506 INFO ncaa_identity: contest_id=1353199 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:22,509 INFO ncaa_identity: contest_id=1353199 teams 0/2444 matched, players 0/938 matched
+2026-08-19 04:42:23,147 INFO ncaa_identity: contest_id=1353209 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:23,150 INFO ncaa_identity: contest_id=1353209 teams 0/1976 matched, players 0/743 matched
+2026-08-19 04:42:23,659 INFO ncaa_identity: contest_id=1353235 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:23,661 INFO ncaa_identity: contest_id=1353235 teams 0/1566 matched, players 0/409 matched
+2026-08-19 04:42:24,542 INFO ncaa_identity: contest_id=1353261 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:24,546 INFO ncaa_identity: contest_id=1353261 teams 0/2220 matched, players 0/641 matched
+2026-08-19 04:42:25,090 INFO ncaa_identity: contest_id=1353306 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:25,093 INFO ncaa_identity: contest_id=1353306 teams 0/1796 matched, players 0/608 matched
+2026-08-19 04:42:25,948 INFO ncaa_identity: contest_id=1353383 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:25,966 INFO ncaa_identity: contest_id=1353383 teams 0/2247 matched, players 0/6344 matched
+2026-08-19 04:42:26,557 INFO ncaa_identity: contest_id=1353431 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:26,561 INFO ncaa_identity: contest_id=1353431 teams 0/1908 matched, players 0/656 matched
+2026-08-19 04:42:27,177 INFO ncaa_identity: contest_id=1353471 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:27,181 INFO ncaa_identity: contest_id=1353471 teams 0/1772 matched, players 0/637 matched
+2026-08-19 04:42:27,915 INFO ncaa_identity: contest_id=1353482 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:27,919 INFO ncaa_identity: contest_id=1353482 teams 0/1784 matched, players 0/631 matched
+2026-08-19 04:42:28,447 INFO ncaa_identity: contest_id=1353492 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:28,451 INFO ncaa_identity: contest_id=1353492 teams 0/1702 matched, players 0/522 matched
+2026-08-19 04:42:29,007 INFO ncaa_identity: contest_id=1353517 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:29,009 INFO ncaa_identity: contest_id=1353517 teams 0/1814 matched, players 0/706 matched
+2026-08-19 04:42:29,846 INFO ncaa_identity: contest_id=1353578 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:29,851 INFO ncaa_identity: contest_id=1353578 teams 0/2146 matched, players 0/889 matched
+2026-08-19 04:42:30,461 INFO ncaa_identity: contest_id=1353604 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:30,467 INFO ncaa_identity: contest_id=1353604 teams 0/2160 matched, players 0/912 matched
+2026-08-19 04:42:31,084 INFO ncaa_identity: contest_id=1353635 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:31,089 INFO ncaa_identity: contest_id=1353635 teams 0/2058 matched, players 0/800 matched
+2026-08-19 04:42:31,766 INFO ncaa_identity: contest_id=1353674 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:31,768 INFO ncaa_identity: contest_id=1353674 teams 0/1604 matched, players 0/595 matched
+2026-08-19 04:42:32,494 INFO ncaa_identity: contest_id=1353684 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:32,497 INFO ncaa_identity: contest_id=1353684 teams 0/1994 matched, players 0/813 matched
+2026-08-19 04:42:33,274 INFO ncaa_identity: contest_id=1353716 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:33,279 INFO ncaa_identity: contest_id=1353716 teams 0/2056 matched, players 0/806 matched
+2026-08-19 04:42:33,909 INFO ncaa_identity: contest_id=1353727 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:33,913 INFO ncaa_identity: contest_id=1353727 teams 0/1888 matched, players 0/591 matched
+2026-08-19 04:42:34,484 INFO ncaa_identity: contest_id=1353770 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:34,488 INFO ncaa_identity: contest_id=1353770 teams 0/1883 matched, players 0/654 matched
+2026-08-19 04:42:35,187 INFO ncaa_identity: contest_id=1353849 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:35,190 INFO ncaa_identity: contest_id=1353849 teams 0/1704 matched, players 0/516 matched
+2026-08-19 04:42:35,832 INFO ncaa_identity: contest_id=1353864 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:35,835 INFO ncaa_identity: contest_id=1353864 teams 0/1438 matched, players 0/377 matched
+2026-08-19 04:42:36,287 INFO ncaa_identity: contest_id=1353874 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:36,291 INFO ncaa_identity: contest_id=1353874 teams 0/1838 matched, players 0/594 matched
+2026-08-19 04:42:37,001 INFO ncaa_identity: contest_id=1353901 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:37,005 INFO ncaa_identity: contest_id=1353901 teams 0/2304 matched, players 0/884 matched
+2026-08-19 04:42:37,832 INFO ncaa_identity: contest_id=1353935 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:37,835 INFO ncaa_identity: contest_id=1353935 teams 0/1780 matched, players 0/589 matched
+2026-08-19 04:42:38,548 INFO ncaa_identity: contest_id=1353960 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:38,554 INFO ncaa_identity: contest_id=1353960 teams 0/2372 matched, players 0/889 matched
+2026-08-19 04:42:39,263 INFO ncaa_identity: contest_id=1354024 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:39,267 INFO ncaa_identity: contest_id=1354024 teams 0/2114 matched, players 0/669 matched
+2026-08-19 04:42:39,977 INFO ncaa_identity: contest_id=1354122 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:39,981 INFO ncaa_identity: contest_id=1354122 teams 0/1912 matched, players 0/563 matched
+2026-08-19 04:42:40,591 INFO ncaa_identity: contest_id=1354195 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:40,594 INFO ncaa_identity: contest_id=1354195 teams 0/1794 matched, players 0/635 matched
+2026-08-19 04:42:41,175 INFO ncaa_identity: contest_id=1354205 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:41,178 INFO ncaa_identity: contest_id=1354205 teams 0/1810 matched, players 0/700 matched
+2026-08-19 04:42:41,972 INFO ncaa_identity: contest_id=1354215 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:41,975 INFO ncaa_identity: contest_id=1354215 teams 0/2029 matched, players 0/652 matched
+2026-08-19 04:42:42,586 INFO ncaa_identity: contest_id=1354271 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:42,590 INFO ncaa_identity: contest_id=1354271 teams 0/2032 matched, players 0/746 matched
+2026-08-19 04:42:43,250 INFO ncaa_identity: contest_id=1354306 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:43,255 INFO ncaa_identity: contest_id=1354306 teams 0/2057 matched, players 0/837 matched
+2026-08-19 04:42:44,020 INFO ncaa_identity: contest_id=1354347 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:44,023 INFO ncaa_identity: contest_id=1354347 teams 0/2004 matched, players 0/665 matched
+2026-08-19 04:42:44,619 INFO ncaa_identity: contest_id=1354370 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:44,622 INFO ncaa_identity: contest_id=1354370 teams 0/1670 matched, players 0/471 matched
+2026-08-19 04:42:45,174 INFO ncaa_identity: contest_id=1354380 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:45,178 INFO ncaa_identity: contest_id=1354380 teams 0/1790 matched, players 0/650 matched
+2026-08-19 04:42:46,103 INFO ncaa_identity: contest_id=1354390 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:46,107 INFO ncaa_identity: contest_id=1354390 teams 0/2472 matched, players 0/984 matched
+2026-08-19 04:42:46,817 INFO ncaa_identity: contest_id=1354424 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:46,822 INFO ncaa_identity: contest_id=1354424 teams 0/2458 matched, players 0/959 matched
+2026-08-19 04:42:47,398 INFO ncaa_identity: contest_id=1354473 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:47,402 INFO ncaa_identity: contest_id=1354473 teams 0/1956 matched, players 0/804 matched
+2026-08-19 04:42:48,125 INFO ncaa_identity: contest_id=1354516 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:48,128 INFO ncaa_identity: contest_id=1354516 teams 0/1876 matched, players 0/680 matched
+2026-08-19 04:42:48,752 INFO ncaa_identity: contest_id=1354535 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:48,755 INFO ncaa_identity: contest_id=1354535 teams 0/1964 matched, players 0/776 matched
+2026-08-19 04:42:49,318 INFO ncaa_identity: contest_id=1354546 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:49,320 INFO ncaa_identity: contest_id=1354546 teams 0/1794 matched, players 0/635 matched
+2026-08-19 04:42:50,031 INFO ncaa_identity: contest_id=1354565 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:50,033 INFO ncaa_identity: contest_id=1354565 teams 0/1678 matched, players 0/445 matched
+2026-08-19 04:42:50,638 INFO ncaa_identity: contest_id=1354585 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:50,640 INFO ncaa_identity: contest_id=1354585 teams 0/1776 matched, players 0/511 matched
+2026-08-19 04:42:51,273 INFO ncaa_identity: contest_id=1354606 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:51,277 INFO ncaa_identity: contest_id=1354606 teams 0/2008 matched, players 0/681 matched
+2026-08-19 04:42:52,234 INFO ncaa_identity: contest_id=1354633 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:52,237 INFO ncaa_identity: contest_id=1354633 teams 0/2020 matched, players 0/709 matched
+2026-08-19 04:42:52,961 INFO ncaa_identity: contest_id=1354660 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:52,966 INFO ncaa_identity: contest_id=1354660 teams 0/2024 matched, players 0/810 matched
+2026-08-19 04:42:53,699 INFO ncaa_identity: contest_id=1354683 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:53,703 INFO ncaa_identity: contest_id=1354683 teams 0/2146 matched, players 0/833 matched
+2026-08-19 04:42:54,292 INFO ncaa_identity: contest_id=1354710 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:54,296 INFO ncaa_identity: contest_id=1354710 teams 0/1648 matched, players 0/604 matched
+2026-08-19 04:42:54,378 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:42:54,379 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:42:54,379 INFO 5 starters not found for period 2; using estimate
+2026-08-19 04:42:54,380 INFO 5 starters not found for period 2; using estimate
+2026-08-19 04:42:55,129 INFO ncaa_identity: contest_id=1354744 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:55,137 INFO ncaa_identity: contest_id=1354744 teams 0/2601 matched, players 0/3441 matched
+2026-08-19 04:42:55,839 INFO ncaa_identity: contest_id=1354865 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:55,843 INFO ncaa_identity: contest_id=1354865 teams 0/1636 matched, players 0/671 matched
+2026-08-19 04:42:56,395 INFO ncaa_identity: contest_id=1354880 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:56,398 INFO ncaa_identity: contest_id=1354880 teams 0/1734 matched, players 0/543 matched
+2026-08-19 04:42:56,981 INFO ncaa_identity: contest_id=1354890 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:56,984 INFO ncaa_identity: contest_id=1354890 teams 0/1612 matched, players 0/428 matched
+2026-08-19 04:42:57,523 INFO ncaa_identity: contest_id=1354906 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:57,526 INFO ncaa_ide2026-08-19 04:42:57,672 INFO ncaa_identity: contest_id=1354881 season=22026-08-19 04:42:58,295 INFO ncaa_identity: contest_id=1354935 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:58,297 INFO ncaa_identity: contest_id=1354935 teams 0/1810 matched, players 0/687 matched
+2026-08-19 04:42:59,014 INFO ncaa_identity: contest_id=1354945 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:59,018 INFO ncaa_identity: contest_id=1354945 teams 0/2215 matched, players 0/910 matched
+2026-08-19 04:42:59,857 INFO ncaa_identity: contest_id=1354957 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:42:59,862 INFO ncaa_identity: contest_id=1354957 teams 0/2346 matched, players 0/1014 matched
+2026-08-19 04:43:00,538 INFO ncaa_identity: contest_id=1355020 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:00,540 INFO ncaa_identity: contest_id=1355020 teams 0/1904 matched, players 0/818 matched
+2026-08-19 04:43:01,139 INFO ncaa_identity: contest_id=1355108 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:01,142 INFO ncaa_identity: contest_id=1355108 teams 0/1983 matched, players 0/761 matched
+2026-08-19 04:43:01,977 INFO ncaa_identity: contest_id=1355122 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:01,979 INFO ncaa_identity: contest_id=1355122 teams 0/1922 matched, players 0/717 matched
+2026-08-19 04:43:02,575 INFO ncaa_identity: contest_id=1355132 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:02,580 INFO ncaa_identity: contest_id=1355132 teams 0/2036 matched, players 0/836 matched
+2026-08-19 04:43:03,101 INFO ncaa_identity: contest_id=1355143 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:03,104 INFO ncaa_identity: contest_id=1355143 teams 0/1842 matched, players 0/659 matched
+2026-08-19 04:43:03,707 INFO ncaa_identity: contest_id=1355156 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:03,711 INFO ncaa_identity: contest_id=1355156 teams 0/1920 matched, players 0/745 matched
+2026-08-19 04:43:04,523 INFO ncaa_identity: contest_id=1355231 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:04,529 INFO ncaa_identity: contest_id=1355231 teams 0/1988 matched, players 0/680 matched
+2026-08-19 04:43:05,124 INFO ncaa_identity: contest_id=1355251 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:05,127 INFO ncaa_identity: contest_id=1355251 teams 0/2024 matched, players 0/781 matched
+2026-08-19 04:43:05,884 INFO ncaa_identity: contest_id=1355262 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:05,888 INFO ncaa_identity: contest_id=1355262 teams 0/2066 matched, players 0/743 matched
+2026-08-19 04:43:06,497 INFO ncaa_identity: contest_id=1355272 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:06,502 INFO ncaa_identity: contest_id=1355272 teams 0/2016 matched, players 0/780 matched
+2026-08-19 04:43:07,020 INFO ncaa_identity: contest_id=1355282 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:07,023 INFO ncaa_identity: contest_id=1355282 teams 0/1684 matched, players 0/512 matched
+2026-08-19 04:43:07,739 INFO ncaa_identity: contest_id=1355292 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:07,742 INFO ncaa_identity: contest_id=1355292 teams 0/2032 matched, players 0/800 matched
+2026-08-19 04:43:08,492 INFO ncaa_identity: contest_id=1355416 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:08,495 INFO ncaa_identity: contest_id=1355416 teams 0/2010 matched, players 0/728 matched
+2026-08-19 04:43:09,244 INFO ncaa_identity: contest_id=1355494 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:09,250 INFO ncaa_identity: contest_id=1355494 teams 0/2368 matched, players 0/984 matched
+2026-08-19 04:43:10,088 INFO ncaa_identity: contest_id=1355530 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:10,093 INFO ncaa_identity: contest_id=1355530 teams 0/2146 matched, players 0/764 matched
+2026-08-19 04:43:10,732 INFO ncaa_identity: contest_id=1355540 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:10,736 INFO ncaa_identity: contest_id=1355540 teams 0/1668 matched, players 0/568 matched
+2026-08-19 04:43:11,370 INFO ncaa_identity: contest_id=1355552 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:11,373 INFO ncaa_identity: contest_id=1355552 teams 0/2082 matched, players 0/825 matched
+2026-08-19 04:43:12,329 INFO ncaa_identity: contest_id=1355574 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:12,336 INFO ncaa_identity: contest_id=1355574 teams 0/2352 matched, players 0/1064 matched
+2026-08-19 04:43:12,961 INFO ncaa_identity: contest_id=1355591 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:12,965 INFO ncaa_identity: contest_id=1355591 teams 0/1894 matched, players 0/702 matched
+2026-08-19 04:43:13,565 INFO ncaa_identity: contest_id=1355604 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:13,568 INFO ncaa_identity: contest_id=1355604 teams 0/1930 matched, players 0/679 matched
+2026-08-19 04:43:14,377 INFO ncaa_identity: contest_id=1355629 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:14,382 INFO ncaa_identity: contest_id=1355629 teams 0/2410 matched, players 0/766 matched
+2026-08-19 04:43:14,953 INFO ncaa_identity: contest_id=1355680 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:14,956 INFO ncaa_identity: contest_id=1355680 teams 0/1794 matched, players 0/625 matched
+2026-08-19 04:43:15,513 INFO ncaa_identity: contest_id=1355792 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:15,517 INFO ncaa_identity: contest_id=1355792 teams 0/1790 matched, players 0/510 matched
+2026-08-19 04:43:16,143 INFO ncaa_identity: contest_id=1355840 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:16,145 INFO ncaa_identity: contest_id=1355840 teams 0/1112 matched, players 0/286 matched
+2026-08-19 04:43:16,806 INFO ncaa_identity: contest_id=1355902 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:16,810 INFO ncaa_identity: contest_id=1355902 teams 0/1899 matched, players 0/799 matched
+2026-08-19 04:43:17,473 INFO ncaa_identity: contest_id=1355931 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:17,478 INFO ncaa_identity: contest_id=1355931 teams 0/2234 matched, players 0/831 matched
+2026-08-19 04:43:18,294 INFO ncaa_identity: contest_id=1355953 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:18,297 INFO ncaa_identity: contest_id=1355953 teams 0/1990 matched, players 0/641 matched
+2026-08-19 04:43:18,887 INFO ncaa_identity: contest_id=1355967 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:18,891 INFO ncaa_identity: contest_id=1355967 teams 0/1882 matched, players 0/701 matched
+2026-08-19 04:43:19,701 INFO ncaa_identity: contest_id=1355985 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:19,705 INFO ncaa_identity: contest_id=1355985 teams 0/2056 matched, players 0/766 matched
+2026-08-19 04:43:20,428 INFO ncaa_identity: contest_id=1355997 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:20,431 INFO ncaa_identity: contest_id=1355997 teams 0/1611 matched, players 0/583 matched
+2026-08-19 04:43:21,073 INFO ncaa_identity: contest_id=1356011 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:21,074 INFO ncaa_identity: contest_id=1356011 teams 0/1514 matched, players 0/396 matched
+2026-08-19 04:43:21,705 INFO ncaa_identity: contest_id=1356046 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:21,709 INFO ncaa_identi2026-08-19 04:43:21,869 INFO ncaa_identity: contest_id=1355998 seaso2026-08-19 04:43:22,245 INFO ncaa_identity: contest_id=1356104 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:22,247 INFO ncaa_identi2026-08-19 04:43:22,715 INFO ncaa_identity: contest_id=1356012 seaso2026-08-19 04:43:23,216 INFO ncaa_identity: contest_id=1356179 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:23,219 INFO ncaa_identi2026-08-19 04:43:23,425 INFO ncaa_identity: contest_id=1356050 seaso2026-08-19 04:43:23,904 INFO ncaa_identity: contest_id=1356208 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:23,909 INFO ncaa_identi2026-08-19 04:43:24,116 INFO ncaa_identity: contest_id=1356105 seaso2026-08-19 04:43:24,533 INFO ncaa_identity: contest_id=1356318 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:24,535 INFO ncaa_identi2026-08-19 04:43:24,771 INFO ncaa_identity: contest_id=1356180 seaso2026-08-19 04:43:25,304 INFO ncaa_identity: contest_id=1356337 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:25,306 INFO ncaa_identi2026-08-19 04:43:25,389 INFO ncaa_identity: contest_id=1356216 seaso2026-08-19 04:43:25,912 INFO ncaa_identity: contest_id=1356366 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:25,916 INFO ncaa_identi2026-08-19 04:43:25,974 INFO ncaa_identity: contest_id=1356324 seaso2026-08-19 04:43:26,650 INFO ncaa_identity: contest_id=1356382 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:26,653 INFO ncaa_identi2026-08-19 04:43:26,712 INFO ncaa_identity: contest_id=1356338 seaso2026-08-19 04:43:27,346 INFO ncaa_identity: contest_id=1356407 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:27,348 INFO ncaa_identity: contest_id=1356407 teams 0/2022 matched, players 0/719 matched
+2026-08-19 04:43:27,921 INFO ncaa_identity: contest_id=1356427 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:27,924 INFO ncaa_identity: contest_id=1356427 teams 0/1848 matched, players 0/667 matched
+2026-08-19 04:43:28,410 INFO ncaa_identity: contest_id=1356446 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:28,412 INFO ncaa_identi2026-08-19 04:43:28,818 INFO ncaa_identity: contest_id=1356411 seaso2026-08-19 04:43:29,044 INFO ncaa_identity: contest_id=1356493 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:29,046 INFO ncaa_identi2026-08-19 04:43:29,438 INFO ncaa_identity: contest_id=1356432 seaso2026-08-19 04:43:29,674 INFO ncaa_identity: contest_id=1356537 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:29,678 INFO ncaa_identi2026-08-19 04:43:29,991 INFO ncaa_identity: contest_id=1356447 seaso2026-08-19 04:43:30,270 INFO ncaa_identity: contest_id=1356622 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:30,273 INFO ncaa_identi2026-08-19 04:43:30,686 INFO ncaa_identity: contest_id=1356494 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:30,690 INFO ncaa_identity: contest_id=1356494 teams 0/1706 matched, players 0/609 matched
+2026-08-19 04:43:31,307 INFO ncaa_identity: contest_id=1356538 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:31,309 INFO ncaa_identity: contest_id=1356538 teams 0/1722 matched, players 0/549 matched
+2026-08-19 04:43:31,852 INFO ncaa_identity: contest_id=1356623 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:31,856 INFO ncaa_identity: contest_id=1356623 teams 0/1880 matched, players 0/723 matched
+2026-08-19 04:43:32,708 INFO ncaa_identity: contest_id=1356646 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:32,711 INFO ncaa_identity: contest_id=1356646 teams 0/2444 matched, players 0/1004 matched
+2026-08-19 04:43:33,379 INFO ncaa_identity: contest_id=1356669 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:33,382 INFO ncaa_identity: contest_id=1356669 teams 0/2144 matched, players 0/735 matched
+2026-08-19 04:43:34,020 INFO ncaa_identity: contest_id=1356708 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:34,023 INFO ncaa_identity: contest_id=1356708 teams 0/2086 matched, players 0/756 matched
+2026-08-19 04:43:34,744 INFO ncaa_identity: contest_id=1356793 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:34,746 INFO ncaa_identity: contest_id=1356793 teams 0/1894 matched, players 0/634 matched
+2026-08-19 04:43:35,281 INFO ncaa_identity: contest_id=1356816 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:35,286 INFO ncaa_identity: contest_id=1356816 teams 0/1808 matched, players 0/717 matched
+2026-08-19 04:43:35,896 INFO ncaa_identity: contest_id=1356875 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:35,902 INFO ncaa_identity: contest_id=1356875 teams 0/2132 matched, players 0/758 matched
+2026-08-19 04:43:36,428 INFO ncaa_identity: contest_id=1356923 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:36,431 INFO ncaa_identity: contest_id=1356923 teams 0/1608 matched, players 0/539 matched
+2026-08-19 04:43:37,282 INFO ncaa_identity: contest_id=1356943 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:37,287 INFO ncaa_identity: contest_id=1356943 teams 0/2126 matched, players 0/790 matched
+2026-08-19 04:43:37,934 INFO ncaa_identity: contest_id=1356959 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:37,938 INFO ncaa_identity: contest_id=1356959 teams 0/1974 matched, players 0/796 matched
+2026-08-19 04:43:39,019 INFO ncaa_identity: contest_id=1356970 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:39,023 INFO ncaa_identity: contest_id=1356970 teams 0/2404 matched, players 0/912 matched
+2026-08-19 04:43:39,652 INFO ncaa_identity: contest_id=1356980 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:39,656 INFO ncaa_identity: contest_id=1356980 teams 0/2195 matched, players 0/891 matched
+2026-08-19 04:43:40,265 INFO ncaa_identity: contest_id=1357010 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:40,269 INFO ncaa_identity: contest_id=1357010 teams 0/2096 matched, players 0/822 matched
+2026-08-19 04:43:40,938 INFO ncaa_identity: contest_id=1357022 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:40,942 INFO ncaa_identity: contest_id=1357022 teams 0/1624 matched, players 0/494 matched
+2026-08-19 04:43:41,531 INFO ncaa_identity: contest_id=1357038 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:41,534 INFO ncaa_identity: contest_id=1357038 teams 0/1562 matched, players 0/544 matched
+2026-08-19 04:43:42,141 INFO ncaa_identity: contest_id=1357060 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:42,145 INFO ncaa_identity: contest_id=1357060 teams 0/2081 matched, players 0/726 matched
+2026-08-19 04:43:43,079 INFO ncaa_identity: contest_id=1357076 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:43,084 INFO ncaa_identity: contest_id=1357076 teams 0/2290 matched, players 0/885 matched
+2026-08-19 04:43:43,929 INFO ncaa_identity: contest_id=1357087 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:43,932 INFO ncaa_identity: contest_id=1357087 teams 0/2366 matched, players 0/1017 matched
+2026-08-19 04:43:44,693 INFO ncaa_identity: contest_id=1357112 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:44,696 INFO ncaa_identity: contest_id=1357112 teams 0/1816 matched, players 0/559 matched
+2026-08-19 04:43:45,331 INFO ncaa_identity: contest_id=1357136 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:45,333 INFO ncaa_identity: contest_id=1357136 teams 0/1740 matched, players 0/632 matched
+2026-08-19 04:43:46,019 INFO ncaa_identity: contest_id=1357225 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:46,024 INFO ncaa_identity: contest_id=1357225 teams 0/2230 matched, players 0/793 matched
+2026-08-19 04:43:46,822 INFO ncaa_identity: contest_id=1357237 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:46,826 INFO ncaa_identity: contest_id=1357237 teams 0/1950 matched, players 0/729 matched
+2026-08-19 04:43:47,377 INFO ncaa_identity: contest_id=1357274 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:47,382 INFO ncaa_identity: contest_id=1357274 teams 0/1856 matched, players 0/680 matched
+2026-08-19 04:43:47,986 INFO ncaa_identity: contest_id=1357308 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:47,989 INFO ncaa_identity: contest_id=1357308 teams 0/1972 matched, players 0/781 matched
+2026-08-19 04:43:48,811 INFO ncaa_identity: contest_id=1357347 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:48,815 INFO ncaa_identity: contest_id=1357347 teams 0/2238 matched, players 0/811 matched
+2026-08-19 04:43:49,523 INFO ncaa_identity: contest_id=1357357 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:49,528 INFO ncaa_identity: contest_id=1357357 teams 0/2038 matched, players 0/875 matched
+2026-08-19 04:43:50,306 INFO ncaa_identity: contest_id=1357367 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:50,308 INFO ncaa_identity: contest_id=1357367 teams 0/1872 matched, players 0/675 matched
+2026-08-19 04:43:50,879 INFO ncaa_identity: contest_id=1357383 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:50,883 INFO ncaa_identity: contest_id=1357383 teams 0/1896 matched, players 0/636 matched
+2026-08-19 04:43:51,484 INFO ncaa_identity: contest_id=1357401 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:51,487 INFO ncaa_identity: contest_id=1357401 teams 0/1852 matched, players 0/715 matched
+2026-08-19 04:43:52,019 INFO ncaa_identity: contest_id=1357443 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:52,023 INFO ncaa_identity: contest_id=1357443 teams 0/1780 matched, players 0/609 matched
+2026-08-19 04:43:52,810 INFO ncaa_identity: contest_id=1357456 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:52,813 INFO ncaa_identity: contest_id=1357456 teams 0/2062 matched, players 0/765 matched
+2026-08-19 04:43:53,457 INFO ncaa_identity: contest_id=1357478 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:53,461 INFO ncaa_identity: contest_id=1357478 teams 0/1888 matched, players 0/691 matched
+2026-08-19 04:43:54,098 INFO ncaa_identity: contest_id=1357511 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:54,102 INFO ncaa_identity: contest_id=1357511 teams 0/1774 matched, players 0/632 matched
+2026-08-19 04:43:54,873 INFO ncaa_identity: contest_id=1357568 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:54,877 INFO ncaa_identity: contest_id=1357568 teams 0/1816 matched, players 0/554 matched
+2026-08-19 04:43:54,954 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:43:54,955 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:43:54,955 INFO 5 starters not found for period 2; using estimate
+2026-08-19 04:43:54,956 INFO 5 starters not found for period 2; using estimate
+2026-08-19 04:43:55,578 INFO ncaa_identity: contest_id=1357607 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:55,584 INFO ncaa_identity: contest_id=1357607 teams 0/2415 matched, players 0/2699 matched
+2026-08-19 04:43:56,239 INFO ncaa_identity: contest_id=1357629 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:56,243 INFO ncaa_identity: contest_id=1357629 teams 0/1910 matched, players 0/722 matched
+2026-08-19 04:43:57,130 INFO ncaa_identity: contest_id=1357644 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:57,135 INFO ncaa_identity: contest_id=1357644 teams 0/2328 matched, players 0/927 matched
+2026-08-19 04:43:57,652 INFO ncaa_identity: contest_id=1357655 sea2026-08-19 04:43:57,689 INFO ncaa_identity: contest_id=1357725 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:57,692 INFO ncaa_identity2026-08-19 04:43:58,539 INFO ncaa_identity: contest_id=1357667 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:58,543 INFO ncaa_identity: contest_id=1357667 teams 0/2080 matched, players 0/767 matched
+2026-08-19 04:43:59,165 INFO ncaa_identity: contest_id=1357712 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:59,168 INFO ncaa_identity: contest_id=1357712 teams 0/2142 matched, players 0/659 matched
+2026-08-19 04:43:59,749 INFO ncaa_identity: contest_id=1357726 sea2026-08-19 04:43:59,878 INFO ncaa_identity: contest_id=1357783 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:43:59,880 INFO ncaa_identity2026-08-19 04:44:00,475 INFO ncaa_identity: contest_id=1357758 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:00,479 INFO ncaa_identity: contest_id=1357758 teams 0/1936 matched, players 0/745 matched
+2026-08-19 04:44:01,026 INFO ncaa_identity: contest_id=1357774 sea2026-08-19 04:44:01,291 INFO ncaa_identity: contest_id=1357845 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:01,295 INFO ncaa_identity2026-08-19 04:44:01,638 INFO ncaa_identity: contest_id=1357784 sea2026-08-19 04:44:02,019 INFO ncaa_identity: contest_id=1357865 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:02,021 INFO ncaa_identity2026-08-19 04:44:02,187 INFO ncaa_identity: contest_id=1357811 sea2026-08-19 04:44:02,693 INFO ncaa_identity: contest_id=1357880 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:02,698 INFO ncaa_identity2026-08-19 04:44:02,903 INFO ncaa_identity: contest_id=1357846 sea2026-08-19 04:44:03,423 INFO ncaa_identity: contest_id=1357890 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:03,425 INFO ncaa_identity2026-08-19 04:44:03,485 INFO ncaa_identity: contest_id=1357867 sea2026-08-19 04:44:04,179 INFO ncaa_identity: contest_id=1357912 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:04,183 INFO ncaa_identity: contest_id=1357912 teams 0/2284 matched, players 0/873 matched
+2026-08-19 04:44:04,797 INFO ncaa_identity: contest_id=1357926 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:04,802 INFO ncaa_identity: contest_id=1357926 teams 0/1967 matched, players 0/698 matched
+2026-08-19 04:44:05,536 INFO ncaa_identity: contest_id=1357951 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:05,540 INFO ncaa_identity: contest_id=1357951 teams 0/1842 matched, players 0/545 matched
+2026-08-19 04:44:06,144 INFO ncaa_identity: contest_id=1357981 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:06,148 INFO ncaa_identity: contest_id=1357981 teams 0/1818 matched, players 0/655 matched
+2026-08-19 04:44:06,748 INFO ncaa_identity: contest_id=1358002 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:06,753 INFO ncaa_identity: contest_id=1358002 teams 0/2210 matched, players 0/980 matched
+2026-08-19 04:44:07,660 INFO ncaa_identity: contest_id=1358023 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:07,664 INFO ncaa_identity: contest_id=1358023 teams 0/2088 matched, players 0/602 matched
+2026-08-19 04:44:08,288 INFO ncaa_identity: contest_id=1358043 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:08,292 INFO ncaa_identity: contest_id=1358043 teams 0/1974 matched, players 0/597 matched
+2026-08-19 04:44:08,912 INFO ncaa_identity: contest_id=1358054 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:08,916 INFO ncaa_identity: contest_id=1358054 teams 0/2200 matched, players 0/810 matched
+2026-08-19 04:44:09,702 INFO ncaa_identity: contest_id=1358067 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:09,707 INFO ncaa_identity: contest_id=1358067 teams 0/2011 matched, players 0/774 matched
+2026-08-19 04:44:10,259 INFO ncaa_identity: contest_id=1358083 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:10,262 INFO ncaa_identity: contest_id=1358083 teams 0/1738 matched, players 0/525 matched
+2026-08-19 04:44:11,135 INFO ncaa_identity: contest_id=1358099 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:11,141 INFO ncaa_identity: contest_id=1358099 teams 0/2500 matched, players 0/997 matched
+2026-08-19 04:44:11,702 INFO ncaa_identity: contest_id=1358122 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:11,704 INFO ncaa_identity: contest_id=1358122 teams 0/1791 matched, players 0/657 matched
+2026-08-19 04:44:12,362 INFO ncaa_identity: contest_id=1358149 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:12,365 INFO ncaa_identity: contest_id=1358149 teams 0/2132 matched, players 0/855 matched
+2026-08-19 04:44:12,873 INFO ncaa_identity: contest_id=1358177 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:12,877 INFO ncaa_identity: contest_id=1358177 teams 0/1864 matched, players 0/656 matched
+2026-08-19 04:44:13,600 INFO ncaa_identity: contest_id=1358192 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:13,604 INFO ncaa_identity: contest_id=1358192 teams 0/1810 matched, players 0/633 matched
+2026-08-19 04:44:14,187 INFO ncaa_identity: contest_id=1358212 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:14,190 INFO ncaa_identity: contest_id=1358212 teams 0/1920 matched, players 0/708 matched
+2026-08-19 04:44:14,871 INFO ncaa_identity: contest_id=1358226 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:14,876 INFO ncaa_identity: contest_id=1358226 teams 0/2274 matched, players 0/911 matched
+2026-08-19 04:44:15,673 INFO ncaa_identity: contest_id=1358243 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:15,693 INFO ncaa_identity: contest_id=1358243 teams 0/2368 matched, players 0/6715 matched
+2026-08-19 04:44:16,395 INFO ncaa_identity: contest_id=1358254 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:16,398 INFO ncaa_identity: contest_id=1358254 teams 0/2140 matched, players 0/780 matched
+2026-08-19 04:44:16,958 INFO ncaa_identity: contest_id=1358272 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:16,961 INFO ncaa_identity: contest_id=1358272 teams 0/1846 matched, players 0/684 matched
+2026-08-19 04:44:17,816 INFO ncaa_identity: contest_id=1358292 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:17,819 INFO ncaa_identity: contest_id=1358292 teams 0/1968 matched, players 0/834 matched
+2026-08-19 04:44:18,474 INFO ncaa_identity: contest_id=1358312 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:18,477 INFO ncaa_identity: contest_id=1358312 teams 0/1798 matched, players 0/544 matched
+2026-08-19 04:44:19,079 INFO ncaa_identity: contest_id=1358331 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:19,082 INFO ncaa_identity: contest_id=1358331 teams 0/1466 matched, players 0/496 matched
+2026-08-19 04:44:19,652 INFO ncaa_identity: contest_id=1358349 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:19,655 INFO ncaa_identity: contest_id=1358349 teams 0/1811 matched, players 0/559 matched
+2026-08-19 04:44:19,885 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:44:19,886 INFO 5 starters not found for period 1; using estimate
+2026-08-19 04:44:19,886 INFO 5 starters not found for period 2; using estimate
+2026-08-19 04:44:19,887 INFO 5 starters not found for period 2; using estimate
+2026-08-19 04:44:20,516 INFO ncaa_identity: contest_id=1358365 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:20,521 INFO ncaa_identity: contest_id=1358365 teams 0/2045 matched, players 0/3150 matched
+2026-08-19 04:44:21,205 INFO ncaa_identity: contest_id=1358376 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:21,207 INFO ncaa_identity: contest_id=1358376 teams 0/2078 matched, players 0/697 matched
+2026-08-19 04:44:21,921 INFO ncaa_identity: contest_id=1358394 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:21,926 INFO ncaa_identity: contest_id=1358394 teams 0/2182 matched, players 0/834 matched
+2026-08-19 04:44:22,541 INFO ncaa_identity: contest_id=1358407 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:22,546 INFO ncaa_identity: contest_id=1358407 teams 0/2174 matched, players 0/790 matched
+2026-08-19 04:44:23,112 INFO ncaa_identity: contest_id=1358421 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:23,116 INFO ncaa_identity: contest_id=1358421 teams 0/1728 matched, players 0/658 matched
+2026-08-19 04:44:23,822 INFO ncaa_identity: contest_id=1358433 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:23,826 INFO ncaa_identity: contest_id=1358433 teams 0/1966 matched, players 0/789 matched
+2026-08-19 04:44:24,409 INFO ncaa_identity: contest_id=1358443 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:24,413 INFO ncaa_identity: contest_id=1358443 teams 0/2078 matched, players 0/702 matched
+2026-08-19 04:44:24,922 INFO ncaa_identity: contest_id=1358453 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:24,926 INFO ncaa_identity2026-08-19 04:44:24,987 INFO ncaa_identity: contest_id=1358434 sea2026-08-19 04:44:25,574 INFO ncaa_identity: contest_id=1358464 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:25,579 INFO ncaa_identity2026-08-19 04:44:25,809 INFO ncaa_identity: contest_id=1358444 sea2026-08-19 04:44:26,268 INFO ncaa_identity: contest_id=1358474 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:26,271 INFO ncaa_identity2026-08-19 04:44:26,317 INFO ncaa_identity: contest_id=1358454 sea2026-08-19 04:44:26,730 INFO ncaa_identity: contest_id=1358487 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:26,732 INFO ncaa_identity2026-08-19 04:44:27,122 INFO ncaa_identity: contest_id=1358465 sea2026-08-19 04:44:27,286 INFO ncaa_identity: contest_id=1358497 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:27,289 INFO ncaa_identity2026-08-19 04:44:27,679 INFO ncaa_identity: contest_id=1358475 sea2026-08-19 04:44:27,914 INFO ncaa_identity: contest_id=1358509 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:27,917 INFO ncaa_identity2026-08-19 04:44:28,253 INFO ncaa_identity: contest_id=1358488 sea2026-08-19 04:44:28,584 INFO ncaa_identity: contest_id=1358539 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:28,589 INFO ncaa_identity2026-08-19 04:44:28,776 INFO ncaa_identity: contest_id=1358498 sea2026-08-19 04:44:29,198 INFO ncaa_identity: contest_id=1358564 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:29,202 INFO ncaa_identity2026-08-19 04:44:29,557 INFO ncaa_identity: contest_id=1358513 sea2026-08-19 04:44:29,909 INFO ncaa_identity: contest_id=1358581 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:29,913 INFO ncaa_identity2026-08-19 04:44:30,103 INFO ncaa_identity: contest_id=1358548 sea2026-08-19 04:44:30,470 INFO ncaa_identity: contest_id=1358605 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:30,472 INFO ncaa_identity2026-08-19 04:44:30,952 INFO ncaa_identity: contest_id=1358565 sea2026-08-19 04:44:31,076 INFO ncaa_identity: contest_id=1358621 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:31,079 INFO ncaa_identity2026-08-19 04:44:31,579 INFO ncaa_identity: contest_id=1358582 sea2026-08-19 04:44:31,621 INFO ncaa_identity: contest_id=1358635 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:31,623 INFO ncaa_identity:2026-08-19 04:44:32,148 INFO ncaa_identity: contest_id=1358606 se2026-08-19 04:44:32,427 INFO ncaa_identity: contest_id=1358655 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:32,432 INFO ncaa_identity:2026-08-19 04:44:32,799 INFO ncaa_identity: contest_id=1358622 se2026-08-19 04:44:33,026 INFO ncaa_identity: contest_id=1358665 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:33,029 INFO ncaa_identity:2026-08-19 04:44:33,331 INFO ncaa_identity: contest_id=1358636 se2026-08-19 04:44:33,616 INFO ncaa_identity: contest_id=1358675 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:33,619 INFO ncaa_identity:2026-08-19 04:44:33,927 INFO ncaa_identity: contest_id=1358656 se2026-08-19 04:44:34,314 INFO ncaa_identity: contest_id=1358685 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:34,317 INFO ncaa_identity:2026-08-19 04:44:34,456 INFO ncaa_identity: contest_id=1358666 se2026-08-19 04:44:34,904 INFO ncaa_identity: contest_id=1358699 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:34,908 INFO ncaa_identity:2026-08-19 04:44:35,039 INFO ncaa_identity: contest_id=1358676 se2026-08-19 04:44:35,529 INFO ncaa_identity: contest_id=1358710 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:35,534 INFO ncaa_identity:2026-08-19 04:44:35,800 INFO ncaa_identity: contest_id=1358686 se2026-08-19 04:44:36,360 INFO ncaa_identity: contest_id=1358720 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:36,363 INFO ncaa_identity:2026-08-19 04:44:36,490 INFO ncaa_identity: contest_id=1358700 se2026-08-19 04:44:37,016 INFO ncaa_identity: contest_id=1358730 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:37,021 INFO ncaa_identity:2026-08-19 04:44:37,294 INFO ncaa_identity: contest_id=1358711 se2026-08-19 04:44:37,669 INFO ncaa_identity: contest_id=1358741 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:37,673 INFO ncaa_identity:2026-08-19 04:44:37,902 INFO ncaa_identity: contest_id=1358721 sea2026-08-19 04:44:38,413 INFO ncaa_identity: contest_id=1358753 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:38,418 INFO ncaa_identity2026-08-19 04:44:38,498 INFO ncaa_identity: contest_id=1358731 sea2026-08-19 04:44:38,995 INFO ncaa_identity: contest_id=1358763 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:38,997 INFO ncaa_identity2026-08-19 04:44:39,126 INFO ncaa_identity: contest_id=1358742 sea2026-08-19 04:44:39,659 INFO ncaa_identity: contest_id=1358777 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:39,662 INFO ncaa_identity2026-08-19 04:44:39,714 INFO ncaa_identity: contest_id=1358754 sea2026-08-19 04:44:40,373 INFO ncaa_identity: contest_id=1358788 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:40,377 INFO ncaa_identity: contest_id=1358788 teams 0/1762 matched, players 0/672 matched
+2026-08-19 04:44:40,908 INFO ncaa_identity: contest_id=1358798 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 04:44:40,911 INFO ncaa_identity2026-08-19 04:44:41,005 INFO ncaa_identity: contest_id=1358779 sea2026-08-19 04:44:43,436 INFO ncaa_identity: contest_id=878062 teams 2712/2712 matched, players 7281/7625 matched
+2026-08-19 04:44:45,787 INFO ncaa_identity: contest_id=878099 teams 1491/2998 matched, players 3698/8498 matched
+2026-08-19 04:44:48,910 INFO ncaa_identity: contest_id=878147 teams 3189/3189 matched, players 8756/9015 matched
+2026-08-19 04:44:51,432 INFO ncaa_identity: contest_id=878191 teams 2293/2293 matched, players 6195/6465 matched
+2026-08-19 04:44:52,059 INFO ncaa_identity: contest_id=878215 teams 1099/2168 matched, players 3098/6133 matched
+2026-08-19 04:44:53,695 INFO ncaa_identity: contest_id=878250 teams 2815/2815 matched, players 7692/7976 matched
+2026-08-19 04:44:54,361 INFO ncaa_identity: contest_id=878261 teams 2117/2117 matched, players 4990/5899 matched
+2026-08-19 04:44:55,240 INFO ncaa_identity: contest_id=878307 teams 2355/2355 matched, players 6434/6600 matched
+2026-08-19 04:44:55,992 INFO ncaa_identity: contest_id=878322 teams 2584/2584 matched, players 7252/7317 matched
+2026-08-19 04:44:56,681 INFO ncaa_identity: contest_id=878332 teams 2209/2209 matched, players 6082/6231 matched
+2026-08-19 04:44:57,171 INFO ncaa_identity: contest_id=878344 teams 1214/2401 matched, players 3397/6757 matched
+2026-08-19 04:44:59,508 INFO ncaa_identity: contest_id=878407 teams 2782/2782 matched, players 7346/7853 matched
+2026-08-19 04:45:01,751 INFO ncaa_identity: contest_id=878530 teams 2363/2363 matched, players 5756/6680 matched
+2026-08-19 04:45:04,308 INFO ncaa_identity: contest_id=878627 teams 2493/2493 matched, players 6872/6977 matched
+2026-08-19 04:45:05,218 INFO ncaa_identity: contest_id=878656 teams 2717/2717 matched, players 7645/7680 matched
+2026-08-19 04:45:06,905 INFO ncaa_identity: contest_id=878726 teams 2919/2919 matched, players 7767/8268 matched
+2026-08-19 04:45:08,043 INFO ncaa_identity: contest_id=878773 teams 1482/1482 matched, players 299/407 matched
+2026-08-19 04:45:08,485 INFO ncaa_identity: contest_id=878786 teams 1242/2461 matched, players 3471/6902 matched
+2026-08-19 04:45:10,597 INFO ncaa_identity: contest_id=878858 teams 2264/2264 matched, players 5478/6330 matched
+2026-08-19 04:45:11,492 INFO ncaa_identity: contest_id=878877 teams 2925/2925 matched, players 7819/8267 matched
+2026-08-19 04:45:12,489 INFO ncaa_identity: contest_id=878924 teams 2432/2432 matched, players 6458/6873 matched
+2026-08-19 04:45:14,210 INFO ncaa_identity: contest_id=878971 teams 3038/3038 matched, players 8060/8587 matched
+2026-08-19 04:45:14,986 INFO ncaa_identity: contest_id=879009 teams 2539/2539 matched, players 6648/7155 matched
+2026-08-19 04:45:15,809 INFO ncaa_identity: contest_id=879045 teams 2598/2598 matched, players 6739/7304 matched
+2026-08-19 04:45:19,001 INFO ncaa_identity: contest_id=879241 teams 2565/2565 matched, players 6817/7235 matched
+2026-08-19 04:45:26,581 INFO ncaa_identity: contest_id=879622 teams 2685/2685 matched, players 6987/7568 matched
+2026-08-19 04:45:28,161 INFO ncaa_identity: contest_id=879687 teams 2333/2333 matched, players 6165/6565 matched
+2026-08-19 04:45:28,834 INFO ncaa_identity: contest_id=879703 teams 2327/2327 matched, players 5104/6540 matched
+2026-08-19 04:45:29,542 INFO ncaa_identity: contest_id=879719 teams 2529/2529 matched, players 6576/7112 matched
+2026-08-19 04:45:34,236 INFO ncaa_identity: contest_id=879964 teams 2756/2756 matched, players 7152/7767 matched
+2026-08-19 04:45:36,675 INFO ncaa_identity: contest_id=880044 teams 2964/2964 matched, players 8152/8391 matched
+2026-08-19 04:45:37,562 INFO ncaa_identity: contest_id=880064 teams 2323/2323 matched, players 5911/6545 matched
+2026-08-19 04:45:38,229 INFO ncaa_identity: contest_id=880074 teams 2439/2439 matched, players 6417/6836 matched
+2026-08-19 04:45:38,811 INFO ncaa_identity: contest_id=880098 teams 2352/2352 matched, players 6330/6642 matched
+2026-08-19 04:45:40,357 INFO ncaa_identity: contest_id=880135 teams 2386/2386 matched, players 6254/6722 matched
+2026-08-19 04:45:41,143 INFO ncaa_identity: contest_id=880149 teams 1840/1840 matched, players 696/720 matched
+2026-08-19 04:45:43,322 INFO ncaa_identity: contest_id=880193 teams 2123/2123 matched, players 5619/5941 matched
+2026-08-19 04:45:43,898 INFO ncaa_identity: contest_id=880210 teams 2239/2239 matched, players 5800/6309 matched
+2026-08-19 04:45:45,473 INFO ncaa_identity: contest_id=880269 teams 1303/2637 matched, players 2905/7454 matched
+2026-08-19 04:45:46,173 INFO ncaa_identity: contest_id=880298 teams 2352/2352 matched, players 6204/6643 matched
+2026-08-19 04:45:47,935 INFO ncaa_identity: contest_id=880369 teams 2620/2620 matched, players 7063/7370 matched
+2026-08-19 04:45:48,835 INFO ncaa_identity: contest_id=880383 teams 2332/2332 matched, players 6392/6580 matched
+2026-08-19 04:45:49,625 INFO ncaa_identity: contest_id=880410 teams 2664/2664 matched, players 7407/7483 matched
+2026-08-19 04:45:50,481 INFO ncaa_identity: contest_id=880428 teams 2181/2181 matched, players 5994/6102 matched
+2026-08-19 04:45:51,935 INFO ncaa_identity: contest_id=880462 teams 2004/2004 matched, players 4796/5618 matched
+2026-08-19 04:45:52,871 INFO ncaa_identity: contest_id=880479 teams 2693/2693 matched, players 7280/7634 matched
+2026-08-19 04:45:53,466 INFO ncaa_identity: contest_id=880499 teams 2131/2131 matched, players 5463/5988 matched
+2026-08-19 04:46:00,092 INFO ncaa_identity: contest_id=880724 teams 2130/4410 matched, players 6005/12654 matched
+2026-08-19 04:46:00,983 INFO ncaa_identity: contest_id=880748 teams 2324/2324 matched, players 6431/6537 matched
+2026-08-19 04:46:07,274 INFO ncaa_identity: contest_id=881024 teams 1394/2772 matched, players 3863/7811 matched
+2026-08-19 04:46:09,467 INFO ncaa_identity: contest_id=881113 teams 2341/2341 matched, players 6461/6566 matched
+2026-08-19 04:46:13,475 INFO ncaa_identity: contest_id=881288 teams 2352/2352 matched, players 6305/6639 matched
+2026-08-19 04:46:14,339 INFO ncaa_identity: contest_id=881332 teams 2508/2508 matched, players 6847/7066 matched
+2026-08-19 04:46:14,922 INFO ncaa_identity: contest_id=881388 teams 2169/2169 matched, players 5583/6113 matched
+2026-08-19 04:46:15,873 INFO ncaa_identity: contest_id=881436 teams 1478/2888 matched, players 4189/8213 matched
+2026-08-19 04:46:16,567 INFO ncaa_identity: contest_id=881459 teams 2300/2300 matched, players 5294/6490 matched
+2026-08-19 04:46:17,236 INFO ncaa_identity: contest_id=881526 teams 2577/2577 matched, players 6586/7280 matched
+2026-08-19 04:46:18,141 INFO ncaa_identity: contest_id=881597 teams 2247/2247 matched, players 5585/6313 matched
+2026-08-19 04:46:21,839 INFO ncaa_identity: contest_id=881703 teams 2029/2029 matched, players 5485/5699 matched
+2026-08-19 04:46:22,521 INFO ncaa_identity: contest_id=881715 teams 2452/2452 matched, players 6139/6922 matched
+2026-08-19 04:46:23,210 INFO ncaa_identity: contest_id=881727 teams 2250/2250 matched, players 5720/6328 matched
+2026-08-19 04:46:24,160 INFO ncaa_identity: contest_id=881768 teams 1295/2634 matched, players 3332/7443 matched
+2026-08-19 04:46:24,798 INFO ncaa_identity: contest_id=881791 teams 2006/2006 matched, players 5442/5635 matched
+2026-08-19 04:46:25,631 INFO ncaa_identity: contest_id=881822 teams 2404/2404 matched, players 6731/6749 matched
+2026-08-19 04:46:28,305 INFO ncaa_identity: contest_id=881965 teams 2145/2145 matched, players 5966/5996 matched
+2026-08-19 04:46:31,999 INFO ncaa_identity: contest_id=882143 teams 2276/2276 matched, players 6065/6437 matched
+2026-08-19 04:46:32,883 INFO ncaa_identity: contest_id=882170 teams 2243/2243 matched, players 5899/6271 matched
+2026-08-19 04:46:34,273 INFO ncaa_identity: contest_id=882251 teams 1336/2631 matched, players 3743/7374 matched
+2026-08-19 04:46:35,175 INFO ncaa_identity: contest_id=882267 teams 2594/2594 matched, players 6769/7261 matched
+2026-08-19 04:46:35,913 INFO ncaa_identity: contest_id=882293 teams 1192/2399 matched, players 3390/6777 matched
+2026-08-19 04:46:36,843 INFO ncaa_identity: contest_id=882333 teams 2811/2811 matched, players 7349/7903 matched
+2026-08-19 04:46:38,215 INFO ncaa_identity: contest_id=882453 teams 2522/2522 matched, players 7044/7120 matched
+2026-08-19 04:46:41,492 INFO ncaa_identity: contest_id=882564 teams 1247/2497 matched, players 3486/7016 matched
+2026-08-19 04:46:42,993 INFO ncaa_identity: contest_id=882615 teams 1095/2076 matched, players 412/827 matched
+2026-08-19 04:46:43,958 INFO ncaa_identity: contest_id=882653 teams 2766/2766 matched, players 7380/7806 matched
+2026-08-19 04:46:46,075 INFO ncaa_identity: contest_id=882731 teams 21/2944 matched, players 0/8253 matched
+2026-08-19 04:46:46,2026-08-19 04:46:47,025 INFO ncaa_identity: contest_id=882724 teams 2040/2040 matched, players2026-08-19 04:46:49,287 INFO ncaa_identity: contest_id=882913 teams 2394/2394 matched, players 6607/6745 matched
+2026-08-19 04:46:50,089 INFO ncaa_identity: contest_id=882928 teams 3034/3034 matched, players 8517/8622 matched
+2026-08-19 04:46:51,613 INFO ncaa_identity: contest_id=882965 teams 2204/2204 matched, players 5685/6225 matched
+2026-08-19 04:46:55,228 INFO ncaa_identity: contest_id=883095 teams 2309/2309 matched, players 6183/6506 matched
+2026-08-19 04:46:56,711 INFO ncaa_identity: contest_id=883123 teams 1070/2154 matched, players 3023/6034 matched
+2026-08-19 04:46:57,343 INFO ncaa_identity: contest_id=883137 teams 2204/2204 matched, players 5659/6212 matched
+2026-08-19 04:46:58,209 INFO ncaa_identity: contest_id=883163 teams 2347/2347 matched, players 6550/6624 matched
+2026-08-19 04:46:59,746 INFO ncaa_identity: contest_id=883204 teams 1351/2674 matched, players 3410/7543 matched
+2026-08-19 04:47:01,2026-08-19 04:47:03,828 INFO ncaa_identity: contest_id=883275 teams 2632/2632 matched, players 6973/7466 matched
+2026-08-19 04:47:04,684 INFO ncaa_identity: contest_id=883286 teams 2369/2369 matched, players 6547/6702 matched
+2026-08-19 04:47:06,245 INFO ncaa_identity: contest_id=883311 teams 2947/2947 matched, players 7873/8322 matched
+2026-08-19 04:47:07,003 INFO ncaa_identity: contest_id=883325 teams 2577/2577 matched, players2026-08-19 04:47:07,2026-08-19 04:47:09,906 INFO ncaa_identity: contest_id=883375 teams 2415/2415 matched, players 6357/6777 matched
+2026-08-19 04:47:12,742 INFO ncaa_identity: contest_id=883430 teams 1302/2494 matched, players 3644/7085 matched
+2026-08-19 04:47:13,619 INFO ncaa_identity: contest_id=883440 teams 2429/2429 matched, players 6389/6817 matched
+2026-08-19 04:47:15,256 INFO ncaa_identity: contest_id=883464 teams 2620/2620 matched, players 6687/7382 matched
+2026-08-19 04:47:15,964 INFO ncaa_identity: contest_id=883478 teams 2568/2568 matched, players 6671/7232 matched
+2026-08-19 04:47:17,443 INFO ncaa_identity: contest_id=883511 teams 1304/2580 matched, players 3665/7248 matched
+2026-08-19 04:47:19,027 INFO ncaa_identity: contest_id=883560 teams 2143/2143 matched, players 5098/6042 matched
+2026-08-19 04:47:19,673 INFO ncaa_identity: contest_id=883578 teams 2177/2177 matched, players 6073/6095 matched
+2026-08-19 04:47:20,430 INFO ncaa_identity: contest_id=883599 teams 2100/2100 matched, players 5251/5954 matched
+2026-08-19 04:47:21,146 INFO ncaa_identity: contest_id=883633 teams 2539/2539 matched, players 7168/7178 matched
+2026-08-19 04:47:22,823 INFO ncaa_identity: contest_id=883664 teams 2424/2424 matched, players 6761/6795 matched
+2026-08-19 04:47:23,477 INFO ncaa_identity: contest_id=883696 teams 2223/2223 matched, players2026-08-19 04:47:25,428 INFO ncaa_identity: contest_id=883751 teams 2711/2711 matched, players 7251/7609 matched
+2026-08-19 04:47:27,680 INFO ncaa_identity: contest_id=883847 teams 2667/2667 matched, players 7113/7561 matched
+2026-08-19 04:47:29,317 INFO ncaa_identity: contest_id=883884 teams 2503/2503 matched, players 6633/7036 matched
+2026-08-19 04:47:30,124 INFO ncaa_identity: contest_id=883913 teams 2722/2722 matched, players 7528/7683 matched
+2026-08-19 04:47:30,950 INFO ncaa_identity: contest_id=883935 teams 2006/2006 matched, players 5266/5630 matched
+2026-08-19 04:47:31,692 INFO ncaa_identity: contest_id=883951 teams 2533/2533 matched, players 7025/7147 matched
+2026-08-19 04:47:34,265 INFO ncaa_identity: contest_id=884021 teams 2314/2314 matched, players 5838/6530 matched
+2026-08-19 04:47:35,069 INFO ncaa_identity: contest_id=884046 teams 1113/2287 matched, players 3263/6470 matched
+2026-08-19 04:42026-08-19 04:47:36,454 INFO ncaa_identity: contest_id=884069 teams 2249/2249 matched, players 59542026-08-19 04:42026-08-19 04:47:37,327 INFO ncaa_identity: contest_id=884104 teams 2460/2460 matched, players 64552026-08-19 04:42026-08-19 04:47:39,232 INFO ncaa_identity: contest_id=884235 teams 1459/2889 matched, players 40702026-08-19 04:47:40,277 INFO ncaa_identity: contest_id=884285 teams 2514/2514 matched, players 6348/7063 matched
+2026-08-19 042026-08-19 04:47:42,230 INFO ncaa_identity: contest_id=884375 teams 3042/3042 matched, players 8029/82026-08-19 042026-08-19 04:47:43,028 INFO ncaa_identity: contest_id=884421 teams 1209/2342 matched, players 3331/62026-08-19 04:47:48,632 INFO ncaa_identity: contest_id=884643 teams 3205/3205 matched, players 8450/9064 matched
+2026-08-19 04:47:49,431 INFO ncaa_identity: contest_id=884664 teams 2899/2899 matched, players 7671/8171 matched
+2026-08-19 04:47:50,291 INFO ncaa_identity: contest_id=884730 teams 2362/2362 matched, players 6588/6693 matched
+2026-08-19 042026-08-19 04:47:52,378 INFO ncaa_identity: contest_id=884811 teams 2369/2369 matched, players 6465/6651 matched
+2026-08-19 04:47:53,036 INFO ncaa_identity: contest_id=884842 teams 1357/1357 matched, players 346/351 matched
+2026-08-19 04:47:55,133 INFO ncaa_identity: contest_id=884963 teams 22026-08-19 04:47:59,704 INFO ncaa_identity: contest_id=885161 teams 2711/2711 matched, players 7388/7639 matched
+2026-08-19 04:48:01,178 INFO ncaa_identity: contest_id=885196 teams 2430/2430 matched, players 6680/6838 matched
+2026-08-19 04:48:01,943 INFO ncaa_identity: contest_id=885220 teams 2869/2869 matched, players 7255/8105 matched
+2026-08-19 04:48:02,608 INFO ncaa_identity:2026-08-19 04:48:03,348 INFO ncaa_identity: contest_id=885270 teams 2762026-08-19 04:48:03,536 INFO ncaa_identity:2026-08-19 04:48:04,412 INFO ncaa_identity: contest_id=885295 teams 2484/2484 matched, players 6178/6991 matched
+2026-08-19 04:48:07,051 INFO ncaa_identity: contest_id=885442 teams 2485/2485 matched, players 6440/7019 matched
+2026-08-19 04:48:09,967 INFO ncaa_identity: contest_id=885589 teams 774/1533 matched, players 212/403 matched
+2026-08-19 04:48:10,380 INFO ncaa_identity: contest_id=885602 teams 0/2175 matched, players 0/6106 matched
+2026-08-19 04:48:11,734 INFO ncaa_identity: contest_id=885673 teams 2098/2098 matched, players 5652/5885 matched
+2026-08-19 04:48:12,586 INFO ncaa_identity: contest_id=885701 teams 2264/2264 matched, players 5851/6408 matched
+2026-08-19 04:48:14,259 INFO ncaa_identity: contest_id=885782 teams 22026-08-19 04:48:14,517 INFO ncaa_identity: c2026-08-19 04:48:15,749 INFO ncaa_identity: contest_id=885874 teams 22026-08-19 04:48:17,809 INFO ncaa_identity: contest_id=886175 teams 2562/2562 matched, players 6982/7231 matched
+2026-08-19 04:48:21,309 INFO ncaa_identity: contest_id=886273 teams 2280/2280 matched, players 5981/6395 matched
+2026-08-19 04:48:23,592 INFO ncaa_identity: contest_id=886330 teams 2376/2376 matched, players 6512/6688 matched
+2026-08-19 04:48:24,308 INFO ncaa_identity: contest_id=886367 teams 2234/2234 matched, players 5945/6310 matched
+2026-08-19 04:48:26,455 INFO ncaa_identity: contest_id=886486 teams 1303/2603 matched, players 3692/7341 matched
+O ncaa_identity: contest_id=886306 teams 25072026-08-19 04:48:25,864 INFO ncaa_identity2026-08-19 04:48:25,933 INFO ncaa_identity: contest_id=886321 teams 1884/1884 matched, players 5241/5269 matched
+O ncaa_identity: contest_id=886269 teams 1960/1960 matched, players 5030/5504 matche2026-08-19 04:48:26,103 INFO ncaa_identity: contest_id=886282 teams 2437/2437 matched, players 6349/6856 matched
+d
+ matched
+2026-08-19 04:48:24,312 INFO ncaa_identity: contest_id=886408 teams 1198/2353 matched, players 3347/6659 matched
+2026-08-19 04:48:25,046 INFO ncaa_identity: contest_id=886446 teams 2468/2468 matched, players 6462/6979 matched
+2026-08-19 04:48:26,504 INFO ncaa_identity: contest_id=886544 teams 2390/2390 matched, players 6151/6786 matched
+atched, players 4630/6051 matched
+2026-08-19 04:48:25,574 INFO ncaa_identity: contest_id=886570 teams 2264/2264 matched, players 6117/6382 matched
+layers 5607/5960 matched
+2026-08-19 04:47:46,173 INFO ncaa_identity: contest_id=884623 teams 2693/2693 matched, players 7550/7630 matched
+2026-08-19 04:47:47,132 INFO ncaa_identity: contest_id=884653 teams 2628/2628 matched, players 6819/7412 matched
+2026-08-19 04:47:49,981 INFO ncaa_identity: contest_id=884796 teams 2865/2865 matched, players 8035/8070 matched
+2026-08-19 04:47:50,900 INFO ncaa_identity: contest_id=884828 teams 2486/2486 matched, players 6808/6977 matched
+2026-08-19 04:47:51,644 INFO ncaa_identity: contest_id=884863 teams 1161/2309 matched, players 3280/6511 matched
+2026-08-19 04:47:53,251 INFO ncaa_identity: contest_id=884944 teams 2763/2763 matched, players 7525/7853 matched
+2026-08-19 04:47:54,815 INFO ncaa_identity: contest_id=885027 teams 2355/2355 matched, players 6532/6581 matched
+2026-08-19 04:47:56,821 INFO ncaa_identity: contest_id=885127 teams 2091/2091 matched, players 5515/5906 matched
+2026-08-19 04:48:01,008 INFO ncaa_identity: contest_id=885259 teams 2228/2228 matched, players 5264/6241 matched
+2026-08-19 04:48:01,754 INFO ncaa_identity: contest_id=885287 teams 2469/2469 matched, players 6279/6985 matched
+2026-08-19 04:48:02,668 INFO ncaa_identity: contest_id=885323 teams 2591/2591 matched, players 6702/7341 matched
+2026-08-19 04:48:03,475 INFO ncaa_identity: contest_id=885413 teams 2484/2484 matched, players 6467/7005 matched
+2026-08-19 04:48:04,229 INFO ncaa_identity: contest_id=885431 teams 2114/2114 matched, players 5772/5949 matched
+2026-08-19 04:48:05,297 INFO ncaa_identity: contest_id=885460 teams 2824/2824 matched, players 7526/7961 matched
+2026-08-19 04:48:06,842 INFO ncaa_identity: contest_id=885543 teams 2033/2033 matched, players 5679/5714 matched
+2026-08-19 04:48:07,672 INFO ncaa_identity: contest_id=885582 teams 2645/2645 matched, players 6853/7447 matched
+2026-08-19 04:48:13,173 INFO ncaa_identity: contest_id=885833 teams 2357/2357 matched, players 6099/6619 matched
+2026-08-19 04:48:13,973 INFO ncaa_identity: contest_id=885865 teams 2149/2149 matched, players 5477/6036 matched
+2026-08-19 04:48:16,120 INFO ncaa_identity: contest_id=885930 teams 2302/2302 matched, players 6281/6431 matched
+2026-08-19 04:48:16,768 INFO ncaa_identity: contest_id=885996 teams 2158/2158 matched, players 2026-08-19 04:48:172026-08-19 04:48:18,450 INFO ncaa_identity: contest_id=886040 teams 1321/2633 matched, players 2026-08-19 04:48:182026-08-19 04:48:19,316 INFO ncaa_identity: contest_id=886132 teams 2461/2461 matched, players 2026-08-19 04:48:192026-08-19 04:48:25,715 INFO ncaa_identity: contest_id=886326 teams 2200/2200 matched, players 5922/6180 matched
+,937 INFO ncaa_identity: contest_id=886479 teams 1871/1871 matched, players 5238/5249 matched
+2026-08-19 04:48:22,589 INFO ncaa_identity: contest_id=886563 teams 2375/2375 matched, players 6568/6655 matched
+2026-08-19 04:48:25,573 INFO ncaa_identity: contest_id=886724 teams 2133/2133 matched, players 5614/6009 matched
+2026-08-19 04:48:26,263 INFO ncaa_identity: contest_id=886745 teams 2349/2349 matched, players 5971/6601 matched
+EXIT=127

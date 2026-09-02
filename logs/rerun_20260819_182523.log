@@ -1,0 +1,8 @@
+log -> logs/parse_20260819_182523.log  (watch: tail -f logs/parse_20260819_182523.log)
+2026-08-19 18:41:50,828 INFO ncaa_identity: contest_id=893440 teams 2644/2644 matched, players 6823/7502 matched
+2026-08-19 18:41:52,667 INFO ncaa_identity: contest_id=893459 teams 2301/2301 matched, players 6102/6524 matched
+parsed=907 failed=0
+EXIT=0
+[2026-08-19 18:41:55]   ok   wbb 2011 (992s)
+[2026-08-19 18:41:55] rerun done rc=0
+EXIT=0
