@@ -11,6 +11,7 @@ import json
 import tempfile
 from pathlib import Path
 
+from ncaa_wbb_03_games_parse import parse_bundle
 from ncaa_wbb_raw_scrape.ncaa_identity import (
     _key_name,
     _utf8_id,
@@ -18,7 +19,6 @@ from ncaa_wbb_raw_scrape.ncaa_identity import (
     load_roster_index,
     load_team_index,
 )
-from ncaa_wbb_03_games_parse import parse_bundle
 
 _FIX = Path(__file__).resolve().parent / "fixtures" / "ncaa" / "bigballr" / "html"
 
