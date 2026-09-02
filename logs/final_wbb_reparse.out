@@ -1,0 +1,5 @@
+log -> logs/parse_20260819_061220.log  (watch: tail -f logs/parse_20260819_061220.log)
+2026-08-19 06:17:19,402 INFO ncaa_identity: contest_id=1356037 teams 0/2032 matched, players 0/739 matched
+2026-08-19 06:17:20,047 INFO ncaa_identity: contest_id=1356091 season=2010 league=wbb -- teams  not built; ids emitted as nulls
+2026-08-19 06:17:20,051 INFO ncaa_identity: contest_id=1356091 teams 0/1886 matched, players 0/726 matched
+EXIT=127
