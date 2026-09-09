@@ -36,4 +36,7 @@ echo "host=$(hostname) SDV_PY=${SDV_PY} vendor=${NCAA_VENDOR}"
 # Stage 02 is the capture. This delegated to run_capture.sh until 83367e2c66
 # renumbered the stages and deleted it -- the exec target was never updated,
 # so this driver has been dead ever since ("No such file or directory").
-exec ./scripts/run_02_games.sh "$@"
+# Invoked via `bash`, not `./`: the stage scripts' exec bit is not uniform
+# (every run_*.sh in MBB is 100644, WBB's 01-03 are 100755) and is
+# meaningless on a Windows checkout. `./` here failed with rc=126.
+exec bash ./scripts/run_02_games.sh "$@"
