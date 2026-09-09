@@ -1,0 +1,4 @@
+pending=5960 shard=0/1 assigned=5960
+transport: canary vendor 'decodo_patchright'
+2026-08-01 23:29:25,966 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785641365w0
+EXIT=143

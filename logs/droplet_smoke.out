@@ -1,0 +1,8 @@
+host=sdv-data SDV_PY=/mnt/sdv_repos/sdv-py vendor=decodo_patchright
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260801_232906.log  (watch: tail -f logs/capture_20260801_232906.log)
+pending=5960 shard=0/1 assigned=5960
+transport: canary vendor 'decodo_patchright'
+2026-08-01 23:29:25,966 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785641365w0
+Terminated
+EXIT=143

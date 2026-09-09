@@ -1,0 +1,48 @@
+[2026-08-01 23:42:12] campaign season=2025 workers=8 vendor=decodo_patchright
+[2026-08-01 23:42:12] OOM shield ON (choom -n 1000; inherited by all children). baseline oom kills=0
+[2026-08-01 23:42:12] watch: tail -f /mnt/sdv_repos/ncaa-wbb-hoops-raw/logs/campaign_2025_20260801_234212.log
+[2026-08-01 23:42:12] === launching WORKERS=8 ===
+[23:42:12] NCAA WBB backfill: season=2025 workers=8
+[23:42:12] watch this run:  tail -f /mnt/sdv_repos/ncaa-wbb-hoops-raw/logs/backfill_2025_20260801_234212.log
+[23:42:15] === skip discover (season 2025 already in schedule_master; delete wbb/schedule_master.parquet to force) ===
+[23:42:15] === capture 2025 with 8 worker(s) (no chunk limit) ===
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260801_234215.log  (watch: tail -f logs/capture_20260801_234215.log)
+log -> logs/capture_20260801_234215.log  (watch: tail -f logs/capture_20260801_234215.log)
+log -> logs/capture_20260801_234215.log  (watch: tail -f logs/capture_20260801_234215.log)
+log -> logs/capture_20260801_234215.log  (watch: tail -f logs/capture_20260801_234215.log)
+log -> logs/capture_20260801_234215.log  (watch: tail -f logs/capture_20260801_234215.log)
+log -> logs/capture_20260801_234215.log  (watch: tail -f logs/capture_20260801_234215.log)
+log -> logs/capture_20260801_234215.log  (watch: tail -f logs/capture_20260801_234215.log)
+transport: NCAA_VENDOR=decodo_patchright (canary_vendors.toml; ProxyBonanza not used)
+log -> logs/capture_20260801_234215.log  (watch: tail -f logs/capture_20260801_234215.log)
+pending=5960 shard=2/8 assigned=745
+transport: canary vendor 'decodo_patchright'
+pending=5960 shard=7/8 assigned=745
+transport: canary vendor 'decodo_patchright'
+pending=5960 shard=3/8 assigned=745
+transport: canary vendor 'decodo_patchright'
+pending=5960 shard=1/8 assigned=745
+transport: canary vendor 'decodo_patchright'
+pending=5960 shard=5/8 assigned=745
+transport: canary vendor 'decodo_patchright'
+pending=5960 shard=0/8 assigned=745
+transport: canary vendor 'decodo_patchright'
+pending=5960 shard=6/8 assigned=745
+transport: canary vendor 'decodo_patchright'
+pending=5960 shard=4/8 assigned=745
+transport: canary vendor 'decodo_patchright'
+2026-08-01 23:42:35,546 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785642155w1
+2026-08-01 23:42:35,546 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785642155w7
+2026-08-01 23:42:35,546 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785642155w2
+2026-08-01 23:42:35,546 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785642155w0
+2026-08-01 23:42:35,547 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785642155w3
+2026-08-01 23:42:35,548 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785642155w4
+2026-08-01 23:42:35,548 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785642155w5
+2026-08-01 23:42:35,550 INFO vendor decodo_patchright: 50 prox(y/ies), sticky session re-minted -> session-cap1785642155w6
