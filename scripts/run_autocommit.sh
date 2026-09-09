@@ -32,6 +32,7 @@ INTERVAL="${INTERVAL:-600}"
 #   SUBJECT='fix(parse): wbb halves-era reparse' ./scripts/run_autocommit.sh
 SUBJECT="${SUBJECT:-feat(data): capture progress --}"
 PUSH="${PUSH:-1}"
+RC=0   # ONESHOT exit status: a failed push must not report success
 SETTLE="${SETTLE:-1}"
 
 mkdir -p logs
@@ -49,9 +50,34 @@ while :; do
   # --pathspec-from-file keeps the SETTLE semantics EXACTLY as before -- the
   # settle window is load-bearing here (these captures do not write atomically).
   _settled=$(mktemp)
-  find "${LEAGUE}/raw" "${LEAGUE}/json" -type f -mmin "+${SETTLE}" -print0 2>/dev/null > "$_settled"
-  [ -s "$_settled" ] && git add --pathspec-from-file="$_settled" --pathspec-file-nul --
-  rm -f "$_settled"
+  # Every committed data subtree, not just raw/json: discovery writes schedules/,
+  # identity writes teams/, the roster stages write rosters/ and team_rosters/,
+  # and the xwalk build writes xwalk/. Staging only raw+json meant a discovery or
+  # roster run scraped pages that were never committed -- work done and silently
+  # left on the box.
+  _paths=""
+  for _d in raw json schedules rosters team_rosters teams xwalk; do
+    # Only dirs that EXIST. `git add` rejects the WHOLE pathspec if one element
+    # matches nothing, so a repo missing a subtree would stage nothing at all --
+    # the same way an ignored `logs/` silently broke the MFB driver's add.
+    [ -d "${LEAGUE}/${_d}" ] && _paths="${_paths} ${LEAGUE}/${_d}"
+  done
+
+  if [ "${SETTLE}" -gt 0 ]; then
+    # Settle window: enumerate settled files and hand git an explicit list, so a
+    # bundle being written right now is never staged half-flushed.
+    _settled=$(mktemp)
+    find ${_paths} -type f -mmin "+${SETTLE}" -print0 2>/dev/null > "$_settled"
+    [ -s "$_settled" ] && git add --pathspec-from-file="$_settled" --pathspec-file-nul --
+    rm -f "$_settled"
+  elif [ -n "${_paths}" ]; then
+    # SETTLE=0 -- no settle window, so hand git the DIRECTORIES and let it walk
+    # them. Identical result, but it avoids matching ~230k literal pathspecs
+    # against a ~230k-entry index, which is near-quadratic: one such pass ran
+    # >12 minutes at 850MB RSS. Only safe when nothing is mid-write, which is
+    # exactly the post-capture sweep's situation.
+    git add -- ${_paths}
+  fi
   # schedule_master is rewritten by discovery; safe to take whole.
   [ -f "${LEAGUE}/schedule_master.parquet" ] && git add "${LEAGUE}/schedule_master.parquet"
 
@@ -79,6 +105,7 @@ while :; do
       say "COMMIT FAILED -- NOT pushing. git said:"
       sed 's/^/    /' "$_err" | head -20 | tee -a "$LOG"
       rm -f "$_err"
+      if [ "${ONESHOT:-0}" = "1" ]; then say "oneshot: commit failed"; exit 1; fi
       sleep "$INTERVAL"
       continue
     fi
@@ -97,8 +124,12 @@ while :; do
       git -c merge.autoStash=false pull -q --no-rebase --no-edit origin main \
         || say "PULL FAILED (working tree untouched; next pass retries)"
       git -c http.version=HTTP/1.1 -c http.postBuffer=1048576000 push -q origin main \
-        && say "pushed" || say "PUSH FAILED (commit is safe locally; next pass retries)"
+        && say "pushed" || { say "PUSH FAILED (commit is safe locally; next pass retries)"; RC=1; }
     fi
   fi
+  # ONESHOT=1: one pass, then exit -- for a driver that wants "everything
+  # scraped is committed" as a POSTCONDITION of its own run rather than a
+  # loop the operator remembers to start (and to stop).
+  if [ "${ONESHOT:-0}" = "1" ]; then say "oneshot: pass complete (rc=${RC})"; exit "${RC}"; fi
   sleep "$INTERVAL"
 done

@@ -39,4 +39,17 @@ echo "host=$(hostname) SDV_PY=${SDV_PY} vendor=${NCAA_VENDOR}"
 # Invoked via `bash`, not `./`: the stage scripts' exec bit is not uniform
 # (every run_*.sh in MBB is 100644, WBB's 01-03 are 100755) and is
 # meaningless on a Windows checkout. `./` here failed with rc=126.
-exec bash ./scripts/run_02_games.sh "$@"
+bash ./scripts/run_02_games.sh "$@"
+rc=$?
+
+# Commit what was captured. Not exec'd above precisely so this can run:
+# without it the driver scrapes into <league>/raw/ and leaves it untracked on
+# the box. run_autocommit.sh exists for this, but as a SEPARATE loop the
+# operator has to remember to start and to stop -- and a capture that ends
+# without it has done real work that nobody downstream can see.
+#
+# SETTLE=0 (no settle window) is safe here and only here: capture has already
+# exited, so nothing is mid-write. The concurrent loop still needs its window.
+ONESHOT=1 SETTLE=0 bash ./scripts/run_autocommit.sh || rc=1
+
+exit "$rc"
