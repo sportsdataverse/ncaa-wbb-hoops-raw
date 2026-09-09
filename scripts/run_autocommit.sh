@@ -23,6 +23,15 @@
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 case "$PWD" in *wbb*) LEAGUE=wbb ;; *) LEAGUE=mbb ;; esac
+
+# Singleton per repo. Two autocommits in one tree fight over .git/index.lock and
+# each reports the other's failure as its own. flock releases on exit, including
+# a kill -9, so a crashed run cannot wedge the next one.
+exec 9>".git/.autocommit.lock"
+if command -v flock >/dev/null 2>&1 && ! flock -n 9; then
+  echo "another autocommit is already running in $PWD -- exiting" >&2
+  exit 0
+fi
 INTERVAL="${INTERVAL:-600}"
 # Commit subject. Default describes a capture campaign, which is what this
 # usually runs beside -- but the same batching is needed after a PARSER FIX
@@ -34,6 +43,26 @@ SUBJECT="${SUBJECT:-feat(data): capture progress --}"
 PUSH="${PUSH:-1}"
 RC=0   # ONESHOT exit status: a failed push must not report success
 SETTLE="${SETTLE:-1}"
+
+# --- termination guards -------------------------------------------------
+# This loop had NO exit condition: `while :;` with no break, no deadline, no
+# singleton lock and no parent check. Launched beside a capture (nohup/tmux),
+# it outlived the capture and kept scanning the tree forever. That is not an
+# idle process -- one pass measured >12 min at 850MB RSS over 230k paths, which
+# is LONGER than the 600s interval, so an orphan runs essentially continuously.
+#
+#   MAX_IDLE_PASSES  consecutive "nothing to commit" passes before exiting.
+#                    This is the real orphan killer: this script exists to
+#                    commit an ACTIVE capture's output, so if nothing has
+#                    changed for this many passes the capture is over and there
+#                    is nothing left to serve. 0 disables.
+#   MAX_RUNTIME_S    hard deadline regardless of activity. 0 disables.
+#   WATCH_PID        exit when that pid goes away (pass the capture's pid).
+MAX_IDLE_PASSES="${MAX_IDLE_PASSES:-6}"
+MAX_RUNTIME_S="${MAX_RUNTIME_S:-43200}"   # 12h
+WATCH_PID="${WATCH_PID:-}"
+STARTED_AT=$SECONDS
+idle_passes=0
 
 mkdir -p logs
 LOG="logs/autocommit_$(date +%Y%m%d_%H%M%S).log"
@@ -82,8 +111,10 @@ while :; do
   [ -f "${LEAGUE}/schedule_master.parquet" ] && git add "${LEAGUE}/schedule_master.parquet"
 
   if git diff --cached --quiet; then
-    say "nothing settled to commit"
+    idle_passes=$((idle_passes + 1))
+    say "nothing settled to commit (idle pass ${idle_passes}/${MAX_IDLE_PASSES})"
   else
+    idle_passes=0
     n=$(git diff --cached --name-only | wc -l | tr -d ' ')
     # Per-season counts make the commit message useful in `git log` later.
     summary=""
@@ -131,5 +162,18 @@ while :; do
   # scraped is committed" as a POSTCONDITION of its own run rather than a
   # loop the operator remembers to start (and to stop).
   if [ "${ONESHOT:-0}" = "1" ]; then say "oneshot: pass complete (rc=${RC})"; exit "${RC}"; fi
+
+  if [ -n "$WATCH_PID" ] && ! kill -0 "$WATCH_PID" 2>/dev/null; then
+    say "watched pid ${WATCH_PID} is gone -- final pass done, exiting (rc=${RC})"
+    exit "$RC"
+  fi
+  if [ "$MAX_IDLE_PASSES" -gt 0 ] && [ "$idle_passes" -ge "$MAX_IDLE_PASSES" ]; then
+    say "nothing to commit for ${idle_passes} consecutive passes -- capture looks finished, exiting (rc=${RC})"
+    exit "$RC"
+  fi
+  if [ "$MAX_RUNTIME_S" -gt 0 ] && [ $((SECONDS - STARTED_AT)) -ge "$MAX_RUNTIME_S" ]; then
+    say "max runtime ${MAX_RUNTIME_S}s reached -- exiting (rc=${RC}); re-run to continue"
+    exit "$RC"
+  fi
   sleep "$INTERVAL"
 done
