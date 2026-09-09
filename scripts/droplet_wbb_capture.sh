@@ -33,4 +33,7 @@ if [ ! -x "${SDV_PY}/.venv/bin/python" ]; then
 fi
 
 echo "host=$(hostname) SDV_PY=${SDV_PY} vendor=${NCAA_VENDOR}"
-exec ./scripts/run_capture.sh "$@"
+# Stage 02 is the capture. This delegated to run_capture.sh until 83367e2c66
+# renumbered the stages and deleted it -- the exec target was never updated,
+# so this driver has been dead ever since ("No such file or directory").
+exec ./scripts/run_02_games.sh "$@"
