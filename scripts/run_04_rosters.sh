@@ -17,9 +17,19 @@ set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 export PYTHONUNBUFFERED=1
 export PYTHONIOENCODING=utf-8
-SDV_PY="C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py"
-PY="${SDV_PY}/.venv/Scripts/python.exe"
-export PYTHONPATH="${SDV_PY};$(pwd)/python"
+SDV_PY="${SDV_PY:-C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py}"
+# .venv layout is OS-dependent: Linux/droplet = .venv/bin, Windows = .venv/Scripts
+# (same branch as run_01_schedules.sh/run_02_games.sh). PYTHONPATH separator is
+# also OS-dependent (`:` vs `;`); a hardcoded `;` silently no-ops on Linux since
+# bash just treats it as part of one path entry, and the import then falls
+# through to whatever `sportsdataverse` happens to be on the ambient PATH.
+if [ -x "${SDV_PY}/.venv/bin/python" ]; then
+  PY="${PY:-${SDV_PY}/.venv/bin/python}"
+  export PYTHONPATH="${SDV_PY}:$(pwd)/python"
+else
+  PY="${PY:-${SDV_PY}/.venv/Scripts/python.exe}"
+  export PYTHONPATH="${SDV_PY};$(pwd)/python"
+fi
 mkdir -p logs
 LOG="logs/rosters_$(date +%Y%m%d_%H%M%S).log"
 echo "log -> ${LOG}   (watch: tail -f ${LOG})"

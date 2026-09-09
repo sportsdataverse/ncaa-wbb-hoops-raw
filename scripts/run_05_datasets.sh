@@ -26,9 +26,17 @@
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1   # -> ncaa-wbb-hoops-raw repo root
 ROOT="$(pwd)"
-SDV_PY="C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py"
-PY="${SDV_PY}/.venv/Scripts/python.exe"
-export PYTHONPATH="${SDV_PY};${ROOT}/python"
+SDV_PY="${SDV_PY:-C:/Users/saiem/Documents/GitHub-Data/sdv-dev/sdv-py}"
+# .venv layout and PYTHONPATH separator are both OS-dependent -- see
+# run_04_rosters.sh's identical branch for why the hardcoded Windows form
+# silently no-ops on Linux instead of erroring.
+if [ -x "${SDV_PY}/.venv/bin/python" ]; then
+  PY="${PY:-${SDV_PY}/.venv/bin/python}"
+  export PYTHONPATH="${SDV_PY}:${ROOT}/python"
+else
+  PY="${PY:-${SDV_PY}/.venv/Scripts/python.exe}"
+  export PYTHONPATH="${SDV_PY};${ROOT}/python"
+fi
 export PYTHONUNBUFFERED=1
 export PYTHONIOENCODING=utf-8
 
