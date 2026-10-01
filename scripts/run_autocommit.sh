@@ -27,6 +27,9 @@ case "$PWD" in *wbb*) LEAGUE=wbb ;; *) LEAGUE=mbb ;; esac
 # Singleton per repo. Two autocommits in one tree fight over .git/index.lock and
 # each reports the other's failure as its own. flock releases on exit, including
 # a kill -9, so a crashed run cannot wedge the next one.
+# The git calls below take 9>&-: git daemonizes `gc --auto` (commit, pull) and
+# credential-cache--daemon (https pull/push), and an inherited fd 9 keeps this
+# lock held after the loop exits, so the next autocommit silently skips.
 exec 9>".git/.autocommit.lock"
 if command -v flock >/dev/null 2>&1 && ! flock -n 9; then
   echo "another autocommit is already running in $PWD -- exiting" >&2
@@ -129,7 +132,7 @@ while :; do
     # no-op push that followed logged "pushed" -- success reported for work
     # that never happened.
     _err=$(mktemp)
-    if git commit -q -m "${SUBJECT} ${summary:-incremental} (${n} files)" 2>"$_err"; then
+    if git commit -q 9>&- -m "${SUBJECT} ${summary:-incremental} (${n} files)" 2>"$_err"; then
       say "committed ${n} files  ${summary}"
       rm -f "$_err"
     else
@@ -152,9 +155,9 @@ while :; do
       # the normal case and the tree holds ~100k files.
       # merge.autoStash=false: an in-flight parse leaves tens of thousands of
       # modified files and autostash dies with 'patch too large'.
-      git -c merge.autoStash=false pull -q --no-rebase --no-edit origin main \
+      git -c merge.autoStash=false pull -q 9>&- --no-rebase --no-edit origin main \
         || say "PULL FAILED (working tree untouched; next pass retries)"
-      git -c http.version=HTTP/1.1 -c http.postBuffer=1048576000 push -q origin main \
+      git -c http.version=HTTP/1.1 -c http.postBuffer=1048576000 push -q 9>&- origin main \
         && say "pushed" || { say "PUSH FAILED (commit is safe locally; next pass retries)"; RC=1; }
     fi
   fi
