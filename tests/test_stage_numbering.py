@@ -58,6 +58,10 @@ STAGES: tuple[tuple[str, str, str, bool, bool, bool], ...] = (
     # season's schedules exist; no driver because it takes no proxy creds
     # and no sharding.
     ("06", "xwalk_build", "xwalk", False, True, False),
+    # NCAA player <-> ESPN athlete crosswalk (J6). Its matcher lives in
+    # sportsdataverse-py (scrape/ncaa/espn_player_xwalk.py, tested there), so
+    # the shim carries no suite here; the daily chain runs it non-fatally.
+    ("07", "player_xwalk_build", "player_xwalk", False, False, True),
     # Operator pre-flight, not part of a campaign -- hence the 98 block.
     ("98", "canary_probe", "canary", False, True, True),
 )
@@ -66,6 +70,9 @@ STAGES: tuple[tuple[str, str, str, bool, bool, bool], ...] = (
 # the numbered shims, never run. They keep the league-free ncaa_ prefix and
 # take no number precisely so the listing separates them at a glance.
 LIBRARY_MODULES = ("bundle", "identity")
+
+# tests/ suites that cover a scripts/ driver rather than a stage or library.
+DRIVER_TESTS = ("test_daily_season.py",)
 
 # scripts/ drivers that compose stages rather than being one. The league
 # pair (run_<lg>_backfill{,_range}) is added per-repo in the check below.
@@ -280,7 +287,7 @@ def _expected_modules() -> set[str]:
 
 def _expected_test_files() -> set[str]:
     staged = {f"test_{num}_{short}.py" for num, _key, short, _o, has_test, _d in STAGES if has_test}
-    return staged | {f"test_{lib}.py" for lib in LIBRARY_MODULES}
+    return staged | {f"test_{lib}.py" for lib in LIBRARY_MODULES} | set(DRIVER_TESTS)
 
 
 def _has_cli(module_stem: str) -> bool:
