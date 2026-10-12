@@ -7,15 +7,18 @@
 #
 # Season is END-year (2027 = 2026-27), same as wehoop-wbb-raw -- confirmed by
 # reading the committed 2026 schedule's actual game dates (Nov 2025 -> Apr
-# 2026). Bump SEASON below each August/September once NCAA's site opens the
-# crosswalk for the new season (it lags ESPN by weeks; a `run_01_schedules.sh
-# --season <next>` 404/ValueError before then is expected, not a bug).
+# 2026). The season is derived from the date with the SAME rule as the
+# downstream ncaa-wbb-hoops-data scripts/cron_publish_current.sh: August
+# onward is next year's END-year season, so raw and data never disagree.
+# NCAA's site opens the new season's crosswalk weeks after ESPN; a
+# schedules 404/ValueError in Aug/Sep before then is expected, not a bug.
 #
 #   run:    NCAA_VENDOR=decodo_patchright ./scripts/daily_wbb_scraper.sh
 #   watch:  tail -f logs/daily_wbb_$(date -u +%Y%m%d).log
+#   check:  ./scripts/daily_wbb_scraper.sh --print-season   # resolve + exit, offline
 #
 # Tunables (env only -- never edit pace into the script):
-#   WBB_SEASON         override the resolved season   (default 2027)
+#   WBB_SEASON         override the resolved season   (default: from date)
 #   WBB_MAX_CONTESTS   per-run capture cap             (default 60)
 #
 # SAFE RATE: a cron entry stays at 1 worker (no --shard) regardless of the
@@ -25,6 +28,11 @@
 # ProxyBonanza creds from .Renviron, which a cron environment does not source.
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 2
+
+# END-year season from the (cron-local) date; Aug-Dec -> next year.
+M=$((10#$(date +%m))); SEASON=$(date +%Y); [ "$M" -ge 8 ] && SEASON=$((SEASON + 1))
+SEASON="${WBB_SEASON:-$SEASON}"
+if [ "${1:-}" = "--print-season" ]; then echo "${SEASON}"; exit 0; fi
 
 if [ -z "${NCAA_VENDOR:-}" ]; then
   echo "ERROR: NCAA_VENDOR must be set for a cron run (e.g. decodo_patchright)" >&2
@@ -44,7 +52,6 @@ if [ "${sdv_py_branch}" != "main" ]; then
   exit 2
 fi
 
-SEASON="${WBB_SEASON:-2027}"
 MAX_CONTESTS="${WBB_MAX_CONTESTS:-60}"
 
 LOG="logs/daily_wbb_$(date -u +%Y%m%d).log"
