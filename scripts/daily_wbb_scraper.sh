@@ -65,6 +65,8 @@ mkdir -p logs
   bash scripts/run_03_parse.sh --season "${SEASON}" || { echo "WARN parse rc=$?"; rc_total=1; }
   bash scripts/run_04_rosters.sh --season "${SEASON}" || { echo "WARN rosters rc=$?"; rc_total=1; }
   bash scripts/run_05_datasets.sh --season "${SEASON}" || { echo "WARN datasets rc=$?"; rc_total=1; }
+  # Stage 07 (J6) is non-fatal: a player-crosswalk miss must not fail the capture.
+  bash scripts/run_07_player_xwalk.sh --seasons "${SEASON}" || echo "WARN player xwalk rc=$? (non-fatal)"
 
   echo "[$(date -u '+%F %T')Z] daily wbb stages done (rc_total=${rc_total})"
   exit "$rc_total"
