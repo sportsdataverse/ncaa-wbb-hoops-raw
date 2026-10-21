@@ -30,6 +30,12 @@
 #   CHUNK=1500 ./scripts/run_wbb_backfill.sh 2025           # stop after 1500 new bundles (recommended)
 #   NCAA_VENDOR=decodo_patchright WORKERS=8 CHUNK=1500 ./scripts/run_wbb_backfill.sh 2025
 #
+# Exit codes: 0 = clean; 1 = discover failed, or capture hard-stopped (ban/soft-ban);
+#   2 = refused input; 130 = Ctrl-C; any other non-zero = capture's own code.
+#   3 = capture clean but the PARSE stage failed (PARSE_FAILED_RC below). Not a ban:
+#   run_wbb_backfill_range.sh applies the normal cooldown, not BAN_COOLDOWN_S.
+#   A capture failure always wins over 3.
+#
 # Watch live:  tail -f logs/backfill_<season>_<ts>.log   (path is printed on start;
 #              per-stage logs under logs/ are also printed as each stage starts)
 set -uo pipefail
@@ -147,17 +153,28 @@ fi
 
 # --- 3) parse (offline; safe on a partial capture) -> wbb/json/{contest_id}.json ---
 say "=== parse captured bundles -> wbb/json/ ==="
-./scripts/run_03_parse.sh --league wbb || { say "parse FAILED"; exit 1; }
+# Parse's code is kept apart from capture's. From sdv-py 4.5 (#937) parse exits 1 when a
+# bundle fails or a game carries `parse_errors`; every other game is still written, so the
+# summary still runs. Earlier sdv-py exits 0 there and nothing below changes.
+PARSE_FAILED_RC=3
+prc=0
+./scripts/run_03_parse.sh --league wbb || prc=$?
+if [ "$prc" -ne 0 ]; then
+  say "parse FAILED (rc=${prc}) -- the other games are written; see the parse log above."
+fi
 
 # --- summary + next step ---
 CAP="$(find wbb/raw -name '*.json.gz' 2>/dev/null | wc -l | tr -d ' ')"
 JSON="$(ls wbb/json 2>/dev/null | wc -l | tr -d ' ')"
-say "DONE: captured_bundles=${CAP} parsed_json=${JSON} (capture rc=${rc})"
+say "DONE: captured_bundles=${CAP} parsed_json=${JSON} (capture rc=${rc}, parse rc=${prc})"
 if [ "$rc" -eq 0 ]; then
   say "next -> build the -data parquet (Phase 2, not yet built as of this branch):"
   say "  cd ${ROOT}/../ncaa-wbb-hoops-data && python -m ncaa_wbb_data_build build --dataset all --season ${SEASON}"
 else
   say "capture INCOMPLETE (rc=${rc}) -- re-run this script to continue before building."
+fi
+if [ "$rc" -eq 0 ] && [ "$prc" -ne 0 ]; then
+  rc="$PARSE_FAILED_RC"
 fi
 echo "EXIT=${rc}" | tee -a "$LOG"
 exit "$rc"
