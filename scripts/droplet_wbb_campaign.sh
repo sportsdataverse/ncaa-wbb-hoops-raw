@@ -52,6 +52,8 @@ while [ "$W" -ge 1 ]; do
   say "run exited rc=${rc} (oom kills: ${BASE_OOM} -> ${NOW_OOM})"
 
   [ "$rc" -eq 0 ] && { say "SEASON ${SEASON} COMPLETE"; break; }
+  # 3 = run_wbb_backfill.sh PARSE_FAILED_RC: capture clean, parse stage failed. Not an OOM.
+  [ "$rc" -eq 3 ] && { say "SEASON ${SEASON} capture done; parse failures (rc=3) -- see the parse log"; break; }
 
   if [ "$NOW_OOM" -gt "$BASE_OOM" ] || [ "$rc" -eq 137 ]; then
     BASE_OOM="$NOW_OOM"

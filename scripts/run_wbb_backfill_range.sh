@@ -27,6 +27,10 @@
 #   BAN_COOLDOWN_S=1800       pause after a ban/soft-ban hard-stop
 #   MAX_ROUNDS=12             chunk attempts per season before moving on
 #
+# A round that exits 3 (run_wbb_backfill.sh PARSE_FAILED_RC: capture clean, parse
+# failed) is a clean capture round: COOLDOWN_S, never BAN_COOLDOWN_S. The campaign
+# then exits 3 and names those seasons; otherwise it exits 0.
+#
 # Watch live:   tail -f logs/backfill_range_<ts>.log
 # Ctrl-C:       safe anytime — per-game JSON on disk IS the checkpoint; re-run
 #               resumes exactly where it stopped (captured contests are skipped).
@@ -47,6 +51,7 @@ WORKERS="${WORKERS:-1}"
 COOLDOWN_S="${COOLDOWN_S:-300}"
 BAN_COOLDOWN_S="${BAN_COOLDOWN_S:-1800}"
 MAX_ROUNDS="${MAX_ROUNDS:-12}"
+PARSE_FAILED_SEASONS=""
 
 mkdir -p logs
 LOG="logs/backfill_range_$(date +%Y%m%d_%H%M%S).log"
@@ -79,6 +84,17 @@ for season in $(seq "$START" -1 "$END"); do
       ./scripts/run_wbb_backfill.sh "$season" 2>&1 | tee -a "$LOG"
     rc=${PIPESTATUS[0]}
     left="$(remaining "$season")"
+    # rc=3 (run_wbb_backfill.sh PARSE_FAILED_RC): capture was clean and only the parse
+    # stage failed. That is not a ban, so the round counts as a clean capture round
+    # (cap_rc=0) everywhere below. `remaining` counts captured bundles, not parsed
+    # games, so an unparseable bundle cannot keep a season looping: the
+    # captured-nothing check below ends it in one round.
+    cap_rc="$rc"
+    if [ "$rc" -eq 3 ]; then
+      cap_rc=0
+      case " ${PARSE_FAILED_SEASONS} " in *" ${season} "*) ;; *) PARSE_FAILED_SEASONS="${PARSE_FAILED_SEASONS} ${season}" ;; esac
+      say "season ${season}: round ${round} had parse failures (rc=3, not a ban) -- the other games are written"
+    fi
     # A clean round that captured NOTHING means the remainder is un-capturable,
     # not merely un-captured: every season carries a few pageless/cancelled
     # contests that sit in schedule_master but have no game page and never
@@ -86,7 +102,7 @@ for season in $(seq "$START" -1 "$END"); do
     # them -- ~1 idle hour per season, ~13 across a full backfill. Compared
     # before-vs-after so it is caught in ONE round. rc!=0 is excluded: a ban
     # hard-stop also makes no progress but MUST cool down and retry, not skip.
-    if [ "$rc" -eq 0 ] && [ "$left" != "-1" ] && [ "$left" = "$before" ] && [ "$left" != "0" ]; then
+    if [ "$cap_rc" -eq 0 ] && [ "$left" != "-1" ] && [ "$left" = "$before" ] && [ "$left" != "0" ]; then
       say "season ${season}: round ${round} captured nothing (${left} left, un-capturable) -- treating as done"
       break
     fi
@@ -101,7 +117,7 @@ for season in $(seq "$START" -1 "$END"); do
       sleep "$BAN_COOLDOWN_S"
       continue
     fi
-    if [ "$rc" -ne 0 ]; then
+    if [ "$cap_rc" -ne 0 ]; then
       say "season ${season}: chunk ${round} hard-stopped (rc=${rc}), ${left} remaining -- cooling ${BAN_COOLDOWN_S}s"
       sleep "$BAN_COOLDOWN_S"
     else
@@ -111,4 +127,11 @@ for season in $(seq "$START" -1 "$END"); do
   done
 done
 say "campaign finished ${START}..${END}"
-echo "EXIT=$?" | tee -a "$LOG"
+# Exit 3 when any season's parse stage failed, so the operator sees it; 0 otherwise.
+final_rc=0
+if [ -n "${PARSE_FAILED_SEASONS}" ]; then
+  say "parse failures in season(s):${PARSE_FAILED_SEASONS} -- see logs/parse_*.log; re-run run_03_parse.sh once fixed"
+  final_rc=3
+fi
+echo "EXIT=${final_rc}" | tee -a "$LOG"
+exit "$final_rc"
