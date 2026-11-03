@@ -60,7 +60,7 @@ mkdir -p logs
   echo "[$(date -u '+%F %T')Z] daily wbb start: season=${SEASON} max=${MAX_CONTESTS} vendor=${NCAA_VENDOR}"
   rc_total=0
 
-  bash scripts/run_01_schedules.sh --season "${SEASON}" || { echo "WARN schedules rc=$?"; rc_total=1; }
+  bash scripts/run_01_schedules.sh --season "${SEASON}" --scoreboard || { echo "WARN schedules rc=$?"; rc_total=1; }
   bash scripts/run_02_games.sh --season "${SEASON}" --max-contests "${MAX_CONTESTS}" || { echo "WARN capture rc=$?"; rc_total=1; }
   bash scripts/run_03_parse.sh --season "${SEASON}" || { echo "WARN parse rc=$?"; rc_total=1; }
   bash scripts/run_04_rosters.sh --season "${SEASON}" || { echo "WARN rosters rc=$?"; rc_total=1; }
