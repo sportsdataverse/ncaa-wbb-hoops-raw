@@ -63,6 +63,9 @@ mkdir -p logs
   bash scripts/run_01_schedules.sh --season "${SEASON}" --scoreboard || { echo "WARN schedules rc=$?"; rc_total=1; }
   bash scripts/run_02_games.sh --season "${SEASON}" --max-contests "${MAX_CONTESTS}" || { echo "WARN capture rc=$?"; rc_total=1; }
   bash scripts/run_03_parse.sh --season "${SEASON}" || { echo "WARN parse rc=$?"; rc_total=1; }
+  # Stage 06: the contest -> ESPN game crosswalk, from what is parsed so far, then
+  # stamped into those parsed contests. Must run before 05, which publishes espn_game_id.
+  bash scripts/run_06_game_xwalk.sh --seasons "${SEASON}" || echo "WARN game xwalk rc=$? (non-fatal)"
   bash scripts/run_04_rosters.sh --season "${SEASON}" || { echo "WARN rosters rc=$?"; rc_total=1; }
   bash scripts/run_05_datasets.sh --season "${SEASON}" || { echo "WARN datasets rc=$?"; rc_total=1; }
   # Stage 07 (J6) is non-fatal: a player-crosswalk miss must not fail the capture.
