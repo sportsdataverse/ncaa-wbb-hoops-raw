@@ -54,10 +54,10 @@ STAGES: tuple[tuple[str, str, str, bool, bool, bool], ...] = (
     # same engine writers), so it carries no dedicated suite of its own.
     ("04", "rosters_scrape", "rosters", True, False, True),
     ("05", "datasets_build", "datasets", True, True, True),
-    # Run directly (python python/ncaa_<lg>_06_xwalk_build.py) after a
-    # season's schedules exist; no driver because it takes no proxy creds
-    # and no sharding.
-    ("06", "xwalk_build", "xwalk", False, True, False),
+    # Contest <-> ESPN game crosswalk. The daily chain runs it (non-fatally)
+    # after 03 parse and before 05 datasets: it keys off the parsed contests and
+    # stamps espn_game_id back into them, which 05 then publishes.
+    ("06", "xwalk_build", "xwalk", False, True, True),
     # NCAA player <-> ESPN athlete crosswalk (J6). Its matcher lives in
     # sportsdataverse-py (scrape/ncaa/espn_player_xwalk.py, tested there), so
     # the shim carries no suite here; the daily chain runs it non-fatally.
