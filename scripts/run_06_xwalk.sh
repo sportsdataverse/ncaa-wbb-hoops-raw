@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # User-run launcher (stage 06): NCAA contest_id <-> ESPN game_id crosswalk.
 #
-#   ./scripts/run_06_game_xwalk.sh --seasons 2027            # ending year
-#   ./scripts/run_06_game_xwalk.sh --seasons 2027 --dry-run  # rates only
+#   ./scripts/run_06_xwalk.sh --seasons 2027            # ending year
+#   ./scripts/run_06_xwalk.sh --seasons 2027 --dry-run  # rates only
 #
 # OFFLINE except one load_wbb_schedule release read per season; no proxy.
 # Reads wbb/schedules/parquet/{season}.parquet and the parsed wbb/json/{contest_id}.json
